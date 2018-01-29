@@ -1,0 +1,228 @@
+﻿<!DOCTYPE html>
+<html lang="zh">
+<head>
+ <meta charset="utf-8">
+ <title>HTML5 canvas中使用路径-歪脖网</title>
+ <meta name="keywords" content="HTML, HTML5, , canvas,HTML5 canvas,canvas路径" />
+ <meta name="description" content="Canvas中，把从绘制起点到绘制终点所经过的这些点，就称为路径。一个路径可以包含多个子路径，子路径又是由两个或多个点组成。在某一时刻，canvas中只能有一条路径存在，canvas规范把它称为“当前路径”" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+ <link href="http://localhost/waibo/css/bootstrap.min.css" rel="stylesheet" />
+ <link href="http://localhost/waibo/css/bootstrap-responsive.min.css" rel="stylesheet" />
+ <link href="http://localhost/waibo/css/style.css" rel="stylesheet" />
+
+ <script src="http://localhost/waibo/js/jquery.js"></script>
+ <script src="http://localhost/waibo/js/script.js"></script>
+</head>
+
+<body>
+ <div class="topbar">
+ <div class="eyebrow hidden-phone">
+ <div class="container">
+ <ul class="pull-left">
+   <li><a href="http://www.waibo.wang/" target="_blank">歪脖网</a>欢迎您！</li>
+ </ul>
+ <ul class="pull-right">
+  <li><a href="http://www.waibo.wang/user/">登录</a></li>
+  <li class="b">|</li>
+  <li><a href="http://www.waibo.wang/user/register.asp" target="_blank">注册</a></li>
+ </div>
+ </div>
+
+<div class="topnav">
+<div class="container">
+  <div class="row-fluid mtz">
+  <div class="span3 topnav-logo">
+    <a href="http://www.waibo.wang/"><p class="logo-cn">歪脖网</p><p class="logo-en hidden-phone">waibo.wang</p></a>
+  </div>
+  <div class="span6 nav">
+   <ul>
+     <li ><a href="http://www.waibo.wang/">首页</a></li>
+     <li class="active"><a href="http://localhost/waibo/">教程</a></li>
+     <li ><a href="http://www.waibo.wang/wiki/">专栏</a></li>
+     <li ><a href="http://www.waibo.wang/demo/">素材</a></li>
+   </ul>
+  </div>
+  <div class="span3 topnav-form">
+  </div>
+ </div>
+ </div>
+ </div>
+ </div>
+
+
+ <div class="container">
+ <div class="row-fluid">
+ <aside class="span3">
+ <map id="oAll" name="oAll">
+ <area title="全部展开" shape="rect" coords="0,0,22,20"  href="javascript:tree.openAll();" onfocus="blur(this);">
+ <area title="全部收起" shape="rect" coords="22,0,44,20" href="javascript:tree.closeAll();" onfocus="blur(this);">
+ </map>
+ <header><span>目录</span><img src="http://localhost/waibo/img/map.png" usemap="#oAll"/></header>
+ <script src="http://localhost/waibo/js/dtree.js"></script>
+ <script src="http://localhost/waibo/bible/html5/js/tree.js"></script>
+ <script>
+    createTree("40201");
+ </script>
+ </aside>
+
+ <main class="span9">
+ <header><div class="name"><strong>HTML5宝典</strong>(第 1 版)</div><div class="section">4.2.1 如何使用路径</div></header>
+ <div><label id="treeview"><input id="show" type="checkbox" checked /> 文档结构视图</label><span class="hit">阅读（ <span id="hit"></span> ）</div>
+ <article>
+<h1 class="hide-text">HTML基础</h1>
+<h1 class="hide-text">HTML元素</h1>
+<h1 class="hide-text">表单及应用</h1>
+<h1 class="hide-text">Canvas绘图基础</h1>
+<h2 class="hide-text">基本用法</h2>
+<h2 class="hide-text">使用路径</h2>
+<h3>如何使用路径</h3>
+<p>在Canvas中绘图，其实就是先按照一定顺序定义一些坐标点，再通过指定的方式，用画笔将这些坐标点连接起来，就形成我们所需要的图形。</p>
+<p>Canvas中的所有基本图形，包括线段、矩形、圆弧、贝塞尔曲线等，都是基于路径进行绘制的。</p>
+<p>Canvas中，把从绘制起点到绘制终点所经过的这些点，就称为路径。一个路径可以包含多个子路径，子路径又是由两个或多个点组成。在某一时刻，canvas中只能有一条路径存在，canvas规范把它称为&ldquo;当前路径&rdquo;。使用路径时，绘制图形的一般步骤为：</p>
+<ol>
+	<li>调用beginPath()方法开始一条新的路径。</li>
+	<li>调用moveTo(x, y)方法以(x, y)为起点开始一条新的子路径，并把画笔移动到该起点。</li>
+	<li>定义子路径的内容。如，rect()方法定义矩形路径，arc()方法定义圆弧路径，等等。</li>
+	<li>调用closePath()方法关闭路径，使该路径闭合。</li>
+	<li>每调用一次beginPath()方法，会新定义一条路径，该方法会把当前路径中的所有子路径全部清除；每调用一次moveTo&nbsp;(x, y)方法，会新定义一条子路径。</li>
+</ol>
+<section>
+<p class="note">说明：</p>
+<p>在&nbsp;Canvas&nbsp;中定义子路径，一般是不需要指定起点的。第一条子路径的默认起点是画布的原点，其它子路径的起点是上一次定义路径的终点。因此，只有在需要重新定义起点的时候，才要调用&nbsp;moveTo&nbsp;()方法。</p>
+<p>关闭路径就是把路径的起点自动作为终点，并把起点和终点用直线连接起来，形成一个闭合区域。如果不需要绘制封闭图形，则不必调用closePath()方法。</p>
+<p>canvas中有几个特殊的方法，如rect()方法，被称作路径方法，它们会自动调用moveTo()和closePath()方法。使用路径方法绘制图形时，可以省略步骤2和步骤4。</p>
+</section>
+<p>为了简单起见，下面举一个使用路径方法绘制两个矩形的例子，本章后面几节会给出使用moveTo()和closePath()的实例。&nbsp;&nbsp;</p>
+<pre class="prettyprint linenums">
+<code>context.beginPath();
+context.rect(50, 20, 120, 100);
+context.stroke();
+      
+context.beginPath();
+context.rect(220, 20, 120, 100);
+context.fill();</code></pre>
+<p>上述代码通过调用beginPath()开始一条新路径，然后调用rect()方法向当前路径中增加一个包含4个点的子路径，最后调用stroke()方法，该路径进行描边，使其在画布中显示出来。</p>
+<p>接下来，又一次调用beginPath()方法，该方法会清除上一次调用rect()方法创建的子路径，然后再调用rect()方法向当前路径中增加一个包含4个点的子路径，最后调用fill()方法，对该路径进行填充，使第二个矩形也在画布中显示出来。本例的运行效果如图 4‑3 所示：</p>
+<figure><img src='http://localhost/waibo/bible/html5/img/4/usepath.png' title='描边和填充效果' alt='描边和填充效果'><figcaption>图4-3  描边和填充效果</figcaption></figure>
+<p>如果在绘制第二个矩形时，不调用beginPath()方法，结果会怎样呢？我们先看看运行效果，如图 4‑4 所示：</p>
+<figure><img src='http://localhost/waibo/bible/html5/img/4/usepath2.png' title='路径对绘图的影响' alt='路径对绘图的影响'><figcaption>图4-4  路径对绘图的影响</figcaption></figure>
+<p>从上图可知，第一个矩形也是使用填充而不是描边的，为什么会这样呢？</p>
+<p>因为canvas中的绘制方法，都是以上一次beginPath&nbsp;()之后的所有路径为基础进行绘制，因此每次开始绘制路径前，都要调用一次&nbsp;beginPath&nbsp;()方法，以通知canvas将要开始绘制一个新图形了。否则，之后添加的所有子路径都是添加在已有的子路径上，每次绘制，都会把之前的子路径重新绘制一遍。这样，不但影响绘图效果，还会严重影响性能。</p>
+<div id="modalReward" class="modal hide fade modal-reward" tabindex="-1">
+<div class="modal-header">
+<button type="button" class="close" data-dismiss="modal">&times;</button>
+<h6>打赏</h6>
+</div>
+<div class="modal-body">
+<div class="tabbable reward-weipay">
+<ul class="nav nav-tabs">
+<li class="active"><a data-toggle="tab" href="#weipay1">￥1</a></li>
+<li><a data-toggle="tab" href="#weipay2">￥2</a></li>
+<li><a data-toggle="tab" href="#weipay5">￥5</a></li>
+<li><a data-toggle="tab" href="#weipay10">￥10</a></li>
+<li><a data-toggle="tab" href="#weipay20">￥20</a></li>
+<li><a data-toggle="tab" href="#weipayrand">其他金额</a></li>
+</ul>
+<div class="tab-content">
+<div class="tab-pane active" id="weipay1">
+<img src="http://localhost/waibo/img/weipay1.png" alt="￥1"><span>￥1</span>
+</div>
+<div class="tab-pane" id="weipay2">
+<img src="http://localhost/waibo/img/weipay2.png" alt="￥2"><span>￥2</span>
+</div>
+<div class="tab-pane" id="weipay5">
+<img src="http://localhost/waibo/img/weipay5.png" alt="￥5"><span>￥5</span>
+</div>
+<div class="tab-pane" id="weipay10">
+<img src="http://localhost/waibo/img/weipay10.png" alt="￥10"><span>￥10</span>
+</div>
+<div class="tab-pane" id="weipay20">
+<img src="http://localhost/waibo/img/weipay20.png" alt="￥20"><span>￥20</span>
+</div>
+<div class="tab-pane" id="weipayrand">
+<img src="http://localhost/waibo/img/weipayrand.png" alt="￥随意"><span>￥随意</span>
+</div>
+</div>
+</div>
+<div class="tabbable reward-alipay hide">
+<ul class="nav nav-tabs">
+<li class="active"><a data-toggle="tab" href="#alipay1">￥1</a></li>
+<li><a data-toggle="tab" href="#alipay2">￥2</a></li>
+<li><a data-toggle="tab" href="#alipay5">￥5</a></li>
+<li><a data-toggle="tab" href="#alipay10">￥10</a></li>
+<li><a data-toggle="tab" href="#alipay20">￥20</a></li>
+<li><a data-toggle="tab" href="#alipayrand">其他金额</a></li>
+</ul>
+<div class="tab-content">
+<div class="tab-pane active" id="alipay1">
+<img src="http://localhost/waibo/img/alipay1.png" alt="￥1"><span>￥1</span>
+</div>
+<div class="tab-pane" id="alipay2">
+<img src="http://localhost/waibo/img/alipay2.png" alt="￥2"><span>￥2</span>
+</div>
+<div class="tab-pane" id="alipay5">
+<img src="http://localhost/waibo/img/alipay5.png" alt="￥5"><span>￥5</span>
+</div>
+<div class="tab-pane" id="alipay10">
+<img src="http://localhost/waibo/img/alipay10.png" alt="￥10"><span>￥10</span>
+</div>
+<div class="tab-pane" id="alipay20">
+<img src="http://localhost/waibo/img/alipay20.png" alt="￥20"><span>￥20</span>
+</div>
+<div class="tab-pane" id="alipayrand">
+<img src="http://localhost/waibo/img/alipayrand.png" alt="￥随意"><span>￥随意</span>
+</div>
+</div>
+</div>
+<div class="reward-method">
+<label><input type="radio" name="method" value="weipay" checked><img src="http://localhost/waibo/img/weipay.png" alt="微信支付"></label>
+<label><input type="radio" name="method" value="alipay"><img src="http://localhost/waibo/img/alipay.png" alt="支付宝"></label>
+</div>
+</div>
+</div>
+<div class="reward">
+<p>如果本教程对您帮助很大，请随意打赏。您的支持，将鼓励我写出更好的教程！</p>
+<a data-toggle="modal" href="#modalReward">赏</a>
+</div>
+ <div class="page">
+   <a id="prev" href="http://localhost/waibo/bible/html5/html/4/4.1.html" title="&#8592; 键到上一节">« 上一节</a>&#8592; 键盘方向键翻页 &#8594;<a id="next" href="http://localhost/waibo/bible/html5/html/4/4.2.2.html" title="&#8594; 键到下一节">下一节 »</a>
+ </div>
+ </article>
+ </main>
+ </div>
+ </div>
+ <div class="floatPanel">
+	 <div class="ctrolPanel">
+		 <a href="javascript:;" class="arrow top" onClick="goTop()"><span>返回顶部</span></a>
+    <a href="#" class="phone"  data-target="#phone"><span>手机访问</span></a>
+    <a href="#" class="wechat" data-target="#wechat"><span>关注微信</span></a>
+    <a href="javascript:;" class="arrow bottom" onClick="goBottom()"><span>返回底部</span></a>
+  </div>
+	<div id="phone" class="popPanel">
+		<div class="popPanel-inner">
+			<img src="http://localhost/waibo/img/site.png" /><p class="slogan">扫码访问歪脖网</p><p>随时随地，想看就看</p>
+		</div>
+	</div>
+	<div id="wechat" class="popPanel">
+		<div class="popPanel-inner">
+			<img src="http://localhost/waibo/img/weixin.png" /><p class="slogan">关注歪脖网微信</p><p>分享 web 知识、交流 web 经验</p>
+		</div>
+	</div>
+</div>
+ <footer>
+   <p>Copyright&copy;2017&nbsp;&nbsp;www.waibo.wang All Rights Reserved</p>
+   <p>陕ICP备17020676号-1&nbsp;&nbsp;&nbsp;&nbsp;客服QQ：376601179&nbsp;&nbsp;&nbsp;&nbsp;邮箱：376601179#qq.com
+ </footer>
+ <script src="http://localhost/waibo/js/prettify.js"></script>
+ <script src="http://localhost/waibo/js/bootstrap.min.js"></script>
+ <script src="http://localhost/waibo/js/ckeditor_4.7.1/ckeditor.js"></script>
+ <script>
+ $(function() {
+    prettyPrint();
+    bible();
+    load();
+    rewardMethod();
+ });
+ </script>
+</body>
+</html>

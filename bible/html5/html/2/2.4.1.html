@@ -1,0 +1,248 @@
+﻿<!DOCTYPE html>
+<html lang="zh">
+<head>
+ <meta charset="utf-8">
+ <title>HTML <a>标签_HTML a元素_HTML超链接-歪脖网</title>
+ <meta name="keywords" content="HTML, HTML5, , a元素,HTML a元素,HTML超链接" />
+ <meta name="description" content="a元素用来定义HTML超链接,并通过href 属性用来规定链接目标URL" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+ <link href="http://localhost/waibo/css/bootstrap.min.css" rel="stylesheet" />
+ <link href="http://localhost/waibo/css/bootstrap-responsive.min.css" rel="stylesheet" />
+ <link href="http://localhost/waibo/css/style.css" rel="stylesheet" />
+
+ <script src="http://localhost/waibo/js/jquery.js"></script>
+ <script src="http://localhost/waibo/js/script.js"></script>
+</head>
+
+<body>
+ <div class="topbar">
+ <div class="eyebrow hidden-phone">
+ <div class="container">
+ <ul class="pull-left">
+   <li><a href="http://www.waibo.wang/" target="_blank">歪脖网</a>欢迎您！</li>
+ </ul>
+ <ul class="pull-right">
+  <li><a href="http://www.waibo.wang/user/">登录</a></li>
+  <li class="b">|</li>
+  <li><a href="http://www.waibo.wang/user/register.asp" target="_blank">注册</a></li>
+ </div>
+ </div>
+
+<div class="topnav">
+<div class="container">
+  <div class="row-fluid mtz">
+  <div class="span3 topnav-logo">
+    <a href="http://www.waibo.wang/"><p class="logo-cn">歪脖网</p><p class="logo-en hidden-phone">waibo.wang</p></a>
+  </div>
+  <div class="span6 nav">
+   <ul>
+     <li ><a href="http://www.waibo.wang/">首页</a></li>
+     <li class="active"><a href="http://localhost/waibo/">教程</a></li>
+     <li ><a href="http://www.waibo.wang/wiki/">专栏</a></li>
+     <li ><a href="http://www.waibo.wang/demo/">素材</a></li>
+   </ul>
+  </div>
+  <div class="span3 topnav-form">
+  </div>
+ </div>
+ </div>
+ </div>
+ </div>
+
+
+ <div class="container">
+ <div class="row-fluid">
+ <aside class="span3">
+ <map id="oAll" name="oAll">
+ <area title="全部展开" shape="rect" coords="0,0,22,20"  href="javascript:tree.openAll();" onfocus="blur(this);">
+ <area title="全部收起" shape="rect" coords="22,0,44,20" href="javascript:tree.closeAll();" onfocus="blur(this);">
+ </map>
+ <header><span>目录</span><img src="http://localhost/waibo/img/map.png" usemap="#oAll"/></header>
+ <script src="http://localhost/waibo/js/dtree.js"></script>
+ <script src="http://localhost/waibo/bible/html5/js/tree.js"></script>
+ <script>
+    createTree("20401");
+ </script>
+ </aside>
+
+ <main class="span9">
+ <header><div class="name"><strong>HTML5宝典</strong>(第 1 版)</div><div class="section">2.4.1 a元素</div></header>
+ <div><label id="treeview"><input id="show" type="checkbox" checked /> 文档结构视图</label><span class="hit">阅读（ <span id="hit"></span> ）</div>
+ <article>
+<h1 class="hide-text">HTML基础</h1>
+<h1 class="hide-text">HTML元素</h1>
+<h2 class="hide-text">结构语义元素</h2>
+<h2 class="hide-text">内容分组元素</h2>
+<h2 class="hide-text">文本语义元素</h2>
+<h2>链接元素</h2>
+<p>链接是万维网的命脉，如果没有链接，每个页面都只能孤立地存在，同其他页面完全分开。通过链接，可以建立同其他网页或网站之间的连接，可以不夸张的讲，没有链接，就没有万维网。</p>
+<p>在网页中，通过链接来指向一个目标，这个目标可以是网页、网页中的具体位置、图像、邮件地址、文件、FTP地址等，甚至是一个应用程序。</p>
+<p>链接可以是一个字、一个词、一组词、一幅图像，点击这些内容会跳转到新的文档或当前文档的某个具体位置。一般情况下，当鼠标移动到网页中的某个链接上时，鼠标的光标会由箭头变为一只小手。</p>
+<p>在HTML中，可以使用两个元素来创建链接：a元素、map元素。</p>
+<h3>a元素</h3>
+<p>使用 a元素定义链接时，必须为它指定 href 属性。否则，它仅代表一个链接的占位符，点击链接不会发生跳转。a元素创建链接的基本格式为：</p>
+<pre class="prettyprint linenums">
+<code>&lt;a href = "url"&gt;Link text&lt;/a&gt;</code></pre>
+<p>其中，&quot;Link text&quot; 称作链接文本，即访问者在浏览器中看到或在屏幕阅读器值听到的部分，它可以是文本，也可以是图像或其他HTML 元素；href 属性用来规定链接目标URL。如：</p>
+<pre class="prettyprint linenums">
+<code>&lt;a href = "http://www.waibo.wang"&gt;歪脖网&lt;/a&gt;</code></pre>
+<p>在上述的 a元素中，&ldquo;歪脖网&rdquo;就是链接文本，http://www.waibo.wang 就是链接的目标URL。当用户点击 &ldquo;歪脖网&rdquo;时，页面就会跳转到 http://www.waibo.wang 这个地址。</p>
+<section>
+<p class="note">URL：</p>
+<p>URL是Uniform Resource Locator的缩写，中文含义是统一资源定位符，是用于完整的描述资源地址的一种标识方法，这种地址可以是本地磁盘，也可以是LAN中的某台计算机，更多的是Internet上的地址。</p>
+<p>Internet上的每一个网页都具有唯一的URL，简单地说，URL地址就是Web地址，俗称网址。URL的基本格式为（带方括号 [] 的为可选项）：</p>
+<p>scheme: //hostname[:port] / path / [;parameters] [?query] #fragment</p>
+<p>scheme（模式/协议）：它告诉浏览器如何处理将要打开的文件，最常用的模式超文本传输协议（Hypertext Transfer Protocol，缩写为HTTP），这个协议可以用来访问网络，也是目前www中应用最广的协议。</p>
+<p>hostname（主机名）：是指存放资源的服务器的域名系统(DNS) 主机名或 IP 地址。有时，在主机名前也可以包含连接到服务器所需的用户名和密码（格式：username: password@hostname）。</p>
+<p>port（端口号）：整数，可选，省略时使用方案的默认端口，各种传输协议都有默认的端口号，如http的默认端口为80。如果输入时省略，则使用默认端口号。有时候出于安全或其他考虑，可以在服务器上对端口进行重定义，即采用非标准端口号，此时，URL中就不能省略端口号这一项。</p>
+<p>path（路径）：由零或多个&ldquo;/&rdquo;符号隔开的字符串，一般用来表示主机上的一个目录或文件地址。</p>
+<p>parameters（参数）：这是用于指定特殊参数的可选项。</p>
+<p>query（查询）：可选，用于给动态网页（如使用CGI、ISAPI、PHP/JSP/ASP/ASP.NET等技术制作的网页）传递参数，可有多个参数，用&ldquo;&amp;&rdquo;符号隔开，每个参数的名和值用&ldquo;=&rdquo;符号隔开。</p>
+<p>fragment（信息片断）：字符串，用于指定网络资源中的片断。如一个网页中有多个名词解释，可使用fragment直接定位到某一名词解释。</p>
+<p>URL可以是绝对URL，也可以是相对URL。绝对URL包含了指向目录或文件的完整信息，包括模式、主机名和路径。这意味着绝对URL本身与被引用文件的实际位置无关，无论在哪个主机上的网页，一个文件的绝对URL都完全相同。相对URL则以包含URL本身的文件的位置为参考点，描述目标文件的位置。</p>
+</section>
+<p>根据使用的协议不同，最常用的URL有以下几种类型：</p>
+<p>1）http：通过HTTP协议访问该资源</p>
+<p>如果目标网页非本站资源，就需要把 href 属性值设置为目标链接的绝对URL，如&lt;a href=&quot;http://www.waibo.wang/&quot;&gt;歪脖网&lt;/a&gt;。</p>
+<p>如果目标网页是站内资源，可以使用相对URL，如&lt;a href=&quot;index.htm&quot;&gt;歪脖网&lt;/a&gt;。</p>
+<p>如果要跳转到目标网页的某个具体锚点，就需要在href属性中添加锚点名称，以便定位到锚点。在URL中，通过&quot;#&quot;指定锚点，如&lt;a href=&quot;http:// waibo.wang/index.htm#contact &quot;&gt;歪脖网&lt;/a&gt;，表示链接到http:// waibo.wang/ index.htm页面上的锚点contact。</p>
+<p>要定位到锚点，需要先在页面上定义锚点（anchor）。定义锚点有两种方法：一种是通过超级链接的name属性定义，这种方式只能用于超级链接，格式为：name=&quot;锚点名称&quot;，如&lt;a name=&quot;contact &quot;&gt;联系方式&lt;/a&gt;，就在index.htm页面上创建了名称为&ldquo;contact&rdquo;的锚点；另一种方法是通过HTML元素的id属性定义，这种方式可以用于任何HTML元素，包括超级链接，如把div作为锚点，&lt;div id=&quot;contact &quot;&gt;联系方式&lt;/a&gt;。锚点就相当于页面的书签，书签不会以任何特殊方式显示，对读者是不可见的。</p>
+<p>&quot;链接文本&quot; 可以是文本，也可以是图像。我们可以用一副图像作为&quot;链接文本&quot;，如&lt;a href=&quot;http://www.waibo.wang/&quot;&gt;&lt;img src=&quot;logo.gif&quot; /&gt;&lt;/a&gt;，这样，图像logo.gif就变成&quot;链接文本&quot;。当然，&quot;链接文本&quot;也可以是其他HTML元素。</p>
+<p>如果href属性指向非网页文件，如&lt;a href=&quot;http://www.waibo.wang/小苹果.mp3&quot; download=&quot;筷子兄弟_小苹果.mp3&quot;&gt;小苹果&lt;/a&gt;，用户点击链接后会下载该文件。不过，各浏览器的支持不尽相同，对于音频、视频文件，Firefox会直接播放，其他浏览器会直接下载。download属性用来指定下载后另存为的文件名，浏览器会自动检测并添加正确的扩展名。目前还没有浏览器支持download属性。</p>
+<p>2）ftp：通过FTP协议访问资源</p>
+<p>如，&lt;a href=&quot;ftp://123.18.153.208/&quot;&gt;FTP&lt;/a&gt;，用来访问FTP服务器123.18.153.208。点击链接后，会弹出登录框，用户登录后，可访问FTP服务器。</p>
+<p>3）mailto：通过STMP协议访问资源</p>
+<p>如，&lt;a href=&quot;mailto:maifang51@163.com&quot;&gt;E-MAIL&lt;/a&gt;，用来给maifang51@163.com发送邮件。点击链接后，会打开操作系统默认的发送邮件的软件，供用户发送email。</p>
+<p>4）javascript：调用Javascript函数</p>
+<p>这里的javascript实际上是伪协议，表示URL的内容通过javascript执行。</p>
+<p>如，&lt;a href = &quot;javascript: alert(&#39; 歪脖网欢迎您！&#39;);&quot;&gt;点击我&lt;/a&gt;，用户点击链接后，会调用Javascript的alert函数，弹出一个&ldquo;歪脖网欢迎您！&rdquo;的警告框。</p>
+<p>有时候，把点击链接后的操作，交给链接的onclick事件来处理。此时，为了防止点击链接后发生跳转，需要写成href=&quot;javascript: void(0);&quot;。如：</p>
+<p>&lt;a&nbsp;href = &quot;javascript: void(0)&quot;&nbsp;onclick = &quot;click()&quot;&gt;点击我&lt;/a&gt;</p>
+<p>由于点击链接后的执行顺序是，先执行 onclick 事件处理函数，再按 href 属性指定的值，执行跳转。因此，点击上述链接，仅仅会执行Javascript的click()函数，而不发生跳转。</p>
+<section>
+<p class="note">说明：</p>
+<p>a元素的target 属性，用来规定在什么窗口打开被链接的资源，取值_blank | _self | _parent|_top。其中，_blank在新窗口；_self在当前窗口；_parent 在上一级窗口；_top 在最顶级的窗口。_parent和_top主要在包含iframe的页面中使用。target 属性是可选的，默认值为_self，在当前窗口打开目标资源。如：</p>
+<p>&lt;a href=&quot;http://www.waibo.wang/&quot; target=&quot;_blank&quot;&gt;歪脖网&lt;/a&gt;</p>
+<p>a元素的 rel 属性，用来描述本页面与链接指向的目标页面之间的关系，它是提升HTML语义化另一种方式，搜索引擎也会利用这些信息。因此，对于指向另一个网站的链接，推荐定义该属性。如：</p>
+<p>&lt;a href=&quot;http://www.waibo.wang/&quot; rel=&quot;external&quot; target=&quot;_blank&quot;&gt;百度&lt;/a&gt;</p>
+<p>此外，还可以为带有 rel=&quot;external&quot; 链接添加不同的样式，告诉访问者这是一个指向外部网站的链接，让用户清楚地了解到点击链接后会发生的情况，可以避免不必要的回溯，提高用户体验。</p>
+<p>a元素的title属性，用来为链接提供提示内容，当鼠标悬停在链接上时，提示内容才会出现，这样既给用户以提示，又不会影响页面排版的整洁性。同时，title属性也是SEO的重要内容。</p>
+</section>
+<div id="modalReward" class="modal hide fade modal-reward" tabindex="-1">
+<div class="modal-header">
+<button type="button" class="close" data-dismiss="modal">&times;</button>
+<h6>打赏</h6>
+</div>
+<div class="modal-body">
+<div class="tabbable reward-weipay">
+<ul class="nav nav-tabs">
+<li class="active"><a data-toggle="tab" href="#weipay1">￥1</a></li>
+<li><a data-toggle="tab" href="#weipay2">￥2</a></li>
+<li><a data-toggle="tab" href="#weipay5">￥5</a></li>
+<li><a data-toggle="tab" href="#weipay10">￥10</a></li>
+<li><a data-toggle="tab" href="#weipay20">￥20</a></li>
+<li><a data-toggle="tab" href="#weipayrand">其他金额</a></li>
+</ul>
+<div class="tab-content">
+<div class="tab-pane active" id="weipay1">
+<img src="http://localhost/waibo/img/weipay1.png" alt="￥1"><span>￥1</span>
+</div>
+<div class="tab-pane" id="weipay2">
+<img src="http://localhost/waibo/img/weipay2.png" alt="￥2"><span>￥2</span>
+</div>
+<div class="tab-pane" id="weipay5">
+<img src="http://localhost/waibo/img/weipay5.png" alt="￥5"><span>￥5</span>
+</div>
+<div class="tab-pane" id="weipay10">
+<img src="http://localhost/waibo/img/weipay10.png" alt="￥10"><span>￥10</span>
+</div>
+<div class="tab-pane" id="weipay20">
+<img src="http://localhost/waibo/img/weipay20.png" alt="￥20"><span>￥20</span>
+</div>
+<div class="tab-pane" id="weipayrand">
+<img src="http://localhost/waibo/img/weipayrand.png" alt="￥随意"><span>￥随意</span>
+</div>
+</div>
+</div>
+<div class="tabbable reward-alipay hide">
+<ul class="nav nav-tabs">
+<li class="active"><a data-toggle="tab" href="#alipay1">￥1</a></li>
+<li><a data-toggle="tab" href="#alipay2">￥2</a></li>
+<li><a data-toggle="tab" href="#alipay5">￥5</a></li>
+<li><a data-toggle="tab" href="#alipay10">￥10</a></li>
+<li><a data-toggle="tab" href="#alipay20">￥20</a></li>
+<li><a data-toggle="tab" href="#alipayrand">其他金额</a></li>
+</ul>
+<div class="tab-content">
+<div class="tab-pane active" id="alipay1">
+<img src="http://localhost/waibo/img/alipay1.png" alt="￥1"><span>￥1</span>
+</div>
+<div class="tab-pane" id="alipay2">
+<img src="http://localhost/waibo/img/alipay2.png" alt="￥2"><span>￥2</span>
+</div>
+<div class="tab-pane" id="alipay5">
+<img src="http://localhost/waibo/img/alipay5.png" alt="￥5"><span>￥5</span>
+</div>
+<div class="tab-pane" id="alipay10">
+<img src="http://localhost/waibo/img/alipay10.png" alt="￥10"><span>￥10</span>
+</div>
+<div class="tab-pane" id="alipay20">
+<img src="http://localhost/waibo/img/alipay20.png" alt="￥20"><span>￥20</span>
+</div>
+<div class="tab-pane" id="alipayrand">
+<img src="http://localhost/waibo/img/alipayrand.png" alt="￥随意"><span>￥随意</span>
+</div>
+</div>
+</div>
+<div class="reward-method">
+<label><input type="radio" name="method" value="weipay" checked><img src="http://localhost/waibo/img/weipay.png" alt="微信支付"></label>
+<label><input type="radio" name="method" value="alipay"><img src="http://localhost/waibo/img/alipay.png" alt="支付宝"></label>
+</div>
+</div>
+</div>
+<div class="reward">
+<p>如果本教程对您帮助很大，请随意打赏。您的支持，将鼓励我写出更好的教程！</p>
+<a data-toggle="modal" href="#modalReward">赏</a>
+</div>
+ <div class="page">
+   <a id="prev" href="http://localhost/waibo/bible/html5/html/2/2.3.24.html" title="&#8592; 键到上一节">« 上一节</a>&#8592; 键盘方向键翻页 &#8594;<a id="next" href="http://localhost/waibo/bible/html5/html/2/2.4.2.html" title="&#8594; 键到下一节">下一节 »</a>
+ </div>
+ </article>
+ </main>
+ </div>
+ </div>
+ <div class="floatPanel">
+	 <div class="ctrolPanel">
+		 <a href="javascript:;" class="arrow top" onClick="goTop()"><span>返回顶部</span></a>
+    <a href="#" class="phone"  data-target="#phone"><span>手机访问</span></a>
+    <a href="#" class="wechat" data-target="#wechat"><span>关注微信</span></a>
+    <a href="javascript:;" class="arrow bottom" onClick="goBottom()"><span>返回底部</span></a>
+  </div>
+	<div id="phone" class="popPanel">
+		<div class="popPanel-inner">
+			<img src="http://localhost/waibo/img/site.png" /><p class="slogan">扫码访问歪脖网</p><p>随时随地，想看就看</p>
+		</div>
+	</div>
+	<div id="wechat" class="popPanel">
+		<div class="popPanel-inner">
+			<img src="http://localhost/waibo/img/weixin.png" /><p class="slogan">关注歪脖网微信</p><p>分享 web 知识、交流 web 经验</p>
+		</div>
+	</div>
+</div>
+ <footer>
+   <p>Copyright&copy;2017&nbsp;&nbsp;www.waibo.wang All Rights Reserved</p>
+   <p>陕ICP备17020676号-1&nbsp;&nbsp;&nbsp;&nbsp;客服QQ：376601179&nbsp;&nbsp;&nbsp;&nbsp;邮箱：376601179#qq.com
+ </footer>
+ <script src="http://localhost/waibo/js/prettify.js"></script>
+ <script src="http://localhost/waibo/js/bootstrap.min.js"></script>
+ <script src="http://localhost/waibo/js/ckeditor_4.7.1/ckeditor.js"></script>
+ <script>
+ $(function() {
+    prettyPrint();
+    bible();
+    load();
+    rewardMethod();
+ });
+ </script>
+</body>
+</html>

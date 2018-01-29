@@ -1,0 +1,246 @@
+﻿<!DOCTYPE html>
+<html lang="zh">
+<head>
+ <meta charset="utf-8">
+ <title>JavaScript存储Cookie-歪脖网</title>
+ <meta name="keywords" content="HTML, HTML5, , Cookie,document.cookie,JavaScript存储Cookie" />
+ <meta name="description" content="每个cookie都是以一个名/值对形式保存的，要存储cookie，只需把document对象的cookie属性设置为一个字符串形式的值即可" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+ <link href="http://localhost/waibo/css/bootstrap.min.css" rel="stylesheet" />
+ <link href="http://localhost/waibo/css/bootstrap-responsive.min.css" rel="stylesheet" />
+ <link href="http://localhost/waibo/css/style.css" rel="stylesheet" />
+
+ <script src="http://localhost/waibo/js/jquery.js"></script>
+ <script src="http://localhost/waibo/js/script.js"></script>
+</head>
+
+<body>
+ <div class="topbar">
+ <div class="eyebrow hidden-phone">
+ <div class="container">
+ <ul class="pull-left">
+   <li><a href="http://www.waibo.wang/" target="_blank">歪脖网</a>欢迎您！</li>
+ </ul>
+ <ul class="pull-right">
+  <li><a href="http://www.waibo.wang/user/">登录</a></li>
+  <li class="b">|</li>
+  <li><a href="http://www.waibo.wang/user/register.asp" target="_blank">注册</a></li>
+ </div>
+ </div>
+
+<div class="topnav">
+<div class="container">
+  <div class="row-fluid mtz">
+  <div class="span3 topnav-logo">
+    <a href="http://www.waibo.wang/"><p class="logo-cn">歪脖网</p><p class="logo-en hidden-phone">waibo.wang</p></a>
+  </div>
+  <div class="span6 nav">
+   <ul>
+     <li ><a href="http://www.waibo.wang/">首页</a></li>
+     <li class="active"><a href="http://localhost/waibo/">教程</a></li>
+     <li ><a href="http://www.waibo.wang/wiki/">专栏</a></li>
+     <li ><a href="http://www.waibo.wang/demo/">素材</a></li>
+   </ul>
+  </div>
+  <div class="span3 topnav-form">
+  </div>
+ </div>
+ </div>
+ </div>
+ </div>
+
+
+ <div class="container">
+ <div class="row-fluid">
+ <aside class="span3">
+ <map id="oAll" name="oAll">
+ <area title="全部展开" shape="rect" coords="0,0,22,20"  href="javascript:tree.openAll();" onfocus="blur(this);">
+ <area title="全部收起" shape="rect" coords="22,0,44,20" href="javascript:tree.closeAll();" onfocus="blur(this);">
+ </map>
+ <header><span>目录</span><img src="http://localhost/waibo/img/map.png" usemap="#oAll"/></header>
+ <script src="http://localhost/waibo/js/dtree.js"></script>
+ <script src="http://localhost/waibo/bible/html5/js/tree.js"></script>
+ <script>
+    createTree("50101");
+ </script>
+ </aside>
+
+ <main class="span9">
+ <header><div class="name"><strong>HTML5宝典</strong>(第 1 版)</div><div class="section">5.1.1 存储Cookie</div></header>
+ <div><label id="treeview"><input id="show" type="checkbox" checked /> 文档结构视图</label><span class="hit">阅读（ <span id="hit"></span> ）</div>
+ <article>
+<h1 class="hide-text">HTML基础</h1>
+<h1 class="hide-text">HTML元素</h1>
+<h1 class="hide-text">表单及应用</h1>
+<h1 class="hide-text">Canvas绘图基础</h1>
+<h1 class="hide-text">客户端存储</h1>
+<h2>Cookie</h2>
+<p>cookie是存储在客户端的计算机中的少量数据，如果服务器需要记录该用户状态，就向客户端浏览器颁发一个cookie，客户端浏览器会把cookie保存起来。</p>
+<p>当浏览器再请求该网站时，浏览器把请求的网址连同该cookie提交给服务器。服务器检查该cookie，以此来辨认用户状态。服务器可以保存、读取、修改、删除cookie的内容。</p>
+<p>操作cookie的API很早就已经定义并实现，但是，由于这些API并没有提供保存、读取、修改、删除的方法。所有对cookie的操作都是通过特殊格式的字符串，读写document对象的cookie属性来完成。</p>
+<p>由于所有新旧浏览器都支持cookie，所以仍然被客户端程序员大量使用。本节将介绍如何通过Javascript 来保存、读取、修改、删除cookie的值。</p>
+<h3>存储cookie</h3>
+<p>每个cookie都是以一个名/值对形式保存的，要存储cookie，只需把document对象的cookie属性设置为一个字符串形式的值即可。如：</p>
+<pre class="prettyprint linenums">
+<code>document.cookie = "userId=Gates"; </code></pre>
+<p>如果要一次存储多个名/值对，名/值对之间需要使用&ldquo;分号加空格&rdquo;隔开。如：</p>
+<pre class="prettyprint linenums">
+<code>document.cookie="userId=Gates; password=123"; </code></pre>
+<p>由于cookie的名或值中不允许包含分号、逗号、等号和空格，因此在存储前，可以使用Javascript的全局函数encodeComponent()对值进行编码。</p>
+<p>document.cookie看上去像一个属性，可以赋不同的值。但它和一般的属性不同，重复给它赋值，原来的值并不会丢失，例如，连续执行下面两条语句：</p>
+<pre class="prettyprint linenums">
+<code>document.cookie = "userId=Gates"; 
+document.cookie = "password=123"; </code></pre>
+<p>这时浏览器将维护两个cookie，分别是userId和password。可以看出，document.cookie其实是一个容器，给它赋值时，如果该名不存在，则会在容器中添加一个名/值对；如果该名存在，则会修改该名所对应的值。</p>
+<p>除了名和值，cookie还有一些可选属性，用来控制其有效期、作用域等。这些属性分别是max-age、path、domain、secure，下面分别介绍。</p>
+<h4>max-age</h4>
+<p>cookie的默认只在浏览器的会话期间有效，即浏览器关闭后，这些cookie将会丢失。可以通过设置max-age属性，来指定cookie的有效期，单位是秒。格式为：</p>
+<pre class="prettyprint linenums">
+<code>document.cookie ="name=value; max-age=maxAge"; </code></pre>
+<p>如果maxAge为正数，则表示该cookie在maxAge秒后被删除；如果为负数，该cookie为临时cookie，关闭浏览器即失效，浏览器也不会以任何形式保存该cookie；如果为0，表示删除该cookie。默认为-1。</p>
+<p>如果maxAge为正数，浏览器就会把cookie数据保存在一个文件中。无论客户关闭了浏览器还是关闭电脑，只要还在maxAge秒之前，登录网站时该cookie就仍然有效。</p>
+<p>下面函数用来设置一个cookie的值，通过daysToLive参数设置cookie的有效天数，如果daysToLive为0，则会删除该cookie。可以看出，本函数定义的cookie，max-age属性是可选的。</p>
+<pre class="prettyprint linenums">
+<code>function setCookie(name, value, daysToLive) {
+   var cookie = name + "=" + encodeComponent(value);
+  
+   if(typeof daysToLive === "number")
+          cookie += "; max-age=" + (daysToLive*60*60*24);
+   document.cookie = cookie ;
+}</code></pre>
+<h4>path</h4>
+<p>默认情况下，cookie和创建它的页面有关，在某个页面创建了一个cookie，那么该页面及该页面所在目录中的其它页面也可以访问该cookie。如果这个目录下还有子目录，则在子目录中也可以访问。可以通过path属性来指定cookie的可见范围，格式为：</p>
+<pre class="prettyprint linenums">
+<code>document.cookie = "name=value; path=cookieDir"; </code></pre>
+<p>其中cookieDir表示可访问cookie的目录。设置path属性之后，来自同一个Web服务器的Web页面，只要其URL是以指定的路径前缀开始的，就可以共享cookie。例如，如果在http://www.xxxx.com/catalog/index.html中创建了一个cookie，并把路径设置为&ldquo;/order/&rdquo;，那么，该cookie对order目录及其子目录下的页面也是可见的。如果把路径设置为&ldquo;/&rdquo;，则该cookie对整个网站都是可见的。注意，cookieDir的最后一个字符必须是&ldquo;/&rdquo;。</p>
+<h4>domain</h4>
+<p>默认情况下，cookie是不能跨域名访问的，同一个域名下的两个二级域名也不能相互访问cookie，因为二者的域名并不严格相同。</p>
+<p>但是，对于大型网站，经常需要在子域名之间共享cookie。如，order.xxx.com域名下的服务器，想读取catalog.xxx.com域名下的cookie。这时，可以通过domain属性来设置可以访问该cookie的域名。格式为：</p>
+<pre class="prettyprint linenums">
+<code>document.cookie = "name=value; domain=cookieDomain"; </code></pre>
+<p>其中cookieDomain表示可访问cookie的域名。如果设置为&ldquo;.xxx.com&rdquo;，则所有以&ldquo;.xxx.com&rdquo;结尾的域名都可以访问该cookie。注意，cookieDomain的第一个字符必须是&ldquo;.&rdquo;。</p>
+<p>如果没有为cookie设置domain属性，则domain属性的默认值是当前的域名。并且，cookie的域名，只能设置为当前服务器的域名。</p>
+<h4>secure</h4>
+<p>HTTP协议不仅是无状态的，而且是不安全的。使用HTTP协议的数据不经过任何加密就直接在网络上传播，有被截获的危险。所以，使用HTTP协议传输机密内容会存在安全隐患。</p>
+<p>可以通过secure属性来设置是否使用安全协议在网络上传输cookie。格式为：</p>
+<pre class="prettyprint linenums">
+<code>document.cookie = "name=value; secure=secure"; </code></pre>
+<p>secure属性是布尔类型，默认值为false。如果不希望cookie在HTTP等非安全协议中传输，可以设置为true。如果把secure属性设置为true，就只有当浏览器和服务器通过HTTPS或其它安全协议连接时，才能传递它。</p>
+<div id="modalReward" class="modal hide fade modal-reward" tabindex="-1">
+<div class="modal-header">
+<button type="button" class="close" data-dismiss="modal">&times;</button>
+<h6>打赏</h6>
+</div>
+<div class="modal-body">
+<div class="tabbable reward-weipay">
+<ul class="nav nav-tabs">
+<li class="active"><a data-toggle="tab" href="#weipay1">￥1</a></li>
+<li><a data-toggle="tab" href="#weipay2">￥2</a></li>
+<li><a data-toggle="tab" href="#weipay5">￥5</a></li>
+<li><a data-toggle="tab" href="#weipay10">￥10</a></li>
+<li><a data-toggle="tab" href="#weipay20">￥20</a></li>
+<li><a data-toggle="tab" href="#weipayrand">其他金额</a></li>
+</ul>
+<div class="tab-content">
+<div class="tab-pane active" id="weipay1">
+<img src="http://localhost/waibo/img/weipay1.png" alt="￥1"><span>￥1</span>
+</div>
+<div class="tab-pane" id="weipay2">
+<img src="http://localhost/waibo/img/weipay2.png" alt="￥2"><span>￥2</span>
+</div>
+<div class="tab-pane" id="weipay5">
+<img src="http://localhost/waibo/img/weipay5.png" alt="￥5"><span>￥5</span>
+</div>
+<div class="tab-pane" id="weipay10">
+<img src="http://localhost/waibo/img/weipay10.png" alt="￥10"><span>￥10</span>
+</div>
+<div class="tab-pane" id="weipay20">
+<img src="http://localhost/waibo/img/weipay20.png" alt="￥20"><span>￥20</span>
+</div>
+<div class="tab-pane" id="weipayrand">
+<img src="http://localhost/waibo/img/weipayrand.png" alt="￥随意"><span>￥随意</span>
+</div>
+</div>
+</div>
+<div class="tabbable reward-alipay hide">
+<ul class="nav nav-tabs">
+<li class="active"><a data-toggle="tab" href="#alipay1">￥1</a></li>
+<li><a data-toggle="tab" href="#alipay2">￥2</a></li>
+<li><a data-toggle="tab" href="#alipay5">￥5</a></li>
+<li><a data-toggle="tab" href="#alipay10">￥10</a></li>
+<li><a data-toggle="tab" href="#alipay20">￥20</a></li>
+<li><a data-toggle="tab" href="#alipayrand">其他金额</a></li>
+</ul>
+<div class="tab-content">
+<div class="tab-pane active" id="alipay1">
+<img src="http://localhost/waibo/img/alipay1.png" alt="￥1"><span>￥1</span>
+</div>
+<div class="tab-pane" id="alipay2">
+<img src="http://localhost/waibo/img/alipay2.png" alt="￥2"><span>￥2</span>
+</div>
+<div class="tab-pane" id="alipay5">
+<img src="http://localhost/waibo/img/alipay5.png" alt="￥5"><span>￥5</span>
+</div>
+<div class="tab-pane" id="alipay10">
+<img src="http://localhost/waibo/img/alipay10.png" alt="￥10"><span>￥10</span>
+</div>
+<div class="tab-pane" id="alipay20">
+<img src="http://localhost/waibo/img/alipay20.png" alt="￥20"><span>￥20</span>
+</div>
+<div class="tab-pane" id="alipayrand">
+<img src="http://localhost/waibo/img/alipayrand.png" alt="￥随意"><span>￥随意</span>
+</div>
+</div>
+</div>
+<div class="reward-method">
+<label><input type="radio" name="method" value="weipay" checked><img src="http://localhost/waibo/img/weipay.png" alt="微信支付"></label>
+<label><input type="radio" name="method" value="alipay"><img src="http://localhost/waibo/img/alipay.png" alt="支付宝"></label>
+</div>
+</div>
+</div>
+<div class="reward">
+<p>如果本教程对您帮助很大，请随意打赏。您的支持，将鼓励我写出更好的教程！</p>
+<a data-toggle="modal" href="#modalReward">赏</a>
+</div>
+ <div class="page">
+   <a id="prev" href="http://localhost/waibo/bible/html5/html/5/5.html" title="&#8592; 键到上一节">« 上一节</a>&#8592; 键盘方向键翻页 &#8594;<a id="next" href="http://localhost/waibo/bible/html5/html/5/5.1.2.html" title="&#8594; 键到下一节">下一节 »</a>
+ </div>
+ </article>
+ </main>
+ </div>
+ </div>
+ <div class="floatPanel">
+	 <div class="ctrolPanel">
+		 <a href="javascript:;" class="arrow top" onClick="goTop()"><span>返回顶部</span></a>
+    <a href="#" class="phone"  data-target="#phone"><span>手机访问</span></a>
+    <a href="#" class="wechat" data-target="#wechat"><span>关注微信</span></a>
+    <a href="javascript:;" class="arrow bottom" onClick="goBottom()"><span>返回底部</span></a>
+  </div>
+	<div id="phone" class="popPanel">
+		<div class="popPanel-inner">
+			<img src="http://localhost/waibo/img/site.png" /><p class="slogan">扫码访问歪脖网</p><p>随时随地，想看就看</p>
+		</div>
+	</div>
+	<div id="wechat" class="popPanel">
+		<div class="popPanel-inner">
+			<img src="http://localhost/waibo/img/weixin.png" /><p class="slogan">关注歪脖网微信</p><p>分享 web 知识、交流 web 经验</p>
+		</div>
+	</div>
+</div>
+ <footer>
+   <p>Copyright&copy;2017&nbsp;&nbsp;www.waibo.wang All Rights Reserved</p>
+   <p>陕ICP备17020676号-1&nbsp;&nbsp;&nbsp;&nbsp;客服QQ：376601179&nbsp;&nbsp;&nbsp;&nbsp;邮箱：376601179#qq.com
+ </footer>
+ <script src="http://localhost/waibo/js/prettify.js"></script>
+ <script src="http://localhost/waibo/js/bootstrap.min.js"></script>
+ <script src="http://localhost/waibo/js/ckeditor_4.7.1/ckeditor.js"></script>
+ <script>
+ $(function() {
+    prettyPrint();
+    bible();
+    load();
+    rewardMethod();
+ });
+ </script>
+</body>
+</html>

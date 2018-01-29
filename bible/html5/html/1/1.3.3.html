@@ -1,0 +1,345 @@
+﻿<!DOCTYPE html>
+<html lang="zh">
+<head>
+ <meta charset="utf-8">
+ <title>HTML <head>标签_<title>标签_<base>标签_<meta>标签_<scirpt>标签_<link>标签_<style>标签-歪脖网</title>
+ <meta name="keywords" content="HTML, HTML5, , head标签,title标签,base标签,meta标签,scirpt标签,link标签,style标签" />
+ <meta name="description" content="head元素用于定义文档的头部信息，出现在 <head>...</head> 标签之间的内容，是文档的头部信息。head元素比较特殊，只有一些特定的标签才允许放在 <head> 标签内，它们分别是 title标签,base标签,meta标签,scirpt标签,link标签,style标签" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+ <link href="http://localhost/waibo/css/bootstrap.min.css" rel="stylesheet" />
+ <link href="http://localhost/waibo/css/bootstrap-responsive.min.css" rel="stylesheet" />
+ <link href="http://localhost/waibo/css/style.css" rel="stylesheet" />
+
+ <script src="http://localhost/waibo/js/jquery.js"></script>
+ <script src="http://localhost/waibo/js/script.js"></script>
+</head>
+
+<body>
+ <div class="topbar">
+ <div class="eyebrow hidden-phone">
+ <div class="container">
+ <ul class="pull-left">
+   <li><a href="http://www.waibo.wang/" target="_blank">歪脖网</a>欢迎您！</li>
+ </ul>
+ <ul class="pull-right">
+  <li><a href="http://www.waibo.wang/user/">登录</a></li>
+  <li class="b">|</li>
+  <li><a href="http://www.waibo.wang/user/register.asp" target="_blank">注册</a></li>
+ </div>
+ </div>
+
+<div class="topnav">
+<div class="container">
+  <div class="row-fluid mtz">
+  <div class="span3 topnav-logo">
+    <a href="http://www.waibo.wang/"><p class="logo-cn">歪脖网</p><p class="logo-en hidden-phone">waibo.wang</p></a>
+  </div>
+  <div class="span6 nav">
+   <ul>
+     <li ><a href="http://www.waibo.wang/">首页</a></li>
+     <li class="active"><a href="http://localhost/waibo/">教程</a></li>
+     <li ><a href="http://www.waibo.wang/wiki/">专栏</a></li>
+     <li ><a href="http://www.waibo.wang/demo/">素材</a></li>
+   </ul>
+  </div>
+  <div class="span3 topnav-form">
+  </div>
+ </div>
+ </div>
+ </div>
+ </div>
+
+
+ <div class="container">
+ <div class="row-fluid">
+ <aside class="span3">
+ <map id="oAll" name="oAll">
+ <area title="全部展开" shape="rect" coords="0,0,22,20"  href="javascript:tree.openAll();" onfocus="blur(this);">
+ <area title="全部收起" shape="rect" coords="22,0,44,20" href="javascript:tree.closeAll();" onfocus="blur(this);">
+ </map>
+ <header><span>目录</span><img src="http://localhost/waibo/img/map.png" usemap="#oAll"/></header>
+ <script src="http://localhost/waibo/js/dtree.js"></script>
+ <script src="http://localhost/waibo/bible/html5/js/tree.js"></script>
+ <script>
+    createTree("10303");
+ </script>
+ </aside>
+
+ <main class="span9">
+ <header><div class="name"><strong>HTML5宝典</strong>(第 1 版)</div><div class="section">1.3.3 HTML头部</div></header>
+ <div><label id="treeview"><input id="show" type="checkbox" checked /> 文档结构视图</label><span class="hit">阅读（ <span id="hit"></span> ）</div>
+ <article>
+<h1 class="hide-text">HTML基础</h1>
+<h2 class="hide-text">认识HTML</h2>
+<h2 class="hide-text">HTML基本语法</h2>
+<h2 class="hide-text">HTML文档结构</h2>
+<h3 class="hide-text">HTML根元素</h3>
+<h3 class="hide-text">&lt;!DOCTYPE></h3>
+<h3>HTML头部</h3>
+<p>head元素用于定义文档的头部信息，出现在 &lt;head&gt;...&lt;/head&gt; 标签之间的内容，是文档的头部信息。头部定义的内容不会在浏览器窗口的正文部分显示出来。</p>
+<p>head元素比较特殊，只有一些特定的标签才允许放在 &lt;head&gt; 标签内，它们分别是 &lt;title&gt;、&lt;base&gt;、&lt;meta&gt;、&lt;scirpt&gt;、&lt;link&gt;、&lt;style&gt;，接下来对这些标签进行分别介绍。</p>
+<h4 id="<title>标签">&lt;title&gt;标签</h4>
+<p>&lt;title&gt;标签的唯一作用，就是定义页面的标题，标题是对当前页面核心内容的一个简短的、概括性描述。如：</p>
+<pre class="prettyprint linenums">
+<code>&lt;title&gt; Hello world! &lt;/title&gt;</code></pre>
+<p>在大多数浏览器中，页面的标题被显示在浏览器窗口或标签页的标题栏，还会出现在访问者浏览历史列表和书签中。</p>
+<p>更重要的是，搜索引擎会通过页面的标题来大致了解页面的内容，并将页面的标题作为搜索结果中每一个条目的链接文本，也是判断搜索结果中页面相关度的重要因素。因此，页面标题是SEO的重要内容，一个好的页面标题可以提升搜索引擎的结果排名，并能获得更好的用户体验。</p>
+<h4 id="<base>标签">&lt;base&gt;标签</h4>
+<p>&lt;base&gt;标签是一个单标签，它为页面上的所有链接规定默认地址和默认目标窗口，并通过 href &nbsp;属性设置默认URL地址，通过 target 属性设置默认目标窗口。</p>
+<p>规定默认地址或默认目标窗口后，点击页面上的任何链接时：对未带http的链接，浏览器会在地址前插入base中 href 设置的URL地址；对未设置 target 属性的链接，会按base中 target 设置的目标打开窗口。如：</p>
+<pre class="prettyprint linenums">
+<code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;base href="http://www.waibo.wang/" target="_blank" /&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;a href="http://www.yangxin.wang/ "&gt;首页&lt;/a&gt;
+&lt;a href="bbs/index.html" target="_self "&gt;论坛&lt;/a&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+<p>上述代码中，设置的默认URL为http://www.waibo.wang/，默认目标为&ldquo;_blank&rdquo;，表示在新窗口打开链接。</p>
+<p>&ldquo;首页&rdquo;的链接带有http，未设置target，会在新窗口打开http://www.yangxin.wang/。&ldquo;论坛&rdquo;的链接未带http，但设置了target属性，会在地址前插入http://www.waibo.wang/，即在当前窗口打开http://www.waibo.wang/ bbs/index.html。</p>
+<p>&lt;base&gt;标签的主要作用，是确保网页中所有的相对URL都可以被解析为正确的地址，以便在文档被移动的情况下，所有的相对URL都能够被正确解析。</p>
+<h4 id="<meta>标签">&lt;meta&gt;标签</h4>
+<p>&lt;meta&gt;标签又叫&ldquo;元数据标签&rdquo;，是网页头部的一个辅助性标签，用于为网页定义元数据（metadata）信息，一般用来定义页面的关键字、页面的描述等。</p>
+<p>&lt;meta&gt;标签提供的信息对用户不可见，也不会显示在页面上，但却对搜索引擎可见，可以方便搜索引擎蜘蛛搜索到这个页面上的信息。因此，这些信息都是SEO的重要内容，可以大大提高网站被搜索引擎搜索到的可能性。</p>
+<p>&lt;meta&gt;标签共有两个重要属性，分别是 name 属性和 http-equiv 属性，并通过 name 或 http-equiv属性来指定元数据的类型，通过 content 来指定元数据的内容，不同的元数据实现了不同的网页功能。</p>
+<p>1、name属性</p>
+<p>name属性主要用于描述网页，最常见的就是描述网页的关键字、网页内容描述、搜索引擎向导、作者、版权声明等，以便搜索引擎对网页的信息进行查找和分类。如：</p>
+<pre class="prettyprint linenums">
+<code>&lt;head&gt;
+&lt;meta name="keywords" content="HTML, CSS, RWD" /&gt;
+&lt;meta name="description" content="Study HTML, CSS, RWD for free" /&gt;
+&lt;meta name="robots" content="all" /&gt;
+&lt;meta name="author" content="歪脖网, www.waibo.wang" /&gt;
+&lt;meta name="copyright" content="创意共享，只要保持署名和非商用，可以自由转载" /&gt;
+&lt;/head&gt;</code></pre>
+<p>name属性的主要取值及功能见表 1‑1：</p>
+<table>
+  <caption>表 1‑1 name属性的取值及功能</caption>
+	<thead>
+		<tr>
+			<th>属性值</th>
+			<th>功能描述</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>keywords</td>
+			<td>网页的关键字。通常指定网页的核心关键字列表，各关键字间用英文逗号隔开</td>
+		</tr>
+		<tr>
+			<td>description</td>
+			<td>网页的主要内容。通常是网页内容的概括描述，以方便搜索引擎蜘蛛抓取网页的内容</td>
+		</tr>
+		<tr>
+			<td>robots</td>
+			<td>页面是否允许被索引，以及页面上的链接是否允许被查询，取值all、none、index、noindex、follow、nofollow，index 表示页面允许被索引，follow 表示页面上的链接允许被查询。默认值是all，即允许文件被索引，且页面上的链接允许被查询</td>
+		</tr>
+		<tr>
+			<td>author</td>
+			<td>注明网页的作者，其内容可以是作者的名字、Email、微博、微信等任何联系信息</td>
+		</tr>
+		<tr>
+			<td>copyright</td>
+			<td>注明网页的版权信息</td>
+		</tr>
+	</tbody>
+</table>
+<p>2、http-equiv属性</p>
+<p>顾名思义，http-equiv 就相当于HTTP头部的作用，用于向浏览器提供一些有用的信息，以帮助浏览器正确和精确地显示网页内容。</p>
+<p>http-equiv属性主要用定义网页的编码字符集、刷新频率、网页的有效期等：</p>
+<p>1）网页的编码字符集</p>
+<p>在HTML4中，通过Content-Type属性值来指定文件的媒体格式类型（MIME类型）和所使用的编码字符集，浏览器将以此来决定以什么形式、什么编码来读取这个文件，并显示文件的内容。</p>
+<p>HTML文件的MIME类型固定为text/html，而编码字符集可以根据需要来指定。如：</p>
+<pre class="prettyprint linenums">
+<code>&lt;meta http-equiv="Content-Type" content="text/html; charset=utf-8" /&gt;
+&lt;meta http-equiv="Content-Type" content="text/html; charset=gb2312"&gt;</code></pre>
+<p>到了HTML5，一切化繁为简，只需在 meta 元素中，直接使用 charset 属性来定义网页所使用的编码字符集即可。如：</p>
+<pre class="prettyprint linenums">
+<code>&lt;meta charset="utf-8" /&gt;</code></pre>
+<p>在HTML5中，上述两种方式均有效，但只能使用一种，不能同时混合使用两种方式。并且，推荐使用 utf-8 编码字符集。</p>
+<p>2）刷新频率Refresh</p>
+<p>通过 refresh 属性值来指定让网页多长时间（秒）刷新自己，或在多长时间后自动跳转到指定的网页。如，让网页在当前页面停留 5 秒后，自动跳转到 http://www.waibo.wang/：</p>
+<pre class="prettyprint linenums">
+<code>&lt;meta http-equiv="refresh" content="5; url=http://www.waibo.wang/" /&gt;</code></pre>
+<p>3）网页的有效期</p>
+<p>通过Expires属性值来指定网页在缓存中的过期时间，一旦网页过期，必须从服务器上重新加载。时间必须使用GMT格式（格林威治时间格式）。如：</p>
+<pre class="prettyprint linenums">
+<code>&lt;meta http-equiv="Expires" content="Mon, 20 Jul 2099 23:00:00 GMT" /&gt;</code></pre>
+<section>
+<p class="note">说明：</p>
+<p>网页头部的这些元素中，title、keywords、description的作用非常重要，因为搜索引擎的机器人会自动检索页面的keywords和decription，并将其加入到自己的数据库，再根据关键词的密度对网站进行排序。</p>
+<p>对于任何站长而言，可能都有同样的感受，无论网站做得再精彩，在浩如烟海的网络世界中，也如一叶扁舟，不为人知。</p>
+<p>人们往往忙于在搜索引擎中提交自己的网站，或在知名网站加入自己网站的链接，或在各大论坛中发帖子宣传自己的网站，忙得不亦乐乎，却忽视了 &lt;meta&gt;标签的强大功效。</p>
+<p>因此，要让网站获得很好的排名，必须充分利用 meta标签，设置好每个页面的 keywords 和 decription，来增加网站对各大搜索引擎的曝光率，提高网站的访问量，进而提升网站的收益。</p>
+</section>
+<h4 id="样式表">样式表</h4>
+<p>样式表，即CSS（Cascading Style Sheet层叠样式表），用它来控制网页的表现，如果要让网站看起来很吸引人，就离不开CSS。</p>
+<p>在HTML文档的头部，可以通过两种方式来为网页定义样式：</p>
+<p>(1) 使用link元素</p>
+<p>在HTML文档的头部，可以通过link元素链接到外部样式表，让网页应用该外部样式表定义的样式规则。</p>
+<p>在link 标签中，通过的 rel 属性来定义本HTML文档与被链接文档之间的关系，rel = &quot;stylesheet&quot; 表明引入的文件是样式表；通过href属性定义外部资源（即CSS文件）的URL地址，URL可以是相对路径，也可以是相对路径，相对路径是相对于本HTML文档而言的。</p>
+<p>可以在一个HTML文档中添加多个 link 元素，让它们分别指向不同的样式文件，就可以给一个网页添加多个样式表。</p>
+<p>由于 link 元素为空元素，它只有开始标签，没有结束标签，所以，要在开始标签的结尾处加上 / 来结束该元素。如：</p>
+<pre class="prettyprint linenums">
+<code>&lt;link rel="stylesheet" href="reset.css" /&gt;</code></pre>
+<p>上述代码表示，为本文档引入文件名称为 reset.css 的外部样式表，该样式表文件与本文档位于相同目录下。</p>
+<p>&nbsp;(2) 使用style元素</p>
+<p>可以在HTML文档的头部插入一个 style 元素，让网页应用该 style 元素中定义的样式规则。如：</p>
+<pre class="prettyprint linenums">
+<code>&lt;style&gt;
+body { background-color:yellow; }
+p { color:blue; }
+&lt;/style&gt;</code></pre>
+<p>上述代码表示，指定本HTML文档的背景颜色为黄色（yellow）、本HTML文档中的所有段落的文本颜色为蓝色（blue）。</p>
+<h4 id="脚本">脚本</h4>
+<p>在HTML文档中，可以通过Javascript 脚本主要用来定义特殊的行为，但Javascript并不是必需的。</p>
+<p>大多数情况下，Javascript 都是在由HTML和CSS 构建的核心体验的基础上，增强访问者的体验，主要用来增强页面的交互性，如实现表单验证、动态显示隐藏内容、加载数据并动态地更新页面、操作 audio 和 video 元素控件等等。</p>
+<p>HTML文档中，有两个用于标识脚本的元素，它们是 script 元素和 noscript 元素：</p>
+<p>1、script 元素</p>
+<p>script 元素既可以直接在页面中嵌入Javascript脚本，也可以从外部文件加载脚本。</p>
+<p>(1) 嵌入脚本</p>
+<p>就是直接在 script 元素中书写Javascript代码。如：</p>
+<pre class="prettyprint linenums">
+<code>&lt;script&gt;
+   alert("Hello, world!");
+&lt;/script&gt;</code></pre>
+<p>一个HTML文档，也支持多个 script 元素。这种方式定义的脚本，只对本文档有效，并且脚本代码需要放在HTML文件，而不是脚本文件中，脚本通常会散落在多个地方，不便于维护，也容易出错。所以，不推荐使用这种方法。</p>
+<p>(2) 加载外部脚本</p>
+<p>通过 script 元素的 src 属性指定外部脚本文件的URL，可以把外部脚本加载到本HTML文档中。URL可以是绝对路径，也可以是相对路径。相对路径是相对本HTML文档而言的。</p>
+<p>在一个HTML文档中，可以添加多个 script 元素，让它们分别指向不同的脚本文件，就可以为一个网页载入多个脚本文件。当加载外部脚本时，script 元素必须是空元素，即在开始和结束标签之间不得有任何内容。如：</p>
+<pre class="prettyprint linenums">
+<code>&lt;script src="engine.js"&gt;&lt;/script&gt;</code></pre>
+<p>上述代码表示，文档会载入外部脚本，脚本文件名称是engine.js，脚本文件与本HTML文档位于相同目录下。</p>
+<p>这种方式是最好的引入的脚本方法，多个页面可以加载同一个脚本文件。并且，脚本存放在单独的文件中，需要对脚本进行修改时，只需编辑一个文件，而不是在各个页面中更新相似的脚本，维护起来极其方便。</p>
+<p>2、noscript 元素</p>
+<p>noscript 元素是一个检测工具，当检测到 script 中的脚本内容无法执行时，即如果浏览器不支持Javascript或用户禁用了Javascript时，就会显示 noscript 元素中的文本。如：</p>
+<pre class="prettyprint linenums">
+<code>&lt;noscript&gt;您的浏览器不支持Javascript&lt;/noscript&gt;</code></pre>
+<section>
+<p class="warning">注意：</p>
+<p>默认情况下，浏览器会按照脚本在HTML中出现的顺序，依次对每个脚本进行下载（对于外部脚本）、解析和执行。</p>
+<p>在处理脚本的过程中，浏览器既不会下载该 script 元素后面出现的内容，也不会呈现这些内容，这称为阻塞行为（blocking behavior）。</p>
+<p>这条规则对嵌入脚本和外部脚本都有效。可以想象，阻塞行为会影响页面的呈现速度，影响的程度取决于脚本的大小和它执行的动作。</p>
+<p>因此，建议最好在页面的最末尾加载脚本，即应该尽可能地将脚本元素放在&lt;/body&gt;的前面，而不是放在 head 元素中。</p>
+</section>
+<div id="modalReward" class="modal hide fade modal-reward" tabindex="-1">
+<div class="modal-header">
+<button type="button" class="close" data-dismiss="modal">&times;</button>
+<h6>打赏</h6>
+</div>
+<div class="modal-body">
+<div class="tabbable reward-weipay">
+<ul class="nav nav-tabs">
+<li class="active"><a data-toggle="tab" href="#weipay1">￥1</a></li>
+<li><a data-toggle="tab" href="#weipay2">￥2</a></li>
+<li><a data-toggle="tab" href="#weipay5">￥5</a></li>
+<li><a data-toggle="tab" href="#weipay10">￥10</a></li>
+<li><a data-toggle="tab" href="#weipay20">￥20</a></li>
+<li><a data-toggle="tab" href="#weipayrand">其他金额</a></li>
+</ul>
+<div class="tab-content">
+<div class="tab-pane active" id="weipay1">
+<img src="http://localhost/waibo/img/weipay1.png" alt="￥1"><span>￥1</span>
+</div>
+<div class="tab-pane" id="weipay2">
+<img src="http://localhost/waibo/img/weipay2.png" alt="￥2"><span>￥2</span>
+</div>
+<div class="tab-pane" id="weipay5">
+<img src="http://localhost/waibo/img/weipay5.png" alt="￥5"><span>￥5</span>
+</div>
+<div class="tab-pane" id="weipay10">
+<img src="http://localhost/waibo/img/weipay10.png" alt="￥10"><span>￥10</span>
+</div>
+<div class="tab-pane" id="weipay20">
+<img src="http://localhost/waibo/img/weipay20.png" alt="￥20"><span>￥20</span>
+</div>
+<div class="tab-pane" id="weipayrand">
+<img src="http://localhost/waibo/img/weipayrand.png" alt="￥随意"><span>￥随意</span>
+</div>
+</div>
+</div>
+<div class="tabbable reward-alipay hide">
+<ul class="nav nav-tabs">
+<li class="active"><a data-toggle="tab" href="#alipay1">￥1</a></li>
+<li><a data-toggle="tab" href="#alipay2">￥2</a></li>
+<li><a data-toggle="tab" href="#alipay5">￥5</a></li>
+<li><a data-toggle="tab" href="#alipay10">￥10</a></li>
+<li><a data-toggle="tab" href="#alipay20">￥20</a></li>
+<li><a data-toggle="tab" href="#alipayrand">其他金额</a></li>
+</ul>
+<div class="tab-content">
+<div class="tab-pane active" id="alipay1">
+<img src="http://localhost/waibo/img/alipay1.png" alt="￥1"><span>￥1</span>
+</div>
+<div class="tab-pane" id="alipay2">
+<img src="http://localhost/waibo/img/alipay2.png" alt="￥2"><span>￥2</span>
+</div>
+<div class="tab-pane" id="alipay5">
+<img src="http://localhost/waibo/img/alipay5.png" alt="￥5"><span>￥5</span>
+</div>
+<div class="tab-pane" id="alipay10">
+<img src="http://localhost/waibo/img/alipay10.png" alt="￥10"><span>￥10</span>
+</div>
+<div class="tab-pane" id="alipay20">
+<img src="http://localhost/waibo/img/alipay20.png" alt="￥20"><span>￥20</span>
+</div>
+<div class="tab-pane" id="alipayrand">
+<img src="http://localhost/waibo/img/alipayrand.png" alt="￥随意"><span>￥随意</span>
+</div>
+</div>
+</div>
+<div class="reward-method">
+<label><input type="radio" name="method" value="weipay" checked><img src="http://localhost/waibo/img/weipay.png" alt="微信支付"></label>
+<label><input type="radio" name="method" value="alipay"><img src="http://localhost/waibo/img/alipay.png" alt="支付宝"></label>
+</div>
+</div>
+</div>
+<div class="reward">
+<p>如果本教程对您帮助很大，请随意打赏。您的支持，将鼓励我写出更好的教程！</p>
+<a data-toggle="modal" href="#modalReward">赏</a>
+</div>
+ <div class="page">
+   <a id="prev" href="http://localhost/waibo/bible/html5/html/1/1.3.2.html" title="&#8592; 键到上一节">« 上一节</a>&#8592; 键盘方向键翻页 &#8594;<a id="next" href="http://localhost/waibo/bible/html5/html/1/1.3.4.html" title="&#8594; 键到下一节">下一节 »</a>
+ </div>
+ </article>
+ </main>
+ </div>
+ </div>
+ <div class="floatPanel">
+	 <div class="ctrolPanel">
+		 <a href="javascript:;" class="arrow top" onClick="goTop()"><span>返回顶部</span></a>
+    <a href="#" class="phone"  data-target="#phone"><span>手机访问</span></a>
+    <a href="#" class="wechat" data-target="#wechat"><span>关注微信</span></a>
+    <a href="javascript:;" class="arrow bottom" onClick="goBottom()"><span>返回底部</span></a>
+  </div>
+	<div id="phone" class="popPanel">
+		<div class="popPanel-inner">
+			<img src="http://localhost/waibo/img/site.png" /><p class="slogan">扫码访问歪脖网</p><p>随时随地，想看就看</p>
+		</div>
+	</div>
+	<div id="wechat" class="popPanel">
+		<div class="popPanel-inner">
+			<img src="http://localhost/waibo/img/weixin.png" /><p class="slogan">关注歪脖网微信</p><p>分享 web 知识、交流 web 经验</p>
+		</div>
+	</div>
+</div>
+ <footer>
+   <p>Copyright&copy;2017&nbsp;&nbsp;www.waibo.wang All Rights Reserved</p>
+   <p>陕ICP备17020676号-1&nbsp;&nbsp;&nbsp;&nbsp;客服QQ：376601179&nbsp;&nbsp;&nbsp;&nbsp;邮箱：376601179#qq.com
+ </footer>
+ <script src="http://localhost/waibo/js/prettify.js"></script>
+ <script src="http://localhost/waibo/js/bootstrap.min.js"></script>
+ <script src="http://localhost/waibo/js/ckeditor_4.7.1/ckeditor.js"></script>
+ <script>
+ $(function() {
+    prettyPrint();
+    bible();
+    load();
+    rewardMethod();
+ });
+ </script>
+</body>
+</html>

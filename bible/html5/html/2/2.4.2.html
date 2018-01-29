@@ -1,0 +1,243 @@
+﻿<!DOCTYPE html>
+<html lang="zh">
+<head>
+ <meta charset="utf-8">
+ <title>HTML <map>标签_HTML map元素-歪脖网</title>
+ <meta name="keywords" content="HTML, HTML5, , map元素,HTML map元素" />
+ <meta name="description" content="使用 map元素，可以定义一个图像映射。图像映射是指把一幅图像划分为多个区域（即热点区域），每个热点区域对应一个超级链接，当用户点击热点区域，会自动跳转到预先设定好的链接地址" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+ <link href="http://localhost/waibo/css/bootstrap.min.css" rel="stylesheet" />
+ <link href="http://localhost/waibo/css/bootstrap-responsive.min.css" rel="stylesheet" />
+ <link href="http://localhost/waibo/css/style.css" rel="stylesheet" />
+
+ <script src="http://localhost/waibo/js/jquery.js"></script>
+ <script src="http://localhost/waibo/js/script.js"></script>
+</head>
+
+<body>
+ <div class="topbar">
+ <div class="eyebrow hidden-phone">
+ <div class="container">
+ <ul class="pull-left">
+   <li><a href="http://www.waibo.wang/" target="_blank">歪脖网</a>欢迎您！</li>
+ </ul>
+ <ul class="pull-right">
+  <li><a href="http://www.waibo.wang/user/">登录</a></li>
+  <li class="b">|</li>
+  <li><a href="http://www.waibo.wang/user/register.asp" target="_blank">注册</a></li>
+ </div>
+ </div>
+
+<div class="topnav">
+<div class="container">
+  <div class="row-fluid mtz">
+  <div class="span3 topnav-logo">
+    <a href="http://www.waibo.wang/"><p class="logo-cn">歪脖网</p><p class="logo-en hidden-phone">waibo.wang</p></a>
+  </div>
+  <div class="span6 nav">
+   <ul>
+     <li ><a href="http://www.waibo.wang/">首页</a></li>
+     <li class="active"><a href="http://localhost/waibo/">教程</a></li>
+     <li ><a href="http://www.waibo.wang/wiki/">专栏</a></li>
+     <li ><a href="http://www.waibo.wang/demo/">素材</a></li>
+   </ul>
+  </div>
+  <div class="span3 topnav-form">
+  </div>
+ </div>
+ </div>
+ </div>
+ </div>
+
+
+ <div class="container">
+ <div class="row-fluid">
+ <aside class="span3">
+ <map id="oAll" name="oAll">
+ <area title="全部展开" shape="rect" coords="0,0,22,20"  href="javascript:tree.openAll();" onfocus="blur(this);">
+ <area title="全部收起" shape="rect" coords="22,0,44,20" href="javascript:tree.closeAll();" onfocus="blur(this);">
+ </map>
+ <header><span>目录</span><img src="http://localhost/waibo/img/map.png" usemap="#oAll"/></header>
+ <script src="http://localhost/waibo/js/dtree.js"></script>
+ <script src="http://localhost/waibo/bible/html5/js/tree.js"></script>
+ <script>
+    createTree("20402");
+ </script>
+ </aside>
+
+ <main class="span9">
+ <header><div class="name"><strong>HTML5宝典</strong>(第 1 版)</div><div class="section">2.4.2 map元素</div></header>
+ <div><label id="treeview"><input id="show" type="checkbox" checked /> 文档结构视图</label><span class="hit">阅读（ <span id="hit"></span> ）</div>
+ <article>
+<h1 class="hide-text">HTML基础</h1>
+<h1 class="hide-text">HTML元素</h1>
+<h2 class="hide-text">结构语义元素</h2>
+<h2 class="hide-text">内容分组元素</h2>
+<h2 class="hide-text">文本语义元素</h2>
+<h2 class="hide-text">链接元素</h2>
+<h3 class="hide-text">a元素</h3>
+<h3>map元素</h3>
+<p>使用 map元素，可以定义一个图像映射。图像映射是指把一幅图像划分为多个区域（即热点区域），每个热点区域对应一个超级链接，当用户点击热点区域，会自动跳转到预先设定好的链接地址。</p>
+<p>创建一个图像映射，需要 img、map、area 三种标签配合完成：</p>
+<p>首先，使用 img 元素定义一幅图像，并通过 src 属性定义图像的URL，通过 usemap 属性定义要选择的图像映射名称，以建立图像与图像映射之间的关联。</p>
+<p>其次，使用 map元素定义图像映射，并通过 area 子元素将图像映射划分为多个热点区域。一个 map元素可以包含多个 area 子元素，表示定义多少个热点区域。</p>
+<p>&lt;map&gt;标签非常简单，只需声明 id 和 name 属性即可，因为不同浏览器识别的属性可能不同。因此，id 和 name 二者缺一不可，并使用相同的属性值。</p>
+<p>&lt;area&gt;标签中，通过 shape 属性定义热点区域的形状，取值 rect | circle | poly，rect 表示矩形，circle 表示圆形，poly 表示多边形；通过 coords属性定义热点区域的坐标，每个点的坐标参考点为图像的左上角顶点；通过 href 属性定义链接的目标URL；通过 target 属性定义在何处打开 href 属性指定的目标 URL。</p>
+<p>当 shape 属性取不同值时，coords属性值的格式及含义见表 2‑2：</p>
+<table>
+  <caption>表 2‑2 不同形状的坐标格式及含义</caption>
+	<thead>
+		<tr>
+			<th>shape</th>
+			<th style="width:130px;">coords</th>
+			<th>描述</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>rect</td>
+			<td>x1, y1, x2, y2</td>
+			<td>热点区域的形状为矩形，矩形的左上角顶点坐标为（x1, y1），右下角顶点坐标为（x2, y2）</td>
+		</tr>
+		<tr>
+			<td>circle</td>
+			<td>x, y, r</td>
+			<td>热点区域的形状为圆形，圆心坐标为（x1,y1），半径为r</td>
+		</tr>
+		<tr>
+			<td>poly</td>
+			<td>x1, y1, x2, y2, ..</td>
+			<td>热点区域的形状为多边形，各顶点坐标依次为（x1, y1）、（x2, y2）&hellip;，如果第一个坐标和最后一个坐标不一致，为了关闭多边形，浏览器必须添加最后一对坐标</td>
+		</tr>
+	</tbody>
+</table>
+<p>假设有一幅图像，其中包含一个矩形、一个圆形、一个三角形，希望使用该图像创建一个图像映射。如图 2‑46 所示：</p>
+<figure><img src='http://localhost/waibo/bible/html5/img/2/map.png' title='图像映射' alt='图像映射'><figcaption>图2-46  图像映射</figcaption></figure>
+<p>在上述图像上创建图像映射的代码如下：</p>
+<pre class="prettyprint linenums">
+<code>&lt;img src="shapes.png" usemap="#shapes"&gt;
+&lt;map name="shapes"&gt;
+  &lt;area shape="rect" coords="50, 50, 100,100"&gt; &lt;! -- The hole in the red box --&gt;
+  &lt;area shape="rect" coords="25, 25,125,125" href="red.html"&gt;
+  &lt;area shape="circle" coords="200, 75, 50" href="green.html"&gt;
+  &lt;area shape="poly" coords="325, 25,262,125,388,125" href="blue.html"&gt;
+&lt;/map&gt;</code></pre>
+<p>上述代码中，img 元素的usemap属性值（不包括 &#39;#&#39;），必须与 map元素的 name 属性值相同，才能实现图像与映射之间的关联。</p>
+<div id="modalReward" class="modal hide fade modal-reward" tabindex="-1">
+<div class="modal-header">
+<button type="button" class="close" data-dismiss="modal">&times;</button>
+<h6>打赏</h6>
+</div>
+<div class="modal-body">
+<div class="tabbable reward-weipay">
+<ul class="nav nav-tabs">
+<li class="active"><a data-toggle="tab" href="#weipay1">￥1</a></li>
+<li><a data-toggle="tab" href="#weipay2">￥2</a></li>
+<li><a data-toggle="tab" href="#weipay5">￥5</a></li>
+<li><a data-toggle="tab" href="#weipay10">￥10</a></li>
+<li><a data-toggle="tab" href="#weipay20">￥20</a></li>
+<li><a data-toggle="tab" href="#weipayrand">其他金额</a></li>
+</ul>
+<div class="tab-content">
+<div class="tab-pane active" id="weipay1">
+<img src="http://localhost/waibo/img/weipay1.png" alt="￥1"><span>￥1</span>
+</div>
+<div class="tab-pane" id="weipay2">
+<img src="http://localhost/waibo/img/weipay2.png" alt="￥2"><span>￥2</span>
+</div>
+<div class="tab-pane" id="weipay5">
+<img src="http://localhost/waibo/img/weipay5.png" alt="￥5"><span>￥5</span>
+</div>
+<div class="tab-pane" id="weipay10">
+<img src="http://localhost/waibo/img/weipay10.png" alt="￥10"><span>￥10</span>
+</div>
+<div class="tab-pane" id="weipay20">
+<img src="http://localhost/waibo/img/weipay20.png" alt="￥20"><span>￥20</span>
+</div>
+<div class="tab-pane" id="weipayrand">
+<img src="http://localhost/waibo/img/weipayrand.png" alt="￥随意"><span>￥随意</span>
+</div>
+</div>
+</div>
+<div class="tabbable reward-alipay hide">
+<ul class="nav nav-tabs">
+<li class="active"><a data-toggle="tab" href="#alipay1">￥1</a></li>
+<li><a data-toggle="tab" href="#alipay2">￥2</a></li>
+<li><a data-toggle="tab" href="#alipay5">￥5</a></li>
+<li><a data-toggle="tab" href="#alipay10">￥10</a></li>
+<li><a data-toggle="tab" href="#alipay20">￥20</a></li>
+<li><a data-toggle="tab" href="#alipayrand">其他金额</a></li>
+</ul>
+<div class="tab-content">
+<div class="tab-pane active" id="alipay1">
+<img src="http://localhost/waibo/img/alipay1.png" alt="￥1"><span>￥1</span>
+</div>
+<div class="tab-pane" id="alipay2">
+<img src="http://localhost/waibo/img/alipay2.png" alt="￥2"><span>￥2</span>
+</div>
+<div class="tab-pane" id="alipay5">
+<img src="http://localhost/waibo/img/alipay5.png" alt="￥5"><span>￥5</span>
+</div>
+<div class="tab-pane" id="alipay10">
+<img src="http://localhost/waibo/img/alipay10.png" alt="￥10"><span>￥10</span>
+</div>
+<div class="tab-pane" id="alipay20">
+<img src="http://localhost/waibo/img/alipay20.png" alt="￥20"><span>￥20</span>
+</div>
+<div class="tab-pane" id="alipayrand">
+<img src="http://localhost/waibo/img/alipayrand.png" alt="￥随意"><span>￥随意</span>
+</div>
+</div>
+</div>
+<div class="reward-method">
+<label><input type="radio" name="method" value="weipay" checked><img src="http://localhost/waibo/img/weipay.png" alt="微信支付"></label>
+<label><input type="radio" name="method" value="alipay"><img src="http://localhost/waibo/img/alipay.png" alt="支付宝"></label>
+</div>
+</div>
+</div>
+<div class="reward">
+<p>如果本教程对您帮助很大，请随意打赏。您的支持，将鼓励我写出更好的教程！</p>
+<a data-toggle="modal" href="#modalReward">赏</a>
+</div>
+ <div class="page">
+   <a id="prev" href="http://localhost/waibo/bible/html5/html/2/2.4.1.html" title="&#8592; 键到上一节">« 上一节</a>&#8592; 键盘方向键翻页 &#8594;<a id="next" href="http://localhost/waibo/bible/html5/html/2/2.5.html" title="&#8594; 键到下一节">下一节 »</a>
+ </div>
+ </article>
+ </main>
+ </div>
+ </div>
+ <div class="floatPanel">
+	 <div class="ctrolPanel">
+		 <a href="javascript:;" class="arrow top" onClick="goTop()"><span>返回顶部</span></a>
+    <a href="#" class="phone"  data-target="#phone"><span>手机访问</span></a>
+    <a href="#" class="wechat" data-target="#wechat"><span>关注微信</span></a>
+    <a href="javascript:;" class="arrow bottom" onClick="goBottom()"><span>返回底部</span></a>
+  </div>
+	<div id="phone" class="popPanel">
+		<div class="popPanel-inner">
+			<img src="http://localhost/waibo/img/site.png" /><p class="slogan">扫码访问歪脖网</p><p>随时随地，想看就看</p>
+		</div>
+	</div>
+	<div id="wechat" class="popPanel">
+		<div class="popPanel-inner">
+			<img src="http://localhost/waibo/img/weixin.png" /><p class="slogan">关注歪脖网微信</p><p>分享 web 知识、交流 web 经验</p>
+		</div>
+	</div>
+</div>
+ <footer>
+   <p>Copyright&copy;2017&nbsp;&nbsp;www.waibo.wang All Rights Reserved</p>
+   <p>陕ICP备17020676号-1&nbsp;&nbsp;&nbsp;&nbsp;客服QQ：376601179&nbsp;&nbsp;&nbsp;&nbsp;邮箱：376601179#qq.com
+ </footer>
+ <script src="http://localhost/waibo/js/prettify.js"></script>
+ <script src="http://localhost/waibo/js/bootstrap.min.js"></script>
+ <script src="http://localhost/waibo/js/ckeditor_4.7.1/ckeditor.js"></script>
+ <script>
+ $(function() {
+    prettyPrint();
+    bible();
+    load();
+    rewardMethod();
+ });
+ </script>
+</body>
+</html>

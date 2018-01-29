@@ -1,0 +1,478 @@
+﻿<!DOCTYPE html>
+<html lang="zh">
+<head>
+ <meta charset="utf-8">
+ <title>HTML <input>标签_HTML input控件_text控件_hidden控件_password控件_radio控件_checkbox控件_file控件_search控件_tel控件_url控件_email控件_number控件_range控件_color控件_date pickers控件-歪脖网</title>
+ <meta name="keywords" content="HTML, HTML5, , text控件,hidden控件,password控件,radio控件,checkbox控件,file控件,search控件,tel控件,url控件,email控件,number控件,range控件,color控件,date pickers控件" />
+ <meta name="description" content="input 控件是单行输入型控件，它通过type 属性用来指定控件的类型；name 属性用来指定控件的名称，服务器端脚本就根据名称来获得文本框中的值；value 属性指定控件的默认值" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+ <link href="http://localhost/waibo/css/bootstrap.min.css" rel="stylesheet" />
+ <link href="http://localhost/waibo/css/bootstrap-responsive.min.css" rel="stylesheet" />
+ <link href="http://localhost/waibo/css/style.css" rel="stylesheet" />
+
+ <script src="http://localhost/waibo/js/jquery.js"></script>
+ <script src="http://localhost/waibo/js/script.js"></script>
+</head>
+
+<body>
+ <div class="topbar">
+ <div class="eyebrow hidden-phone">
+ <div class="container">
+ <ul class="pull-left">
+   <li><a href="http://www.waibo.wang/" target="_blank">歪脖网</a>欢迎您！</li>
+ </ul>
+ <ul class="pull-right">
+  <li><a href="http://www.waibo.wang/user/">登录</a></li>
+  <li class="b">|</li>
+  <li><a href="http://www.waibo.wang/user/register.asp" target="_blank">注册</a></li>
+ </div>
+ </div>
+
+<div class="topnav">
+<div class="container">
+  <div class="row-fluid mtz">
+  <div class="span3 topnav-logo">
+    <a href="http://www.waibo.wang/"><p class="logo-cn">歪脖网</p><p class="logo-en hidden-phone">waibo.wang</p></a>
+  </div>
+  <div class="span6 nav">
+   <ul>
+     <li ><a href="http://www.waibo.wang/">首页</a></li>
+     <li class="active"><a href="http://localhost/waibo/">教程</a></li>
+     <li ><a href="http://www.waibo.wang/wiki/">专栏</a></li>
+     <li ><a href="http://www.waibo.wang/demo/">素材</a></li>
+   </ul>
+  </div>
+  <div class="span3 topnav-form">
+  </div>
+ </div>
+ </div>
+ </div>
+ </div>
+
+
+ <div class="container">
+ <div class="row-fluid">
+ <aside class="span3">
+ <map id="oAll" name="oAll">
+ <area title="全部展开" shape="rect" coords="0,0,22,20"  href="javascript:tree.openAll();" onfocus="blur(this);">
+ <area title="全部收起" shape="rect" coords="22,0,44,20" href="javascript:tree.closeAll();" onfocus="blur(this);">
+ </map>
+ <header><span>目录</span><img src="http://localhost/waibo/img/map.png" usemap="#oAll"/></header>
+ <script src="http://localhost/waibo/js/dtree.js"></script>
+ <script src="http://localhost/waibo/bible/html5/js/tree.js"></script>
+ <script>
+    createTree("30302");
+ </script>
+ </aside>
+
+ <main class="span9">
+ <header><div class="name"><strong>HTML5宝典</strong>(第 1 版)</div><div class="section">3.3.2 input控件</div></header>
+ <div><label id="treeview"><input id="show" type="checkbox" checked /> 文档结构视图</label><span class="hit">阅读（ <span id="hit"></span> ）</div>
+ <article>
+<h1 class="hide-text">HTML基础</h1>
+<h1 class="hide-text">HTML元素</h1>
+<h1 class="hide-text">表单及应用</h1>
+<h2 class="hide-text">什么是表单</h2>
+<h2 class="hide-text">Form元素</h2>
+<h2 class="hide-text">表单控件</h2>
+<h3 class="hide-text">label控件</h3>
+<h3>input控件</h3>
+<p>input 控件是单行输入型控件，用来接受用户输入的信息。可以在 form 元素的开始标签和结束标签之间，添加 input 元素来创建 input 控件。input 元素是一个带有属性的空元素，格式为：</p>
+<pre class="prettyprint linenums">
+<code>&lt;input type="" name="" value="" /&gt;</code></pre>
+<p>其中， type 属性用来指定控件的类型；name 属性用来指定控件的名称，服务器端脚本就根据名称来获得文本框中的值；value 属性指定控件的默认值。基本控件类型见表 3‑1。</p>
+<table>
+  <caption>表 3‑1 基本输入型控件</caption>
+	<thead>
+		<tr>
+			<th>类型</th>
+			<th>说明</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>text</td>
+			<td>定义单行文本输入域，用户可在其中输入文本</td>
+		</tr>
+		<tr>
+			<td>hidden</td>
+			<td>定义隐藏的文本域，该文本域不会显示在浏览器上，其信息对用户不可见。如果不希望用户看到某些数据，可以使用该输入类型的文本域</td>
+		</tr>
+		<tr>
+			<td>password</td>
+			<td>定义密码输入域，用户在该域中输入的字符不直接显示，而是显示星号或实心圆</td>
+		</tr>
+		<tr>
+			<td>radio</td>
+			<td>定义单选框，用户只能在多个选项中选择其中一个</td>
+		</tr>
+		<tr>
+			<td>checkbox</td>
+			<td>定义复选框，用户可以在多个选项中选择一个或多个</td>
+		</tr>
+		<tr>
+			<td>file</td>
+			<td>定义输入字段和 &quot;浏览&quot; 按钮，供用户选择文件</td>
+		</tr>
+		<tr>
+			<td>submit</td>
+			<td>定义提交按钮。提交按钮会把表单数据发送到服务器，数据会被发送到在表单的 action 属性中规定的URL</td>
+		</tr>
+		<tr>
+			<td>reset</td>
+			<td>定义重置按钮。重置按钮会把表单中的所有数据置为初始值</td>
+		</tr>
+	</tbody>
+</table>
+<p>除了上述这些基本的输入型控件，在HTML5中，又新增了很多输入型控件，使控件类型更加丰富。新增的输入型控件类型见表 3‑2。</p>
+<table>
+  <caption>表 3‑2 新增的输入型控件</caption>
+	<thead>
+		<tr>
+			<th>类型</th>
+			<th>说明</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>search</td>
+			<td>定义搜索框，用户可在其中输入任意文本</td>
+		</tr>
+		<tr>
+			<td>tel</td>
+			<td>定义电话号码输入框</td>
+		</tr>
+		<tr>
+			<td>url</td>
+			<td>定义定义URL输入框，用户只能输入合法的URL</td>
+		</tr>
+		<tr>
+			<td>email</td>
+			<td>定义定义email输入框，用户只能输入合法的email</td>
+		</tr>
+		<tr>
+			<td>number</td>
+			<td>定义定义数字输入框，用户只能输入数字</td>
+		</tr>
+		<tr>
+			<td>range</td>
+			<td>定义有取值范围的数字输入框，用户只能在指定的数值范围内进行选择</td>
+		</tr>
+		<tr>
+			<td>color</td>
+			<td>定义颜色选择器控件，用户可以选择颜色</td>
+		</tr>
+		<tr>
+			<td>date pickers</td>
+			<td>定义日期选择框，用户可以根据预定的格式输入日期、时间等</td>
+		</tr>
+	</tbody>
+</table>
+<p>开发人员不必担心这些控件的兼容性问题，在不支持这些新类型的浏览器中，它们会被优雅降级，退化成普通的单行文本输入框。接下来对这些输入型控件进行简单的介绍。</p>
+<h4 id="text控件">text控件</h4>
+<p>type=text 定义单行文本输入框，用户可在其中输入文本。如果未显式设置 type 属性，则 input 控件的默认类型就是 text。</p>
+<p>必须为每个文本框设置 name 属性，只有在文本框需要默认值的情况下，才需要设置 value 属性。除此之外，还可以设置其他属性，如required、placeholder 属性等。如：</p>
+<pre class="prettyprint linenums">
+<code>&lt;label&gt;用户名：&lt;/label&gt;&lt;input type="text" name="user" placeholder="请输入用户名" /&gt;</code></pre>
+<p>运行结果如图 3‑4 所示：</p>
+<figure><img src='http://localhost/waibo/bible/html5/img/3/input_text.png' title='单行文本框' alt='单行文本框'><figcaption>图3-4  单行文本框</figcaption></figure>
+<p>另外，对于文本输入框，包括 text、password、file、search、tel 、url、email，还可以通过 minlength 属性指定最少必须输入的字符数，通过 maxlength 属性指定最多可输入的字符数。</p>
+<p>当用户输入的字符数小于 minlength 属性值，浏览器就会阻止用户提交表单；当用户输入的字符数超过 maxlength 属性值，浏览器就会阻止用户继续输入。</p>
+<h4 id="hidden控件">hidden控件</h4>
+<p>type=hidden定义隐藏的文本框，它不会直接显示给用户。在提交表单时，隐藏文本框的信息也会被提交到服务器。因此，通常用它来存储表单先前收集到的信息，并连同当前表单的数据一起发送给服务器，供表单处理程序使用。如：</p>
+<pre class="prettyprint linenums">
+<code>&lt;input type="hidden" name="country" value="China" /&gt;</code></pre>
+<p>尽管用户不会看到这个文本框，但在提交表单时，名称&ldquo;country&rdquo;和值&ldquo;China&rdquo;会随着表单一起发送给服务器。</p>
+<p>切记，虽然隐藏的文本框不会直接显示在网页中，但不要将密码、信用卡号等敏感信息放到隐藏的文本框中，因为用户仍然可以通过查看HTML源代码看到它。</p>
+<h4 id="password控件">password控件</h4>
+<p>type=password定义密码输入框。密码框与文本框的唯一区别是，密码框中输入的文本不会直接显示，而是显示为星号或实心圆。如：</p>
+<pre class="prettyprint linenums">
+<code>&lt;label&gt;密码：&lt;/label&gt;&lt;input type="password" name="password" /&gt;</code></pre>
+<p>运行结果如图 3‑5 所示：</p>
+<figure><img src='http://localhost/waibo/bible/html5/img/3/input_password.png' title='密码框' alt='密码框'><figcaption>图3-5  密码框</figcaption></figure>
+<p>事实上，密码框提供的唯一保护措施，就是防止其他人看到用户输入的密码，以星号或实心圆代替而已。在提交表单时，还是以明文的方式，将用户输入的真实值发送到服务器，信息在发送过程中并没有加密。</p>
+<h4 id="radio控件">radio控件</h4>
+<p>type=radio 定义单选框，通过 name 属性定义单选框的名称，通过 value 属性定义单选框的值。</p>
+<p>一个表单上，name 属性值相同的单选框被归为一组，为不同 radio 设定不同的 value 值，通过获取指定 name 的值，就知道哪个按钮被选中了，不用单独判断。</p>
+<p>一组单选框中，最多只能有一个选项被选中。当用户点击一个选项时，该选项被选中，其他选项都会自动变为非选中状态。可以通过 checked 属性，定义默认选中状态。如：</p>
+<pre class="prettyprint linenums">
+<code>性别：&lt;input type="radio" name="sex" value="male" checked /&gt;男
+     &lt;input type="radio" name="sex" value="female" /&gt;女</code></pre>
+<p>运行结果如图 3‑6 所示：</p>
+<figure><img src='http://localhost/waibo/bible/html5/img/3/input_radio.png' title='单选框' alt='单选框'><figcaption>图3-6  单选框</figcaption></figure>
+<p>上述代码中，value=&quot;male&quot; 的选项定义了 checked 属性，当页面打开时，它默认被选中。当然，它只是默认被选中而已，用户可以通过点击来自由选择其他选项。提交表单时，单选框的名称和被选中的单选框对应的值，将会被提交到服务器端。</p>
+<p>原则上，只能有一个选项定义 checked 属性，但如果多个选项同时定义了 checked 属性，则是最后一个选项被默认选中。</p>
+<h4 id="checkbox控件">checkbox控件</h4>
+<p>type=checkbox 定义复选框，通过 name 属性定义复选框的名称，通过 value 属性定义复选框的值。</p>
+<p>表单上 name 属性值相同的复选框被归为一组，为不同 checkbox 设定不同的 value 值。提交表单时，每个复选框的名称及复选框对应的值，都会被提交到服务器端。</p>
+<p>一组复选框中，可以有任意多个选项被选中。当用户点击一个选项时，该选项被选中，再次点击时，该选项会取消选中。可以通过checked属性，定义某些选项默认被选中。如：</p>
+<pre class="prettyprint linenums">
+<code>爱好：&lt;input type="checkbox" name="hobby" value="music" checked /&gt;音乐
+     &lt;input type="checkbox" name="hobby" value="swimming" /&gt;游泳
+     &lt;input type="checkbox" name="hobby" value="football" checked /&gt;足球
+     &lt;input type="checkbox" name="hobby" value="skating" /&gt;轮滑</code></pre>
+<p>运行结果如图 3‑7 所示：</p>
+<figure><img src='http://localhost/waibo/bible/html5/img/3/input_checkbox.png' title='复选框' alt='复选框'><figcaption>图3-7  复选框</figcaption></figure>
+<h4 id="file控件">file控件</h4>
+<p>type=file 定义文件选择框，供用户用户向服务器上传文件（如照片、简历等）。如：</p>
+<pre class="prettyprint linenums">
+<code>头像: &lt;input type="file" name="picture" /&gt;</code></pre>
+<p>文件选择框在HTML4之前就已经存在，并表现为一个单行文本输入框和一个&ldquo;浏览&hellip;&rdquo; 按钮。</p>
+<figure><img src='http://localhost/waibo/bible/html5/img/3/input_file1.png' title='文件选择框外观' alt='文件选择框外观'><figcaption>图3-8  文件选择框外观</figcaption></figure>
+<p>在HTML5中，不再有文本输入框，而是一个&ldquo;选择文件&rdquo;的按钮。在用户未选择文件时，显示&ldquo;未选择任何文件&rdquo;字样，用户选择文件后，在按钮的右侧显示文件的名称。</p>
+<figure><img src='http://localhost/waibo/bible/html5/img/3/input_file2.png' title='选择文件前后' alt='选择文件前后'><figcaption>图3-9  选择文件前后</figcaption></figure>
+<p>在HTML5中，文件选择框增加了两个属性：一个是 accept 属性，用来指定允许的文件类型，多个MIME类型用英文逗号分开；一个是 multiple属性，表示允许选择多个文件。如：</p>
+<pre class="prettyprint linenums">
+<code>&lt;label&gt;头像: &lt;/label&gt;&lt;input type=&quot;file&quot; name=&quot;picture&quot; accept=&quot;image/png&quot; /&gt;</code></pre>
+<p>添加 accept 属性后，点击&ldquo;选择文件&rdquo;的按钮，在弹出的对话框中，默认的文件类型就是所设置的文件类型。当然，accept 属性只是设置默认的文件类型，它并不是禁止用户选择其他类型的文件。如图 3‑10 所示：</p>
+<figure><img src='http://localhost/waibo/bible/html5/img/3/input_file4.png' title='限制文件类型' alt='限制文件类型'><figcaption>图3-10  限制文件类型</figcaption></figure>
+<p>从上图可以看出，用户仍然可以将文件类型改为所有文件，来选择任意类型的文件。因此，如果要禁止其他类型的文件，则要在提交表单时进行检查，如果不符合要求，给出相应的提示信息，并拒绝上传。</p>
+<p>添加multiple属性后，点击&ldquo;选择文件&rdquo;的按钮后，就可以按住Ctrl键，在弹出的对话框中选择多个文件。如：</p>
+<pre class="prettyprint linenums">
+<code>多文件上传: &lt;input type="file" name="picture" multiple /&gt;</code></pre>
+<p>选择多文件后，在&ldquo;选择文件&rdquo;按钮的右侧显示诸如&ldquo;4个文件&rdquo;字样，表示用户选择了4个文件。当鼠标移动到文字上时，浏览器自动显示这4个文件的名称。如图 3‑11 所示：</p>
+<figure><img src='http://localhost/waibo/bible/html5/img/3/input_file5.png' title='显示选择的文件列表' alt='显示选择的文件列表'><figcaption>图3-11  显示选择的文件列表</figcaption></figure>
+<p>在浏览器的默认方式下，用户选择文件后，只能看见文件的名称，但有时候却希望看到更多的信息，如文件的大小、类型等。</p>
+<p>事实上，当用户选择文件时，浏览器会将文件列表保存在 files 属性中（即FileList对象），同时还会触发 onchange 事件。FileList 对象是 file 对象的列表，file 对象的name、size、type、lastModifiedDate属性，分别用来保存文件的名称、大小、类型、最后修改日期信息。因此，要实现这个功能也不难，只需少量的 Javascript 代码即可。</p>
+<p>首先，为文件选择框注册 onchange 事件，并定义一个显示区域：</p>
+<pre class="prettyprint linenums">
+<code>&lt;input type="file" onChange="showFiles (this.files)" name="picture" multiple /&gt;
+&lt;div id="tips"&gt;&lt;/div&gt;</code></pre>
+<p>然后，在 onchange 事件的处理函数中，遍历FileList 对象，获取每个文件的名称、大小、类型，保存在一个表格中，并在 id=&quot;tips&quot; 的区域中显示出来：</p>
+<pre class="prettyprint linenums">
+<code>function showFiles(files) {
+    var strText = "&lt;Table&gt;";
+    strText += "&lt;tr&gt;&lt;th&gt;文件名称&lt;/th&gt;&lt;th&gt;文件类型&lt;/th&gt;&lt;th&gt;文件大小&lt;/th&gt;&lt;/tr&gt;";
+    for(var i = 0; i &lt; files.length; i++) {
+       strText += "&lt;tr&gt;";
+       strText += "&lt;td&gt;" + files[i].name + "&lt;/td&gt;";
+       strText += "&lt;td&gt;" + files[i].type + "&lt;/td&gt;";
+       strText += "&lt;td&gt;" + files[i].size + " byte&lt;/td&gt;";
+       strText += "&lt;/tr&gt;";
+    }
+    strText += "&lt;/Table&gt;";
+    document.getElementById("tips").innerHTML = strText;
+}</code></pre>
+<p>运行结果如图 3‑12 所示：</p>
+<figure><img src='http://localhost/waibo/bible/html5/img/3/input_file6.png' title='显示选择的文件详细信息' alt='显示选择的文件详细信息'><figcaption>图3-12  显示选择的文件详细信息</figcaption></figure>
+<p>需要注意的是，要让用户能够上传文件，必须将 form元素的 method 属性设置为 post，并将 enctype 属性设置为 multipart/form-data，enctype 属性可以确保文件采用正确的格式上传。</p>
+<p>除了上述这些基本的输入型控件，在HTML5中，又新增了很多输入型控件。在不支持这些新类型的浏览器中，它们会被优雅降级，成为普通的文本输入框。HTML5新增的输入型控件有：</p>
+<h4 id="search控件">search控件</h4>
+<p>type=search 定义搜索框，在外观上，它跟普通的文本输入框没什么区别，但是浏览器可能会为搜索自动渲染成圆角。当用户在搜索框中输入文本后，它右边会有一个小&times;，方便用户清除输入的数据。运行结果如图 3‑13 所示：</p>
+<figure><img src='http://localhost/waibo/bible/html5/img/3/input_search.png' title='搜索框' alt='搜索框'><figcaption>图3-13  搜索框</figcaption></figure>
+<h4 id="tel控件">tel控件</h4>
+<p>type=tel 定义电话号码输入框。由于国际上没有统一的电话号码格式，因此，电话号码输入框跟普通的文本输入框没什么区别。</p>
+<p>虽然看起来它跟普通的文本输入框没什么区别，但它却有一些很有用的特性，用于帮助验证用户输入的内容。如，使用 pattern 属性来定制验证规则：</p>
+<pre class="prettyprint linenums">
+<code>&lt;input type=&quot;tel&quot; name=&quot;tel&quot; placeholder=&quot;xxx-xxxxxxxx &quot; pattern=&quot;\d{3}-\d{8}&quot; /&gt;</code></pre>
+<p>上述代码使用正则表达式，来对用户输入的内容进行限制，对于这个电话输入框，pattern 属性要求&ldquo;只接受以下格式的输入：xxx-xxxxxxxx，其中x 均为数字&rdquo;，因为中国的固定电话号码都是这样的格式。</p>
+<p>在提交表单时，现代浏览器会对 tel 框中输入的文本进行检查，确保其符合验证规则的格式。如果格式不合法，会显示警告信息，阻止提交表单，并让该文本框获得焦点，以方便用户修改文本。运行结果如图 3‑14 所示：</p>
+<figure><img src='http://localhost/waibo/bible/html5/img/3/input_tel.png' title='电话号码输入框' alt='电话号码输入框'><figcaption>图3-14  电话号码输入框</figcaption></figure>
+<p>此外，当电话号码输入框获得焦点后，许多触屏设备（如iPhone等），会弹出电话号码键盘方便用户输入，这不仅使输入大为简化，也能防止在移动设备上输入无效字符。</p>
+<h4 id="url控件">url控件</h4>
+<p>type=url 定义URL输入框，在外观上，它跟普通的文本输入框看上去没什么区别。但是，在提交表单时，现代浏览器会对URL框中输入的文本进行检查，确保其符合URL的格式。如果格式不合法，会显示警告信息，阻止提交表单，并让该文本框获得焦点，以方便用户修改文本。运行结果如图 3‑15 所示：</p>
+<figure><img src='http://localhost/waibo/bible/html5/img/3/input_url.png' title='URL输入框' alt='URL输入框'><figcaption>图3-15  URL输入框</figcaption></figure>
+<p>需要注意的是，www.waibo.wang 并不是有效的URL，因为URL 必须以http:// 或https:// 开头。因此，最好使用占位符提示访问者，或者通过解释文本中给出合法的格式。</p>
+<p>此外，当URL输入框获得焦点后，许多触屏设备（如iPhone等），会根据输入类型改变键盘模式，如键盘上出现Go、斜杠（/）、.com等。</p>
+<h4 id="email控件">email控件</h4>
+<p>type=email 定义 email 输入框，在外观上，它跟普通的文本输入框看上去没什么区别。但是，在提交表单时，现代浏览器会对 email 框中输入的文本进行检查，确保其符合电子邮件地址的格式。如果格式不合法，会显示警告信息，阻止提交表单，并让该文本框获得焦点，以方便用户修改文本。运行结果如图 3‑16 所示：</p>
+<figure><img src='http://localhost/waibo/bible/html5/img/3/input_email.png' title='email输入框' alt='email输入框'><figcaption>图3-16  email输入框</figcaption></figure>
+<p>email输入框的一个非常有用的功能是，它能够阻止用户在该字段填入多个 email 地址。 除非你在input标签中设置multiple属性，否则只允许使用一个单一地址：</p>
+<pre class="prettyprint linenums">
+<code>&lt;input type="email" name="email" id="email" multiple&gt;</code></pre>
+<p>此外，许多触屏设备（如iPhone等），会根据输入类型改变键盘模式，如键盘上出现邮箱地址的@符号等。</p>
+<h4 id="number控件">number控件</h4>
+<p>type=number 定义数字输入框。默认情况下，对输入的数值没有范围限制，可以通过min 和max属性设定允许输入的最小值和最大值、通过 step 属性设定步长、value属性设置默认值。如：</p>
+<pre class="prettyprint linenums">
+<code>&lt;label&gt;请输入数字（0~10）: &lt;/label&gt;&lt;input type="number" min=0 max=10 /&gt;</code></pre>
+<p>用户可以直接在文本框中输入数字。不过，为了方便输入，当数字输入框获得焦点后，浏览器会为它提供控制按钮，允许用户点击向上或向下箭头来改变文本框中的值。运行结果如图 3‑17 所示：</p>
+<figure><img src='http://localhost/waibo/bible/html5/img/3/input_number.png' title='数字输入框' alt='数字输入框'><figcaption>图3-17  数字输入框</figcaption></figure>
+<h4 id="range控件">range控件</h4>
+<p>type=range 定义有取值范围的数字输入框，让用户在指定的数值范围内进行选择。默认情况下，其取值范围为0~100，默认值为其中间值50。可以通过设置min、max属性来改变其取值范围，通过设置value属性来改变其默认值。</p>
+<p>range类型控件在浏览器将显示一个滑动条，让用户拖动鼠标来选择某数值，在两个方向移动时，以其步长增大或减小当前值。默认步长为1，可以通过设置step改变其步长。如：</p>
+<pre class="prettyprint linenums">
+<code>&lt;input type="range" min="60" max="100" value="80" step="5"&gt;</code></pre>
+<p>上述数字输入框的取值范围将是 60~100，默认值为80，步长是5。运行结果如图 3‑18所示：</p>
+<figure><img src='http://localhost/waibo/bible/html5/img/3/input_range1.png' title='有范围的数字输入框' alt='有范围的数字输入框'><figcaption>图3-18  有范围的数字输入框</figcaption></figure>
+<p>有点遗憾的是，浏览器并不显示其取值范围和用户当前选择的值。这样，用户无从得知自己当前选择的值，而人们常常有又想看到取值范围和当前值。</p>
+<p>其实，这个功能实现起来并不难，只需使用 output 控件和简单的Javascript即可实现。output控件是HTML5中专门用来定义不同类型输出的控件。</p>
+<p>首先，在 range 控件后面增加 output 控件。然后，为range元素增加 onChange 事件的处理程序，当 range 的值改变时，就显示在 output 控件中，onChange=&quot;output.value = value&quot;，就这么简单。需要注意的是，onChange事件中元素的 id 必须与 range 控件的 id相同。代码如下：</p>
+<pre class="prettyprint linenums">
+<code>&lt;input type="range" min="60" max="100" value="80" step="5" onChange="output.value=value"&gt;
+&lt;output id="output"&gt;&lt;/output&gt;</code></pre>
+<p>这样一来，一旦移动滑动条，就会在 output 控件中显示当前选择的值。当然，除显示当前值外，如果能在range控件上显示其取值范围，这样就更人性化了。其实这也很简单，只需要简单的CSS即可实现，代码如下：</p>
+<pre class="prettyprint linenums">
+<code>input[type=range]:before  {
+   content: attr(min);
+}
+input[type=range]:after  {
+   content: attr(max);
+}</code></pre>
+<p>这里是通过CSS的属性选择器和伪元素选择器，在 range 控件的前面显示其最小值，后面显示其最大值。运行结果如图 3‑19 所示：</p>
+<figure><img src='http://localhost/waibo/bible/html5/img/3/input_range2.png' title='显示范围和当前值' alt='显示范围和当前值'><figcaption>图3-19  显示范围和当前值</figcaption></figure>
+<h4 id="color控件">color控件</h4>
+<p>type=color 定义颜色选择器控件，相当的给力，使用也很简单。可以通过 name 属性定义控件的名称，通过 value 属性定义控件的默认颜色。如：</p>
+<pre class="prettyprint linenums">
+<code>选取颜色：&lt;input type="color" name="user_color" value="#34538b" /&gt;</code></pre>
+<p>在Google Chrome浏览器中的运行结果如图 3‑20 所示：</p>
+<figure><img src='http://localhost/waibo/bible/html5/img/3/input_color1.png' title='颜色选择框' alt='颜色选择框'><figcaption>图3-20  颜色选择框</figcaption></figure>
+<p>在 input 控件有个颜色为 #34538b 的背景，当在控件上点击，则会弹出操作系统自带的颜色拾取器，使用起来非常方便。如图 3‑21 所示：</p>
+<figure><img src='http://localhost/waibo/bible/html5/img/3/input_color2.png' title='颜色拾取器' alt='颜色拾取器'><figcaption>图3-21  颜色拾取器</figcaption></figure>
+<h4 id="date pickers控件">date pickers控件</h4>
+<p>Date Pickers是HTML5新增的日期选择框，方便用户根据预定的格式输入日期、时间等信息。</p>
+<p>为了方便输入，浏览器会为日期选择框提供控制按钮，允许用户点击向上或向下箭头来改变文本框中的值，当用户输入数据后，在它右边会有一个小&times;，方便用户清除输入的数据。对于Date类型，浏览器默认还提供一个箭头，供选择日历。如图 3‑22 所示：</p>
+<figure><img src='http://localhost/waibo/bible/html5/img/3/input_datepickers.png' title='日期选择框' alt='日期选择框'><figcaption>图3-22  日期选择框</figcaption></figure>
+<p>Date Pickers有以下几种类型，每种类型有相应的日期格式：</p>
+<table>
+  <caption>表 3‑2 Date Pickers类型</caption>
+	<thead>
+		<tr>
+			<th>类型</th>
+			<th>说明</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>date</td>
+			<td>日期，格式为YYYY-MM-DD。当文本框获取焦点时，显示日历供选择日期</td>
+		</tr>
+		<tr>
+			<td>time</td>
+			<td>24小时制的时间，格式为 HH:MM</td>
+		</tr>
+		<tr>
+			<td>datetime</td>
+			<td>UTC 时间，格式为YYYY-MM-DDTHH:MM</td>
+		</tr>
+		<tr>
+			<td>datetime-local</td>
+			<td>当地时间，格式为YYYY-MM-DD HH:MM</td>
+		</tr>
+		<tr>
+			<td>month</td>
+			<td>一年中的某个月，格式为YYYY年MM月</td>
+		</tr>
+		<tr>
+			<td>week</td>
+			<td>一年中的某一周，格式为 YYYY年第&times;&times;周</td>
+		</tr>
+	</tbody>
+</table>
+<div id="modalReward" class="modal hide fade modal-reward" tabindex="-1">
+<div class="modal-header">
+<button type="button" class="close" data-dismiss="modal">&times;</button>
+<h6>打赏</h6>
+</div>
+<div class="modal-body">
+<div class="tabbable reward-weipay">
+<ul class="nav nav-tabs">
+<li class="active"><a data-toggle="tab" href="#weipay1">￥1</a></li>
+<li><a data-toggle="tab" href="#weipay2">￥2</a></li>
+<li><a data-toggle="tab" href="#weipay5">￥5</a></li>
+<li><a data-toggle="tab" href="#weipay10">￥10</a></li>
+<li><a data-toggle="tab" href="#weipay20">￥20</a></li>
+<li><a data-toggle="tab" href="#weipayrand">其他金额</a></li>
+</ul>
+<div class="tab-content">
+<div class="tab-pane active" id="weipay1">
+<img src="http://localhost/waibo/img/weipay1.png" alt="￥1"><span>￥1</span>
+</div>
+<div class="tab-pane" id="weipay2">
+<img src="http://localhost/waibo/img/weipay2.png" alt="￥2"><span>￥2</span>
+</div>
+<div class="tab-pane" id="weipay5">
+<img src="http://localhost/waibo/img/weipay5.png" alt="￥5"><span>￥5</span>
+</div>
+<div class="tab-pane" id="weipay10">
+<img src="http://localhost/waibo/img/weipay10.png" alt="￥10"><span>￥10</span>
+</div>
+<div class="tab-pane" id="weipay20">
+<img src="http://localhost/waibo/img/weipay20.png" alt="￥20"><span>￥20</span>
+</div>
+<div class="tab-pane" id="weipayrand">
+<img src="http://localhost/waibo/img/weipayrand.png" alt="￥随意"><span>￥随意</span>
+</div>
+</div>
+</div>
+<div class="tabbable reward-alipay hide">
+<ul class="nav nav-tabs">
+<li class="active"><a data-toggle="tab" href="#alipay1">￥1</a></li>
+<li><a data-toggle="tab" href="#alipay2">￥2</a></li>
+<li><a data-toggle="tab" href="#alipay5">￥5</a></li>
+<li><a data-toggle="tab" href="#alipay10">￥10</a></li>
+<li><a data-toggle="tab" href="#alipay20">￥20</a></li>
+<li><a data-toggle="tab" href="#alipayrand">其他金额</a></li>
+</ul>
+<div class="tab-content">
+<div class="tab-pane active" id="alipay1">
+<img src="http://localhost/waibo/img/alipay1.png" alt="￥1"><span>￥1</span>
+</div>
+<div class="tab-pane" id="alipay2">
+<img src="http://localhost/waibo/img/alipay2.png" alt="￥2"><span>￥2</span>
+</div>
+<div class="tab-pane" id="alipay5">
+<img src="http://localhost/waibo/img/alipay5.png" alt="￥5"><span>￥5</span>
+</div>
+<div class="tab-pane" id="alipay10">
+<img src="http://localhost/waibo/img/alipay10.png" alt="￥10"><span>￥10</span>
+</div>
+<div class="tab-pane" id="alipay20">
+<img src="http://localhost/waibo/img/alipay20.png" alt="￥20"><span>￥20</span>
+</div>
+<div class="tab-pane" id="alipayrand">
+<img src="http://localhost/waibo/img/alipayrand.png" alt="￥随意"><span>￥随意</span>
+</div>
+</div>
+</div>
+<div class="reward-method">
+<label><input type="radio" name="method" value="weipay" checked><img src="http://localhost/waibo/img/weipay.png" alt="微信支付"></label>
+<label><input type="radio" name="method" value="alipay"><img src="http://localhost/waibo/img/alipay.png" alt="支付宝"></label>
+</div>
+</div>
+</div>
+<div class="reward">
+<p>如果本教程对您帮助很大，请随意打赏。您的支持，将鼓励我写出更好的教程！</p>
+<a data-toggle="modal" href="#modalReward">赏</a>
+</div>
+ <div class="page">
+   <a id="prev" href="http://localhost/waibo/bible/html5/html/3/3.3.1.html" title="&#8592; 键到上一节">« 上一节</a>&#8592; 键盘方向键翻页 &#8594;<a id="next" href="http://localhost/waibo/bible/html5/html/3/3.3.3.html" title="&#8594; 键到下一节">下一节 »</a>
+ </div>
+ </article>
+ </main>
+ </div>
+ </div>
+ <div class="floatPanel">
+	 <div class="ctrolPanel">
+		 <a href="javascript:;" class="arrow top" onClick="goTop()"><span>返回顶部</span></a>
+    <a href="#" class="phone"  data-target="#phone"><span>手机访问</span></a>
+    <a href="#" class="wechat" data-target="#wechat"><span>关注微信</span></a>
+    <a href="javascript:;" class="arrow bottom" onClick="goBottom()"><span>返回底部</span></a>
+  </div>
+	<div id="phone" class="popPanel">
+		<div class="popPanel-inner">
+			<img src="http://localhost/waibo/img/site.png" /><p class="slogan">扫码访问歪脖网</p><p>随时随地，想看就看</p>
+		</div>
+	</div>
+	<div id="wechat" class="popPanel">
+		<div class="popPanel-inner">
+			<img src="http://localhost/waibo/img/weixin.png" /><p class="slogan">关注歪脖网微信</p><p>分享 web 知识、交流 web 经验</p>
+		</div>
+	</div>
+</div>
+ <footer>
+   <p>Copyright&copy;2017&nbsp;&nbsp;www.waibo.wang All Rights Reserved</p>
+   <p>陕ICP备17020676号-1&nbsp;&nbsp;&nbsp;&nbsp;客服QQ：376601179&nbsp;&nbsp;&nbsp;&nbsp;邮箱：376601179#qq.com
+ </footer>
+ <script src="http://localhost/waibo/js/prettify.js"></script>
+ <script src="http://localhost/waibo/js/bootstrap.min.js"></script>
+ <script src="http://localhost/waibo/js/ckeditor_4.7.1/ckeditor.js"></script>
+ <script>
+ $(function() {
+    prettyPrint();
+    bible();
+    load();
+    rewardMethod();
+ });
+ </script>
+</body>
+</html>

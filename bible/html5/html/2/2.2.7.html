@@ -1,0 +1,246 @@
+﻿<!DOCTYPE html>
+<html lang="zh">
+<head>
+ <meta charset="utf-8">
+ <title>HTML列表_HTML <ul>标签_HTML <ol>标签_HTML <dl>标签-歪脖网</title>
+ <meta name="keywords" content="HTML, HTML5, , HTML列表,HTML无序列表,HTML有序列表,HTML描述列表,HTML ul标签,HTML ol标签,|HTML dl标签" />
+ <meta name="description" content="HTML 包含专门用于创建列表的元素，共有 3 种类型的列表，分别是无序列表ol、有序列表ul、描述列表dl" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+ <link href="http://localhost/waibo/css/bootstrap.min.css" rel="stylesheet" />
+ <link href="http://localhost/waibo/css/bootstrap-responsive.min.css" rel="stylesheet" />
+ <link href="http://localhost/waibo/css/style.css" rel="stylesheet" />
+
+ <script src="http://localhost/waibo/js/jquery.js"></script>
+ <script src="http://localhost/waibo/js/script.js"></script>
+</head>
+
+<body>
+ <div class="topbar">
+ <div class="eyebrow hidden-phone">
+ <div class="container">
+ <ul class="pull-left">
+   <li><a href="http://www.waibo.wang/" target="_blank">歪脖网</a>欢迎您！</li>
+ </ul>
+ <ul class="pull-right">
+  <li><a href="http://www.waibo.wang/user/">登录</a></li>
+  <li class="b">|</li>
+  <li><a href="http://www.waibo.wang/user/register.asp" target="_blank">注册</a></li>
+ </div>
+ </div>
+
+<div class="topnav">
+<div class="container">
+  <div class="row-fluid mtz">
+  <div class="span3 topnav-logo">
+    <a href="http://www.waibo.wang/"><p class="logo-cn">歪脖网</p><p class="logo-en hidden-phone">waibo.wang</p></a>
+  </div>
+  <div class="span6 nav">
+   <ul>
+     <li ><a href="http://www.waibo.wang/">首页</a></li>
+     <li class="active"><a href="http://localhost/waibo/">教程</a></li>
+     <li ><a href="http://www.waibo.wang/wiki/">专栏</a></li>
+     <li ><a href="http://www.waibo.wang/demo/">素材</a></li>
+   </ul>
+  </div>
+  <div class="span3 topnav-form">
+  </div>
+ </div>
+ </div>
+ </div>
+ </div>
+
+
+ <div class="container">
+ <div class="row-fluid">
+ <aside class="span3">
+ <map id="oAll" name="oAll">
+ <area title="全部展开" shape="rect" coords="0,0,22,20"  href="javascript:tree.openAll();" onfocus="blur(this);">
+ <area title="全部收起" shape="rect" coords="22,0,44,20" href="javascript:tree.closeAll();" onfocus="blur(this);">
+ </map>
+ <header><span>目录</span><img src="http://localhost/waibo/img/map.png" usemap="#oAll"/></header>
+ <script src="http://localhost/waibo/js/dtree.js"></script>
+ <script src="http://localhost/waibo/bible/html5/js/tree.js"></script>
+ <script>
+    createTree("20207");
+ </script>
+ </aside>
+
+ <main class="span9">
+ <header><div class="name"><strong>HTML5宝典</strong>(第 1 版)</div><div class="section">2.2.7 列表元素</div></header>
+ <div><label id="treeview"><input id="show" type="checkbox" checked /> 文档结构视图</label><span class="hit">阅读（ <span id="hit"></span> ）</div>
+ <article>
+<h1 class="hide-text">HTML基础</h1>
+<h1 class="hide-text">HTML元素</h1>
+<h2 class="hide-text">结构语义元素</h2>
+<h2 class="hide-text">内容分组元素</h2>
+<h3 class="hide-text">blockquote元素</h3>
+<h3 class="hide-text">figure元素</h3>
+<h3 class="hide-text">pre元素</h3>
+<h3 class="hide-text">hr元素</h3>
+<h3 class="hide-text">p元素</h3>
+<h3 class="hide-text">div元素</h3>
+<h3>列表元素</h3>
+<p>HTML 包含专门用于创建列表的元素，共有 3 种类型的列表，分别是无序列表、有序列表、描述列表。</p>
+<p>可以在一个列表中其他另外一个或者多个列表，并且，一种类型的列表可以与任意类型的列表相互嵌套。列表的表项可以与任何HTML元素（如段落、图片、链接等）交叉定义。</p>
+<p>所有的列表都是由父元素和子元素构成，父元素用于指定要创建的列表类型，子元素用于指定要创建的列表项。</p>
+<h4>无序列表</h4>
+<p>无序列表，是指所有表项之间没有先后顺序的列表。如果列表项的顺序不太重要，就要使用无序列表。</p>
+<p>无序列表的父元素为 ul（unorder list）元素，列表项为 li（list item）元素。如：</p>
+<pre class="prettyprint linenums">
+<code>&lt;ul&gt;
+  &lt;li&gt;表项1&lt;/li&gt;
+  &lt;li&gt;表项3&lt;/li&gt;
+  &lt;li&gt;表项2&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+<p>上述代码的运行结果如图 2‑13 所示：</p>
+<figure><img src='http://localhost/waibo/bible/html5/img/2/ul.png' title='无序列表' alt='无序列表'><figcaption>图2-13  无序列表</figcaption></figure>
+<p>从上图可以看出，默认情况下，无序列表的项目符号为实心圆。不过，可以使用CSS的list-style-type属性来定义项目符号的样式。</p>
+<h4>有序列表</h4>
+<p>有序列表，是指所有表项之间有先后顺序的列表。如果列表项的顺序对于列表来说非常关键，那么这种情况有序列表就是恰当的选择。</p>
+<p>使用有序列表的好处是，列表项的序号由浏览器自动维护，可以随意增删列表项，而不必担心序号发生混乱。</p>
+<p>有序列表的父元素为 ol（order list）元素，列表项为 li 元素。在 ol 元素中，通过start属性指定列表项的起始编号；通过reversed属性指定列表项的序号是否倒序排列，该属性是布尔类型，如果设置，则会倒序排列。如：</p>
+<pre class="prettyprint linenums">
+<code>&lt;ol start = "3" reversed&gt;
+  &lt;li&gt;表项1&lt;/li&gt;
+  &lt;li&gt;表项2&lt;/li&gt;
+  &lt;li&gt;表项3&lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+<p>上述代码的运行结果如图 2‑14 所示：</p>
+<figure><img src='http://localhost/waibo/bible/html5/img/2/ol.png' title='有序列表' alt='有序列表'><figcaption>图2-14  有序列表</figcaption></figure>
+<p>从上图可以看出，列表项的序号按3、2、1倒序排列。并且，默认情况下，有序列表的项目符号为数字1、2、3，也可以使用CSS的list-style-type属性定义项目符号的样式。</p>
+<h4>描述列表</h4>
+<p>描述列表，是指用于描述成组出现的名称或术语及其值的列表。可以创建由名称和值构成的组合，如术语和定义、元数据和值、问题和答案，以及任何其他的名/值组。</p>
+<p>在HTML5中，把这种列表称作描述列表（description list），而在HTML的早期版本值则称为定义列表（definition list）。</p>
+<p>描述列表的父元素为 dl元素，而其中的每个名/值组，则包含一个或多个dt（description title）元素，以及一个或多个dd（description description）元素。dt 元素用来定义名称或术语，dd元素用来定义名称或术语的值。如：</p>
+<pre class="prettyprint linenums">
+<code>&lt;dl&gt;
+  &lt;dt&gt;列表标题1：&lt;/dt&gt;
+      &lt;dd&gt;表项描述1-1&lt;/dd&gt;
+      &lt;dd&gt;表项描述1-2&lt;/dd&gt;
+      &lt;dd&gt;表项描述1-3&lt;/dd&gt;
+  &lt;dt&gt;列表标题2：&lt;/dt&gt;
+      &lt;dd&gt;表项描述2-1&lt;/dd&gt;
+       &lt;dd&gt;表项描述2-2&lt;/dd&gt;
+      &lt;dd&gt;表项描述2-3&lt;/dd&gt;
+&lt;/dl&gt;</code></pre>
+<p>上述代码的运行结果如图 2‑15 所示：</p>
+<figure><img src='http://localhost/waibo/bible/html5/img/2/dl.png' title='描述列表' alt='描述列表'><figcaption>图2-15  描述列表</figcaption></figure>
+<p>从上图可以看出，描述列表是没有项目符号的。虽然它也是列表，但不能使用CSS的list-style-type属性定义列表项目符号的样式。</p>
+<div id="modalReward" class="modal hide fade modal-reward" tabindex="-1">
+<div class="modal-header">
+<button type="button" class="close" data-dismiss="modal">&times;</button>
+<h6>打赏</h6>
+</div>
+<div class="modal-body">
+<div class="tabbable reward-weipay">
+<ul class="nav nav-tabs">
+<li class="active"><a data-toggle="tab" href="#weipay1">￥1</a></li>
+<li><a data-toggle="tab" href="#weipay2">￥2</a></li>
+<li><a data-toggle="tab" href="#weipay5">￥5</a></li>
+<li><a data-toggle="tab" href="#weipay10">￥10</a></li>
+<li><a data-toggle="tab" href="#weipay20">￥20</a></li>
+<li><a data-toggle="tab" href="#weipayrand">其他金额</a></li>
+</ul>
+<div class="tab-content">
+<div class="tab-pane active" id="weipay1">
+<img src="http://localhost/waibo/img/weipay1.png" alt="￥1"><span>￥1</span>
+</div>
+<div class="tab-pane" id="weipay2">
+<img src="http://localhost/waibo/img/weipay2.png" alt="￥2"><span>￥2</span>
+</div>
+<div class="tab-pane" id="weipay5">
+<img src="http://localhost/waibo/img/weipay5.png" alt="￥5"><span>￥5</span>
+</div>
+<div class="tab-pane" id="weipay10">
+<img src="http://localhost/waibo/img/weipay10.png" alt="￥10"><span>￥10</span>
+</div>
+<div class="tab-pane" id="weipay20">
+<img src="http://localhost/waibo/img/weipay20.png" alt="￥20"><span>￥20</span>
+</div>
+<div class="tab-pane" id="weipayrand">
+<img src="http://localhost/waibo/img/weipayrand.png" alt="￥随意"><span>￥随意</span>
+</div>
+</div>
+</div>
+<div class="tabbable reward-alipay hide">
+<ul class="nav nav-tabs">
+<li class="active"><a data-toggle="tab" href="#alipay1">￥1</a></li>
+<li><a data-toggle="tab" href="#alipay2">￥2</a></li>
+<li><a data-toggle="tab" href="#alipay5">￥5</a></li>
+<li><a data-toggle="tab" href="#alipay10">￥10</a></li>
+<li><a data-toggle="tab" href="#alipay20">￥20</a></li>
+<li><a data-toggle="tab" href="#alipayrand">其他金额</a></li>
+</ul>
+<div class="tab-content">
+<div class="tab-pane active" id="alipay1">
+<img src="http://localhost/waibo/img/alipay1.png" alt="￥1"><span>￥1</span>
+</div>
+<div class="tab-pane" id="alipay2">
+<img src="http://localhost/waibo/img/alipay2.png" alt="￥2"><span>￥2</span>
+</div>
+<div class="tab-pane" id="alipay5">
+<img src="http://localhost/waibo/img/alipay5.png" alt="￥5"><span>￥5</span>
+</div>
+<div class="tab-pane" id="alipay10">
+<img src="http://localhost/waibo/img/alipay10.png" alt="￥10"><span>￥10</span>
+</div>
+<div class="tab-pane" id="alipay20">
+<img src="http://localhost/waibo/img/alipay20.png" alt="￥20"><span>￥20</span>
+</div>
+<div class="tab-pane" id="alipayrand">
+<img src="http://localhost/waibo/img/alipayrand.png" alt="￥随意"><span>￥随意</span>
+</div>
+</div>
+</div>
+<div class="reward-method">
+<label><input type="radio" name="method" value="weipay" checked><img src="http://localhost/waibo/img/weipay.png" alt="微信支付"></label>
+<label><input type="radio" name="method" value="alipay"><img src="http://localhost/waibo/img/alipay.png" alt="支付宝"></label>
+</div>
+</div>
+</div>
+<div class="reward">
+<p>如果本教程对您帮助很大，请随意打赏。您的支持，将鼓励我写出更好的教程！</p>
+<a data-toggle="modal" href="#modalReward">赏</a>
+</div>
+ <div class="page">
+   <a id="prev" href="http://localhost/waibo/bible/html5/html/2/2.2.6.html" title="&#8592; 键到上一节">« 上一节</a>&#8592; 键盘方向键翻页 &#8594;<a id="next" href="http://localhost/waibo/bible/html5/html/2/2.3.1.html" title="&#8594; 键到下一节">下一节 »</a>
+ </div>
+ </article>
+ </main>
+ </div>
+ </div>
+ <div class="floatPanel">
+	 <div class="ctrolPanel">
+		 <a href="javascript:;" class="arrow top" onClick="goTop()"><span>返回顶部</span></a>
+    <a href="#" class="phone"  data-target="#phone"><span>手机访问</span></a>
+    <a href="#" class="wechat" data-target="#wechat"><span>关注微信</span></a>
+    <a href="javascript:;" class="arrow bottom" onClick="goBottom()"><span>返回底部</span></a>
+  </div>
+	<div id="phone" class="popPanel">
+		<div class="popPanel-inner">
+			<img src="http://localhost/waibo/img/site.png" /><p class="slogan">扫码访问歪脖网</p><p>随时随地，想看就看</p>
+		</div>
+	</div>
+	<div id="wechat" class="popPanel">
+		<div class="popPanel-inner">
+			<img src="http://localhost/waibo/img/weixin.png" /><p class="slogan">关注歪脖网微信</p><p>分享 web 知识、交流 web 经验</p>
+		</div>
+	</div>
+</div>
+ <footer>
+   <p>Copyright&copy;2017&nbsp;&nbsp;www.waibo.wang All Rights Reserved</p>
+   <p>陕ICP备17020676号-1&nbsp;&nbsp;&nbsp;&nbsp;客服QQ：376601179&nbsp;&nbsp;&nbsp;&nbsp;邮箱：376601179#qq.com
+ </footer>
+ <script src="http://localhost/waibo/js/prettify.js"></script>
+ <script src="http://localhost/waibo/js/bootstrap.min.js"></script>
+ <script src="http://localhost/waibo/js/ckeditor_4.7.1/ckeditor.js"></script>
+ <script>
+ $(function() {
+    prettyPrint();
+    bible();
+    load();
+    rewardMethod();
+ });
+ </script>
+</body>
+</html>

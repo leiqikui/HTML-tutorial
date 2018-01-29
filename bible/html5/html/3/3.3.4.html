@@ -1,0 +1,258 @@
+﻿<!DOCTYPE html>
+<html lang="zh">
+<head>
+ <meta charset="utf-8">
+ <title>HTML <select>标签_HTML select控件_HTML select元素-歪脖网</title>
+ <meta name="keywords" content="HTML, HTML5, , select控件,select元素,HTML select控件,HTML select元素" />
+ <meta name="description" content="select控件用于创建下拉列表框（下拉菜单），并通过 option 元素创建列表中的选项，供用户从中选择" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+ <link href="http://localhost/waibo/css/bootstrap.min.css" rel="stylesheet" />
+ <link href="http://localhost/waibo/css/bootstrap-responsive.min.css" rel="stylesheet" />
+ <link href="http://localhost/waibo/css/style.css" rel="stylesheet" />
+
+ <script src="http://localhost/waibo/js/jquery.js"></script>
+ <script src="http://localhost/waibo/js/script.js"></script>
+</head>
+
+<body>
+ <div class="topbar">
+ <div class="eyebrow hidden-phone">
+ <div class="container">
+ <ul class="pull-left">
+   <li><a href="http://www.waibo.wang/" target="_blank">歪脖网</a>欢迎您！</li>
+ </ul>
+ <ul class="pull-right">
+  <li><a href="http://www.waibo.wang/user/">登录</a></li>
+  <li class="b">|</li>
+  <li><a href="http://www.waibo.wang/user/register.asp" target="_blank">注册</a></li>
+ </div>
+ </div>
+
+<div class="topnav">
+<div class="container">
+  <div class="row-fluid mtz">
+  <div class="span3 topnav-logo">
+    <a href="http://www.waibo.wang/"><p class="logo-cn">歪脖网</p><p class="logo-en hidden-phone">waibo.wang</p></a>
+  </div>
+  <div class="span6 nav">
+   <ul>
+     <li ><a href="http://www.waibo.wang/">首页</a></li>
+     <li class="active"><a href="http://localhost/waibo/">教程</a></li>
+     <li ><a href="http://www.waibo.wang/wiki/">专栏</a></li>
+     <li ><a href="http://www.waibo.wang/demo/">素材</a></li>
+   </ul>
+  </div>
+  <div class="span3 topnav-form">
+  </div>
+ </div>
+ </div>
+ </div>
+ </div>
+
+
+ <div class="container">
+ <div class="row-fluid">
+ <aside class="span3">
+ <map id="oAll" name="oAll">
+ <area title="全部展开" shape="rect" coords="0,0,22,20"  href="javascript:tree.openAll();" onfocus="blur(this);">
+ <area title="全部收起" shape="rect" coords="22,0,44,20" href="javascript:tree.closeAll();" onfocus="blur(this);">
+ </map>
+ <header><span>目录</span><img src="http://localhost/waibo/img/map.png" usemap="#oAll"/></header>
+ <script src="http://localhost/waibo/js/dtree.js"></script>
+ <script src="http://localhost/waibo/bible/html5/js/tree.js"></script>
+ <script>
+    createTree("30304");
+ </script>
+ </aside>
+
+ <main class="span9">
+ <header><div class="name"><strong>HTML5宝典</strong>(第 1 版)</div><div class="section">3.3.4 select控件</div></header>
+ <div><label id="treeview"><input id="show" type="checkbox" checked /> 文档结构视图</label><span class="hit">阅读（ <span id="hit"></span> ）</div>
+ <article>
+<h1 class="hide-text">HTML基础</h1>
+<h1 class="hide-text">HTML元素</h1>
+<h1 class="hide-text">表单及应用</h1>
+<h2 class="hide-text">什么是表单</h2>
+<h2 class="hide-text">Form元素</h2>
+<h2 class="hide-text">表单控件</h2>
+<h3 class="hide-text">textarea控件</h3>
+<h3 class="hide-text">input控件</h3>
+<h3 class="hide-text">label控件</h3>
+<h3>select控件</h3>
+<p>select控件用于创建下拉列表框（下拉菜单），并通过 option 元素创建列表中的选项，供用户从中选择。</p>
+<p>定义 select控件时，在 select元素中设置 name 属性，并在每个option 元素中，通过 value 属性定义每个选项的值，通过 selected 属性指定该选项被默认选中。在 &lt;option&gt; 和 &lt;/option&gt; 之间的文本，为该选项的显示值。</p>
+<p>select控件支持单选，也支持多选，还可以对选项进行分组显示。提交表单时，select元素的 name 属性值，以及所有被选中的 option 元素的 value 属性值，都将会被提交到服务器端。</p>
+<p>1） 单选的select控件</p>
+<p>默认情况下，select控件是单选的，即用户只能从下拉列表中选择一项。如：</p>
+<pre class="prettyprint linenums">
+<code>&lt;label for="unittype"&gt;Select unit type: &lt;/label&gt;
+&lt;select id="unittype" name="unittype" autofocus &gt;
+   &lt;option value="1"&gt; Miner &lt;/option&gt;
+   &lt;option value="2"&gt; Puffer &lt;/option&gt;
+   &lt;option value="3" selected&gt; Snipey &lt;/option&gt;
+   &lt;option value="4"&gt; Max &lt;/option&gt;
+   &lt;option value="5"&gt; Firebot &lt;/option&gt;
+&lt;/select&gt;</code></pre>
+<p>上述代码定义了一个只能单选的下拉列表，由于为Snipey 设置了selected属性，在页面加载时，它默认处于选中状态。运行结果如图 3‑24 所示：</p>
+<figure><img src='http://localhost/waibo/bible/html5/img/3/select1.png' title='选项默认被选中' alt='选项默认被选中'><figcaption>图3-24  选项默认被选中</figcaption></figure>
+<p>事实上，selected属性只是让某个选中默认被选中而已，页面加载完成后，用户可以随意选择任意一个选项。如，用户可以选择 Max，让它处于被选中状态，如图 3‑25 所示：</p>
+<figure><img src='http://localhost/waibo/bible/html5/img/3/select2.png' title='改变被选中的选项' alt='改变被选中的选项'><figcaption>图3-25  改变被选中的选项</figcaption></figure>
+<p>2）可多选的select控件</p>
+<p>当设置multiple属性后，列表就支持多选，就可以有多个选项被同时选中。当然，也可以让多个选项默认被选中。</p>
+<p>对于单选的下拉列表，只有一个选项可见的。支持多选后，就可以通过 size 属性，来定义可见的选项数目。size属性的值必须大于0，否则设置无效，并使用浏览器的默认值。如：</p>
+<pre class="prettyprint linenums">
+<code>&lt;label for="allowedunits"&gt;可多选的select控件: &lt;/label&gt;
+&lt;select id="allowedunits" name="allowedunits" size="5" multiple required&gt;
+   &lt;option value="1" &gt; Miner &lt;/option&gt;
+   &lt;option value="2" &gt; Puffer &lt;/option&gt;
+   &lt;option value="3" &gt; Snipey &lt;/option&gt;
+   &lt;option value="4" &gt; Max &lt;/option&gt;
+   &lt;option value="5" &gt; Firebot &lt;/option&gt;
+&lt;/select&gt;</code></pre>
+<p>上述代码定义了一个可多选的下拉列表，运行结果如图 3‑26 所示：</p>
+<figure><img src='http://localhost/waibo/bible/html5/img/3/select3.png' title='可多选的下拉列表' alt='可多选的下拉列表'><figcaption>图3-26  可多选的下拉列表</figcaption></figure>
+<p>如果 size 属性的值小于选项的个数，就会显示为一个有滚动条的列表；如果 size 属性的值大于选项的个数，用户就可以通过点击空白区域，让所有的选项处于未选中状态。</p>
+<section>
+<p class="note">说明：</p>
+<p>关于size的默认值，各浏览器不尽相同。一般都是4，也就是说，默认有四个元素可见，即便是选项数少于四个，它默认也会保留显示四个元素的空间。</p>
+<p>关于size的设置，各浏览器的支持也不尽相同，比如Google Chrome和Opera，如果用户设置的size小于默认值4，则设置无效，它要求最少有4个元素可见。Foxfire则不同，允许设置的size小于默认值，以用户设置的数目为准。</p>
+</section>
+<p>3） &nbsp;select的选项分组显示</p>
+<p>当使用一个较长的选项列表时，对相关的选项进行组合显得更人性化。可以使用optgroup标签对选项进行分组，并通过 optgroup 标签的 label 属性来定义分组的标题。</p>
+<p>如，把选项分为三组，它们分别是 group1、group2 和 group3：</p>
+<pre class="prettyprint linenums">
+<code>&lt;select name="c"&gt;
+   &lt;optgroup label="group1"&gt;
+        &lt;option value="1.1"&gt; group1.1&lt;/option&gt;
+        &lt;option value="1.2"&gt; group1.2&lt;/option&gt;
+        &lt;option value="1.3"&gt; group1.3&lt;/option&gt;
+   &lt;optgroup label="group2"&gt;
+        &lt;option value="2.1"&gt; group2.1&lt;/option&gt;
+        &lt;option value="2.2"&gt; group2.2&lt;/option&gt;
+        &lt;option value="2.3"&gt; group2.2&lt;/option&gt;
+   &lt;optgroup label="group3"&gt;
+        &lt;option value="3.1"&gt; group3.1&lt;/option&gt;
+        &lt;option value="3.2"&gt; group3.2&lt;/option&gt;
+        &lt;option value="3.3"&gt; group3.3&lt;/option&gt;
+&lt;/select&gt;</code></pre>
+<p>浏览器通常会对 optgroup 中的 option 缩进，从而将它们和optgroup 的标题文本区分开来。运行结果如图 3‑27 所示：</p>
+<figure><img src='http://localhost/waibo/bible/html5/img/3/select4.png' title='选项分组显示' alt='选项分组显示'><figcaption>图3-27  选项分组显示</figcaption></figure>
+<p>optgroup 标签中的内容不能被选择，它的值也不会提交给服务器。事实上，optgroup 标签只是让选项分组显示而已，并没有对 select控件产生其他任何影响。你仍然可以设置 multiple属性，让菜单支持多选，也可以为 option 增加 selected 来设置默认选项等。</p>
+<div id="modalReward" class="modal hide fade modal-reward" tabindex="-1">
+<div class="modal-header">
+<button type="button" class="close" data-dismiss="modal">&times;</button>
+<h6>打赏</h6>
+</div>
+<div class="modal-body">
+<div class="tabbable reward-weipay">
+<ul class="nav nav-tabs">
+<li class="active"><a data-toggle="tab" href="#weipay1">￥1</a></li>
+<li><a data-toggle="tab" href="#weipay2">￥2</a></li>
+<li><a data-toggle="tab" href="#weipay5">￥5</a></li>
+<li><a data-toggle="tab" href="#weipay10">￥10</a></li>
+<li><a data-toggle="tab" href="#weipay20">￥20</a></li>
+<li><a data-toggle="tab" href="#weipayrand">其他金额</a></li>
+</ul>
+<div class="tab-content">
+<div class="tab-pane active" id="weipay1">
+<img src="http://localhost/waibo/img/weipay1.png" alt="￥1"><span>￥1</span>
+</div>
+<div class="tab-pane" id="weipay2">
+<img src="http://localhost/waibo/img/weipay2.png" alt="￥2"><span>￥2</span>
+</div>
+<div class="tab-pane" id="weipay5">
+<img src="http://localhost/waibo/img/weipay5.png" alt="￥5"><span>￥5</span>
+</div>
+<div class="tab-pane" id="weipay10">
+<img src="http://localhost/waibo/img/weipay10.png" alt="￥10"><span>￥10</span>
+</div>
+<div class="tab-pane" id="weipay20">
+<img src="http://localhost/waibo/img/weipay20.png" alt="￥20"><span>￥20</span>
+</div>
+<div class="tab-pane" id="weipayrand">
+<img src="http://localhost/waibo/img/weipayrand.png" alt="￥随意"><span>￥随意</span>
+</div>
+</div>
+</div>
+<div class="tabbable reward-alipay hide">
+<ul class="nav nav-tabs">
+<li class="active"><a data-toggle="tab" href="#alipay1">￥1</a></li>
+<li><a data-toggle="tab" href="#alipay2">￥2</a></li>
+<li><a data-toggle="tab" href="#alipay5">￥5</a></li>
+<li><a data-toggle="tab" href="#alipay10">￥10</a></li>
+<li><a data-toggle="tab" href="#alipay20">￥20</a></li>
+<li><a data-toggle="tab" href="#alipayrand">其他金额</a></li>
+</ul>
+<div class="tab-content">
+<div class="tab-pane active" id="alipay1">
+<img src="http://localhost/waibo/img/alipay1.png" alt="￥1"><span>￥1</span>
+</div>
+<div class="tab-pane" id="alipay2">
+<img src="http://localhost/waibo/img/alipay2.png" alt="￥2"><span>￥2</span>
+</div>
+<div class="tab-pane" id="alipay5">
+<img src="http://localhost/waibo/img/alipay5.png" alt="￥5"><span>￥5</span>
+</div>
+<div class="tab-pane" id="alipay10">
+<img src="http://localhost/waibo/img/alipay10.png" alt="￥10"><span>￥10</span>
+</div>
+<div class="tab-pane" id="alipay20">
+<img src="http://localhost/waibo/img/alipay20.png" alt="￥20"><span>￥20</span>
+</div>
+<div class="tab-pane" id="alipayrand">
+<img src="http://localhost/waibo/img/alipayrand.png" alt="￥随意"><span>￥随意</span>
+</div>
+</div>
+</div>
+<div class="reward-method">
+<label><input type="radio" name="method" value="weipay" checked><img src="http://localhost/waibo/img/weipay.png" alt="微信支付"></label>
+<label><input type="radio" name="method" value="alipay"><img src="http://localhost/waibo/img/alipay.png" alt="支付宝"></label>
+</div>
+</div>
+</div>
+<div class="reward">
+<p>如果本教程对您帮助很大，请随意打赏。您的支持，将鼓励我写出更好的教程！</p>
+<a data-toggle="modal" href="#modalReward">赏</a>
+</div>
+ <div class="page">
+   <a id="prev" href="http://localhost/waibo/bible/html5/html/3/3.3.3.html" title="&#8592; 键到上一节">« 上一节</a>&#8592; 键盘方向键翻页 &#8594;<a id="next" href="http://localhost/waibo/bible/html5/html/3/3.3.5.html" title="&#8594; 键到下一节">下一节 »</a>
+ </div>
+ </article>
+ </main>
+ </div>
+ </div>
+ <div class="floatPanel">
+	 <div class="ctrolPanel">
+		 <a href="javascript:;" class="arrow top" onClick="goTop()"><span>返回顶部</span></a>
+    <a href="#" class="phone"  data-target="#phone"><span>手机访问</span></a>
+    <a href="#" class="wechat" data-target="#wechat"><span>关注微信</span></a>
+    <a href="javascript:;" class="arrow bottom" onClick="goBottom()"><span>返回底部</span></a>
+  </div>
+	<div id="phone" class="popPanel">
+		<div class="popPanel-inner">
+			<img src="http://localhost/waibo/img/site.png" /><p class="slogan">扫码访问歪脖网</p><p>随时随地，想看就看</p>
+		</div>
+	</div>
+	<div id="wechat" class="popPanel">
+		<div class="popPanel-inner">
+			<img src="http://localhost/waibo/img/weixin.png" /><p class="slogan">关注歪脖网微信</p><p>分享 web 知识、交流 web 经验</p>
+		</div>
+	</div>
+</div>
+ <footer>
+   <p>Copyright&copy;2017&nbsp;&nbsp;www.waibo.wang All Rights Reserved</p>
+   <p>陕ICP备17020676号-1&nbsp;&nbsp;&nbsp;&nbsp;客服QQ：376601179&nbsp;&nbsp;&nbsp;&nbsp;邮箱：376601179#qq.com
+ </footer>
+ <script src="http://localhost/waibo/js/prettify.js"></script>
+ <script src="http://localhost/waibo/js/bootstrap.min.js"></script>
+ <script src="http://localhost/waibo/js/ckeditor_4.7.1/ckeditor.js"></script>
+ <script>
+ $(function() {
+    prettyPrint();
+    bible();
+    load();
+    rewardMethod();
+ });
+ </script>
+</body>
+</html>

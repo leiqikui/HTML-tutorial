@@ -1,0 +1,265 @@
+﻿<!DOCTYPE html>
+<html lang="zh">
+<head>
+ <meta charset="utf-8">
+ <title>HTML5 canvas globalCompositeOperation属性设置组合操作-歪脖网</title>
+ <meta name="keywords" content="HTML, HTML5, , globalCompositeOperation,globalCompositeOperation属性,source-atop,source-in,source-out,source-over,destination-atop,destination-in,destination-out,destination-over,lighter,xor,copy" />
+ <meta name="description" content="HTML5 canvas通过getContext对象的globalCompositeOperation属性设置组合操作，属性值包括source-atop, source-in, source-out, source-over, destination-atop, destination-in, destination-out, destination-over, lighter, xor, cop" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+ <link href="http://localhost/waibo/css/bootstrap.min.css" rel="stylesheet" />
+ <link href="http://localhost/waibo/css/bootstrap-responsive.min.css" rel="stylesheet" />
+ <link href="http://localhost/waibo/css/style.css" rel="stylesheet" />
+
+ <script src="http://localhost/waibo/js/jquery.js"></script>
+ <script src="http://localhost/waibo/js/script.js"></script>
+</head>
+
+<body>
+ <div class="topbar">
+ <div class="eyebrow hidden-phone">
+ <div class="container">
+ <ul class="pull-left">
+   <li><a href="http://www.waibo.wang/" target="_blank">歪脖网</a>欢迎您！</li>
+ </ul>
+ <ul class="pull-right">
+  <li><a href="http://www.waibo.wang/user/">登录</a></li>
+  <li class="b">|</li>
+  <li><a href="http://www.waibo.wang/user/register.asp" target="_blank">注册</a></li>
+ </div>
+ </div>
+
+<div class="topnav">
+<div class="container">
+  <div class="row-fluid mtz">
+  <div class="span3 topnav-logo">
+    <a href="http://www.waibo.wang/"><p class="logo-cn">歪脖网</p><p class="logo-en hidden-phone">waibo.wang</p></a>
+  </div>
+  <div class="span6 nav">
+   <ul>
+     <li ><a href="http://www.waibo.wang/">首页</a></li>
+     <li class="active"><a href="http://localhost/waibo/">教程</a></li>
+     <li ><a href="http://www.waibo.wang/wiki/">专栏</a></li>
+     <li ><a href="http://www.waibo.wang/demo/">素材</a></li>
+   </ul>
+  </div>
+  <div class="span3 topnav-form">
+  </div>
+ </div>
+ </div>
+ </div>
+ </div>
+
+
+ <div class="container">
+ <div class="row-fluid">
+ <aside class="span3">
+ <map id="oAll" name="oAll">
+ <area title="全部展开" shape="rect" coords="0,0,22,20"  href="javascript:tree.openAll();" onfocus="blur(this);">
+ <area title="全部收起" shape="rect" coords="22,0,44,20" href="javascript:tree.closeAll();" onfocus="blur(this);">
+ </map>
+ <header><span>目录</span><img src="http://localhost/waibo/img/map.png" usemap="#oAll"/></header>
+ <script src="http://localhost/waibo/js/dtree.js"></script>
+ <script src="http://localhost/waibo/bible/html5/js/tree.js"></script>
+ <script>
+    createTree("40506");
+ </script>
+ </aside>
+
+ <main class="span9">
+ <header><div class="name"><strong>HTML5宝典</strong>(第 1 版)</div><div class="section">4.5.6 图形组合</div></header>
+ <div><label id="treeview"><input id="show" type="checkbox" checked /> 文档结构视图</label><span class="hit">阅读（ <span id="hit"></span> ）</div>
+ <article>
+<h1 class="hide-text">HTML基础</h1>
+<h1 class="hide-text">HTML元素</h1>
+<h1 class="hide-text">表单及应用</h1>
+<h1 class="hide-text">Canvas绘图基础</h1>
+<h2 class="hide-text">基本用法</h2>
+<h2 class="hide-text">使用路径</h2>
+<h2 class="hide-text">绘制文本</h2>
+<h2 class="hide-text">处理图像和视频</h2>
+<h2 class="hide-text">装饰图形</h2>
+<h3 class="hide-text">裁剪区域</h3>
+<h3 class="hide-text">阴影</h3>
+<h3 class="hide-text">渐变和图案</h3>
+<h3 class="hide-text">颜色及透明度</h3>
+<h3 class="hide-text">线条的样式</h3>
+<h3>图形组合</h3>
+<p>在canvas中绘制复杂图形时，经常会出现图形交叉的情况，canvas把图形交叉的情况称作组合。</p>
+<p>通过上下文对象的globalCompositeOperation属性来设置图形的组合方式，该属性的取值及其含义见表 4‑5。其中，source指新绘制的图形，而destination指原有的图形，默认值是source-over。</p>
+<table summary="globalCompositeOperation属性取值及含义">
+	<caption>表 4‑5 globalCompositeOperation属性取值及含义</caption>
+	<thead>
+		<tr>
+			<th scope="col" style="width:240px;">操作</th>
+			<th scope="col">含义</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>source-atop (S atop D)</td>
+			<td>在两个图像都是非透明的地方，显示源图像。在目标图像是非透明但源图像是透明的地方，显示目标图像。其他地方透明显示。</td>
+		</tr>
+		<tr>
+			<td>source-in (S in D) </td>
+			<td>在源图像和目标图像均透明的地方，显示源图像。其他地方透明显示。</td>
+		</tr>
+		<tr>
+			<td>source-out (S out D) </td>
+			<td>在源图像非透明且目标图像为透明的地方，显示源图像。其他地方透明显示。</td>
+		</tr>
+		<tr>
+			<td>source-over (S over D, default) </td>
+			<td>在源图像为非透明的地方，显示源图像。其他地方显示目标图像。</td>
+		</tr>
+		<tr>
+			<td>destination-atop (S atop D) </td>
+			<td>在源图像和目标图像均为非透明的地方，显示目标图像。在源图像非透明且目标图像为透明的地方，显示源图像。其他地方透明显示。</td>
+		</tr>
+		<tr>
+			<td>destination-in (S in D) </td>
+			<td>在源图像和目标图像均为非透明的地方，显示目标图像。其他地方透明显示。</td>
+		</tr>
+		<tr>
+			<td>destination -out (S out D) </td>
+			<td>在目标图像为非透明且源图像为透明的地方，显示目标图像。其他地方透明显示。</td>
+		</tr>
+		<tr>
+			<td>destination -over (S over D) </td>
+			<td>在目标图像为非透明的地方，显示目标图像。其他地方显示目标图像。</td>
+		</tr>
+		<tr>
+			<td>lighter (S plus D)  </td>
+			<td>显示源图像和目标图像之和。</td>
+		</tr>
+		<tr>
+			<td>xor (S xor D) </td>
+			<td> 源图像和目标图像取异或操作。</td>
+		</tr>
+		<tr>
+			<td>copy (D is ignored) </td>
+			<td>显示源图像，不显示目标图像。</td>
+		</tr>
+	</tbody>
+</table>
+<p>下图展示了globalCompositeOperation属性在不同取值下，源图形与目标图形的效果。其中，红色的圆代表源图形（S），蓝色的矩形代表目标图形（D）。</p>
+<figure><img src='http://localhost/waibo/bible/html5/img/4/globalCompositeOperation.png' title='图形组合效果' alt='图形组合效果'><figcaption>图4-29  图形组合效果</figcaption></figure>
+<p>上图是在Google Chrome浏览器41.0.2272.118版本中的效果。然而，对组合操作的处理还非常棘手，因为五大主流浏览器，如Chrome, Firefox, Safari, Opera, 和IE9，对组合的处理不尽相同。如果你想使用图形组合，你应该了解每个浏览器当前的支持情况。</p>
+<p>由于globalCompositeOperation属性是全局的，在使用时应该注意保存和恢复状态。</p>
+<div id="modalReward" class="modal hide fade modal-reward" tabindex="-1">
+<div class="modal-header">
+<button type="button" class="close" data-dismiss="modal">&times;</button>
+<h6>打赏</h6>
+</div>
+<div class="modal-body">
+<div class="tabbable reward-weipay">
+<ul class="nav nav-tabs">
+<li class="active"><a data-toggle="tab" href="#weipay1">￥1</a></li>
+<li><a data-toggle="tab" href="#weipay2">￥2</a></li>
+<li><a data-toggle="tab" href="#weipay5">￥5</a></li>
+<li><a data-toggle="tab" href="#weipay10">￥10</a></li>
+<li><a data-toggle="tab" href="#weipay20">￥20</a></li>
+<li><a data-toggle="tab" href="#weipayrand">其他金额</a></li>
+</ul>
+<div class="tab-content">
+<div class="tab-pane active" id="weipay1">
+<img src="http://localhost/waibo/img/weipay1.png" alt="￥1"><span>￥1</span>
+</div>
+<div class="tab-pane" id="weipay2">
+<img src="http://localhost/waibo/img/weipay2.png" alt="￥2"><span>￥2</span>
+</div>
+<div class="tab-pane" id="weipay5">
+<img src="http://localhost/waibo/img/weipay5.png" alt="￥5"><span>￥5</span>
+</div>
+<div class="tab-pane" id="weipay10">
+<img src="http://localhost/waibo/img/weipay10.png" alt="￥10"><span>￥10</span>
+</div>
+<div class="tab-pane" id="weipay20">
+<img src="http://localhost/waibo/img/weipay20.png" alt="￥20"><span>￥20</span>
+</div>
+<div class="tab-pane" id="weipayrand">
+<img src="http://localhost/waibo/img/weipayrand.png" alt="￥随意"><span>￥随意</span>
+</div>
+</div>
+</div>
+<div class="tabbable reward-alipay hide">
+<ul class="nav nav-tabs">
+<li class="active"><a data-toggle="tab" href="#alipay1">￥1</a></li>
+<li><a data-toggle="tab" href="#alipay2">￥2</a></li>
+<li><a data-toggle="tab" href="#alipay5">￥5</a></li>
+<li><a data-toggle="tab" href="#alipay10">￥10</a></li>
+<li><a data-toggle="tab" href="#alipay20">￥20</a></li>
+<li><a data-toggle="tab" href="#alipayrand">其他金额</a></li>
+</ul>
+<div class="tab-content">
+<div class="tab-pane active" id="alipay1">
+<img src="http://localhost/waibo/img/alipay1.png" alt="￥1"><span>￥1</span>
+</div>
+<div class="tab-pane" id="alipay2">
+<img src="http://localhost/waibo/img/alipay2.png" alt="￥2"><span>￥2</span>
+</div>
+<div class="tab-pane" id="alipay5">
+<img src="http://localhost/waibo/img/alipay5.png" alt="￥5"><span>￥5</span>
+</div>
+<div class="tab-pane" id="alipay10">
+<img src="http://localhost/waibo/img/alipay10.png" alt="￥10"><span>￥10</span>
+</div>
+<div class="tab-pane" id="alipay20">
+<img src="http://localhost/waibo/img/alipay20.png" alt="￥20"><span>￥20</span>
+</div>
+<div class="tab-pane" id="alipayrand">
+<img src="http://localhost/waibo/img/alipayrand.png" alt="￥随意"><span>￥随意</span>
+</div>
+</div>
+</div>
+<div class="reward-method">
+<label><input type="radio" name="method" value="weipay" checked><img src="http://localhost/waibo/img/weipay.png" alt="微信支付"></label>
+<label><input type="radio" name="method" value="alipay"><img src="http://localhost/waibo/img/alipay.png" alt="支付宝"></label>
+</div>
+</div>
+</div>
+<div class="reward">
+<p>如果本教程对您帮助很大，请随意打赏。您的支持，将鼓励我写出更好的教程！</p>
+<a data-toggle="modal" href="#modalReward">赏</a>
+</div>
+ <div class="page">
+   <a id="prev" href="http://localhost/waibo/bible/html5/html/4/4.5.5.html" title="&#8592; 键到上一节">« 上一节</a>&#8592; 键盘方向键翻页 &#8594;<a id="next" href="http://localhost/waibo/bible/html5/html/4/4.6.html" title="&#8594; 键到下一节">下一节 »</a>
+ </div>
+ </article>
+ </main>
+ </div>
+ </div>
+ <div class="floatPanel">
+	 <div class="ctrolPanel">
+		 <a href="javascript:;" class="arrow top" onClick="goTop()"><span>返回顶部</span></a>
+    <a href="#" class="phone"  data-target="#phone"><span>手机访问</span></a>
+    <a href="#" class="wechat" data-target="#wechat"><span>关注微信</span></a>
+    <a href="javascript:;" class="arrow bottom" onClick="goBottom()"><span>返回底部</span></a>
+  </div>
+	<div id="phone" class="popPanel">
+		<div class="popPanel-inner">
+			<img src="http://localhost/waibo/img/site.png" /><p class="slogan">扫码访问歪脖网</p><p>随时随地，想看就看</p>
+		</div>
+	</div>
+	<div id="wechat" class="popPanel">
+		<div class="popPanel-inner">
+			<img src="http://localhost/waibo/img/weixin.png" /><p class="slogan">关注歪脖网微信</p><p>分享 web 知识、交流 web 经验</p>
+		</div>
+	</div>
+</div>
+ <footer>
+   <p>Copyright&copy;2017&nbsp;&nbsp;www.waibo.wang All Rights Reserved</p>
+   <p>陕ICP备17020676号-1&nbsp;&nbsp;&nbsp;&nbsp;客服QQ：376601179&nbsp;&nbsp;&nbsp;&nbsp;邮箱：376601179#qq.com
+ </footer>
+ <script src="http://localhost/waibo/js/prettify.js"></script>
+ <script src="http://localhost/waibo/js/bootstrap.min.js"></script>
+ <script src="http://localhost/waibo/js/ckeditor_4.7.1/ckeditor.js"></script>
+ <script>
+ $(function() {
+    prettyPrint();
+    bible();
+    load();
+    rewardMethod();
+ });
+ </script>
+</body>
+</html>

@@ -1,0 +1,239 @@
+﻿<!DOCTYPE html>
+<html lang="zh">
+<head>
+ <meta charset="utf-8">
+ <title>HTML <bdo>标签_HTML <bdo>标签_HTML bdi元素_HTML bdi元素-歪脖网</title>
+ <meta name="keywords" content="HTML, HTML5, , bdo元素,HTML bdo元素,bdi元素,HTML bdi元素" />
+ <meta name="description" content="bdo 元素用来覆盖默认的文本方向，bdi 元素用于定义一块文本，使其脱离其父元素的文本方向设置，在无法预知某些文本的书写方向时，让浏览器来自动判断，并使用正确的文本书写方向" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+ <link href="http://localhost/waibo/css/bootstrap.min.css" rel="stylesheet" />
+ <link href="http://localhost/waibo/css/bootstrap-responsive.min.css" rel="stylesheet" />
+ <link href="http://localhost/waibo/css/style.css" rel="stylesheet" />
+
+ <script src="http://localhost/waibo/js/jquery.js"></script>
+ <script src="http://localhost/waibo/js/script.js"></script>
+</head>
+
+<body>
+ <div class="topbar">
+ <div class="eyebrow hidden-phone">
+ <div class="container">
+ <ul class="pull-left">
+   <li><a href="http://www.waibo.wang/" target="_blank">歪脖网</a>欢迎您！</li>
+ </ul>
+ <ul class="pull-right">
+  <li><a href="http://www.waibo.wang/user/">登录</a></li>
+  <li class="b">|</li>
+  <li><a href="http://www.waibo.wang/user/register.asp" target="_blank">注册</a></li>
+ </div>
+ </div>
+
+<div class="topnav">
+<div class="container">
+  <div class="row-fluid mtz">
+  <div class="span3 topnav-logo">
+    <a href="http://www.waibo.wang/"><p class="logo-cn">歪脖网</p><p class="logo-en hidden-phone">waibo.wang</p></a>
+  </div>
+  <div class="span6 nav">
+   <ul>
+     <li ><a href="http://www.waibo.wang/">首页</a></li>
+     <li class="active"><a href="http://localhost/waibo/">教程</a></li>
+     <li ><a href="http://www.waibo.wang/wiki/">专栏</a></li>
+     <li ><a href="http://www.waibo.wang/demo/">素材</a></li>
+   </ul>
+  </div>
+  <div class="span3 topnav-form">
+  </div>
+ </div>
+ </div>
+ </div>
+ </div>
+
+
+ <div class="container">
+ <div class="row-fluid">
+ <aside class="span3">
+ <map id="oAll" name="oAll">
+ <area title="全部展开" shape="rect" coords="0,0,22,20"  href="javascript:tree.openAll();" onfocus="blur(this);">
+ <area title="全部收起" shape="rect" coords="22,0,44,20" href="javascript:tree.closeAll();" onfocus="blur(this);">
+ </map>
+ <header><span>目录</span><img src="http://localhost/waibo/img/map.png" usemap="#oAll"/></header>
+ <script src="http://localhost/waibo/js/dtree.js"></script>
+ <script src="http://localhost/waibo/bible/html5/js/tree.js"></script>
+ <script>
+    createTree("20320");
+ </script>
+ </aside>
+
+ <main class="span9">
+ <header><div class="name"><strong>HTML5宝典</strong>(第 1 版)</div><div class="section">2.3.20 bdo和bdi元素</div></header>
+ <div><label id="treeview"><input id="show" type="checkbox" checked /> 文档结构视图</label><span class="hit">阅读（ <span id="hit"></span> ）</div>
+ <article>
+<h1 class="hide-text">HTML基础</h1>
+<h1 class="hide-text">HTML元素</h1>
+<h2 class="hide-text">结构语义元素</h2>
+<h2 class="hide-text">内容分组元素</h2>
+<h2 class="hide-text">文本语义元素</h2>
+<h3 class="hide-text">ins和del元素</h3>
+<h3 class="hide-text">sub和sup元素</h3>
+<h3 class="hide-text">kbd元素</h3>
+<h3 class="hide-text">samp元素</h3>
+<h3 class="hide-text">var元素</h3>
+<h3 class="hide-text">code元素</h3>
+<h3 class="hide-text">time元素</h3>
+<h3 class="hide-text">dfn元素</h3>
+<h3 class="hide-text">abbr元素</h3>
+<h3 class="hide-text">mark元素</h3>
+<h3 class="hide-text">cite元素</h3>
+<h3 class="hide-text">q元素</h3>
+<h3 class="hide-text">s元素</h3>
+<h3 class="hide-text">u元素</h3>
+<h3 class="hide-text">b元素</h3>
+<h3 class="hide-text">i元素</h3>
+<h3 class="hide-text">small元素</h3>
+<h3 class="hide-text">strong元素</h3>
+<h3 class="hide-text">文本元素</h3>
+<h3>bdo和bdi元素</h3>
+<p>如果页面中混合了从左到右书写的文本（如，大多数语言所使用的拉丁字符）和从右到左书写的文本（如，阿拉伯或希伯来语字符），就可以使用 bdo元素和 bdi元素。</p>
+<p>bdo元素用来覆盖默认的文本方向，方向由 dir属性指定，并将属性值设置为 ltr 或 rtl，ltr（即，left to right）表示从左到右书写，而 rtl（即，right to left）表示从右到左书写。如：</p>
+<pre class="prettyprint linenums">
+<code>&lt;p&gt;APPLE&lt;/p&gt;</code></pre>
+<p>由于默认情况下，拉丁字符是从左到右的书写方向。运行结果如图 2‑38所示：</p>
+<figure><img src='http://localhost/waibo/bible/html5/img/2/bdo.png' title='正常的方向' alt='正常的方向'><figcaption>图2-38  正常的方向</figcaption></figure>
+<p>如果希望覆盖默认的书写方向，让这一块文本按从右到左的方向书写，就可以使用 bdo元素来包裹这一块文本，并将 dir属性设置为rtl：</p>
+<pre class="prettyprint linenums">
+<code>&lt;p&gt;&lt;bdo dir="rtl"&gt;APPLE&lt;/bdo&gt;&lt;/p&gt;</code></pre>
+<p>运行结果如图 2‑39 所示：</p>
+<figure><img src='http://localhost/waibo/bible/html5/img/2/bdo2.png' title='覆盖后的方向' alt='覆盖后的方向'><figcaption>图2-39  覆盖后的方向</figcaption></figure>
+<p>当确知文本的书写方向时，使用 bdo元素就非常方便。但有时候，并不能确定文本的书写方向，这时就得使用 bdi元素。</p>
+<p>bdi元素用于定义一块文本，使其脱离其父元素的文本方向设置，在无法预知某些文本的书写方向时，让浏览器来自动判断，并使用正确的文本书写方向。</p>
+<p>假设要展示每个用户发帖数，用户名的信息是从数据库获取的，而用户来自世界各地，就无法准确知道用户名的书写方向。这时，就要将用户名放 bdi元素中。如：</p>
+<pre class="prettyprint linenums">
+<code>&lt;ul&gt;
+    &lt;li&gt;User &lt;bdi&gt;jcranmer&lt;/bdi&gt;: 12 posts.
+    &lt;li&gt;User &lt;bdi&gt;hober&lt;/bdi&gt;: 5 posts.
+    &lt;li&gt;User &lt;bdi&gt;إيان&lt;/bdi&gt;: 3 posts.
+&lt;/ul&gt;</code></pre>
+<p>运行结果如图 2‑40 所示：</p>
+<figure><img src='http://localhost/waibo/bible/html5/img/2/bdi.png' title='使用bdi元素' alt='使用bdi元素'><figcaption>图2-40  使用bdi元素</figcaption></figure>
+<p>由于阿拉伯文的书写方向是从右到左，如果不使用 bdi元素，双向算法就会把冒号和数字3放在&ldquo;User&rdquo;的旁边，而不是&ldquo;posts&rdquo;的旁边，阿拉伯文的用户名就会使文本变得难以理解。运行结果如图 2‑41 所示：</p>
+<figure><img src='http://localhost/waibo/bible/html5/img/2/bdi2.png' title='不使用bdi元素' alt='不使用bdi元素'><figcaption>图2-41  不使用bdi元素</figcaption></figure>
+<p>由此可知，如果在某个上下文中，文本的内容是自动生成的，却又不知道某些文本的书写方向时，bdi元素就特别有用。</p>
+<div id="modalReward" class="modal hide fade modal-reward" tabindex="-1">
+<div class="modal-header">
+<button type="button" class="close" data-dismiss="modal">&times;</button>
+<h6>打赏</h6>
+</div>
+<div class="modal-body">
+<div class="tabbable reward-weipay">
+<ul class="nav nav-tabs">
+<li class="active"><a data-toggle="tab" href="#weipay1">￥1</a></li>
+<li><a data-toggle="tab" href="#weipay2">￥2</a></li>
+<li><a data-toggle="tab" href="#weipay5">￥5</a></li>
+<li><a data-toggle="tab" href="#weipay10">￥10</a></li>
+<li><a data-toggle="tab" href="#weipay20">￥20</a></li>
+<li><a data-toggle="tab" href="#weipayrand">其他金额</a></li>
+</ul>
+<div class="tab-content">
+<div class="tab-pane active" id="weipay1">
+<img src="http://localhost/waibo/img/weipay1.png" alt="￥1"><span>￥1</span>
+</div>
+<div class="tab-pane" id="weipay2">
+<img src="http://localhost/waibo/img/weipay2.png" alt="￥2"><span>￥2</span>
+</div>
+<div class="tab-pane" id="weipay5">
+<img src="http://localhost/waibo/img/weipay5.png" alt="￥5"><span>￥5</span>
+</div>
+<div class="tab-pane" id="weipay10">
+<img src="http://localhost/waibo/img/weipay10.png" alt="￥10"><span>￥10</span>
+</div>
+<div class="tab-pane" id="weipay20">
+<img src="http://localhost/waibo/img/weipay20.png" alt="￥20"><span>￥20</span>
+</div>
+<div class="tab-pane" id="weipayrand">
+<img src="http://localhost/waibo/img/weipayrand.png" alt="￥随意"><span>￥随意</span>
+</div>
+</div>
+</div>
+<div class="tabbable reward-alipay hide">
+<ul class="nav nav-tabs">
+<li class="active"><a data-toggle="tab" href="#alipay1">￥1</a></li>
+<li><a data-toggle="tab" href="#alipay2">￥2</a></li>
+<li><a data-toggle="tab" href="#alipay5">￥5</a></li>
+<li><a data-toggle="tab" href="#alipay10">￥10</a></li>
+<li><a data-toggle="tab" href="#alipay20">￥20</a></li>
+<li><a data-toggle="tab" href="#alipayrand">其他金额</a></li>
+</ul>
+<div class="tab-content">
+<div class="tab-pane active" id="alipay1">
+<img src="http://localhost/waibo/img/alipay1.png" alt="￥1"><span>￥1</span>
+</div>
+<div class="tab-pane" id="alipay2">
+<img src="http://localhost/waibo/img/alipay2.png" alt="￥2"><span>￥2</span>
+</div>
+<div class="tab-pane" id="alipay5">
+<img src="http://localhost/waibo/img/alipay5.png" alt="￥5"><span>￥5</span>
+</div>
+<div class="tab-pane" id="alipay10">
+<img src="http://localhost/waibo/img/alipay10.png" alt="￥10"><span>￥10</span>
+</div>
+<div class="tab-pane" id="alipay20">
+<img src="http://localhost/waibo/img/alipay20.png" alt="￥20"><span>￥20</span>
+</div>
+<div class="tab-pane" id="alipayrand">
+<img src="http://localhost/waibo/img/alipayrand.png" alt="￥随意"><span>￥随意</span>
+</div>
+</div>
+</div>
+<div class="reward-method">
+<label><input type="radio" name="method" value="weipay" checked><img src="http://localhost/waibo/img/weipay.png" alt="微信支付"></label>
+<label><input type="radio" name="method" value="alipay"><img src="http://localhost/waibo/img/alipay.png" alt="支付宝"></label>
+</div>
+</div>
+</div>
+<div class="reward">
+<p>如果本教程对您帮助很大，请随意打赏。您的支持，将鼓励我写出更好的教程！</p>
+<a data-toggle="modal" href="#modalReward">赏</a>
+</div>
+ <div class="page">
+   <a id="prev" href="http://localhost/waibo/bible/html5/html/2/2.3.19.html" title="&#8592; 键到上一节">« 上一节</a>&#8592; 键盘方向键翻页 &#8594;<a id="next" href="http://localhost/waibo/bible/html5/html/2/2.3.21.html" title="&#8594; 键到下一节">下一节 »</a>
+ </div>
+ </article>
+ </main>
+ </div>
+ </div>
+ <div class="floatPanel">
+	 <div class="ctrolPanel">
+		 <a href="javascript:;" class="arrow top" onClick="goTop()"><span>返回顶部</span></a>
+    <a href="#" class="phone"  data-target="#phone"><span>手机访问</span></a>
+    <a href="#" class="wechat" data-target="#wechat"><span>关注微信</span></a>
+    <a href="javascript:;" class="arrow bottom" onClick="goBottom()"><span>返回底部</span></a>
+  </div>
+	<div id="phone" class="popPanel">
+		<div class="popPanel-inner">
+			<img src="http://localhost/waibo/img/site.png" /><p class="slogan">扫码访问歪脖网</p><p>随时随地，想看就看</p>
+		</div>
+	</div>
+	<div id="wechat" class="popPanel">
+		<div class="popPanel-inner">
+			<img src="http://localhost/waibo/img/weixin.png" /><p class="slogan">关注歪脖网微信</p><p>分享 web 知识、交流 web 经验</p>
+		</div>
+	</div>
+</div>
+ <footer>
+   <p>Copyright&copy;2017&nbsp;&nbsp;www.waibo.wang All Rights Reserved</p>
+   <p>陕ICP备17020676号-1&nbsp;&nbsp;&nbsp;&nbsp;客服QQ：376601179&nbsp;&nbsp;&nbsp;&nbsp;邮箱：376601179#qq.com
+ </footer>
+ <script src="http://localhost/waibo/js/prettify.js"></script>
+ <script src="http://localhost/waibo/js/bootstrap.min.js"></script>
+ <script src="http://localhost/waibo/js/ckeditor_4.7.1/ckeditor.js"></script>
+ <script>
+ $(function() {
+    prettyPrint();
+    bible();
+    load();
+    rewardMethod();
+ });
+ </script>
+</body>
+</html>

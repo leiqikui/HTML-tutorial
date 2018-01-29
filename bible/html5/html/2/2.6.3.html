@@ -1,0 +1,333 @@
+﻿<!DOCTYPE html>
+<html lang="zh">
+<head>
+ <meta charset="utf-8">
+ <title>HTML5 <video>标签_HTML5 <audio>标签_HTML5 video元素_HTML5 audio元素_HTML5视频和音频-歪脖网</title>
+ <meta name="keywords" content="HTML, HTML5, , video元素,HTML5 video元素,audio元素,HTML5 audio元素,HTML5视频,HTML5音频" />
+ <meta name="description" content="HTML5中，提供了对多媒体的原生支持，只需通过 video 元素，就可以向网页嵌入视频、电影或音频资源，通过 audio 元素向网页嵌入音频资源，省时省力" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+ <link href="http://localhost/waibo/css/bootstrap.min.css" rel="stylesheet" />
+ <link href="http://localhost/waibo/css/bootstrap-responsive.min.css" rel="stylesheet" />
+ <link href="http://localhost/waibo/css/style.css" rel="stylesheet" />
+
+ <script src="http://localhost/waibo/js/jquery.js"></script>
+ <script src="http://localhost/waibo/js/script.js"></script>
+</head>
+
+<body>
+ <div class="topbar">
+ <div class="eyebrow hidden-phone">
+ <div class="container">
+ <ul class="pull-left">
+   <li><a href="http://www.waibo.wang/" target="_blank">歪脖网</a>欢迎您！</li>
+ </ul>
+ <ul class="pull-right">
+  <li><a href="http://www.waibo.wang/user/">登录</a></li>
+  <li class="b">|</li>
+  <li><a href="http://www.waibo.wang/user/register.asp" target="_blank">注册</a></li>
+ </div>
+ </div>
+
+<div class="topnav">
+<div class="container">
+  <div class="row-fluid mtz">
+  <div class="span3 topnav-logo">
+    <a href="http://www.waibo.wang/"><p class="logo-cn">歪脖网</p><p class="logo-en hidden-phone">waibo.wang</p></a>
+  </div>
+  <div class="span6 nav">
+   <ul>
+     <li ><a href="http://www.waibo.wang/">首页</a></li>
+     <li class="active"><a href="http://localhost/waibo/">教程</a></li>
+     <li ><a href="http://www.waibo.wang/wiki/">专栏</a></li>
+     <li ><a href="http://www.waibo.wang/demo/">素材</a></li>
+   </ul>
+  </div>
+  <div class="span3 topnav-form">
+  </div>
+ </div>
+ </div>
+ </div>
+ </div>
+
+
+ <div class="container">
+ <div class="row-fluid">
+ <aside class="span3">
+ <map id="oAll" name="oAll">
+ <area title="全部展开" shape="rect" coords="0,0,22,20"  href="javascript:tree.openAll();" onfocus="blur(this);">
+ <area title="全部收起" shape="rect" coords="22,0,44,20" href="javascript:tree.closeAll();" onfocus="blur(this);">
+ </map>
+ <header><span>目录</span><img src="http://localhost/waibo/img/map.png" usemap="#oAll"/></header>
+ <script src="http://localhost/waibo/js/dtree.js"></script>
+ <script src="http://localhost/waibo/bible/html5/js/tree.js"></script>
+ <script>
+    createTree("20603");
+ </script>
+ </aside>
+
+ <main class="span9">
+ <header><div class="name"><strong>HTML5宝典</strong>(第 1 版)</div><div class="section">2.6.3 视频和音频</div></header>
+ <div><label id="treeview"><input id="show" type="checkbox" checked /> 文档结构视图</label><span class="hit">阅读（ <span id="hit"></span> ）</div>
+ <article>
+<h1 class="hide-text">HTML基础</h1>
+<h1 class="hide-text">HTML元素</h1>
+<h2 class="hide-text">结构语义元素</h2>
+<h2 class="hide-text">内容分组元素</h2>
+<h2 class="hide-text">文本语义元素</h2>
+<h2 class="hide-text">链接元素</h2>
+<h2 class="hide-text">表格元素</h2>
+<h2 class="hide-text">嵌入式元素</h2>
+<h3 class="hide-text">网页</h3>
+<h3 class="hide-text">图像</h3>
+<h3>视频和音频</h3>
+<p>在页面上添加视频、声音、动画等，可以增强用户体验。在HTML5之前，为网页添加多媒体的唯一办法，就是使用第三方的插件（如，Adobe Flash等）。</p>
+<p>HTML5中，提供了对多媒体的原生支持，只需通过 video元素，就可以向网页嵌入视频、电影或音频资源，通过 audio元素向网页嵌入音频资源，省时省力。</p>
+<h4>视频</h4>
+<p>早就听说HTML提供了对视频的原生支持，你可能已经迫不及待想体验一下了。</p>
+<p>在HTML5时代，在页面中嵌入视频非常简单，只需要一个 video元素，并设置它的 src 属性，使其链接一个视频地址就可以完全搞定了，这个太esay了：</p>
+<pre class="prettyprint linenums">
+<code>&lt;video src="media/vedio.mp4"&gt;&lt;/video&gt;</code></pre>
+<p>把这个网页在IE8中打开一看，怎么没那么简单。网页上除了一片空白外，什么也没有，这是为什么呢？</p>
+<p>原来 video 是HTML5最新引入的元素，并不是所有浏览器都支持它，IE8及以下版本都无法识别 video 标签。如果浏览器不识别 video标签，则会忽略它，当做什么都没有。这就是页面上一片空白的原因。</p>
+<p>这个问题好解决，只需在 video 标签之间放置文本信息，不支持 video 标签的老浏览器，会显示 video 标签之间的文本信息，以提示用户浏览器不支持 video，就这么简单！&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+<pre class="prettyprint linenums">
+<code>&lt;video src="media/vedio.mp4"&gt;
+   你的浏览器已经老掉牙了，不支持video，还不赶快使用现代浏览器O(∩_∩)O~！
+&lt;/video&gt;</code></pre>
+<p>在IE8上打开一看，确实显示了提示文本，这下好多了，至少用户知道自己的浏览器不能播放视频，该换浏览器了。</p>
+<p>下载了Opera浏览器的最新版本25.0，打开一看，怎么还是一片空白外！。Opera浏览器明明是支持video标签的，那又是为什么呢？</p>
+<p>这个就得从视频的编码格式说起了。video元素支持三种视频格式：Ogg、MP4、WebM。Ogg是带有Theora视频编码和Vorbis音频编码的文件，后缀名为 .ogg；MP4是带有H.264视频编码和AAC音频编码的MP4文件，后缀名为 .mp4；WebM是VP8视频编码和Vorbis音频编码的文件，后缀名为 .webm。</p>
+<p>这个Opera浏览器呢，它可以支持ogg，但不支持mp4。由于Opera支持video标签，故video标签之间的文本信息没有显示出来，但它不支持ogg，所以就不进行播放，最终导致页面出现一片空白。这下可怎么办呢？</p>
+<p>其实办法有的是，我们可以从网上下载一副图像，放到视频播放窗口，如果视频无法播放，就显示这张图片，是不是更好呢？从网上下载一张美女图片，干脆叫beauty.jpg吧。那这个图像怎么添加到视频窗口呢？</p>
+<p>video标签有个poster 属性，就是专门在视频窗口放置图片的。poster是一个video的占位符，无论什么情况下，只要视频还没有播放（视频下载过程中、视频不存在、不支持该视频类型、用户点击播放按钮前），就会显示该图像，可以看做是视频播放之前插入的宣传画或海报。&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+<pre class="prettyprint linenums">
+<code>&lt;video src="media/vedio.mp4" poster = "img/beauty.jpg"&gt;
+  你的浏览器已经老掉牙了，不支持video，还不赶快使用现代浏览器O(∩_∩)O~！
+&lt;/video&gt;</code></pre>
+<p>在Opera浏览器上刷新一下，真的有一个美女冲着自己微笑呢。虽然视频没有播放出来，这回心情却是好多了。</p>
+<p>那我可不能一天到晚只看美女呀，视频还是还是要想办法播放出来的。既然Opera浏览器不支持mp4，我们就换成需要ogg吧，这样就肯定没问题了。</p>
+<p>我想了想，这个办法不好，万一某个浏览器只支持支持ogg，不支持mp4呢。这年头，什么都缺，就是不缺点子，随便在网上一搜，办法就有了。</p>
+<p>在 video元素中添加 source 元素，就可以解决这个问题。在source 元素中，通过 src 属性指定视频的地址，通过 type 属性指定视频的类型，以帮助浏览器决定是否能播放该视频。并且，在 video元素中可以添加任意多个source 元素，让不同的 source 元素链接到不同的视频文件。</p>
+<p>这样的话，当浏览器发现 video元素时，首先会查看它本身是否定义了 src 属性。如果没有，就会检查 source 元素。浏览器会逐个查看这些视频源，直到找到一个可以播放的视频。一旦找到，就会播放它并忽略其他的视频源。我们干脆添加两个source，一个是mp4，一个是ogg，这下视频是一定能播放出来了。</p>
+<pre class="prettyprint linenums">
+<code>&lt;video poster = "img/beauty.jpg"&gt;
+    &lt;source src="media/vedio.mp4" type="video/mp4"&gt;
+    &lt;source src="media/vedio.ogg" type="video/ogg"&gt;
+    你的浏览器已经老掉牙了，不支持video，还不赶快使用现代浏览器O(∩_∩)O~！
+&lt;/video&gt;</code></pre>
+<p>在Opera浏览器上又刷新一下，只有美女冲着我微笑，视频还是没播放出来。唉，太粗心了，忘记添加播放视频的控件了。</p>
+<p>在video标签中，通过添加controls 属性来为视频添加播放控件，方便用户执行播放、暂停操作和音量控制。</p>
+<pre class="prettyprint linenums">
+<code>&lt;video poster = "img/beauty.jpg" controls&gt;
+   （此处略去500字…）
+&lt;/video&gt;</code></pre>
+<p>在Opera浏览器上又刷新一下，效果真的不一样，这次不仅看到美女，还看到了视频控件。用鼠标猛戳一下那个播放按钮，哈哈，不错，真的听到美妙的旋律。我们的ogg文件，终于播放出来了，让我们好好享受一下吧O(&cap;_&cap;)O。</p>
+<p>听了一会，忽然一想，不对呀，我刚才点了播放按钮后，等了半天才听到声音。能不能我一点播放按钮，就立即播放呢？</p>
+<p>原来视频也是需要下载缓存的，点击播放按钮后，首先缓存，然后才播放的。那能不能在页面加载的同时就缓存呢。这样，用户点击播放后，就不必等待了。</p>
+<p>这当然可以，在video标签中，通过添加preload属性来为视频添加预加载功能，在页面加载的同时加载视频。</p>
+<pre class="prettyprint linenums">
+<code>&lt;video poster = "img/beauty.jpg" controls preload&gt;
+  （此处略去500字…）
+&lt;/video&gt;</code></pre>
+<p>关于 preload 属性，稍微再啰嗦一点，就是可以把它设置为 metadata，让浏览器仅仅预加载视频的基本信息，如尺寸、时长、以及一些关键的帧。这样的话，在开始播放之前，浏览器可以提前计算视频的显示尺寸。</p>
+<p>既然一切都OK了！让我们看看mp4是不是能正常播放。下载最新版的Google Chrome 38.0浏览器，打开网页，猛戳一下播放按钮。</p>
+<p>等等~，等等~，不对，怎么只有声音没有画面，明明是mp4格式的文件呀？使用暴风影音试了一下，是有画面的呀！</p>
+<p>辛辛苦苦又在网上搜了一番，花了整整586秒，终于找到了答案。mp4视频需要h.264编码格式才会有图像的。</p>
+<p>找了一个 h.264 编码格式的 mp4 试了一下，不错，确实有图像了！看了半天，原来是一部老外的电影，叽里咕噜一阵，一句话也没听懂。那O(&cap;_&cap;)O~，能否提供中文字幕呢，这样就不必费老大劲去听了！</p>
+<p>HTML5中，通过在video元素添加track元素为视频添加字幕。字幕文件有两种格式：WebVTT和TTML。WebVTT是Web视频文本轨迹（Web Video Text Track），是UTF-8编码格式的文本文件；TTML是时序文本标记语言（Timed Text Markup Language），是XML格式的文件。两种文件的具体格式，已经超出我们的讨论范围。</p>
+<p>video元素支持添加多个track元素，不同的track元素链接到不同的字幕文件。用户可以在各个字幕间进行切换。</p>
+<pre class="prettyprint linenums">
+<code>&lt;video poster = "img/beauty.jpg" controls preload&gt;
+    &lt;track src="en_track.vtt" kind="subtitles" srclang="en" label="English" default&gt;
+    &lt;track src="cn_track.vtt" kind="captions" srclang="zh" label="简体中文"&gt;
+&lt;/video&gt;</code></pre>
+<p>track元素中，src属性指定字幕文件的URL；srclang属性字幕文件的语言类型，若kind 属性值是 &quot;subtitles&quot; 时，该属性必需的；label 属性指定字幕标签，每个字幕元素必需设置一个唯一不重复的标签，切换字幕时，会显示标签的名称；kind指定字幕内容类型，只能是subtitles、captions、descriptions、chapters、metadata 之一；default属性指定是否是默认字幕，如果一个都没指定，将不会自动显示字幕。</p>
+<p>除了字幕外，我还希望对视频进行过多的控制，比如让视频自动播放、循环播放、默认静音，以及视频窗口的尺寸等等，这些都能做到吗？</p>
+<p>这已经不是什么事了，video元素已经提供了相关属性，根据需要设置相应的属性就可以了。这些属性及含义见表 2‑3：</p>
+<table summary="video元素的属性及含义">
+  <caption>表 2‑3 video元素的属性及含义</caption>
+	<thead>
+		<tr>
+			<th>属性</th>
+			<th>含义</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>src</td>
+			<td>指定视频文件的URL</td>
+		</tr>
+		<tr>
+			<td>autoplay</td>
+			<td>当视频可以播放时，立即自动播放</td>
+		</tr>
+		<tr>
+			<td>controls</td>
+			<td>添加浏览器默认的视频设置控件</td>
+		</tr>
+		<tr>
+			<td>muted</td>
+			<td>让视频静音</td>
+		</tr>
+		<tr>
+			<td>loop</td>
+			<td>让视频循环播放</td>
+		</tr>
+		<tr>
+			<td>poster</td>
+			<td>指定视频播放前要显示的图像文件的URL</td>
+		</tr>
+		<tr>
+			<td>width</td>
+			<td>视频的宽度（单位为像素），通常默认为300</td>
+		</tr>
+		<tr>
+			<td>height</td>
+			<td>视频的高度（单位为像素），通常默认为150</td>
+		</tr>
+		<tr>
+			<td>preload</td>
+			<td>指定要预加载的内容，取值为auto | none | metadata，默认值为 auto。auto 表示由浏览器自行决定，none 表示不进行预加载，metadata 表示仅预加载视频的元数据（如长度、尺寸等）</td>
+		</tr>
+	</tbody>
+</table>
+<p>哦，原来这么简单呀！那就到此为止吧，网页中嵌入视频的全部代码都在这里，就打包给你吧！</p>
+<pre class="prettyprint linenums">
+<code>&lt;video width="300" poster="img/beauty.jpg" controls preload autoplay loop muted&gt;
+  &lt;source src="media/vedio.mp4"&gt;
+  &lt;source src="media/vedio.ogg"&gt;
+  &lt;track src="en_track.vtt" kind="subtitles" srclang="en" label="English" default&gt;
+  &lt;track src="cn_track.vtt" kind="captions"  srclang="zh" label="简体中文"&gt;
+  你的浏览器已经老掉牙了，不支持video，还不赶快使用现代浏览器O(∩_∩)O~！
+&lt;/video&gt;</code></pre>
+<p>睁大眼睛一看，却只有7行代码。然而，就这区区7行代码，可把他折磨得够呛。</p>
+<p>看着这一切都全部搞定，他仰望着天空，长长呼了一口气，显得是那么的放松，那么的惬意。此时，他闭上眼睛，在自己的梦幻世界里遨游！</p>
+<h4>音频</h4>
+<p>有了在网页中嵌入视频的经历，要在网页中嵌入音频，那简直就是小菜一碟了。只要把vedio元素换成 audio元素，就全部搞定。</p>
+<p>但需要了解的是，audio 所支持的音频格式只有Ogg Vorbis、mp3 和 wav。还要知道，由于音频没有画面，也就没有 width、height、poster 属性，而其他属性都支持，并且跟视频的含义相同。</p>
+<p>网页中嵌入音频的代码如下：</p>
+<pre class="prettyprint linenums">
+<code>&lt;audio controls preload autoplay loop muted&gt;
+  &lt;source src="media/audio.mp3"&gt;
+  &lt;source src="media/audio.wav"&gt;
+  &lt;source src="media/audio.ogg"&gt;
+  你的浏览器已经老掉牙了，不支持audio，还不赶快使用现代浏览器O(∩_∩)O~！
+&lt;/audio&gt;</code></pre>
+<div id="modalReward" class="modal hide fade modal-reward" tabindex="-1">
+<div class="modal-header">
+<button type="button" class="close" data-dismiss="modal">&times;</button>
+<h6>打赏</h6>
+</div>
+<div class="modal-body">
+<div class="tabbable reward-weipay">
+<ul class="nav nav-tabs">
+<li class="active"><a data-toggle="tab" href="#weipay1">￥1</a></li>
+<li><a data-toggle="tab" href="#weipay2">￥2</a></li>
+<li><a data-toggle="tab" href="#weipay5">￥5</a></li>
+<li><a data-toggle="tab" href="#weipay10">￥10</a></li>
+<li><a data-toggle="tab" href="#weipay20">￥20</a></li>
+<li><a data-toggle="tab" href="#weipayrand">其他金额</a></li>
+</ul>
+<div class="tab-content">
+<div class="tab-pane active" id="weipay1">
+<img src="http://localhost/waibo/img/weipay1.png" alt="￥1"><span>￥1</span>
+</div>
+<div class="tab-pane" id="weipay2">
+<img src="http://localhost/waibo/img/weipay2.png" alt="￥2"><span>￥2</span>
+</div>
+<div class="tab-pane" id="weipay5">
+<img src="http://localhost/waibo/img/weipay5.png" alt="￥5"><span>￥5</span>
+</div>
+<div class="tab-pane" id="weipay10">
+<img src="http://localhost/waibo/img/weipay10.png" alt="￥10"><span>￥10</span>
+</div>
+<div class="tab-pane" id="weipay20">
+<img src="http://localhost/waibo/img/weipay20.png" alt="￥20"><span>￥20</span>
+</div>
+<div class="tab-pane" id="weipayrand">
+<img src="http://localhost/waibo/img/weipayrand.png" alt="￥随意"><span>￥随意</span>
+</div>
+</div>
+</div>
+<div class="tabbable reward-alipay hide">
+<ul class="nav nav-tabs">
+<li class="active"><a data-toggle="tab" href="#alipay1">￥1</a></li>
+<li><a data-toggle="tab" href="#alipay2">￥2</a></li>
+<li><a data-toggle="tab" href="#alipay5">￥5</a></li>
+<li><a data-toggle="tab" href="#alipay10">￥10</a></li>
+<li><a data-toggle="tab" href="#alipay20">￥20</a></li>
+<li><a data-toggle="tab" href="#alipayrand">其他金额</a></li>
+</ul>
+<div class="tab-content">
+<div class="tab-pane active" id="alipay1">
+<img src="http://localhost/waibo/img/alipay1.png" alt="￥1"><span>￥1</span>
+</div>
+<div class="tab-pane" id="alipay2">
+<img src="http://localhost/waibo/img/alipay2.png" alt="￥2"><span>￥2</span>
+</div>
+<div class="tab-pane" id="alipay5">
+<img src="http://localhost/waibo/img/alipay5.png" alt="￥5"><span>￥5</span>
+</div>
+<div class="tab-pane" id="alipay10">
+<img src="http://localhost/waibo/img/alipay10.png" alt="￥10"><span>￥10</span>
+</div>
+<div class="tab-pane" id="alipay20">
+<img src="http://localhost/waibo/img/alipay20.png" alt="￥20"><span>￥20</span>
+</div>
+<div class="tab-pane" id="alipayrand">
+<img src="http://localhost/waibo/img/alipayrand.png" alt="￥随意"><span>￥随意</span>
+</div>
+</div>
+</div>
+<div class="reward-method">
+<label><input type="radio" name="method" value="weipay" checked><img src="http://localhost/waibo/img/weipay.png" alt="微信支付"></label>
+<label><input type="radio" name="method" value="alipay"><img src="http://localhost/waibo/img/alipay.png" alt="支付宝"></label>
+</div>
+</div>
+</div>
+<div class="reward">
+<p>如果本教程对您帮助很大，请随意打赏。您的支持，将鼓励我写出更好的教程！</p>
+<a data-toggle="modal" href="#modalReward">赏</a>
+</div>
+ <div class="page">
+   <a id="prev" href="http://localhost/waibo/bible/html5/html/2/2.6.2.html" title="&#8592; 键到上一节">« 上一节</a>&#8592; 键盘方向键翻页 &#8594;<a id="next" href="http://localhost/waibo/bible/html5/html/3/3.html" title="&#8594; 键到下一节">下一节 »</a>
+ </div>
+ </article>
+ </main>
+ </div>
+ </div>
+ <div class="floatPanel">
+	 <div class="ctrolPanel">
+		 <a href="javascript:;" class="arrow top" onClick="goTop()"><span>返回顶部</span></a>
+    <a href="#" class="phone"  data-target="#phone"><span>手机访问</span></a>
+    <a href="#" class="wechat" data-target="#wechat"><span>关注微信</span></a>
+    <a href="javascript:;" class="arrow bottom" onClick="goBottom()"><span>返回底部</span></a>
+  </div>
+	<div id="phone" class="popPanel">
+		<div class="popPanel-inner">
+			<img src="http://localhost/waibo/img/site.png" /><p class="slogan">扫码访问歪脖网</p><p>随时随地，想看就看</p>
+		</div>
+	</div>
+	<div id="wechat" class="popPanel">
+		<div class="popPanel-inner">
+			<img src="http://localhost/waibo/img/weixin.png" /><p class="slogan">关注歪脖网微信</p><p>分享 web 知识、交流 web 经验</p>
+		</div>
+	</div>
+</div>
+ <footer>
+   <p>Copyright&copy;2017&nbsp;&nbsp;www.waibo.wang All Rights Reserved</p>
+   <p>陕ICP备17020676号-1&nbsp;&nbsp;&nbsp;&nbsp;客服QQ：376601179&nbsp;&nbsp;&nbsp;&nbsp;邮箱：376601179#qq.com
+ </footer>
+ <script src="http://localhost/waibo/js/prettify.js"></script>
+ <script src="http://localhost/waibo/js/bootstrap.min.js"></script>
+ <script src="http://localhost/waibo/js/ckeditor_4.7.1/ckeditor.js"></script>
+ <script>
+ $(function() {
+    prettyPrint();
+    bible();
+    load();
+    rewardMethod();
+ });
+ </script>
+</body>
+</html>

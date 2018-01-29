@@ -1,0 +1,297 @@
+﻿<!DOCTYPE html>
+<html lang="zh">
+<head>
+ <meta charset="utf-8">
+ <title>HTML5 Web Storage 中 localStorage 和 sessionStorage 的存储事件 StorageEvent-歪脖网</title>
+ <meta name="keywords" content="HTML, HTML5, , localStorage,sessionStorage,HTML5 Web Storage,StorageEvent" />
+ <meta name="description" content="Web Storage API内建了一套事件通知机制，当存储区域的内容发生改变（包括增加、修改、删除数据）时，就会自动触发 storage 事件，并把它发送给所有感兴趣的监听者。因此，如果需要跟踪存储区域的改变，就需要在关心存储区域内容的页面监听 storage 事件" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+ <link href="http://localhost/waibo/css/bootstrap.min.css" rel="stylesheet" />
+ <link href="http://localhost/waibo/css/bootstrap-responsive.min.css" rel="stylesheet" />
+ <link href="http://localhost/waibo/css/style.css" rel="stylesheet" />
+
+ <script src="http://localhost/waibo/js/jquery.js"></script>
+ <script src="http://localhost/waibo/js/script.js"></script>
+</head>
+
+<body>
+ <div class="topbar">
+ <div class="eyebrow hidden-phone">
+ <div class="container">
+ <ul class="pull-left">
+   <li><a href="http://www.waibo.wang/" target="_blank">歪脖网</a>欢迎您！</li>
+ </ul>
+ <ul class="pull-right">
+  <li><a href="http://www.waibo.wang/user/">登录</a></li>
+  <li class="b">|</li>
+  <li><a href="http://www.waibo.wang/user/register.asp" target="_blank">注册</a></li>
+ </div>
+ </div>
+
+<div class="topnav">
+<div class="container">
+  <div class="row-fluid mtz">
+  <div class="span3 topnav-logo">
+    <a href="http://www.waibo.wang/"><p class="logo-cn">歪脖网</p><p class="logo-en hidden-phone">waibo.wang</p></a>
+  </div>
+  <div class="span6 nav">
+   <ul>
+     <li ><a href="http://www.waibo.wang/">首页</a></li>
+     <li class="active"><a href="http://localhost/waibo/">教程</a></li>
+     <li ><a href="http://www.waibo.wang/wiki/">专栏</a></li>
+     <li ><a href="http://www.waibo.wang/demo/">素材</a></li>
+   </ul>
+  </div>
+  <div class="span3 topnav-form">
+  </div>
+ </div>
+ </div>
+ </div>
+ </div>
+
+
+ <div class="container">
+ <div class="row-fluid">
+ <aside class="span3">
+ <map id="oAll" name="oAll">
+ <area title="全部展开" shape="rect" coords="0,0,22,20"  href="javascript:tree.openAll();" onfocus="blur(this);">
+ <area title="全部收起" shape="rect" coords="22,0,44,20" href="javascript:tree.closeAll();" onfocus="blur(this);">
+ </map>
+ <header><span>目录</span><img src="http://localhost/waibo/img/map.png" usemap="#oAll"/></header>
+ <script src="http://localhost/waibo/js/dtree.js"></script>
+ <script src="http://localhost/waibo/bible/html5/js/tree.js"></script>
+ <script>
+    createTree("50204");
+ </script>
+ </aside>
+
+ <main class="span9">
+ <header><div class="name"><strong>HTML5宝典</strong>(第 1 版)</div><div class="section">5.2.4 Storage事件</div></header>
+ <div><label id="treeview"><input id="show" type="checkbox" checked /> 文档结构视图</label><span class="hit">阅读（ <span id="hit"></span> ）</div>
+ <article>
+<h1 class="hide-text">HTML基础</h1>
+<h1 class="hide-text">HTML元素</h1>
+<h1 class="hide-text">表单及应用</h1>
+<h1 class="hide-text">Canvas绘图基础</h1>
+<h1 class="hide-text">客户端存储</h1>
+<h2 class="hide-text">Cookie</h2>
+<h2 class="hide-text">Web Storage</h2>
+<h3 class="hide-text">Web Storage API</h3>
+<h3 class="hide-text">浏览器检测</h3>
+<h3 class="hide-text">概述</h3>
+<h3>Storage事件</h3>
+<p>在某些复杂情况下，如果多个页面都需要访问本地存储的数据，就需要在存储区域的内容发生改变时，能够通知相关的页面。</p>
+<p>Web Storage API内建了一套事件通知机制，当存储区域的内容发生改变（包括增加、修改、删除数据）时，就会自动触发 storage 事件，并把它发送给所有感兴趣的监听者。因此，如果需要跟踪存储区域的改变，就需要在关心存储区域内容的页面监听 storage 事件。</p>
+<p>所有支持 localStorage 的浏览器都支持 storage 事件，包括 IE8。但IE 8不支持 W3C 标准的 addEventListener。因此，为了监听 storage 事件，还需要检测浏览器支持哪种事件机制：</p>
+<pre class="prettyprint linenums">
+<code>if (window.addEventListener) {
+    window.addEventListener("storage", handleStorage, false);
+} else {
+    window.attachEvent("onstorage", handleStorage);
+}</code></pre>
+<p>handleStorage 回调函数接受一个 StorageEvent 参数，在IE中，StorageEvent对象保存在 window.event 里面。</p>
+<pre class="prettyprint linenums">
+<code>function handleStorage(e) {
+  if (!e) {
+    e = window.event;
+  }
+}</code></pre>
+<p>此时，变量 e 就是一个 StorageEvent 对象，这个对象有很多有用的属性。这些属性及含义见表 5‑2：</p>
+<table>
+  <caption>表 5‑2 StorageEvent对象的属性及含义</caption>
+	<thead>
+		<tr>
+			<th>属性</th>
+			<th>含义</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>key</td>
+			<td>设置或删除或修改的键。调用clear()时，则为null。</td>
+		</tr>
+		<tr>
+			<td>oldValue</td>
+			<td>改变之前的旧值。如果是新增元素，则为null。</td>
+		</tr>
+		<tr>
+			<td>newValue</td>
+			<td>改变之后的新值。如果是删除元素，则为null。</td>
+		</tr>
+		<tr>
+			<td>storageArea</td>
+			<td>该属性是一个引用，指向发生变化的sessionStorage或localStorage对象</td>
+		</tr>
+		<tr>
+			<td>url</td>
+			<td>触发这个改变事件的页面的URL</td>
+		</tr>
+	</tbody>
+</table>
+<p>得到这些属性之后，就可以做任何想做的事情。接下来，通过一个完整的实例，来演示一下 localStorage 的 storage 事件机制。</p>
+<p>假设有 save.html 和 show.html 两个页面，在 save 页面触发数据改变，在 show 页面通过弹窗将相关信息显示出来。</p>
+<p>在 save 页面中，有一个文本框和一个保存按钮，用户在文本框中输入数据后，点击保存按钮，就会调用 saveItem() 函数将用户的输入保存到本地存储中。代码如下：</p>
+<pre class="prettyprint linenums">
+<code>&lt;input type="text" id="data" placeholder="input date to save"&gt; 
+&lt;button onClick="saveItem()"&gt;保存&lt;/button&gt;</code></pre>
+<pre class="prettyprint linenums">
+<code>&lt;script&gt;
+function saveItem() {
+    var data = document.getElementById("data").value;   
+    localStorage.setItem("data", data);
+}
+&lt;/script&gt;</code></pre>
+<p>在 show 页面中，注册事件监听函数，来监听 storage 事件，因为它关心存储区域内容的变化：</p>
+<pre class="prettyprint linenums">
+<code>&lt;script&gt;
+if (window.addEventListener) {
+    window.addEventListener("storage", showStorage);
+} else {
+    window.attachEvent("onstorage", showStorage);
+}
+
+function showStorage(e) {
+    if (!e) {
+      e = window.event;
+    }
+    var str = "key: " + e.key +
+       "\nnewValue: " + e.newValue +
+       "\noldValue: " + e.oldValue +
+       "\nurl: " + e.url +
+       "\nstorageArea: " + e.storageArea;
+    
+  alert(str);      
+}
+&lt;/script&gt;</code></pre>
+<p>此时，如果 save 页面改变了存储区域的内容，就会自动触发 storage 事件，并把它发送给所有监听 storage 事件的页面。</p>
+<p>需要注意的是，只有在数据的内容确实发生改变的时候，才会触发 storage 事件。如果把一个值设置成一模一样的值，或删除一个根本就不存在的存储项，则不会触发 storage 事件。并且，storage 事件只会发送给同源、而且处于打开状态的其它页面，而不会发送给触发改变的页面本身（即 save.html）及处于关闭状态的页面。因此，应当从Web服务器上获取本实例的页面。</p>
+<p>现在，同时打开 save.html 和 show.html 页面，先在 save 页面输入 123 并保存，再输入 12345 保存。如图 5‑7 所示：</p>
+<figure><img src='http://localhost/waibo/bible/html5/img/5/storage_save.png' title='改变存储区域的内容' alt='改变存储区域的内容'><figcaption>图5-7  改变存储区域的内容</figcaption></figure>
+<p>第二次保存时，存储区域的内容发生改变，便触发了 storage 事件，show 页面就会收到 storage 事件，并调用showStorage() 函数来显示相关的信息。运行结果如图 5‑8 所示：</p>
+<figure><img src='http://localhost/waibo/bible/html5/img/5/storage_show.png' title='显示存储区域的信息' alt='显示存储区域的信息'><figcaption>图5-8  显示存储区域的信息</figcaption></figure>
+<section>
+<p class="note">说明：</p>
+<p>文档源是通过协议、主机名、端口三者来确定的，只有三者都完全相同，才认为网页是同源的。如，以下每个URL都是不同的文档源：</p>
+<p>http://www.waibo.wang                   // 协议：http，主机名：www.waibo.wang</p>
+<p>https://www.waibo.wang                 // 协议：https，不同协议</p>
+<p>http://bbs.waibo.wang                    // 不同主机名</p>
+<p>http://www.waibo.wang:8080          // 不同端口</p>
+</section>
+<div id="modalReward" class="modal hide fade modal-reward" tabindex="-1">
+<div class="modal-header">
+<button type="button" class="close" data-dismiss="modal">&times;</button>
+<h6>打赏</h6>
+</div>
+<div class="modal-body">
+<div class="tabbable reward-weipay">
+<ul class="nav nav-tabs">
+<li class="active"><a data-toggle="tab" href="#weipay1">￥1</a></li>
+<li><a data-toggle="tab" href="#weipay2">￥2</a></li>
+<li><a data-toggle="tab" href="#weipay5">￥5</a></li>
+<li><a data-toggle="tab" href="#weipay10">￥10</a></li>
+<li><a data-toggle="tab" href="#weipay20">￥20</a></li>
+<li><a data-toggle="tab" href="#weipayrand">其他金额</a></li>
+</ul>
+<div class="tab-content">
+<div class="tab-pane active" id="weipay1">
+<img src="http://localhost/waibo/img/weipay1.png" alt="￥1"><span>￥1</span>
+</div>
+<div class="tab-pane" id="weipay2">
+<img src="http://localhost/waibo/img/weipay2.png" alt="￥2"><span>￥2</span>
+</div>
+<div class="tab-pane" id="weipay5">
+<img src="http://localhost/waibo/img/weipay5.png" alt="￥5"><span>￥5</span>
+</div>
+<div class="tab-pane" id="weipay10">
+<img src="http://localhost/waibo/img/weipay10.png" alt="￥10"><span>￥10</span>
+</div>
+<div class="tab-pane" id="weipay20">
+<img src="http://localhost/waibo/img/weipay20.png" alt="￥20"><span>￥20</span>
+</div>
+<div class="tab-pane" id="weipayrand">
+<img src="http://localhost/waibo/img/weipayrand.png" alt="￥随意"><span>￥随意</span>
+</div>
+</div>
+</div>
+<div class="tabbable reward-alipay hide">
+<ul class="nav nav-tabs">
+<li class="active"><a data-toggle="tab" href="#alipay1">￥1</a></li>
+<li><a data-toggle="tab" href="#alipay2">￥2</a></li>
+<li><a data-toggle="tab" href="#alipay5">￥5</a></li>
+<li><a data-toggle="tab" href="#alipay10">￥10</a></li>
+<li><a data-toggle="tab" href="#alipay20">￥20</a></li>
+<li><a data-toggle="tab" href="#alipayrand">其他金额</a></li>
+</ul>
+<div class="tab-content">
+<div class="tab-pane active" id="alipay1">
+<img src="http://localhost/waibo/img/alipay1.png" alt="￥1"><span>￥1</span>
+</div>
+<div class="tab-pane" id="alipay2">
+<img src="http://localhost/waibo/img/alipay2.png" alt="￥2"><span>￥2</span>
+</div>
+<div class="tab-pane" id="alipay5">
+<img src="http://localhost/waibo/img/alipay5.png" alt="￥5"><span>￥5</span>
+</div>
+<div class="tab-pane" id="alipay10">
+<img src="http://localhost/waibo/img/alipay10.png" alt="￥10"><span>￥10</span>
+</div>
+<div class="tab-pane" id="alipay20">
+<img src="http://localhost/waibo/img/alipay20.png" alt="￥20"><span>￥20</span>
+</div>
+<div class="tab-pane" id="alipayrand">
+<img src="http://localhost/waibo/img/alipayrand.png" alt="￥随意"><span>￥随意</span>
+</div>
+</div>
+</div>
+<div class="reward-method">
+<label><input type="radio" name="method" value="weipay" checked><img src="http://localhost/waibo/img/weipay.png" alt="微信支付"></label>
+<label><input type="radio" name="method" value="alipay"><img src="http://localhost/waibo/img/alipay.png" alt="支付宝"></label>
+</div>
+</div>
+</div>
+<div class="reward">
+<p>如果本教程对您帮助很大，请随意打赏。您的支持，将鼓励我写出更好的教程！</p>
+<a data-toggle="modal" href="#modalReward">赏</a>
+</div>
+ <div class="page">
+   <a id="prev" href="http://localhost/waibo/bible/html5/html/5/5.2.3.html" title="&#8592; 键到上一节">« 上一节</a>&#8592; 键盘方向键翻页 &#8594;<a id="next" href="http://localhost/waibo/bible/html5/html/1/1.html" title="&#8594; 键到下一节">下一节 »</a>
+ </div>
+ </article>
+ </main>
+ </div>
+ </div>
+ <div class="floatPanel">
+	 <div class="ctrolPanel">
+		 <a href="javascript:;" class="arrow top" onClick="goTop()"><span>返回顶部</span></a>
+    <a href="#" class="phone"  data-target="#phone"><span>手机访问</span></a>
+    <a href="#" class="wechat" data-target="#wechat"><span>关注微信</span></a>
+    <a href="javascript:;" class="arrow bottom" onClick="goBottom()"><span>返回底部</span></a>
+  </div>
+	<div id="phone" class="popPanel">
+		<div class="popPanel-inner">
+			<img src="http://localhost/waibo/img/site.png" /><p class="slogan">扫码访问歪脖网</p><p>随时随地，想看就看</p>
+		</div>
+	</div>
+	<div id="wechat" class="popPanel">
+		<div class="popPanel-inner">
+			<img src="http://localhost/waibo/img/weixin.png" /><p class="slogan">关注歪脖网微信</p><p>分享 web 知识、交流 web 经验</p>
+		</div>
+	</div>
+</div>
+ <footer>
+   <p>Copyright&copy;2017&nbsp;&nbsp;www.waibo.wang All Rights Reserved</p>
+   <p>陕ICP备17020676号-1&nbsp;&nbsp;&nbsp;&nbsp;客服QQ：376601179&nbsp;&nbsp;&nbsp;&nbsp;邮箱：376601179#qq.com
+ </footer>
+ <script src="http://localhost/waibo/js/prettify.js"></script>
+ <script src="http://localhost/waibo/js/bootstrap.min.js"></script>
+ <script src="http://localhost/waibo/js/ckeditor_4.7.1/ckeditor.js"></script>
+ <script>
+ $(function() {
+    prettyPrint();
+    bible();
+    load();
+    rewardMethod();
+ });
+ </script>
+</body>
+</html>

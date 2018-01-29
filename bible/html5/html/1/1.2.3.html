@@ -1,0 +1,235 @@
+﻿<!DOCTYPE html>
+<html lang="zh">
+<head>
+ <meta charset="utf-8">
+ <title>HTML注释语法-歪脖网</title>
+ <meta name="keywords" content="HTML, HTML5, , HTML注释,HTML注释语法" />
+ <meta name="description" content="HTML中的注释有两种类型，一种是HTML代码注释，一种是IE条件注释" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+ <link href="http://localhost/waibo/css/bootstrap.min.css" rel="stylesheet" />
+ <link href="http://localhost/waibo/css/bootstrap-responsive.min.css" rel="stylesheet" />
+ <link href="http://localhost/waibo/css/style.css" rel="stylesheet" />
+
+ <script src="http://localhost/waibo/js/jquery.js"></script>
+ <script src="http://localhost/waibo/js/script.js"></script>
+</head>
+
+<body>
+ <div class="topbar">
+ <div class="eyebrow hidden-phone">
+ <div class="container">
+ <ul class="pull-left">
+   <li><a href="http://www.waibo.wang/" target="_blank">歪脖网</a>欢迎您！</li>
+ </ul>
+ <ul class="pull-right">
+  <li><a href="http://www.waibo.wang/user/">登录</a></li>
+  <li class="b">|</li>
+  <li><a href="http://www.waibo.wang/user/register.asp" target="_blank">注册</a></li>
+ </div>
+ </div>
+
+<div class="topnav">
+<div class="container">
+  <div class="row-fluid mtz">
+  <div class="span3 topnav-logo">
+    <a href="http://www.waibo.wang/"><p class="logo-cn">歪脖网</p><p class="logo-en hidden-phone">waibo.wang</p></a>
+  </div>
+  <div class="span6 nav">
+   <ul>
+     <li ><a href="http://www.waibo.wang/">首页</a></li>
+     <li class="active"><a href="http://localhost/waibo/">教程</a></li>
+     <li ><a href="http://www.waibo.wang/wiki/">专栏</a></li>
+     <li ><a href="http://www.waibo.wang/demo/">素材</a></li>
+   </ul>
+  </div>
+  <div class="span3 topnav-form">
+  </div>
+ </div>
+ </div>
+ </div>
+ </div>
+
+
+ <div class="container">
+ <div class="row-fluid">
+ <aside class="span3">
+ <map id="oAll" name="oAll">
+ <area title="全部展开" shape="rect" coords="0,0,22,20"  href="javascript:tree.openAll();" onfocus="blur(this);">
+ <area title="全部收起" shape="rect" coords="22,0,44,20" href="javascript:tree.closeAll();" onfocus="blur(this);">
+ </map>
+ <header><span>目录</span><img src="http://localhost/waibo/img/map.png" usemap="#oAll"/></header>
+ <script src="http://localhost/waibo/js/dtree.js"></script>
+ <script src="http://localhost/waibo/bible/html5/js/tree.js"></script>
+ <script>
+    createTree("10203");
+ </script>
+ </aside>
+
+ <main class="span9">
+ <header><div class="name"><strong>HTML5宝典</strong>(第 1 版)</div><div class="section">1.2.3 HTML注释</div></header>
+ <div><label id="treeview"><input id="show" type="checkbox" checked /> 文档结构视图</label><span class="hit">阅读（ <span id="hit"></span> ）</div>
+ <article>
+<h1 class="hide-text">HTML基础</h1>
+<h2 class="hide-text">认识HTML</h2>
+<h2 class="hide-text">HTML基本语法</h2>
+<h3 class="hide-text">HTML属性</h3>
+<h3 class="hide-text">HTML元素</h3>
+<h3>HTML注释</h3>
+<p>在HTML代码中，&lt;!-- 和 --&gt;标签之间的文本是文档的注释，注释的内容不会被显示在浏览器页面上。只有在文本编辑器中，或浏览器的&ldquo;查看源代码&rdquo;选项打开文档时，才能看到注释。</p>
+<p>HTML中的注释有两种类型，一种是HTML代码注释，一种是IE条件注释。</p>
+<p>1、HTML代码注释</p>
+<p>在一个大文档中，通过注释来标明区块的开始合结束的位置，可以方便查找，也可以通过注释来阻止某些内容显示。</p>
+<p>当编写了大量代码时，对关键代码进行注释是一个良好的习惯，通过注释来说明某段代码的意图，有助于提醒自己或需要在这个网站上工作的其他人，了解这段代码的作用。</p>
+<p>使用注释来隐藏脚本，也是一个良好的习惯，这样一来，不支持脚本的浏览器就不会把脚本作为纯文本显示出来。如：</p>
+<pre class="prettyprint linenums">
+<code>&lt;script type="text/javascript"&gt;
+&lt;!--
+function displayMsg() {
+    alert("Hello World!")
+}
+//--&gt;
+&lt;/script&gt;</code></pre>
+<p>2、IE条件注释</p>
+<p>IE条件注释（Conditional comments），是IE浏览器对HTML代码注释的一种扩展，它是一种非标准逻辑语句，可以灵活的为不同版本的IE导入不同html元素，如样式表、html标签等。</p>
+<p>条件注释在IE5首次出现，并得到后续版本的支持，其语法就是一个普通的HTML注释，IE以外的浏览器会把它作为注释而忽略。因此，它能通过W3C的校验，也不会对其他浏览器造成影响。</p>
+<p>条件注释的功能非常强大，可以进行 if 条件判断，并根据判断结果是true 或 false，来决定是否要解析条件注释里的内容。</p>
+<p>条件判断以 &lt;!--[if 条件]&gt; 开始，以&lt;![endif]--&gt;结束，可以根据IE、非IE进行判断，还可以根据IE的版本号进行判断，版本号可以精确到小数点后4位。如：</p>
+<pre class="prettyprint linenums">
+<code>&lt;!--[if IE]&gt; &lt;![endif]--&gt;      /* 所有IE，无论哪个版本 */
+&lt;!--[if IE 6]&gt; &lt;![endif]--&gt;    /* 如果IE版本是6 */</code></pre>
+<p>条件判断中，还支持大于（gt: greater than）、小于（lt: less than）、大于等于（gte: greater than or equal）、小于等于（lte: less than or equal）、或（|）、与（&amp;）、非（!）、括号。如：</p>
+<pre class="prettyprint linenums">
+<code>&lt;!--[if gt IE 6]&gt; &lt;![endif]--&gt;             /* 如果IE版本大于6 */
+&lt;!-- [if lte IE 9]&gt; &lt;![endif]--&gt;            / * 如果IE版本小于等于9 * /
+&lt;!--[if IE 6 | IE 7]&gt; &lt;![endif]--&gt;          /* 如果IE版本是6或7 */
+&lt;!--[if ! IE 5.5]&gt; &lt;![endif]--&gt;             /* 如果IE版本不是5.5 */
+&lt;!-- [if (gt IE 6) &amp; (lte IE 9)]&gt; &lt;![endif]--&gt;  / * 如果IE版本大于6，且小于等于9 * /</code></pre>
+<p>借助条件注释，可以解决很多IE兼容性问题。如，IE9以下的版本不支持HTML5的新元素 header、nav、aside、footer等，而在Internet上存在大量的 html5shiv脚本可以解决该问题。只需下载相应的脚本，并在页面的头部，通过IE条件注释，让IE9以下的版本加载该脚本，就可以让这些老浏览器支持HTML5的新元素。</p>
+<pre class="prettyprint linenums">
+<code>&lt;!--[if lt IE 9]&gt;
+&lt;script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"&gt;&lt;/script&gt;
+&lt;![endif]--&gt;</code></pre>
+<p>也可以使用同样的方法，来解决CSS的兼容性问题。如，IE6不支持一些CSS新特性，就可以专门针对IE6编写CSS文件，并只让IE6加载它：</p>
+<pre class="prettyprint linenums">
+<code>&lt;!--[if IE 6]&gt;
+&lt;link rel="stylesheet" href="css/ie6.css" /&gt;
+&lt;![endif]--&gt;</code></pre>
+<p>一个好消息是，从IE10版本开始，不再支持条件注释。这标志着IE从此走向成熟、走向标准，Web设计师再也不必为IE的兼容性问题所困扰了。</p>
+<div id="modalReward" class="modal hide fade modal-reward" tabindex="-1">
+<div class="modal-header">
+<button type="button" class="close" data-dismiss="modal">&times;</button>
+<h6>打赏</h6>
+</div>
+<div class="modal-body">
+<div class="tabbable reward-weipay">
+<ul class="nav nav-tabs">
+<li class="active"><a data-toggle="tab" href="#weipay1">￥1</a></li>
+<li><a data-toggle="tab" href="#weipay2">￥2</a></li>
+<li><a data-toggle="tab" href="#weipay5">￥5</a></li>
+<li><a data-toggle="tab" href="#weipay10">￥10</a></li>
+<li><a data-toggle="tab" href="#weipay20">￥20</a></li>
+<li><a data-toggle="tab" href="#weipayrand">其他金额</a></li>
+</ul>
+<div class="tab-content">
+<div class="tab-pane active" id="weipay1">
+<img src="http://localhost/waibo/img/weipay1.png" alt="￥1"><span>￥1</span>
+</div>
+<div class="tab-pane" id="weipay2">
+<img src="http://localhost/waibo/img/weipay2.png" alt="￥2"><span>￥2</span>
+</div>
+<div class="tab-pane" id="weipay5">
+<img src="http://localhost/waibo/img/weipay5.png" alt="￥5"><span>￥5</span>
+</div>
+<div class="tab-pane" id="weipay10">
+<img src="http://localhost/waibo/img/weipay10.png" alt="￥10"><span>￥10</span>
+</div>
+<div class="tab-pane" id="weipay20">
+<img src="http://localhost/waibo/img/weipay20.png" alt="￥20"><span>￥20</span>
+</div>
+<div class="tab-pane" id="weipayrand">
+<img src="http://localhost/waibo/img/weipayrand.png" alt="￥随意"><span>￥随意</span>
+</div>
+</div>
+</div>
+<div class="tabbable reward-alipay hide">
+<ul class="nav nav-tabs">
+<li class="active"><a data-toggle="tab" href="#alipay1">￥1</a></li>
+<li><a data-toggle="tab" href="#alipay2">￥2</a></li>
+<li><a data-toggle="tab" href="#alipay5">￥5</a></li>
+<li><a data-toggle="tab" href="#alipay10">￥10</a></li>
+<li><a data-toggle="tab" href="#alipay20">￥20</a></li>
+<li><a data-toggle="tab" href="#alipayrand">其他金额</a></li>
+</ul>
+<div class="tab-content">
+<div class="tab-pane active" id="alipay1">
+<img src="http://localhost/waibo/img/alipay1.png" alt="￥1"><span>￥1</span>
+</div>
+<div class="tab-pane" id="alipay2">
+<img src="http://localhost/waibo/img/alipay2.png" alt="￥2"><span>￥2</span>
+</div>
+<div class="tab-pane" id="alipay5">
+<img src="http://localhost/waibo/img/alipay5.png" alt="￥5"><span>￥5</span>
+</div>
+<div class="tab-pane" id="alipay10">
+<img src="http://localhost/waibo/img/alipay10.png" alt="￥10"><span>￥10</span>
+</div>
+<div class="tab-pane" id="alipay20">
+<img src="http://localhost/waibo/img/alipay20.png" alt="￥20"><span>￥20</span>
+</div>
+<div class="tab-pane" id="alipayrand">
+<img src="http://localhost/waibo/img/alipayrand.png" alt="￥随意"><span>￥随意</span>
+</div>
+</div>
+</div>
+<div class="reward-method">
+<label><input type="radio" name="method" value="weipay" checked><img src="http://localhost/waibo/img/weipay.png" alt="微信支付"></label>
+<label><input type="radio" name="method" value="alipay"><img src="http://localhost/waibo/img/alipay.png" alt="支付宝"></label>
+</div>
+</div>
+</div>
+<div class="reward">
+<p>如果本教程对您帮助很大，请随意打赏。您的支持，将鼓励我写出更好的教程！</p>
+<a data-toggle="modal" href="#modalReward">赏</a>
+</div>
+ <div class="page">
+   <a id="prev" href="http://localhost/waibo/bible/html5/html/1/1.2.2.html" title="&#8592; 键到上一节">« 上一节</a>&#8592; 键盘方向键翻页 &#8594;<a id="next" href="http://localhost/waibo/bible/html5/html/1/1.3.1.html" title="&#8594; 键到下一节">下一节 »</a>
+ </div>
+ </article>
+ </main>
+ </div>
+ </div>
+ <div class="floatPanel">
+	 <div class="ctrolPanel">
+		 <a href="javascript:;" class="arrow top" onClick="goTop()"><span>返回顶部</span></a>
+    <a href="#" class="phone"  data-target="#phone"><span>手机访问</span></a>
+    <a href="#" class="wechat" data-target="#wechat"><span>关注微信</span></a>
+    <a href="javascript:;" class="arrow bottom" onClick="goBottom()"><span>返回底部</span></a>
+  </div>
+	<div id="phone" class="popPanel">
+		<div class="popPanel-inner">
+			<img src="http://localhost/waibo/img/site.png" /><p class="slogan">扫码访问歪脖网</p><p>随时随地，想看就看</p>
+		</div>
+	</div>
+	<div id="wechat" class="popPanel">
+		<div class="popPanel-inner">
+			<img src="http://localhost/waibo/img/weixin.png" /><p class="slogan">关注歪脖网微信</p><p>分享 web 知识、交流 web 经验</p>
+		</div>
+	</div>
+</div>
+ <footer>
+   <p>Copyright&copy;2017&nbsp;&nbsp;www.waibo.wang All Rights Reserved</p>
+   <p>陕ICP备17020676号-1&nbsp;&nbsp;&nbsp;&nbsp;客服QQ：376601179&nbsp;&nbsp;&nbsp;&nbsp;邮箱：376601179#qq.com
+ </footer>
+ <script src="http://localhost/waibo/js/prettify.js"></script>
+ <script src="http://localhost/waibo/js/bootstrap.min.js"></script>
+ <script src="http://localhost/waibo/js/ckeditor_4.7.1/ckeditor.js"></script>
+ <script>
+ $(function() {
+    prettyPrint();
+    bible();
+    load();
+    rewardMethod();
+ });
+ </script>
+</body>
+</html>

@@ -1,0 +1,362 @@
+﻿<!DOCTYPE html>
+<html lang="zh">
+<head>
+ <meta charset="utf-8">
+ <title>HTML属性-歪脖网</title>
+ <meta name="keywords" content="HTML, HTML5, , HTML属性,class属性,id属性,style属性,title属性,accesskey属性,tabIndex属性,dir属性,contenteditable属性,hidden属性,lang属性,translate属性,spellcheck属性,data-*属性" />
+ <meta name="description" content="HTML属性包含了元素的额外信息，它总是出现在HTML开始标签中，并且，通常以名/值对的形式出现（空属性除外，它可以只有属性没有值）。属性的名称和值是大小写无关的，推荐使用小写" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+ <link href="http://localhost/waibo/css/bootstrap.min.css" rel="stylesheet" />
+ <link href="http://localhost/waibo/css/bootstrap-responsive.min.css" rel="stylesheet" />
+ <link href="http://localhost/waibo/css/style.css" rel="stylesheet" />
+
+ <script src="http://localhost/waibo/js/jquery.js"></script>
+ <script src="http://localhost/waibo/js/script.js"></script>
+</head>
+
+<body>
+ <div class="topbar">
+ <div class="eyebrow hidden-phone">
+ <div class="container">
+ <ul class="pull-left">
+   <li><a href="http://www.waibo.wang/" target="_blank">歪脖网</a>欢迎您！</li>
+ </ul>
+ <ul class="pull-right">
+  <li><a href="http://www.waibo.wang/user/">登录</a></li>
+  <li class="b">|</li>
+  <li><a href="http://www.waibo.wang/user/register.asp" target="_blank">注册</a></li>
+ </div>
+ </div>
+
+<div class="topnav">
+<div class="container">
+  <div class="row-fluid mtz">
+  <div class="span3 topnav-logo">
+    <a href="http://www.waibo.wang/"><p class="logo-cn">歪脖网</p><p class="logo-en hidden-phone">waibo.wang</p></a>
+  </div>
+  <div class="span6 nav">
+   <ul>
+     <li ><a href="http://www.waibo.wang/">首页</a></li>
+     <li class="active"><a href="http://localhost/waibo/">教程</a></li>
+     <li ><a href="http://www.waibo.wang/wiki/">专栏</a></li>
+     <li ><a href="http://www.waibo.wang/demo/">素材</a></li>
+   </ul>
+  </div>
+  <div class="span3 topnav-form">
+  </div>
+ </div>
+ </div>
+ </div>
+ </div>
+
+
+ <div class="container">
+ <div class="row-fluid">
+ <aside class="span3">
+ <map id="oAll" name="oAll">
+ <area title="全部展开" shape="rect" coords="0,0,22,20"  href="javascript:tree.openAll();" onfocus="blur(this);">
+ <area title="全部收起" shape="rect" coords="22,0,44,20" href="javascript:tree.closeAll();" onfocus="blur(this);">
+ </map>
+ <header><span>目录</span><img src="http://localhost/waibo/img/map.png" usemap="#oAll"/></header>
+ <script src="http://localhost/waibo/js/dtree.js"></script>
+ <script src="http://localhost/waibo/bible/html5/js/tree.js"></script>
+ <script>
+    createTree("10202");
+ </script>
+ </aside>
+
+ <main class="span9">
+ <header><div class="name"><strong>HTML5宝典</strong>(第 1 版)</div><div class="section">1.2.2 HTML属性</div></header>
+ <div><label id="treeview"><input id="show" type="checkbox" checked /> 文档结构视图</label><span class="hit">阅读（ <span id="hit"></span> ）</div>
+ <article>
+<h1 class="hide-text">HTML基础</h1>
+<h2 class="hide-text">认识HTML</h2>
+<h2 class="hide-text">HTML基本语法</h2>
+<h3 class="hide-text">HTML元素</h3>
+<h3>HTML属性</h3>
+<p>HTML属性包含了元素的额外信息，它总是出现在HTML开始标签中，并且，通常以名/值对的形式出现（空属性除外，它可以只有属性没有值）。属性的名称和值是大小写无关的，推荐使用小写。</p>
+<p>HTML属性的值有以下四种表现形式：</p>
+<p>1）空值：只有属性名称，隐含的意思是属性的值为布尔类型。在HTML5中，一切化繁为简，对于布尔型的属性，可以不提供属性的值。如果一定要提供一个值，值就是属性名本身。如：</p>
+<pre class="prettyprint linenums">
+<code>&lt;input type="submit" disabled="disabled"&gt;</code></pre>
+<p>就可以直接写成：</p>
+<pre class="prettyprint linenums">
+<code>&lt;input type="submit" disabled&gt;</code></pre>
+<p>2）无引号值：如果属性的值中不包含任何空格字符、单引号、双引号、等号、大于号、小于号，也不为空，就可以省略属性值两边的引号。如，&lt;input type=submit value=submit&gt;。</p>
+<p>3）单引号值：如果属性的值中不包含任何单引号，也不为空，就可以把属性值放在单引号中。如，&lt;input type=&#39;submit&#39; value=&#39;submit&#39;&gt;。</p>
+<p>4）双引号值：如果属性的值中不包含任何双引号，也不为空，就可以把属性值放在双引号中。如，&lt;input type=&quot;submit&quot; value=&quot;submit&quot;&gt;。</p>
+<p>大多数的HTML元素都拥有多个属性，多个属性中，如果省略某个属性，则该属性使用默认值。在定义多个属性时，各属性之间没有先后次序，但属性的名/值对之间必须用空格分开。如，a 元素就拥有多个属性，每个属性都有各自的值。如图 1‑5 所示：</p>
+<figure><img src='http://localhost/waibo/bible/html5/img/1/attribute1.png' title='html属性' alt='html属性'><figcaption>图1-5  html属性</figcaption></figure>
+<p>有的属性可以接受任何值，而有的属性则只能接受预定义的值（也称作枚举值），即必须从一个标准列表中选择一个值。如，link 元素的 href 属性就可以接受任意值，而 media 属性却只能设置为 all、screen、print 等预定义值中的一个。如图 1‑6 所示：</p>
+<figure><img src='http://localhost/waibo/bible/html5/img/1/attribute2.png' title='html属性取值' alt='html属性取值'><figcaption>图1-6  html属性取值</figcaption></figure>
+<p>HTML的属性中，有些属性只能用于特定元素，而有些属性可以用于任何元素。可用于任何元素的属性被称作全局属性。</p>
+<p>HTML4中，提供了 6 个全局属性，它们分别是 class、id、style、title、accesskey、tabIndex、dir，到了HTML5，又新增了 contenteditable、hidden、lang、spellcheck、translate、data-* 这6 个全局属性：</p>
+<h4 id="class属性">class属性</h4>
+<p>class属性用来规定元素所使用的CSS类名（class name），该属性对 html、head、title、style、base、meta、param、script等这些元素无效。</p>
+<p>一个元素的 class属性值中可以包含多个类名，类名之间用空格分隔，表示为该元素应用多个类选择器合并后的样式。</p>
+<p>当元素应用多个类的样式时，类名不分先后顺序，元素的最终样式就是所有这些样式层叠后的效果。如：</p>
+<pre class="prettyprint linenums">
+<code>.red { color: red; }
+.bold { font-weight: bold; }</code></pre>
+<pre class="prettyprint linenums">
+<code>&lt;p class = "red bold"&gt;本段落的文本将显示为红色、粗体。&lt;/p&gt;</code></pre>
+<p>这个p元素同时应用了red和bold两个类选择器的样式，则段落文本为红色、粗体显示。运行结果如图 1‑7 所示：</p>
+<figure><img src='http://localhost/waibo/bible/html5/img/1/attribute_class.png' title='class属性' alt='class属性'><figcaption>图1-7  class属性</figcaption></figure>
+<h4 id="id属性">id属性</h4>
+<p>id属性用来规定一个元素的 id，在一个 HTML 文档中，id必须是唯一的。定义 id属性后，就可以通过 CSS 为带有指定 id 的元素添加样式，也可以通过 Javascript 来操作元素。假设页面上有一个段落：</p>
+<pre class="prettyprint linenums">
+<code>&lt;p id="paragraph"&gt;这里是段落的内容！&lt;/p&gt;</code></pre>
+<p>上述段落元素的 id属性值为 paragraph，就可以通过CSS的 id 选择器，为段落元素添加样式。如：</p>
+<pre class="prettyprint linenums">
+<code>#paragraph {
+    color: red;
+}</code></pre>
+<p>上述代码就表示把段落文本的颜色设置为红色。运行结果如图 1‑8 所示：</p>
+<figure><img src='http://localhost/waibo/bible/html5/img/1/attribute_id1.png' title='通过 id 选择器定义样式' alt='通过 id 选择器定义样式'><figcaption>图1-8  通过 id 选择器定义样式</figcaption></figure>
+<p>通过 Javascript，可以对元素进行很多操作，如改变元素的内容、为元素添加样式等。可以为元素注册某事件，当事件发生时，对元素进行相应的操作。</p>
+<p>如，为上述段落注册 onclick 事件，当用户在段落上点击时，调用 Javascript 函数来改变段落的内容：</p>
+<pre class="prettyprint linenums">
+<code>&lt;p id="paragraph" onclick="changeText()"&gt;这里是段落的内容！&lt;/p&gt;</code></pre>
+<p>HTML文档中的任何一个元素，都会生成一个DOM对象。通过Javascript 操作元素时，首先通过 document.getElementById() 方法获取对象的句柄，再通过 Javascript 的属性或方法来操作元素。如，通过innerHTML属性，就可以改变元素的内容。请将以下代码插入到HTML文档的头部：</p>
+<pre class="prettyprint linenums">
+<code>&lt;script&gt;
+function changeText() {
+    document.getElementById("paragraph").innerHTML = "Hello World!";
+}
+&lt;/script&gt;</code></pre>
+<p>上述代码就表示，当在段落上点击时，将段落的内容由&ldquo;这里是段落的内容！&rdquo;，动态修改为 &quot;Hello World!&quot;。运行结果如图 1‑9 所示：</p>
+<figure><img src='http://localhost/waibo/bible/html5/img/1/attribute_id2.png' title='通过 id 改变元素内容' alt='通过 id 改变元素内容'><figcaption>图1-9  通过 id 改变元素内容</figcaption></figure>
+<h4 id="style属性">style属性</h4>
+<p>style属性用来规定元素的内联样式。如：</p>
+<pre class="prettyprint linenums">
+<code>&lt;p style="color: red;font-weight: bold;"&gt;本段落的文本将显示为红色、粗体。&lt;/p&gt;</code></pre>
+<p>上述代码通过 p 元素的 style属性，为段落元素定义了一个内联样式，让段落中的文本以红色、粗体显示。</p>
+<p>由于 style属性定义的样式优先级最高，它将覆盖任何在 &lt;style&gt; 标签或外部样式表中定义的全局样式。</p>
+<h4 id="title属性">title属性</h4>
+<p>title属性用来规定元素的额外信息，当鼠标移到元素上时，会显示一个文本提示信息，信息的内容是 title属性的值。如：</p>
+<pre class="prettyprint linenums">
+<code>&lt;p title="我是测试文本"&gt;测试文本&lt;/a&gt;</code></pre>
+<p>上述代码就表示，当鼠标移到段落上时，会显示&quot;我是测试文本&quot;的提示信息。运行结果如图 1‑10 所示：</p>
+<figure><img src='http://localhost/waibo/bible/html5/img/1/attribute_title.png' title='title属性' alt='title属性'><figcaption>图1-10  title属性</figcaption></figure>
+<p>为链接，特别是图片链接添加 title属性，当把鼠标移动到链接上时，就会显示 title属性的值，可以达到补充说明或者提示的效果。</p>
+<p>另外，由于搜素引擎无法直接读取图像的信息，而 title属性可以为它提供文字信息，这对搜索引擎比较友好，是搜索引擎优化的重要内容。因此，强烈建议为所有的链接元素添加 title属性。</p>
+<h4 id="accesskey属性"></h4>
+<p>accesskey属性用来规定激活元素的快捷键，定义accesskey属性后，就可以通过快捷键来激活元素，使它获得焦点。</p>
+<p>支持 accesskey属性的元素有 a、area、button、input、abel、legend、textarea。如，以下代码为链接元素定义的快捷键是字母 w：</p>
+<pre class="prettyprint linenums">
+<code>&lt;a href=&quot;http://www.waibo.wang/&quot; accesskey=&quot;w&quot;&gt;歪脖网&lt;/a&gt;</p></code></pre>
+<p>不幸的是，不同浏览的快捷键和访问方式却不完全相同。IE和 Chrome 浏览器的快捷键是 ALT+w，FireFox 浏览器是 Alt+Shift+w。IE要先使用快捷键使链接获得焦点，再按回车，来跳转到链接指定的地址；而 FireFox 和 Chrome 浏览器，仅仅使用快捷键便能自动跳转链接指定的地址。</p>
+<p>使用 accesskey属性能够增加应用的易用性，特别是对那些使用键盘的用户。因此，为菜单和导航定义 accesskey属性，是非常不错的选择。</p>
+<h4 id="tabIndex属性">tabIndex属性</h4>
+<p>当页面上有很多元素的时候，就可以通过Tab键让元素获得焦点，并在元素间进行移动。默认情况下，可以通过Tab键访问的元素有 a、area、button、input、object、select、textarea，其他元素不能通过Tab键进行访问。</p>
+<p>通过 tabIndex属性，任何元素（包括那些不能获得焦点的元素，如 &lt;span&gt; 或 &lt;div&gt;）都能被包含在Tab键的序列中，可以极大提高应用的易用性。</p>
+<p>tabIndex属性的值大于0的元素，将按属性值从小到大设置Tab键顺序。使用Tab键访问元素时，tabIndex属性值最小的元素最先获得焦点。如果两个元素具有相同的 tabIndex属性值，则以它们在源码中出现的先后顺序，前面的元素先获得焦点。并且，tabIndex属性的值可以不是从 1 开始，也可以不连续，浏览器会自动进行排序。</p>
+<p>tabIndex属性值等于 0的元素，将根据源代码（或默认页面行为）的顺序设置Tab键顺序，并且排在所有 tabIndex属性值大于 0 的元素之后。</p>
+<p>tabIndex属性值为负值（如，tabIndex = &quot;-1&quot;）的元素，将变成可由代码获得焦点，但它本身并不在Tab键序列中。也就是说，在按下Tab键时，该元素不能获得焦点，但可以通过代码让它获得焦点。</p>
+<p>假设页面上有三个链接元素，它们的 tabIndex属性值依次是5、1、8：</p>
+<pre class="prettyprint linenums">
+<code>&lt;a href="#" tabIndex ="5"&gt;商品分类&lt;/a&gt;
+&lt;a href="#" tabIndex ="1"&gt;联系我们&lt;/a&gt;
+&lt;a href="#" tabIndex ="8"&gt;关于我们&lt;/a&gt;</code></pre>
+<p>在通过Tab键遍历这些链接元素时，它们的访问顺序依次是联系我们-&gt;商品分类-&gt;关于我们，而不是源码中定义的顺序。</p>
+<h4 id="dir属性">dir属性</h4>
+<p>dir属性用来规定元素内容的文本书写方向，该属性对 base、br、frame、frameset、hr、iframe、param、script 等这些元素无效。</p>
+<p>dir属性的取值为 ltr | rtl，默认值为 ltr。ltr表示从左向右的文本书写方向，而 rtl 表示从右向左的文本书写方向。</p>
+<p>假设页面上有两个段落，第一个段落的 dir属性设置为 ltr，第二个段落的 dir属性设置为 rtl：</p>
+<pre class="prettyprint linenums">
+<code>&lt;p dir="ltr"&gt;这段落文本从左到右书写。&lt;/p&gt;
+&lt;p dir="rtl"&gt;这段落文本从右到左书写。&lt;/p&gt;</code></pre>
+<p>上述代码的运行结果如图 1‑11 所示：</p>
+<figure><img src='http://localhost/waibo/bible/html5/img/1/attribute_dir.png' title='文本书写方向' alt='文本书写方向'><figcaption>图1-11  文本书写方向</figcaption></figure>
+<h4 id="contenteditable属性">contenteditable属性</h4>
+<p>在HTML4中，只有 type 属性值为 text、password、file 的 input 元素，以及 textarea 元素的内容是可编辑的。</p>
+<p>到了HTML5，通过 contenteditable属性，可以让任何元素的内容可编辑。如果一个元素没有显式设置 contenteditable属性，它将从其父元素继承该属性的值。</p>
+<p>contenteditable属性是布尔属性，取值为 true | false，默认值为false。true 表示元素的内容可编辑，false 表示元素的内容不可编辑。</p>
+<p>如果一个元素的内容被设置为可编辑，当用户用鼠标单击该元素后，浏览器会向用户提供一个插入符号，提示用户该元素的内容允许编辑，用户就可以编辑该元素的内容。</p>
+<p>假设页面上有一个段落，它的contenteditable属性被设置为 true，则用户可以编辑段落中的内容：</p>
+<pre class="prettyprint linenums">
+<code>&lt;p contenteditable="true"&gt;这是一个可编辑的段落。&lt;/p&gt;</code></pre>
+<p>上述代码的运行结果如图 1‑12 所示：</p>
+<figure><img src='http://localhost/waibo/bible/html5/img/1/attribute_contenteditable.png' title='元素可编辑' alt='元素可编辑'><figcaption>图1-12  元素可编辑</figcaption></figure>
+<p>在HTML5中，一切化繁为简，对于任何布尔属性，如果只提供属性名，就等价于把该属性设置为 true，如果没有提供属性名，就等价于把该属性设置为 false。因此，上述代码也可以写成：</p>
+<pre class="prettyprint linenums">
+<code>&lt;p contenteditable&gt;这是一个可编辑的段落。&lt;/p&gt;</code></pre>
+<p>非常有趣的是，如果在现代浏览器地址栏输入data:text/html, &lt;html contenteditable&gt;，即可打开一个简单的在线文本编辑器。是不是很神奇呀！</p>
+<h4 id="hidden属性">hidden属性</h4>
+<p>hidden属性用来规定元素是否在页面上显示出来。该属性是布尔属性，取值为 true | false，默认值为true。true 表示显示元素，false 表示不显示元素。</p>
+<p>假设整个页面上只有一个段落，它被设置了 hidden属性：</p>
+<pre class="prettyprint linenums">
+<code>&lt;p hidden&gt;You can&#39;t see me!&lt;/p&gt;</code></pre>
+<p>当一个元素设置了hidden属性后，它的表现跟CSS的 display: none 作用非常相似，元素将会消失，而且不占用任何页面空间。因此，运行上述代码，页面空空如也，看不到任何内容。</p>
+<h4 id="lang属性">lang属性</h4>
+<p>lang属性用来规定元素内容所使用语言，其值为语言标记。语言标记用于帮助识别说话、书写、或其他方式进行交流时的语言。格式为：</p>
+<pre class="prettyprint linenums">
+<code>langtag = language
+         ["-" script]
+         ["-" region]
+         *("-" variant)
+         *("-" extension)
+         ["-" privateuse]</code></pre>
+<p>由于 extension 和 privateuse 很少有人使用，这里只对比较常用的language、script、region、variant 进行简单介绍：</p>
+<p>1）language表示语言的文字种类，该属性对 base、br、frame、frameset、hr、iframe、param、script 等这些元素无效。语言的文字种类包含主要语言文字种类和扩展语言文字种类两部分内容，两者之间通过 &quot;-&quot; 连接起来。主要语言文字种类可以是 2 个字母，如zh（中文）、en（英文），也可以是 3 个字母，如cmn（普通话或國語发音）、yue（粤语发音）；扩展语言文字种类必须为3个字母，如cmn、yue、lzh（Literary Chinese，文言文）。</p>
+<p>2）script表示文本的书写格式，必须是4个字母，如Hans（s 表示 simplified，即简体中文）、Hant（t 表示 traditional&nbsp;，即繁体中文）。</p>
+<p>3）region表示语言的国家地区，可以为2个字母，如CN（中国）、HK（香港），也可以为3个字母。</p>
+<p>4）variant表示方言，它必须在IANA注册后，才能使用。</p>
+<p>以下代码定义了三个段落，第一个段落的语言为文言文的简体中文，第二个段落的语言为文言文的繁体中文，第三个段落的语言为简体中文的大陆语言（非香港语言）：</p>
+<pre class="prettyprint linenums">
+<code>&lt;p lang="zh-lzh-Hans"&gt;驴不胜怒，蹄之&lt;/p&gt;
+&lt;p lang="zh-lzh-Hant"&gt;驢不勝怒，蹄之&lt;/p&gt;
+&lt;p lang="zh-Hans-CN"&gt;驴非常愤怒，用蹄子踢它&lt;/p&gt;</code></pre>
+<p>上述代码的运行结果如图 1‑13 所示：</p>
+<figure><img src='http://localhost/waibo/bible/html5/img/1/attribute_lang.png' title='元素内容的语言' alt='元素内容的语言'><figcaption>图1-13  元素内容的语言</figcaption></figure>
+<p>从上图可以看出，浏览器渲在染页面时，并不关心 lang属性，无论 lang属性的值是什么，它都会将元素中的文本内容原封不动显示出来。</p>
+<p>然而，搜索引擎、语音合成工具、翻译工具等，却要通过 lang属性来确定内容所使用的语言。因此，强烈建议为 html 根元素或某些特定语言的元素指定 lang属性，来为文档或相应元素设置正确的语言，这将有助于搜索引擎根据语言搜索、或语音合成工具根据语言确定发音、或翻译工具根据语言确定遵守的规则等等。</p>
+<h4 id="translate属性">translate属性</h4>
+<p>translate属性规定是否应该翻译元素的内容，目前为止，所有主流浏览器都无法正确地支持 translate属性。</p>
+<h4 id="spellcheck属性">spellcheck属性</h4>
+<p>spellcheck属性规定是否对元素的文本内容进行拼写或语法检查。只有当元素在可编辑状态时，sepllcheck属性才有意义。因此，一般是针对input[text]、textarea、contenteditable属性值为 true 的元素进行拼写和语法检查。如：</p>
+<pre class="prettyprint linenums">
+<code>&lt;textarea cols="53" rows="3" spellcheck &gt;&lt;/textarea&gt;</code></pre>
+<p>设置 spellcheck属性后，浏览器会帮助对元素的文本内容进行拼写或语法检查，若发现拼写或语法错误，则用红色的波浪下划线进行标识。运行结果如图 1‑14 所示：</p>
+<figure><img src='http://localhost/waibo/bible/html5/img/1/attribute_spellcheck1.png' title='标识拼写错误' alt='标识拼写错误'><figcaption>图1-14  标识拼写错误</figcaption></figure>
+<p>当在被标识的文本上单击鼠标右键，浏览器就会给出相应的提示，供用户选择。运行结果如图 1‑15 所示：</p>
+<figure><img src='http://localhost/waibo/bible/html5/img/1/attribute_spellcheck2.png' title='拼写错误提示' alt='拼写错误提示'><figcaption>图1-15  拼写错误提示</figcaption></figure>
+<h4 id="data-*属性">data-*属性</h4>
+<p>data-*属性允许开发人员为一个元素自定义私有属性，通过这些私有属性的值来存储页面或应用程序的私有数据。如，</p>
+<pre class="prettyprint linenums">
+<code>&lt;p id="user" data-user-list="Bill Gates,Bill Clinton"&gt;用户列表&lt;/p&gt;</code></pre>
+<p>一个元素允许定义多个私有属性，属性值可以是任意字符串，但属性名不允许包含任何大写字母，并且在前缀 &quot;data-&quot; 之后必须有至少一个字符。</p>
+<p>定义私有属性后，就可以通过 Javascript 读写私有属性的值。可以通过 dataset 对象的 &quot;.&quot; 操作，也可以通过 setAttribute() 和 getAttribute() 方法来操作私有属性的值。</p>
+<p>1）使用 dataset 对象</p>
+<p>当使用 dataset 对象时，属性名要去掉 &quot;data-&quot; 前缀，如果属性名中包含连字符，还需要转化为驼峰命名。因此，上述代码中，私有属性名为 user-list，当使用 dataset 对象操作私有属性时，需要转化为驼峰命名，即userList。如：</p>
+<pre class="prettyprint linenums">
+<code>var user = document.getElementById("user");
+alert(user.dataset.userList);  // 读取属性值
+user.dataset.userList = "Barack Hussein Obama";  // 设置属性值</code></pre>
+<p>当然，也可以使用 jQuery，不过要记住的是，jQuery使用的是 data 方法来操作私有属性。如：</p>
+<pre class="prettyprint linenums">
+<code>alert($("#user").data('userList'));  // 读取属性值
+$("#user").data("userList", "Barack Hussein Obama");  // 设置属性值</code></pre>
+<p>2）使用 setAttribute() 和 getAttribute() 方法</p>
+<p>由于 setAttribute() 和 getAttribute() 方法可以操作任何属性，它并不关心这个属性是否为私有属性。因此，属性名不必去掉 &quot;data-&quot; 前缀，也无需转化为驼峰命名。如：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+<pre class="prettyprint linenums">
+<code>alert(user.getAttribute("data-user-list"));  // 读取属性值
+user.setAttribute("data-user-list", "Barack Hussein Obama");  // 设置属性值</code></pre>
+<div id="modalReward" class="modal hide fade modal-reward" tabindex="-1">
+<div class="modal-header">
+<button type="button" class="close" data-dismiss="modal">&times;</button>
+<h6>打赏</h6>
+</div>
+<div class="modal-body">
+<div class="tabbable reward-weipay">
+<ul class="nav nav-tabs">
+<li class="active"><a data-toggle="tab" href="#weipay1">￥1</a></li>
+<li><a data-toggle="tab" href="#weipay2">￥2</a></li>
+<li><a data-toggle="tab" href="#weipay5">￥5</a></li>
+<li><a data-toggle="tab" href="#weipay10">￥10</a></li>
+<li><a data-toggle="tab" href="#weipay20">￥20</a></li>
+<li><a data-toggle="tab" href="#weipayrand">其他金额</a></li>
+</ul>
+<div class="tab-content">
+<div class="tab-pane active" id="weipay1">
+<img src="http://localhost/waibo/img/weipay1.png" alt="￥1"><span>￥1</span>
+</div>
+<div class="tab-pane" id="weipay2">
+<img src="http://localhost/waibo/img/weipay2.png" alt="￥2"><span>￥2</span>
+</div>
+<div class="tab-pane" id="weipay5">
+<img src="http://localhost/waibo/img/weipay5.png" alt="￥5"><span>￥5</span>
+</div>
+<div class="tab-pane" id="weipay10">
+<img src="http://localhost/waibo/img/weipay10.png" alt="￥10"><span>￥10</span>
+</div>
+<div class="tab-pane" id="weipay20">
+<img src="http://localhost/waibo/img/weipay20.png" alt="￥20"><span>￥20</span>
+</div>
+<div class="tab-pane" id="weipayrand">
+<img src="http://localhost/waibo/img/weipayrand.png" alt="￥随意"><span>￥随意</span>
+</div>
+</div>
+</div>
+<div class="tabbable reward-alipay hide">
+<ul class="nav nav-tabs">
+<li class="active"><a data-toggle="tab" href="#alipay1">￥1</a></li>
+<li><a data-toggle="tab" href="#alipay2">￥2</a></li>
+<li><a data-toggle="tab" href="#alipay5">￥5</a></li>
+<li><a data-toggle="tab" href="#alipay10">￥10</a></li>
+<li><a data-toggle="tab" href="#alipay20">￥20</a></li>
+<li><a data-toggle="tab" href="#alipayrand">其他金额</a></li>
+</ul>
+<div class="tab-content">
+<div class="tab-pane active" id="alipay1">
+<img src="http://localhost/waibo/img/alipay1.png" alt="￥1"><span>￥1</span>
+</div>
+<div class="tab-pane" id="alipay2">
+<img src="http://localhost/waibo/img/alipay2.png" alt="￥2"><span>￥2</span>
+</div>
+<div class="tab-pane" id="alipay5">
+<img src="http://localhost/waibo/img/alipay5.png" alt="￥5"><span>￥5</span>
+</div>
+<div class="tab-pane" id="alipay10">
+<img src="http://localhost/waibo/img/alipay10.png" alt="￥10"><span>￥10</span>
+</div>
+<div class="tab-pane" id="alipay20">
+<img src="http://localhost/waibo/img/alipay20.png" alt="￥20"><span>￥20</span>
+</div>
+<div class="tab-pane" id="alipayrand">
+<img src="http://localhost/waibo/img/alipayrand.png" alt="￥随意"><span>￥随意</span>
+</div>
+</div>
+</div>
+<div class="reward-method">
+<label><input type="radio" name="method" value="weipay" checked><img src="http://localhost/waibo/img/weipay.png" alt="微信支付"></label>
+<label><input type="radio" name="method" value="alipay"><img src="http://localhost/waibo/img/alipay.png" alt="支付宝"></label>
+</div>
+</div>
+</div>
+<div class="reward">
+<p>如果本教程对您帮助很大，请随意打赏。您的支持，将鼓励我写出更好的教程！</p>
+<a data-toggle="modal" href="#modalReward">赏</a>
+</div>
+ <div class="page">
+   <a id="prev" href="http://localhost/waibo/bible/html5/html/1/1.2.1.html" title="&#8592; 键到上一节">« 上一节</a>&#8592; 键盘方向键翻页 &#8594;<a id="next" href="http://localhost/waibo/bible/html5/html/1/1.2.3.html" title="&#8594; 键到下一节">下一节 »</a>
+ </div>
+ </article>
+ </main>
+ </div>
+ </div>
+ <div class="floatPanel">
+	 <div class="ctrolPanel">
+		 <a href="javascript:;" class="arrow top" onClick="goTop()"><span>返回顶部</span></a>
+    <a href="#" class="phone"  data-target="#phone"><span>手机访问</span></a>
+    <a href="#" class="wechat" data-target="#wechat"><span>关注微信</span></a>
+    <a href="javascript:;" class="arrow bottom" onClick="goBottom()"><span>返回底部</span></a>
+  </div>
+	<div id="phone" class="popPanel">
+		<div class="popPanel-inner">
+			<img src="http://localhost/waibo/img/site.png" /><p class="slogan">扫码访问歪脖网</p><p>随时随地，想看就看</p>
+		</div>
+	</div>
+	<div id="wechat" class="popPanel">
+		<div class="popPanel-inner">
+			<img src="http://localhost/waibo/img/weixin.png" /><p class="slogan">关注歪脖网微信</p><p>分享 web 知识、交流 web 经验</p>
+		</div>
+	</div>
+</div>
+ <footer>
+   <p>Copyright&copy;2017&nbsp;&nbsp;www.waibo.wang All Rights Reserved</p>
+   <p>陕ICP备17020676号-1&nbsp;&nbsp;&nbsp;&nbsp;客服QQ：376601179&nbsp;&nbsp;&nbsp;&nbsp;邮箱：376601179#qq.com
+ </footer>
+ <script src="http://localhost/waibo/js/prettify.js"></script>
+ <script src="http://localhost/waibo/js/bootstrap.min.js"></script>
+ <script src="http://localhost/waibo/js/ckeditor_4.7.1/ckeditor.js"></script>
+ <script>
+ $(function() {
+    prettyPrint();
+    bible();
+    load();
+    rewardMethod();
+ });
+ </script>
+</body>
+</html>

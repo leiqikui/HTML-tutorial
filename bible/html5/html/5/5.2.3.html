@@ -1,0 +1,261 @@
+﻿<!DOCTYPE html>
+<html lang="zh">
+<head>
+ <meta charset="utf-8">
+ <title>HTML5 Web Storage API通过setItem(),getItem(),removeItem()操作 localStorage 和 sessionStorage数据-歪脖网</title>
+ <meta name="keywords" content="HTML, HTML5, , localStorage,sessionStorage,HTML5 Web Storage,setItem(),getItem(),removeItem()" />
+ <meta name="description" content="HTML5通过Web Storage API来操作本地存储的数据，setItem()方法存储和修改数据、getItem()方法读取数据、removeItem()方法删除数据" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+ <link href="http://localhost/waibo/css/bootstrap.min.css" rel="stylesheet" />
+ <link href="http://localhost/waibo/css/bootstrap-responsive.min.css" rel="stylesheet" />
+ <link href="http://localhost/waibo/css/style.css" rel="stylesheet" />
+
+ <script src="http://localhost/waibo/js/jquery.js"></script>
+ <script src="http://localhost/waibo/js/script.js"></script>
+</head>
+
+<body>
+ <div class="topbar">
+ <div class="eyebrow hidden-phone">
+ <div class="container">
+ <ul class="pull-left">
+   <li><a href="http://www.waibo.wang/" target="_blank">歪脖网</a>欢迎您！</li>
+ </ul>
+ <ul class="pull-right">
+  <li><a href="http://www.waibo.wang/user/">登录</a></li>
+  <li class="b">|</li>
+  <li><a href="http://www.waibo.wang/user/register.asp" target="_blank">注册</a></li>
+ </div>
+ </div>
+
+<div class="topnav">
+<div class="container">
+  <div class="row-fluid mtz">
+  <div class="span3 topnav-logo">
+    <a href="http://www.waibo.wang/"><p class="logo-cn">歪脖网</p><p class="logo-en hidden-phone">waibo.wang</p></a>
+  </div>
+  <div class="span6 nav">
+   <ul>
+     <li ><a href="http://www.waibo.wang/">首页</a></li>
+     <li class="active"><a href="http://localhost/waibo/">教程</a></li>
+     <li ><a href="http://www.waibo.wang/wiki/">专栏</a></li>
+     <li ><a href="http://www.waibo.wang/demo/">素材</a></li>
+   </ul>
+  </div>
+  <div class="span3 topnav-form">
+  </div>
+ </div>
+ </div>
+ </div>
+ </div>
+
+
+ <div class="container">
+ <div class="row-fluid">
+ <aside class="span3">
+ <map id="oAll" name="oAll">
+ <area title="全部展开" shape="rect" coords="0,0,22,20"  href="javascript:tree.openAll();" onfocus="blur(this);">
+ <area title="全部收起" shape="rect" coords="22,0,44,20" href="javascript:tree.closeAll();" onfocus="blur(this);">
+ </map>
+ <header><span>目录</span><img src="http://localhost/waibo/img/map.png" usemap="#oAll"/></header>
+ <script src="http://localhost/waibo/js/dtree.js"></script>
+ <script src="http://localhost/waibo/bible/html5/js/tree.js"></script>
+ <script>
+    createTree("50203");
+ </script>
+ </aside>
+
+ <main class="span9">
+ <header><div class="name"><strong>HTML5宝典</strong>(第 1 版)</div><div class="section">5.2.3 Web Storage API</div></header>
+ <div><label id="treeview"><input id="show" type="checkbox" checked /> 文档结构视图</label><span class="hit">阅读（ <span id="hit"></span> ）</div>
+ <article>
+<h1 class="hide-text">HTML基础</h1>
+<h1 class="hide-text">HTML元素</h1>
+<h1 class="hide-text">表单及应用</h1>
+<h1 class="hide-text">Canvas绘图基础</h1>
+<h1 class="hide-text">客户端存储</h1>
+<h2 class="hide-text">Cookie</h2>
+<h2 class="hide-text">Web Storage</h2>
+<h3 class="hide-text">浏览器检测</h3>
+<h3 class="hide-text">概述</h3>
+<h3>Web Storage API</h3>
+<p>Web Storage 是以键值对（key-value）的形式存储数据，要存储的数据需要一个名字作为键，然后就可以使用这个键来读取它的值。键是一个字符串。值可以是 JavaScript 支持的任何数据类型，包括字符串、布尔值、整数和浮点数。但是，它们都会被转换成字符串进行存储。</p>
+<p>对任何数据的操作，无非就是增、删、查、改，下面介绍一下Web Storage操作数据的方法，包括存储、修改、读取、删除、遍历等。</p>
+<p>1、存储数据</p>
+<p>调用 localStorage.setItem(key, value) 方法来存储数据。该方法需要有一个键和一个值作为参数，key是键，value是值。如果这个键不存在，就会新增一个键值对；如果这个键已经存在，则会覆盖原先存储的值。如：</p>
+<pre class="prettyprint linenums">
+<code>localStorage.setItem("user", "Bill Gates") ;</code></pre>
+<p>调用该方法的结果是将字符串 value 存储到键 key中，因此上述代码就会把值&ldquo;Bill Gates&rdquo;存储到键&ldquo;user&rdquo;中。</p>
+<p>存储数据后，在Google Chrome浏览器中，通过F12打开开发者工具，在 Resources 中就可以查看网页所加载的资源，localStorage中为本地存储的数据。运行结果如图 5‑2 所示：</p>
+<figure><img src='http://localhost/waibo/bible/html5/img/5/setItem.png' title='setItem()方法存储数据' alt='setItem()方法存储数据'><figcaption>图5-2  setItem()方法存储数据</figcaption></figure>
+<p>除了调用 localStorage.setItem(key, value) 方法存储数据外，也可以像普通对象一样，使用点（.）操作符，及方括号（[]）的方式来存储数据。如：</p>
+<pre class="prettyprint linenums">
+<code>localStorage.user = "Bill Gates";      // 使用点操作符
+localStorage["user"] = "Bill Gates";   // 使用方括号</code></pre>
+<p>上述两种方法的效果跟 localStorage.setItem(&quot;user&quot;, &quot;Bill Gates&quot;) 等效。不过，需要注意的是，如果使用点操作符，是直接使用键，不需要把键放在引号中，否则会存储失败。点操作符及方括号的方式，也适用于修改、读取、删除数据的情况。</p>
+<p>2、修改数据</p>
+<p>如果要修改某个键对应的值，只需再次调用 localStorage.setItem(key, value) 方法，并指定 key 和新的 value，就可以覆盖原先存储的值。如，以下代码用来修改键 &quot;user&quot; 的值：</p>
+<pre class="prettyprint linenums">
+<code>localStorage.setItem("user", "maifang51");</code></pre>
+<p>此时刷新页面，就可以看到键 &quot;user&quot; 的值变成了 &quot;maifang51&quot;。运行结果如图 5‑3 所示：</p>
+<figure><img src='http://localhost/waibo/bible/html5/img/5/setItem2.png' title='setItem()方法修改数据' alt='setItem()方法修改数据'><figcaption>图5-3  setItem()方法修改数据</figcaption></figure>
+<p>3、读取数据</p>
+<p>调用 getItem(key) 方法来读取本地存储的值。该方法需要有一个键作为参数。该方法返回指定的键在本地存储的值，如果该键不存在，则直接返回 null，不会引发异常。如：</p>
+<pre class="prettyprint linenums">
+<code>alert(localStorage.getItem("user"));</code></pre>
+<p>上述代码在警告框中显示键&ldquo;user&rdquo;的值，得到先前存储的&ldquo;maifang51&rdquo;。 运行结果如图 5‑4 所示：</p>
+<figure><img src='http://localhost/waibo/bible/html5/img/5/getItem.png' title='getItem()方法获取数据' alt='getItem()方法获取数据'><figcaption>图5-4  getItem()方法获取数据</figcaption></figure>
+<p>4、删除数据</p>
+<p>调用 removeItem(key) 方法来删除本地存储的值。该方法需要有一个键作为参数，并删除该键对应的值。</p>
+<p>调用该方法，如果指定的键存在，则执行删除操作；如果键不存在，则不执行任何操作，也不会引发异常。如：</p>
+<pre class="prettyprint linenums">
+<code>localStorage.removeItem("user");</code></pre>
+<p>上述代码将删除键 &quot;user&quot; 所存储的值，即删除 &quot;user&quot;: &quot;maifang51 &quot; 键值对。删除后的结果如图 5‑5 所示：</p>
+<figure><img src='http://localhost/waibo/bible/html5/img/5/removeItem.png' title='removeItem()方法删除数据' alt='removeItem()方法删除数据'><figcaption>图5-5  removeItem()方法删除数据</figcaption></figure>
+<p>不过，removeItem(key) 方法只能删除单条数据。如果要删除多条数据，还需要遍历数据，逐个调用该方法进行删除。当然，如果要删除全部数据，遍历的方式就相对麻烦。这时，可以调用 localStorage.clear() 方法，一次性删除存储的所有数据。clear() 方法没有参数。</p>
+<p>5、遍历数据</p>
+<p>遍历数据，需用到 localStorage 对象的 length 属性和 key() 方法。通过 length 属性得到 localStorage 对象中存储的键-值对的数目，通过 key(index) 方法可以按索引获得键的名字，再根据键获取对应的值。如：</p>
+<pre class="prettyprint linenums">
+<code>localStorage.setItem("user", "maifang51");
+localStorage.setItem("site", "waibo.wang");
+localStorage.setItem("email", "contact@waibo.wang");
+
+var len = localStorage.length;
+for (var i=0; i &lt; len; i++) {
+var key = localStorage.key(i);
+    var value = localStorage.getItem(key);
+    console.log(key + " = " + value);      
+}</code></pre>
+<p>上述代码先存储了 3 个键-值对，再遍历数据，将这些键-值对输出到控制台。运行结果如图 5‑6 所示：</p>
+<figure><img src='http://localhost/waibo/bible/html5/img/5/walk.png' title='getItem()方法遍历数据' alt='getItem()方法遍历数据'><figcaption>图5-6  getItem()方法遍历数据</figcaption></figure>
+<section>
+<p class="note"> 说明：存储JSON类型数据</p>
+<p>Web Storage既支持字符串格式的数据，也支持JSON格式数据。存储JSON格式数据，其实就是把JSON对象转换成字符串，然后把该字符串存储到Web Storage对象中。</p>
+</section>
+<p>调用JSON的stringify(obj)方法，可以把JSON对象obj转换为字符串。如：</p>
+<pre class="prettyprint linenums">
+<code>var data = {'name': 'Bill Gates', 'age': 54};
+localStorage.setItem("user", JSON.stringify(data));</code></pre>
+<p>如果存储的是JSON格式数据，在获取数据时，还需要调用JSON对象的parse(str)方法，将Web Storage对象中存储的字符串转换为JSON对象。如：</p>
+<pre class="prettyprint linenums">
+<code>var str = localStorage.getItem("user");
+var data = JSON.parse(str);</code></pre>
+<p>此时，得到的data就是一个JSON对象 {&#39;name&#39;: &#39; Bill Gates &#39;, &#39;age&#39;: 54}。</p>
+<div id="modalReward" class="modal hide fade modal-reward" tabindex="-1">
+<div class="modal-header">
+<button type="button" class="close" data-dismiss="modal">&times;</button>
+<h6>打赏</h6>
+</div>
+<div class="modal-body">
+<div class="tabbable reward-weipay">
+<ul class="nav nav-tabs">
+<li class="active"><a data-toggle="tab" href="#weipay1">￥1</a></li>
+<li><a data-toggle="tab" href="#weipay2">￥2</a></li>
+<li><a data-toggle="tab" href="#weipay5">￥5</a></li>
+<li><a data-toggle="tab" href="#weipay10">￥10</a></li>
+<li><a data-toggle="tab" href="#weipay20">￥20</a></li>
+<li><a data-toggle="tab" href="#weipayrand">其他金额</a></li>
+</ul>
+<div class="tab-content">
+<div class="tab-pane active" id="weipay1">
+<img src="http://localhost/waibo/img/weipay1.png" alt="￥1"><span>￥1</span>
+</div>
+<div class="tab-pane" id="weipay2">
+<img src="http://localhost/waibo/img/weipay2.png" alt="￥2"><span>￥2</span>
+</div>
+<div class="tab-pane" id="weipay5">
+<img src="http://localhost/waibo/img/weipay5.png" alt="￥5"><span>￥5</span>
+</div>
+<div class="tab-pane" id="weipay10">
+<img src="http://localhost/waibo/img/weipay10.png" alt="￥10"><span>￥10</span>
+</div>
+<div class="tab-pane" id="weipay20">
+<img src="http://localhost/waibo/img/weipay20.png" alt="￥20"><span>￥20</span>
+</div>
+<div class="tab-pane" id="weipayrand">
+<img src="http://localhost/waibo/img/weipayrand.png" alt="￥随意"><span>￥随意</span>
+</div>
+</div>
+</div>
+<div class="tabbable reward-alipay hide">
+<ul class="nav nav-tabs">
+<li class="active"><a data-toggle="tab" href="#alipay1">￥1</a></li>
+<li><a data-toggle="tab" href="#alipay2">￥2</a></li>
+<li><a data-toggle="tab" href="#alipay5">￥5</a></li>
+<li><a data-toggle="tab" href="#alipay10">￥10</a></li>
+<li><a data-toggle="tab" href="#alipay20">￥20</a></li>
+<li><a data-toggle="tab" href="#alipayrand">其他金额</a></li>
+</ul>
+<div class="tab-content">
+<div class="tab-pane active" id="alipay1">
+<img src="http://localhost/waibo/img/alipay1.png" alt="￥1"><span>￥1</span>
+</div>
+<div class="tab-pane" id="alipay2">
+<img src="http://localhost/waibo/img/alipay2.png" alt="￥2"><span>￥2</span>
+</div>
+<div class="tab-pane" id="alipay5">
+<img src="http://localhost/waibo/img/alipay5.png" alt="￥5"><span>￥5</span>
+</div>
+<div class="tab-pane" id="alipay10">
+<img src="http://localhost/waibo/img/alipay10.png" alt="￥10"><span>￥10</span>
+</div>
+<div class="tab-pane" id="alipay20">
+<img src="http://localhost/waibo/img/alipay20.png" alt="￥20"><span>￥20</span>
+</div>
+<div class="tab-pane" id="alipayrand">
+<img src="http://localhost/waibo/img/alipayrand.png" alt="￥随意"><span>￥随意</span>
+</div>
+</div>
+</div>
+<div class="reward-method">
+<label><input type="radio" name="method" value="weipay" checked><img src="http://localhost/waibo/img/weipay.png" alt="微信支付"></label>
+<label><input type="radio" name="method" value="alipay"><img src="http://localhost/waibo/img/alipay.png" alt="支付宝"></label>
+</div>
+</div>
+</div>
+<div class="reward">
+<p>如果本教程对您帮助很大，请随意打赏。您的支持，将鼓励我写出更好的教程！</p>
+<a data-toggle="modal" href="#modalReward">赏</a>
+</div>
+ <div class="page">
+   <a id="prev" href="http://localhost/waibo/bible/html5/html/5/5.2.2.html" title="&#8592; 键到上一节">« 上一节</a>&#8592; 键盘方向键翻页 &#8594;<a id="next" href="http://localhost/waibo/bible/html5/html/5/5.2.4.html" title="&#8594; 键到下一节">下一节 »</a>
+ </div>
+ </article>
+ </main>
+ </div>
+ </div>
+ <div class="floatPanel">
+	 <div class="ctrolPanel">
+		 <a href="javascript:;" class="arrow top" onClick="goTop()"><span>返回顶部</span></a>
+    <a href="#" class="phone"  data-target="#phone"><span>手机访问</span></a>
+    <a href="#" class="wechat" data-target="#wechat"><span>关注微信</span></a>
+    <a href="javascript:;" class="arrow bottom" onClick="goBottom()"><span>返回底部</span></a>
+  </div>
+	<div id="phone" class="popPanel">
+		<div class="popPanel-inner">
+			<img src="http://localhost/waibo/img/site.png" /><p class="slogan">扫码访问歪脖网</p><p>随时随地，想看就看</p>
+		</div>
+	</div>
+	<div id="wechat" class="popPanel">
+		<div class="popPanel-inner">
+			<img src="http://localhost/waibo/img/weixin.png" /><p class="slogan">关注歪脖网微信</p><p>分享 web 知识、交流 web 经验</p>
+		</div>
+	</div>
+</div>
+ <footer>
+   <p>Copyright&copy;2017&nbsp;&nbsp;www.waibo.wang All Rights Reserved</p>
+   <p>陕ICP备17020676号-1&nbsp;&nbsp;&nbsp;&nbsp;客服QQ：376601179&nbsp;&nbsp;&nbsp;&nbsp;邮箱：376601179#qq.com
+ </footer>
+ <script src="http://localhost/waibo/js/prettify.js"></script>
+ <script src="http://localhost/waibo/js/bootstrap.min.js"></script>
+ <script src="http://localhost/waibo/js/ckeditor_4.7.1/ckeditor.js"></script>
+ <script>
+ $(function() {
+    prettyPrint();
+    bible();
+    load();
+    rewardMethod();
+ });
+ </script>
+</body>
+</html>

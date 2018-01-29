@@ -1,0 +1,268 @@
+﻿<!DOCTYPE html>
+<html lang="zh">
+<head>
+ <meta charset="utf-8">
+ <title>HTML5 Canvas的基本用法-歪脖网</title>
+ <meta name="keywords" content="HTML, HTML5, , canvas,HTML5 canvas" />
+ <meta name="description" content="使用 <canvas> 标签在页面上创建画布元素，画布一旦创建，就可以使用Javascript提供的一套强大的Canvas API编写代码，在画布中绘制任意图形，甚至加入高级动画" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+ <link href="http://localhost/waibo/css/bootstrap.min.css" rel="stylesheet" />
+ <link href="http://localhost/waibo/css/bootstrap-responsive.min.css" rel="stylesheet" />
+ <link href="http://localhost/waibo/css/style.css" rel="stylesheet" />
+
+ <script src="http://localhost/waibo/js/jquery.js"></script>
+ <script src="http://localhost/waibo/js/script.js"></script>
+</head>
+
+<body>
+ <div class="topbar">
+ <div class="eyebrow hidden-phone">
+ <div class="container">
+ <ul class="pull-left">
+   <li><a href="http://www.waibo.wang/" target="_blank">歪脖网</a>欢迎您！</li>
+ </ul>
+ <ul class="pull-right">
+  <li><a href="http://www.waibo.wang/user/">登录</a></li>
+  <li class="b">|</li>
+  <li><a href="http://www.waibo.wang/user/register.asp" target="_blank">注册</a></li>
+ </div>
+ </div>
+
+<div class="topnav">
+<div class="container">
+  <div class="row-fluid mtz">
+  <div class="span3 topnav-logo">
+    <a href="http://www.waibo.wang/"><p class="logo-cn">歪脖网</p><p class="logo-en hidden-phone">waibo.wang</p></a>
+  </div>
+  <div class="span6 nav">
+   <ul>
+     <li ><a href="http://www.waibo.wang/">首页</a></li>
+     <li class="active"><a href="http://localhost/waibo/">教程</a></li>
+     <li ><a href="http://www.waibo.wang/wiki/">专栏</a></li>
+     <li ><a href="http://www.waibo.wang/demo/">素材</a></li>
+   </ul>
+  </div>
+  <div class="span3 topnav-form">
+  </div>
+ </div>
+ </div>
+ </div>
+ </div>
+
+
+ <div class="container">
+ <div class="row-fluid">
+ <aside class="span3">
+ <map id="oAll" name="oAll">
+ <area title="全部展开" shape="rect" coords="0,0,22,20"  href="javascript:tree.openAll();" onfocus="blur(this);">
+ <area title="全部收起" shape="rect" coords="22,0,44,20" href="javascript:tree.closeAll();" onfocus="blur(this);">
+ </map>
+ <header><span>目录</span><img src="http://localhost/waibo/img/map.png" usemap="#oAll"/></header>
+ <script src="http://localhost/waibo/js/dtree.js"></script>
+ <script src="http://localhost/waibo/bible/html5/js/tree.js"></script>
+ <script>
+    createTree("401");
+ </script>
+ </aside>
+
+ <main class="span9">
+ <header><div class="name"><strong>HTML5宝典</strong>(第 1 版)</div><div class="section">4.1 基本用法</div></header>
+ <div><label id="treeview"><input id="show" type="checkbox" checked /> 文档结构视图</label><span class="hit">阅读（ <span id="hit"></span> ）</div>
+ <article>
+<h1 class="hide-text">HTML基础</h1>
+<h1 class="hide-text">HTML元素</h1>
+<h1 class="hide-text">表单及应用</h1>
+<h1 class="hide-text">Canvas绘图基础</h1>
+<h2>基本用法</h2>
+<p>使用 &lt;canvas&gt; 标签在页面上创建画布元素，画布一旦创建，就可以使用Javascript提供的一套强大的Canvas API编写代码，在画布中绘制任意图形，甚至加入高级动画。</p>
+<p>在Canvas中绘制图形，一般需要五步，依次为：</p>
+<p>1）创建画布</p>
+<p>在HTML代码的body中，使用&lt;canvas&gt;标签创建画布元素。创建时，要为该元素定义id属性，因为Javascript需要根据该id来获取画布元素。</p>
+<p>画布的默认宽度为300px，高度为150px，可以通过&lt;canvas&gt;元素的width属性自定义其宽度，height属性自定义其高度。代码如下：</p>
+<pre class="prettyprint linenums">
+<code>&lt;canvas id="canvas" width="300" height="300"&gt;&lt;/canvas&gt;</code></pre>
+<p>上述代码，在页面中创建了一个画布，其id为&quot;canvas&quot;，宽度为300px，高为300px。</p>
+<section>
+<p class="note">说明：</p>
+<p>1、默认情况下，画布本身没有任何外观，只是一块透明区域，什么也看不见，可以通过CSS来控制，让其可见。跟其它HTML元素一样，也可以通过CSS来定义canvas元素的尺寸、增加边框、设置内边距、外边距等。并且，CSS属性的继承规则也同样适用，如在canvas内添加的文字，默认会继承canvas元素本身的字体属性。</p>
+<p>需要特别注意的是，画布的尺寸和CSS定义的尺寸是完全不同的概念。画布的尺寸是由画布元素的width和height属性定义的，而CSS中定义的尺寸是画布元素在页面中显示的尺寸。如果两者定义的尺寸不相同，则画布上的像素会自动缩放，以适合CSS中定义的尺寸。另外，画布中的坐标，也是根据画布的width和height属性定义的。</p>
+<p>2、画布的尺寸一旦定义，就不能修改，除非重置画布。重置画布的width属性或height属性，都会清空整个画布，擦除当前路径，并重置所有的图形属性到初始状态。</p>
+<p>3、由于&lt;canvas&gt;是HTML5中新增的元素，一些老浏览器（如IE8及以下版本）不支持&lt;canvas&gt;元素。可以在&lt;canvas&gt;元素内部提供替代图片、或文本说明，为访问者提供友好的提示信息。如：</p>
+<pre class="prettyprint linenums">
+<code>&lt;canvas id="canvas" width="300" height="300"&gt;您的浏览器不支持canvas。&lt;/canvas&gt;</code></pre>
+</section>
+<p>2）获取绘制上下文</p>
+<p>现在画布已经有了，要在画布上绘制图形，还需要一只画笔。获取画笔的方法如下：</p>
+<pre class="prettyprint linenums">
+<code>var canvas = document.getElementById("canvas");
+var context = canvas.getContext("2d"); </code></pre>
+<p>由于画笔是属于画布的，所以先要调用getElementById()方法获得画布的访问权。然后，调用画布对象的getContext()方法来获取画笔，这里的字符串参数&quot;2d&quot;，用来定义画笔的种类，&quot;2d&quot;表示绘制二维图形的画笔。当然，还会有&quot;3d&quot;，但目前还不支持。</p>
+<p>画笔在Canvas 中被称作&ldquo;绘制上下文&rdquo;，Canvas API基本上都是定义在&ldquo;绘制上下文&rdquo;对象上，而非&lt;canvas&gt;元素上。</p>
+<p>3）定义绘制路径</p>
+<p>Canvas中的所有基本图形，都是根据路径来绘制的。首先，调用beginPath()方法开始一条新的路径；然后，定义路径及子路径；最后，调用closePath()方法来关闭。代码如下：</p>
+<pre class="prettyprint linenums">
+<code>context.beginPath();
+context.rect(20, 40, 200, 80);
+context.closePath();</code></pre>
+<p>上述代码中，rect()方法绘制了一条矩形路径，该矩形路径的左上顶点坐标为x=20,y=40，矩形宽度为200px，长度为80px。</p>
+<section>
+<p class="note"> 说明：Canvas的坐标系</p>
+<p>默认情况下，Canvas&nbsp;的坐标系以Canvas&nbsp;元素的左上角为坐标原点(0, 0)。水平方向为x轴，并向右增长；垂直方向为y轴，并向下增长。如图 4‑1所示：</p>
+<figure><img src='http://localhost/waibo/bible/html5/img/4/coordinate.png' title='Canvas的默认坐标系统' alt='Canvas的默认坐标系统'><figcaption>图4-1  Canvas的默认坐标系统</figcaption></figure>
+<p>画布上每一个点的坐标都直接映射到一个CSS像素上，点可以使用浮点数来指定坐标，但它不会自动转换为整型值。</p>
+<p>需要注意的是，此时，所绘制的内容并不会立即显示出来。因为这里只是定义一条不可见的路径，并未在画布上绘制任何图形。稍后，可以调用stroke()或fill()方法，来执行绘制动作，使其可见。</p>
+</section>
+<p>4）设置图形属性</p>
+<pre class="prettyprint linenums">
+<code>context.strokeStyle = '#f00';  // 设置线条样式
+context.fillStyle = "#ccc";   // 设置填充样式</code></pre>
+<p>上述代码设置矩形路径的轮廓线条的颜色为红色（#f00），填充颜色为灰色（#ccc）。该步骤为可选，如果省略，则使用Canvas提供的默认属性绘图。</p>
+<p>5）绘制图形</p>
+<p>Canvas默认提供两种绘制方法：stroke()方法和fill()方法。stroke()方法沿着路径的坐标点依次绘制线条，fill()方法填充路径形成的闭合区域。</p>
+<p>这两个方法都作用在当前路径的所有子路径上，并且都不更改当前路径，所以它们可以被同时调用。代码如下：</p>
+<pre class="prettyprint linenums">
+<code>context.stroke();
+context.fill();</code></pre>
+<p>如果存在多条路径，则每条路径都要分别调用stroke()方法或fill()方法，否则，该路径不会被绘制，该路径所定义的图形不会显示在画布中。</p>
+<p>至此，在画布中绘制图形的过程就全部完成了，图形已经真正绘制到画布上了。当然，在实际应用中，最好将这些绘制过程封装在一个函数中，并在页面加载完成后，再调用绘制函数来绘制图形。本实例的完整代码如下：</p>
+<pre class="prettyprint linenums">
+<code>&lt;canvas id="canvas" width="300" height="300"&gt;&lt;/canvas&gt;</code></pre>
+<pre class="prettyprint linenums">
+<code>&lt;script src="jquery.js"&gt;&lt;/script&gt;
+&lt;script&gt;
+$(function(){
+   drawRect();
+});
+function drawRect() {
+  var canvas  = document.getElementById("canvas");
+  var context = canvas.getContext('2d');
+     
+  context.beginPath();
+  context.rect(20, 40, 200, 80);
+  context.closePath();
+  context.strokeStyle = '#f00';
+  context.fillStyle = "#ccc";
+  context.stroke();
+  context.fill();
+}
+&lt;/script&gt;</code></pre>
+<p>在浏览器中的运行效果如图 4‑2所示：</p>
+<figure><img src='http://localhost/waibo/bible/html5/img/4/useage.png' title='Canvas中绘制图形' alt='Canvas中绘制图形'><figcaption>图4-2  Canvas中绘制图形</figcaption></figure>
+<div id="modalReward" class="modal hide fade modal-reward" tabindex="-1">
+<div class="modal-header">
+<button type="button" class="close" data-dismiss="modal">&times;</button>
+<h6>打赏</h6>
+</div>
+<div class="modal-body">
+<div class="tabbable reward-weipay">
+<ul class="nav nav-tabs">
+<li class="active"><a data-toggle="tab" href="#weipay1">￥1</a></li>
+<li><a data-toggle="tab" href="#weipay2">￥2</a></li>
+<li><a data-toggle="tab" href="#weipay5">￥5</a></li>
+<li><a data-toggle="tab" href="#weipay10">￥10</a></li>
+<li><a data-toggle="tab" href="#weipay20">￥20</a></li>
+<li><a data-toggle="tab" href="#weipayrand">其他金额</a></li>
+</ul>
+<div class="tab-content">
+<div class="tab-pane active" id="weipay1">
+<img src="http://localhost/waibo/img/weipay1.png" alt="￥1"><span>￥1</span>
+</div>
+<div class="tab-pane" id="weipay2">
+<img src="http://localhost/waibo/img/weipay2.png" alt="￥2"><span>￥2</span>
+</div>
+<div class="tab-pane" id="weipay5">
+<img src="http://localhost/waibo/img/weipay5.png" alt="￥5"><span>￥5</span>
+</div>
+<div class="tab-pane" id="weipay10">
+<img src="http://localhost/waibo/img/weipay10.png" alt="￥10"><span>￥10</span>
+</div>
+<div class="tab-pane" id="weipay20">
+<img src="http://localhost/waibo/img/weipay20.png" alt="￥20"><span>￥20</span>
+</div>
+<div class="tab-pane" id="weipayrand">
+<img src="http://localhost/waibo/img/weipayrand.png" alt="￥随意"><span>￥随意</span>
+</div>
+</div>
+</div>
+<div class="tabbable reward-alipay hide">
+<ul class="nav nav-tabs">
+<li class="active"><a data-toggle="tab" href="#alipay1">￥1</a></li>
+<li><a data-toggle="tab" href="#alipay2">￥2</a></li>
+<li><a data-toggle="tab" href="#alipay5">￥5</a></li>
+<li><a data-toggle="tab" href="#alipay10">￥10</a></li>
+<li><a data-toggle="tab" href="#alipay20">￥20</a></li>
+<li><a data-toggle="tab" href="#alipayrand">其他金额</a></li>
+</ul>
+<div class="tab-content">
+<div class="tab-pane active" id="alipay1">
+<img src="http://localhost/waibo/img/alipay1.png" alt="￥1"><span>￥1</span>
+</div>
+<div class="tab-pane" id="alipay2">
+<img src="http://localhost/waibo/img/alipay2.png" alt="￥2"><span>￥2</span>
+</div>
+<div class="tab-pane" id="alipay5">
+<img src="http://localhost/waibo/img/alipay5.png" alt="￥5"><span>￥5</span>
+</div>
+<div class="tab-pane" id="alipay10">
+<img src="http://localhost/waibo/img/alipay10.png" alt="￥10"><span>￥10</span>
+</div>
+<div class="tab-pane" id="alipay20">
+<img src="http://localhost/waibo/img/alipay20.png" alt="￥20"><span>￥20</span>
+</div>
+<div class="tab-pane" id="alipayrand">
+<img src="http://localhost/waibo/img/alipayrand.png" alt="￥随意"><span>￥随意</span>
+</div>
+</div>
+</div>
+<div class="reward-method">
+<label><input type="radio" name="method" value="weipay" checked><img src="http://localhost/waibo/img/weipay.png" alt="微信支付"></label>
+<label><input type="radio" name="method" value="alipay"><img src="http://localhost/waibo/img/alipay.png" alt="支付宝"></label>
+</div>
+</div>
+</div>
+<div class="reward">
+<p>如果本教程对您帮助很大，请随意打赏。您的支持，将鼓励我写出更好的教程！</p>
+<a data-toggle="modal" href="#modalReward">赏</a>
+</div>
+ <div class="page">
+   <a id="prev" href="http://localhost/waibo/bible/html5/html/4/4.html" title="&#8592; 键到上一节">« 上一节</a>&#8592; 键盘方向键翻页 &#8594;<a id="next" href="http://localhost/waibo/bible/html5/html/4/4.2.1.html" title="&#8594; 键到下一节">下一节 »</a>
+ </div>
+ </article>
+ </main>
+ </div>
+ </div>
+ <div class="floatPanel">
+	 <div class="ctrolPanel">
+		 <a href="javascript:;" class="arrow top" onClick="goTop()"><span>返回顶部</span></a>
+    <a href="#" class="phone"  data-target="#phone"><span>手机访问</span></a>
+    <a href="#" class="wechat" data-target="#wechat"><span>关注微信</span></a>
+    <a href="javascript:;" class="arrow bottom" onClick="goBottom()"><span>返回底部</span></a>
+  </div>
+	<div id="phone" class="popPanel">
+		<div class="popPanel-inner">
+			<img src="http://localhost/waibo/img/site.png" /><p class="slogan">扫码访问歪脖网</p><p>随时随地，想看就看</p>
+		</div>
+	</div>
+	<div id="wechat" class="popPanel">
+		<div class="popPanel-inner">
+			<img src="http://localhost/waibo/img/weixin.png" /><p class="slogan">关注歪脖网微信</p><p>分享 web 知识、交流 web 经验</p>
+		</div>
+	</div>
+</div>
+ <footer>
+   <p>Copyright&copy;2017&nbsp;&nbsp;www.waibo.wang All Rights Reserved</p>
+   <p>陕ICP备17020676号-1&nbsp;&nbsp;&nbsp;&nbsp;客服QQ：376601179&nbsp;&nbsp;&nbsp;&nbsp;邮箱：376601179#qq.com
+ </footer>
+ <script src="http://localhost/waibo/js/prettify.js"></script>
+ <script src="http://localhost/waibo/js/bootstrap.min.js"></script>
+ <script src="http://localhost/waibo/js/ckeditor_4.7.1/ckeditor.js"></script>
+ <script>
+ $(function() {
+    prettyPrint();
+    bible();
+    load();
+    rewardMethod();
+ });
+ </script>
+</body>
+</html>

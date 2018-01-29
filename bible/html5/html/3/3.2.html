@@ -1,0 +1,259 @@
+﻿<!DOCTYPE html>
+<html lang="zh">
+<head>
+ <meta charset="utf-8">
+ <title>HTML <form>标签_HTML form元素_HTML表单-歪脖网</title>
+ <meta name="keywords" content="HTML, HTML5, , form元素,HTML form元素,HTML表单,action属性,method属性,enctype属性,onSubmit属性,onReset属性" />
+ <meta name="description" content="form元素用来创建表单，它包含多个属性，分别是action属性、method属性、enctype属性、onSubmit属性、onReset属性" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+ <link href="http://localhost/waibo/css/bootstrap.min.css" rel="stylesheet" />
+ <link href="http://localhost/waibo/css/bootstrap-responsive.min.css" rel="stylesheet" />
+ <link href="http://localhost/waibo/css/style.css" rel="stylesheet" />
+
+ <script src="http://localhost/waibo/js/jquery.js"></script>
+ <script src="http://localhost/waibo/js/script.js"></script>
+</head>
+
+<body>
+ <div class="topbar">
+ <div class="eyebrow hidden-phone">
+ <div class="container">
+ <ul class="pull-left">
+   <li><a href="http://www.waibo.wang/" target="_blank">歪脖网</a>欢迎您！</li>
+ </ul>
+ <ul class="pull-right">
+  <li><a href="http://www.waibo.wang/user/">登录</a></li>
+  <li class="b">|</li>
+  <li><a href="http://www.waibo.wang/user/register.asp" target="_blank">注册</a></li>
+ </div>
+ </div>
+
+<div class="topnav">
+<div class="container">
+  <div class="row-fluid mtz">
+  <div class="span3 topnav-logo">
+    <a href="http://www.waibo.wang/"><p class="logo-cn">歪脖网</p><p class="logo-en hidden-phone">waibo.wang</p></a>
+  </div>
+  <div class="span6 nav">
+   <ul>
+     <li ><a href="http://www.waibo.wang/">首页</a></li>
+     <li class="active"><a href="http://localhost/waibo/">教程</a></li>
+     <li ><a href="http://www.waibo.wang/wiki/">专栏</a></li>
+     <li ><a href="http://www.waibo.wang/demo/">素材</a></li>
+   </ul>
+  </div>
+  <div class="span3 topnav-form">
+  </div>
+ </div>
+ </div>
+ </div>
+ </div>
+
+
+ <div class="container">
+ <div class="row-fluid">
+ <aside class="span3">
+ <map id="oAll" name="oAll">
+ <area title="全部展开" shape="rect" coords="0,0,22,20"  href="javascript:tree.openAll();" onfocus="blur(this);">
+ <area title="全部收起" shape="rect" coords="22,0,44,20" href="javascript:tree.closeAll();" onfocus="blur(this);">
+ </map>
+ <header><span>目录</span><img src="http://localhost/waibo/img/map.png" usemap="#oAll"/></header>
+ <script src="http://localhost/waibo/js/dtree.js"></script>
+ <script src="http://localhost/waibo/bible/html5/js/tree.js"></script>
+ <script>
+    createTree("302");
+ </script>
+ </aside>
+
+ <main class="span9">
+ <header><div class="name"><strong>HTML5宝典</strong>(第 1 版)</div><div class="section">3.2 Form元素</div></header>
+ <div><label id="treeview"><input id="show" type="checkbox" checked /> 文档结构视图</label><span class="hit">阅读（ <span id="hit"></span> ）</div>
+ <article>
+<h1 class="hide-text">HTML基础</h1>
+<h1 class="hide-text">HTML元素</h1>
+<h1 class="hide-text">表单及应用</h1>
+<h2 class="hide-text">什么是表单</h2>
+<h2>Form元素</h2>
+<p>form元素用来创建表单，它包含多个属性，分别是action属性、method属性、enctype属性、onSubmit属性、onReset属性，接下来对这些属性进行简要介绍：</p>
+<h4 id="action属性">action属性</h4>
+<p>action 属性用来规定访问者提交表单后，服务器端处理脚本的URL。它可以是绝对URL，也可以相对URL。这个URL一般指向服务器端的一个程序，这个程序可以是任何动态网页或 servlet 或CGI，由它来接收表单提交的数据，并进行相应的处理。如果 action 属性的值为空或不写，表示表单提交给页面自身进行处理。如：</p>
+<pre class="prettyprint linenums">
+<code>&lt;form action="http://www.waibo.wang/login.cgi" method="post"&gt;</code></pre>
+<p>上述代码就表示，当用户提交这个表单时，将由 &quot;http://www.waibo.wang/ &quot; 服务器上的 login.cgi 来接收表单提交的数据，并进行处理。</p>
+<h4 id="method属性">method属性</h4>
+<p>method属性规定表单的HTTP提交方式，即提交表单时，浏览器以何种方式向服务器发送表单数据。最常用的是 get 和 post 提交方式，默认是get方式。</p>
+<p>无论采用哪种发送方式，表单数据以&ldquo;名/值&rdquo;对的形式发送到服务器。名字是表单控件 name 属性的值，值是用户在表单控件中输入或选择的值。多个参数用 &amp; 连接。</p>
+<p>假如在上述表单中，用户输入的用户名是&ldquo;aaa&rdquo;，密码是&ldquo;123&rdquo;，则发送到服务器的数据将是username=aaa&amp;password=123。</p>
+<p>当然，在发送数据之前，要先按 enctype属性定义编码方式，对数据进行编码，并生成一个新的字串。</p>
+<p>当action为get时，把这个字串附加到 action 属性指定的URL后面，用?分割，加载这个新的URL。当action为post时候，浏览器把这个字串封装到http body中，发送到Web服务器。</p>
+<p>因此，如果使用 get 方式提交，将在浏览器地址栏看到&ldquo;login.cgi?username=aaa&amp; password=123&rdquo;，会导致密码暴漏在地址栏中；如果使用 post 方式，在浏览器地址栏只能看到 login.cgi，密码不会暴漏。</p>
+<p>尽管HTTP规范没有对URL的长度和传输的数据大小进行限制，但是，对于 get 方式，特定的浏览器和服务器对URL的长度有限制。因此，在大量数据时，使用 get 方式是不现实的。并且，它还会暴露敏感信息（如密码等），存在数据泄露的隐患。</p>
+<p>对于 post 方式，由于不是使用URL来传值，理论上数据大小不会受限制。并且，它不会暴露数据，更健壮更安全。所以，用 post 方式来发送表单数据是普遍的做法。</p>
+<h4 id="enctype属性">enctype属性</h4>
+<p>enctype属性用来定义在发送表单数据之前，如何对数据进行编码，共有两种编码类型：</p>
+<p>1）application/x-www-form-urlencoded</p>
+<p>该编码类型是默认的编码类型，如果用户不指定编码类型或指定无效的编码类型，即采用默认的编码类型。</p>
+<pre class="prettyprint linenums">
+<code>&lt;form action="editor.cgi" method="post"&gt;
+   &lt;label&gt;Name: &lt;/label&gt;&lt;input name="usr_name" /&gt;
+   &lt;input type="submit" value="提交" /&gt;
+&lt;/form&gt;</code></pre>
+<p>使用这种编码方式的原因是，某些字符（如，空格、加号和其他特殊字符）不能直接发送给Web服务器。因此，在发送数据前，要将这些字符用指定字符进行替代。</p>
+<p>2）multipart/form-data</p>
+<p>如果表单中包含 type=file的表单控件，必须使用该编码类型，同时，表单的method属性值必须是post。</p>
+<pre class="prettyprint linenums">
+<code>&lt;form action="editor.cgi" method="post" enctype="multipart/form-data"&gt;
+   &lt;label&gt;Photo: &lt;/label&gt;&lt;input type="file" name="pic" /&gt;
+   &lt;input type="submit" value="提交" /&gt;
+&lt;/form&gt;</code></pre>
+<p>该编码类型将数据分割成多个部分发送，每个部分对应于一个表单控件，并按照它们在表单中的顺序进行发送。每个部分可以具有一个可选的&ldquo;内容-类型&rdquo;头，来指明该表单控件的数据类型。关于 mutipart/form-data 的详细定义，请参阅&nbsp;<a href="http://www.ietf.org/rfc/rfc1867.txt">RFC1867</a>。</p>
+<h4 id="onSubmit属性">onSubmit属性</h4>
+<p>onSubmit属性为表单指定onSubmit事件的处理函数，当用户点击表单的提交按钮时，就会调用这个事件处理函数。</p>
+<p>如果该处理函数返回 fasle，就不会提交表单；如果返回其他值或什么都没有返回，则表单会被提交。因此，常常通过这个事件处理函数来进行表单验证，即对用户输入的每个字段的内容进行检查，看是否符合预期的格式，来确保数据的有效性。</p>
+<p>如，以下的用户登录表单，要求用户必须同时输入用户名和密码，才能提交表单。就可以通过onSubmit属性，为表单指定一个事件处理函数：</p>
+<pre class="prettyprint linenums">
+<code>&lt;form action="login.cgi" name="login" onSubmit="return checkSubmit()"&gt;
+    &lt;label&gt;用户名: &lt;/label&gt;&lt;input type="text" name="username" /&gt;
+    &lt;label&gt;密码: &lt;/label&gt;&lt;input type="password" name="password" /&gt;
+    &lt;input type="submit" value=" 登 录 " /&gt;
+&lt;/form&gt;</code></pre>
+<p>在事件处理函数中，获取用户名和密码，只要任意一个没有输入，函数就会返回 fasle，来阻止提交表单：</p>
+<pre class="prettyprint linenums">
+<code>function checkSubmit() {
+    var username = login.username.value;
+    var password = login.password.value;
+    if(username == '' || password == '') {
+        return false;
+    }
+}</code></pre>
+<p>上面只是通过一个非常简单的实例，来说明如何编写onSubmit事件的处理函数，实际应用中的处理函数，可能比这个要复杂得多，并且可以做更多的事情。当然，在不同情况下，还要给出不同的反馈，让用户清楚下一步该做什么，不能只是简单的阻止表单提交。</p>
+<p>需要注意的是，在checkSubmit()函数中，是通过 input 控件的 name来获取其值，而不是id；onSubmit 属性值中的return不能省略；只有单击表单的提交按钮，才会调用事件处理函数，调用方法 form.submit() 提交表单，不会调用处理函数。</p>
+<h4 id="onReset属性">onReset属性</h4>
+<p>onReset属性为表单指定onReset事件的处理函数，当用户点击表单的重置按钮时，就会调用这个事件处理函数。常用于重置表单之前，让用户进行确认，以防止用户无意中按下重置按钮。</p>
+<p>Javascript中有一个confirm 对话框，它的作用就是让用户确认自己的行为。对话框中包含一个确认按钮和取消按钮，用户点击确认就返回 true，点击取消就返回 false。</p>
+<p>因此，就可以为上述表单定义onReset=&quot;return checkReset()&quot;，并在checkReset()函数中弹出 confirm 对话框，让用户确认：</p>
+<pre class="prettyprint linenums">
+<code>function checkReset() { 
+    return confirm('确认重置表单吗？'); 
+}</code></pre>
+<p>运行结果如图 3‑2 所示：</p>
+<figure><img src='http://localhost/waibo/bible/html5/img/3/onreset.png' title='确认重置表单' alt='确认重置表单'><figcaption>图3-2  确认重置表单</figcaption></figure>
+<p>这样的话，在用户点击重置按钮时，就会弹出确认框，给用户一个选择的机会，如果用户点击取消，则不重置表单。</p>
+<div id="modalReward" class="modal hide fade modal-reward" tabindex="-1">
+<div class="modal-header">
+<button type="button" class="close" data-dismiss="modal">&times;</button>
+<h6>打赏</h6>
+</div>
+<div class="modal-body">
+<div class="tabbable reward-weipay">
+<ul class="nav nav-tabs">
+<li class="active"><a data-toggle="tab" href="#weipay1">￥1</a></li>
+<li><a data-toggle="tab" href="#weipay2">￥2</a></li>
+<li><a data-toggle="tab" href="#weipay5">￥5</a></li>
+<li><a data-toggle="tab" href="#weipay10">￥10</a></li>
+<li><a data-toggle="tab" href="#weipay20">￥20</a></li>
+<li><a data-toggle="tab" href="#weipayrand">其他金额</a></li>
+</ul>
+<div class="tab-content">
+<div class="tab-pane active" id="weipay1">
+<img src="http://localhost/waibo/img/weipay1.png" alt="￥1"><span>￥1</span>
+</div>
+<div class="tab-pane" id="weipay2">
+<img src="http://localhost/waibo/img/weipay2.png" alt="￥2"><span>￥2</span>
+</div>
+<div class="tab-pane" id="weipay5">
+<img src="http://localhost/waibo/img/weipay5.png" alt="￥5"><span>￥5</span>
+</div>
+<div class="tab-pane" id="weipay10">
+<img src="http://localhost/waibo/img/weipay10.png" alt="￥10"><span>￥10</span>
+</div>
+<div class="tab-pane" id="weipay20">
+<img src="http://localhost/waibo/img/weipay20.png" alt="￥20"><span>￥20</span>
+</div>
+<div class="tab-pane" id="weipayrand">
+<img src="http://localhost/waibo/img/weipayrand.png" alt="￥随意"><span>￥随意</span>
+</div>
+</div>
+</div>
+<div class="tabbable reward-alipay hide">
+<ul class="nav nav-tabs">
+<li class="active"><a data-toggle="tab" href="#alipay1">￥1</a></li>
+<li><a data-toggle="tab" href="#alipay2">￥2</a></li>
+<li><a data-toggle="tab" href="#alipay5">￥5</a></li>
+<li><a data-toggle="tab" href="#alipay10">￥10</a></li>
+<li><a data-toggle="tab" href="#alipay20">￥20</a></li>
+<li><a data-toggle="tab" href="#alipayrand">其他金额</a></li>
+</ul>
+<div class="tab-content">
+<div class="tab-pane active" id="alipay1">
+<img src="http://localhost/waibo/img/alipay1.png" alt="￥1"><span>￥1</span>
+</div>
+<div class="tab-pane" id="alipay2">
+<img src="http://localhost/waibo/img/alipay2.png" alt="￥2"><span>￥2</span>
+</div>
+<div class="tab-pane" id="alipay5">
+<img src="http://localhost/waibo/img/alipay5.png" alt="￥5"><span>￥5</span>
+</div>
+<div class="tab-pane" id="alipay10">
+<img src="http://localhost/waibo/img/alipay10.png" alt="￥10"><span>￥10</span>
+</div>
+<div class="tab-pane" id="alipay20">
+<img src="http://localhost/waibo/img/alipay20.png" alt="￥20"><span>￥20</span>
+</div>
+<div class="tab-pane" id="alipayrand">
+<img src="http://localhost/waibo/img/alipayrand.png" alt="￥随意"><span>￥随意</span>
+</div>
+</div>
+</div>
+<div class="reward-method">
+<label><input type="radio" name="method" value="weipay" checked><img src="http://localhost/waibo/img/weipay.png" alt="微信支付"></label>
+<label><input type="radio" name="method" value="alipay"><img src="http://localhost/waibo/img/alipay.png" alt="支付宝"></label>
+</div>
+</div>
+</div>
+<div class="reward">
+<p>如果本教程对您帮助很大，请随意打赏。您的支持，将鼓励我写出更好的教程！</p>
+<a data-toggle="modal" href="#modalReward">赏</a>
+</div>
+ <div class="page">
+   <a id="prev" href="http://localhost/waibo/bible/html5/html/3/3.1.html" title="&#8592; 键到上一节">« 上一节</a>&#8592; 键盘方向键翻页 &#8594;<a id="next" href="http://localhost/waibo/bible/html5/html/3/3.3.1.html" title="&#8594; 键到下一节">下一节 »</a>
+ </div>
+ </article>
+ </main>
+ </div>
+ </div>
+ <div class="floatPanel">
+	 <div class="ctrolPanel">
+		 <a href="javascript:;" class="arrow top" onClick="goTop()"><span>返回顶部</span></a>
+    <a href="#" class="phone"  data-target="#phone"><span>手机访问</span></a>
+    <a href="#" class="wechat" data-target="#wechat"><span>关注微信</span></a>
+    <a href="javascript:;" class="arrow bottom" onClick="goBottom()"><span>返回底部</span></a>
+  </div>
+	<div id="phone" class="popPanel">
+		<div class="popPanel-inner">
+			<img src="http://localhost/waibo/img/site.png" /><p class="slogan">扫码访问歪脖网</p><p>随时随地，想看就看</p>
+		</div>
+	</div>
+	<div id="wechat" class="popPanel">
+		<div class="popPanel-inner">
+			<img src="http://localhost/waibo/img/weixin.png" /><p class="slogan">关注歪脖网微信</p><p>分享 web 知识、交流 web 经验</p>
+		</div>
+	</div>
+</div>
+ <footer>
+   <p>Copyright&copy;2017&nbsp;&nbsp;www.waibo.wang All Rights Reserved</p>
+   <p>陕ICP备17020676号-1&nbsp;&nbsp;&nbsp;&nbsp;客服QQ：376601179&nbsp;&nbsp;&nbsp;&nbsp;邮箱：376601179#qq.com
+ </footer>
+ <script src="http://localhost/waibo/js/prettify.js"></script>
+ <script src="http://localhost/waibo/js/bootstrap.min.js"></script>
+ <script src="http://localhost/waibo/js/ckeditor_4.7.1/ckeditor.js"></script>
+ <script>
+ $(function() {
+    prettyPrint();
+    bible();
+    load();
+    rewardMethod();
+ });
+ </script>
+</body>
+</html>

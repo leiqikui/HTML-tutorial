@@ -1,0 +1,290 @@
+﻿<!DOCTYPE html>
+<html lang="zh">
+<head>
+ <meta charset="utf-8">
+ <title>HTML5 Canvas clip()方法来设定剪辑区域-歪脖网</title>
+ <meta name="keywords" content="HTML, HTML5, , clip(),clip()方法,剪辑区域,canvas剪辑区域" />
+ <meta name="description" content="Canvas中，使用clip()方法来设定剪辑区域，一旦设定好裁剪区域，则只有落在裁剪区域内的图形才能绘制出来，在裁剪区域以外进行绘制将没有任何效果。默认的剪辑区域是整个画布" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+ <link href="http://localhost/waibo/css/bootstrap.min.css" rel="stylesheet" />
+ <link href="http://localhost/waibo/css/bootstrap-responsive.min.css" rel="stylesheet" />
+ <link href="http://localhost/waibo/css/style.css" rel="stylesheet" />
+
+ <script src="http://localhost/waibo/js/jquery.js"></script>
+ <script src="http://localhost/waibo/js/script.js"></script>
+</head>
+
+<body>
+ <div class="topbar">
+ <div class="eyebrow hidden-phone">
+ <div class="container">
+ <ul class="pull-left">
+   <li><a href="http://www.waibo.wang/" target="_blank">歪脖网</a>欢迎您！</li>
+ </ul>
+ <ul class="pull-right">
+  <li><a href="http://www.waibo.wang/user/">登录</a></li>
+  <li class="b">|</li>
+  <li><a href="http://www.waibo.wang/user/register.asp" target="_blank">注册</a></li>
+ </div>
+ </div>
+
+<div class="topnav">
+<div class="container">
+  <div class="row-fluid mtz">
+  <div class="span3 topnav-logo">
+    <a href="http://www.waibo.wang/"><p class="logo-cn">歪脖网</p><p class="logo-en hidden-phone">waibo.wang</p></a>
+  </div>
+  <div class="span6 nav">
+   <ul>
+     <li ><a href="http://www.waibo.wang/">首页</a></li>
+     <li class="active"><a href="http://localhost/waibo/">教程</a></li>
+     <li ><a href="http://www.waibo.wang/wiki/">专栏</a></li>
+     <li ><a href="http://www.waibo.wang/demo/">素材</a></li>
+   </ul>
+  </div>
+  <div class="span3 topnav-form">
+  </div>
+ </div>
+ </div>
+ </div>
+ </div>
+
+
+ <div class="container">
+ <div class="row-fluid">
+ <aside class="span3">
+ <map id="oAll" name="oAll">
+ <area title="全部展开" shape="rect" coords="0,0,22,20"  href="javascript:tree.openAll();" onfocus="blur(this);">
+ <area title="全部收起" shape="rect" coords="22,0,44,20" href="javascript:tree.closeAll();" onfocus="blur(this);">
+ </map>
+ <header><span>目录</span><img src="http://localhost/waibo/img/map.png" usemap="#oAll"/></header>
+ <script src="http://localhost/waibo/js/dtree.js"></script>
+ <script src="http://localhost/waibo/bible/html5/js/tree.js"></script>
+ <script>
+    createTree("40505");
+ </script>
+ </aside>
+
+ <main class="span9">
+ <header><div class="name"><strong>HTML5宝典</strong>(第 1 版)</div><div class="section">4.5.5 裁剪区域</div></header>
+ <div><label id="treeview"><input id="show" type="checkbox" checked /> 文档结构视图</label><span class="hit">阅读（ <span id="hit"></span> ）</div>
+ <article>
+<h1 class="hide-text">HTML基础</h1>
+<h1 class="hide-text">HTML元素</h1>
+<h1 class="hide-text">表单及应用</h1>
+<h1 class="hide-text">Canvas绘图基础</h1>
+<h2 class="hide-text">基本用法</h2>
+<h2 class="hide-text">使用路径</h2>
+<h2 class="hide-text">绘制文本</h2>
+<h2 class="hide-text">处理图像和视频</h2>
+<h2 class="hide-text">装饰图形</h2>
+<h3 class="hide-text">阴影</h3>
+<h3 class="hide-text">渐变和图案</h3>
+<h3 class="hide-text">颜色及透明度</h3>
+<h3 class="hide-text">线条的样式</h3>
+<h3>裁剪区域</h3>
+<p>Canvas中的剪辑区域，是由路径所定义的一块区域，浏览器会把所有的绘图操作都限制在该区域内执行。</p>
+<p>Canvas中，使用clip()方法来设定剪辑区域，一旦设定好裁剪区域，则只有落在裁剪区域内的图形才能绘制出来，在裁剪区域以外进行绘制将没有任何效果。默认的剪辑区域是整个画布。</p>
+<p>由于剪辑区域是由路径所定义的区域，所以，必须先调用beginPath()方法绘制一个路径，然后，才能通过clip()方法把该路径设置为裁剪区域。定义裁剪区域的步骤为：</p>
+<ol>
+	<li>调用beginPath()方法开始一个路径。</li>
+	<li>调用arc()、rect()等方法定义路径。</li>
+	<li>调用clip()方法，把该路径设置为裁剪区域。</li>
+</ol>
+<p>下面以绘制两个圆形区域为例，来说明裁剪区域的使用方法。首先，不设置裁剪区域，绘制两个圆形区域：</p>
+<pre class="prettyprint linenums">
+<code>context.lineWidth = 12;
+context.strokeStyle = "#444";
+
+context.beginPath();
+context.arc(100, 100, 50, 0, Math.PI*2);
+context.closePath();
+context.stroke();
+
+context.beginPath();
+context.arc(100, 100, 30, 0, Math.PI*2);
+context.closePath();
+context.stroke();</code></pre>
+<p>由于未设置裁剪区域，两个圆都被完整的绘制出来，运行结果如图 4‑25 所示：</p>
+<figure><img src='http://localhost/waibo/bible/html5/img/4/clip1.png' title='未设置裁剪区域' alt='未设置裁剪区域'><figcaption>图4-25  未设置裁剪区域</figcaption></figure>
+<p>调用rect()方法，在画布的左上角定义一个100&times;100的矩形路径，再调用clip()方法把该路径设置为裁剪区域。</p>
+<pre class="prettyprint linenums">
+<code>context.lineWidth = 12;
+context.strokeStyle = "#444";
+
+context.rect(0,0,100,100);  // 定义裁剪区域
+context.clip();
+
+context.beginPath();
+context.arc(100, 100, 50, 0, Math.PI*2);
+context.closePath();
+context.stroke();
+
+context.beginPath();
+context.arc(100, 100, 30, 0, Math.PI*2);
+context.closePath();
+context.stroke();</code></pre>
+<p>上述代码设置了一个矩形的裁剪区域，所以，只有落在该裁剪区域内的部分被绘制出来。运行效果如图 4‑26 所示：</p>
+<figure><img src='http://localhost/waibo/bible/html5/img/4/clip2.png' title='设置一个裁剪区域' alt='设置一个裁剪区域'><figcaption>图4-26  设置一个裁剪区域</figcaption></figure>
+<p>从上图可以看出，两个圆均只绘制出其左上角部分，其余部分没有被绘制。</p>
+<p>当然，也可以设置多个裁剪区域。如果要定义多个裁剪区域，只需要在该路径中定义多条路径，再调用clip()方法把它们设置为裁剪区域即可。</p>
+<pre class="prettyprint linenums">
+<code>context.lineWidth = 12;
+context.strokeStyle = "#444";
+
+context.rect(0,0,100,100);      // 定义第一个裁剪区域
+context.rect(100,100,100,100);  // 定义第二个裁剪区域
+context.clip();
+
+context.beginPath();
+context.arc(100, 100, 50, 0, Math.PI*2);
+context.closePath();
+context.stroke();
+
+context.beginPath();
+context.arc(100, 100, 30, 0, Math.PI*2);
+context.closePath();
+context.stroke();</code></pre>
+<p>上述代码在原来的基础上，又增加了右下侧的裁剪区域。由于现在有两个矩形的裁剪区域，此时，左上角和右下角的圆弧都被绘制出来。运行结果如图 4‑27 所示：</p>
+<figure><img src='http://localhost/waibo/bible/html5/img/4/clip3.png' title='设置两个裁剪区域' alt='设置两个裁剪区域'><figcaption>图4-27  设置两个裁剪区域</figcaption></figure>
+<p>当使用裁选区进行绘画后，有时需要取消该裁选区或重新定义裁选区。此时，可以在需要保存状态的地方调用save()方法，在需要恢复状态的地方调用restore()方法。</p>
+<pre class="prettyprint linenums">
+<code>context.lineWidth = 12;
+context.strokeStyle = "#444";
+
+context.save();     // 保存状态
+
+context.rect(0,0,100,100);
+context.clip();
+
+context.beginPath();
+context.arc(100, 100, 60, 0, Math.PI*2);
+context.closePath();
+context.stroke();
+
+context.restore();  // 恢复状态
+
+context.beginPath();
+context.arc(100, 100, 40, 0, Math.PI*2);
+context.closePath();
+context.stroke();</code></pre>
+<p>上述代码中，第一个圆被局限在裁选区域内。由于在绘制第二个圆之前，调用了restore()方法恢复状态，取消了裁选区域，因此第二个圆是完整的。运行结果如图 4‑28 所示：</p>
+<figure><img src='http://localhost/waibo/bible/html5/img/4/clip4.png' title='取消裁剪区域' alt='取消裁剪区域'><figcaption>图4-28  取消裁剪区域</figcaption></figure>
+<div id="modalReward" class="modal hide fade modal-reward" tabindex="-1">
+<div class="modal-header">
+<button type="button" class="close" data-dismiss="modal">&times;</button>
+<h6>打赏</h6>
+</div>
+<div class="modal-body">
+<div class="tabbable reward-weipay">
+<ul class="nav nav-tabs">
+<li class="active"><a data-toggle="tab" href="#weipay1">￥1</a></li>
+<li><a data-toggle="tab" href="#weipay2">￥2</a></li>
+<li><a data-toggle="tab" href="#weipay5">￥5</a></li>
+<li><a data-toggle="tab" href="#weipay10">￥10</a></li>
+<li><a data-toggle="tab" href="#weipay20">￥20</a></li>
+<li><a data-toggle="tab" href="#weipayrand">其他金额</a></li>
+</ul>
+<div class="tab-content">
+<div class="tab-pane active" id="weipay1">
+<img src="http://localhost/waibo/img/weipay1.png" alt="￥1"><span>￥1</span>
+</div>
+<div class="tab-pane" id="weipay2">
+<img src="http://localhost/waibo/img/weipay2.png" alt="￥2"><span>￥2</span>
+</div>
+<div class="tab-pane" id="weipay5">
+<img src="http://localhost/waibo/img/weipay5.png" alt="￥5"><span>￥5</span>
+</div>
+<div class="tab-pane" id="weipay10">
+<img src="http://localhost/waibo/img/weipay10.png" alt="￥10"><span>￥10</span>
+</div>
+<div class="tab-pane" id="weipay20">
+<img src="http://localhost/waibo/img/weipay20.png" alt="￥20"><span>￥20</span>
+</div>
+<div class="tab-pane" id="weipayrand">
+<img src="http://localhost/waibo/img/weipayrand.png" alt="￥随意"><span>￥随意</span>
+</div>
+</div>
+</div>
+<div class="tabbable reward-alipay hide">
+<ul class="nav nav-tabs">
+<li class="active"><a data-toggle="tab" href="#alipay1">￥1</a></li>
+<li><a data-toggle="tab" href="#alipay2">￥2</a></li>
+<li><a data-toggle="tab" href="#alipay5">￥5</a></li>
+<li><a data-toggle="tab" href="#alipay10">￥10</a></li>
+<li><a data-toggle="tab" href="#alipay20">￥20</a></li>
+<li><a data-toggle="tab" href="#alipayrand">其他金额</a></li>
+</ul>
+<div class="tab-content">
+<div class="tab-pane active" id="alipay1">
+<img src="http://localhost/waibo/img/alipay1.png" alt="￥1"><span>￥1</span>
+</div>
+<div class="tab-pane" id="alipay2">
+<img src="http://localhost/waibo/img/alipay2.png" alt="￥2"><span>￥2</span>
+</div>
+<div class="tab-pane" id="alipay5">
+<img src="http://localhost/waibo/img/alipay5.png" alt="￥5"><span>￥5</span>
+</div>
+<div class="tab-pane" id="alipay10">
+<img src="http://localhost/waibo/img/alipay10.png" alt="￥10"><span>￥10</span>
+</div>
+<div class="tab-pane" id="alipay20">
+<img src="http://localhost/waibo/img/alipay20.png" alt="￥20"><span>￥20</span>
+</div>
+<div class="tab-pane" id="alipayrand">
+<img src="http://localhost/waibo/img/alipayrand.png" alt="￥随意"><span>￥随意</span>
+</div>
+</div>
+</div>
+<div class="reward-method">
+<label><input type="radio" name="method" value="weipay" checked><img src="http://localhost/waibo/img/weipay.png" alt="微信支付"></label>
+<label><input type="radio" name="method" value="alipay"><img src="http://localhost/waibo/img/alipay.png" alt="支付宝"></label>
+</div>
+</div>
+</div>
+<div class="reward">
+<p>如果本教程对您帮助很大，请随意打赏。您的支持，将鼓励我写出更好的教程！</p>
+<a data-toggle="modal" href="#modalReward">赏</a>
+</div>
+ <div class="page">
+   <a id="prev" href="http://localhost/waibo/bible/html5/html/4/4.5.4.html" title="&#8592; 键到上一节">« 上一节</a>&#8592; 键盘方向键翻页 &#8594;<a id="next" href="http://localhost/waibo/bible/html5/html/4/4.5.6.html" title="&#8594; 键到下一节">下一节 »</a>
+ </div>
+ </article>
+ </main>
+ </div>
+ </div>
+ <div class="floatPanel">
+	 <div class="ctrolPanel">
+		 <a href="javascript:;" class="arrow top" onClick="goTop()"><span>返回顶部</span></a>
+    <a href="#" class="phone"  data-target="#phone"><span>手机访问</span></a>
+    <a href="#" class="wechat" data-target="#wechat"><span>关注微信</span></a>
+    <a href="javascript:;" class="arrow bottom" onClick="goBottom()"><span>返回底部</span></a>
+  </div>
+	<div id="phone" class="popPanel">
+		<div class="popPanel-inner">
+			<img src="http://localhost/waibo/img/site.png" /><p class="slogan">扫码访问歪脖网</p><p>随时随地，想看就看</p>
+		</div>
+	</div>
+	<div id="wechat" class="popPanel">
+		<div class="popPanel-inner">
+			<img src="http://localhost/waibo/img/weixin.png" /><p class="slogan">关注歪脖网微信</p><p>分享 web 知识、交流 web 经验</p>
+		</div>
+	</div>
+</div>
+ <footer>
+   <p>Copyright&copy;2017&nbsp;&nbsp;www.waibo.wang All Rights Reserved</p>
+   <p>陕ICP备17020676号-1&nbsp;&nbsp;&nbsp;&nbsp;客服QQ：376601179&nbsp;&nbsp;&nbsp;&nbsp;邮箱：376601179#qq.com
+ </footer>
+ <script src="http://localhost/waibo/js/prettify.js"></script>
+ <script src="http://localhost/waibo/js/bootstrap.min.js"></script>
+ <script src="http://localhost/waibo/js/ckeditor_4.7.1/ckeditor.js"></script>
+ <script>
+ $(function() {
+    prettyPrint();
+    bible();
+    load();
+    rewardMethod();
+ });
+ </script>
+</body>
+</html>

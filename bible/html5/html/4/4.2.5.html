@@ -1,0 +1,237 @@
+﻿<!DOCTYPE html>
+<html lang="zh">
+<head>
+ <meta charset="utf-8">
+ <title>HTML5 Canvas quadraticCurveTo()方法绘制二次贝塞尔曲线_bezierCurveTo()方法绘制三次贝塞尔曲线-歪脖网</title>
+ <meta name="keywords" content="HTML, HTML5, , canvas,HTML5 canvas,quadraticCurveTo(),quadraticCurveTo()方法,bezierCurveTo(),bezierCurveTo()方法,二次贝塞尔曲线,三次贝塞尔曲线" />
+ <meta name="description" content="HTML5 Canvas中，使用quadraticCurveTo()方法绘制二次贝塞尔曲线，bezierCurveTo()方法绘制三次贝塞尔曲线" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+ <link href="http://localhost/waibo/css/bootstrap.min.css" rel="stylesheet" />
+ <link href="http://localhost/waibo/css/bootstrap-responsive.min.css" rel="stylesheet" />
+ <link href="http://localhost/waibo/css/style.css" rel="stylesheet" />
+
+ <script src="http://localhost/waibo/js/jquery.js"></script>
+ <script src="http://localhost/waibo/js/script.js"></script>
+</head>
+
+<body>
+ <div class="topbar">
+ <div class="eyebrow hidden-phone">
+ <div class="container">
+ <ul class="pull-left">
+   <li><a href="http://www.waibo.wang/" target="_blank">歪脖网</a>欢迎您！</li>
+ </ul>
+ <ul class="pull-right">
+  <li><a href="http://www.waibo.wang/user/">登录</a></li>
+  <li class="b">|</li>
+  <li><a href="http://www.waibo.wang/user/register.asp" target="_blank">注册</a></li>
+ </div>
+ </div>
+
+<div class="topnav">
+<div class="container">
+  <div class="row-fluid mtz">
+  <div class="span3 topnav-logo">
+    <a href="http://www.waibo.wang/"><p class="logo-cn">歪脖网</p><p class="logo-en hidden-phone">waibo.wang</p></a>
+  </div>
+  <div class="span6 nav">
+   <ul>
+     <li ><a href="http://www.waibo.wang/">首页</a></li>
+     <li class="active"><a href="http://localhost/waibo/">教程</a></li>
+     <li ><a href="http://www.waibo.wang/wiki/">专栏</a></li>
+     <li ><a href="http://www.waibo.wang/demo/">素材</a></li>
+   </ul>
+  </div>
+  <div class="span3 topnav-form">
+  </div>
+ </div>
+ </div>
+ </div>
+ </div>
+
+
+ <div class="container">
+ <div class="row-fluid">
+ <aside class="span3">
+ <map id="oAll" name="oAll">
+ <area title="全部展开" shape="rect" coords="0,0,22,20"  href="javascript:tree.openAll();" onfocus="blur(this);">
+ <area title="全部收起" shape="rect" coords="22,0,44,20" href="javascript:tree.closeAll();" onfocus="blur(this);">
+ </map>
+ <header><span>目录</span><img src="http://localhost/waibo/img/map.png" usemap="#oAll"/></header>
+ <script src="http://localhost/waibo/js/dtree.js"></script>
+ <script src="http://localhost/waibo/bible/html5/js/tree.js"></script>
+ <script>
+    createTree("40205");
+ </script>
+ </aside>
+
+ <main class="span9">
+ <header><div class="name"><strong>HTML5宝典</strong>(第 1 版)</div><div class="section">4.2.5 绘制贝塞尔曲线</div></header>
+ <div><label id="treeview"><input id="show" type="checkbox" checked /> 文档结构视图</label><span class="hit">阅读（ <span id="hit"></span> ）</div>
+ <article>
+<h1 class="hide-text">HTML基础</h1>
+<h1 class="hide-text">HTML元素</h1>
+<h1 class="hide-text">表单及应用</h1>
+<h1 class="hide-text">Canvas绘图基础</h1>
+<h2 class="hide-text">基本用法</h2>
+<h2 class="hide-text">使用路径</h2>
+<h3 class="hide-text">绘制圆弧</h3>
+<h3 class="hide-text">绘制矩形</h3>
+<h3 class="hide-text">绘制线段</h3>
+<h3 class="hide-text">如何使用路径</h3>
+<h3>绘制贝塞尔曲线</h3>
+<p>贝塞尔曲线于1959年，由法国物理学家与数学家Paul de Casteljau所发明，于1962年，由法国工程师皮埃尔&middot;贝塞尔（Pierre B&eacute;zier）所广泛发表，并用于汽车的车身设计。贝赛尔曲线为计算机矢量图形学奠定了基础，它的主要意义在于无论是直线或曲线都能在数学上予以描述。</p>
+<p>贝塞尔曲线分为两种：二次贝塞尔曲线和三次贝塞尔曲线。</p>
+<h4>quadraticCurveTo()方法绘制二次贝塞尔曲线</h4>
+<p>二次贝塞尔曲线是一种二次曲线，它只能向一个方向弯曲，由三个点来定义：两个锚点及一个控制点，控制点用来控制曲线的形状。</p>
+<p>二次贝塞尔曲线由三个特征切线定义，曲线的第一部分与上下文点和控制点形成的虚线相切，曲线的顶部与midpoint 1和midpoint 2形成的虚线相切，曲线的最后部分与控制点和终点形成的虚线相切。如图 4‑10 所示：</p>
+<figure><img src='http://localhost/waibo/bible/html5/img/4/quadraticCurve.png' title='二次贝塞尔曲线示意图' alt='二次贝塞尔曲线示意图'><figcaption>图4-10  二次贝塞尔曲线示意图</figcaption></figure>
+<p>在Canvas中，二次贝塞尔曲线的两个锚点分别是上下文点和终点，而起点是已知的。因此只需知道控制点和终点，就能唯一确定一条二次贝塞尔曲线。绘制方法为：</p>
+<pre class="prettyprint linenums">
+<code>quadraticCurveTo(controlX, controlY, endingPointX, endingPointY)</code></pre>
+<p>以下实例使用quadraticCurveTo(cpx,cpy,x,y)方法来绘制一条二次曲线，其中，起点是由上下文维护，控制点为(cpx,cpy)，终点为(x,y)。</p>
+<pre class="prettyprint linenums">
+<code>var cpx = 150, cpy = 50, x = 200, y = 250;
+context.lineWidth = 10;
+context.beginPath();
+context.moveTo(50,250);
+context.quadraticCurveTo(cpx,cpy,x,y);
+context.stroke();</code></pre>
+<p>上述代码的运行结果如图 4‑11 所示：</p>
+<figure><img src='http://localhost/waibo/bible/html5/img/4/quadraticCurve2.png' title='quadraticCurveTo()方法绘制二次贝塞尔曲线' alt='quadraticCurveTo()方法绘制二次贝塞尔曲线'><figcaption>图4-11  quadraticCurveTo()方法绘制二次贝塞尔曲线</figcaption></figure>
+<h4>bezierCurveTo()方法绘制三次贝塞尔曲线</h4>
+<p>由于二次贝塞尔曲线只有一个控制点，所以它永远只能画向一个方向弯曲的弧线，画不出S形曲线。要绘制S形曲线，还需要使用三次贝塞尔曲线。</p>
+<p>三次贝塞尔曲线是一种三次曲线，由四个点来定义：两个锚点及两个控制点，两个控制点用来控制曲线的形状。</p>
+<p>贝塞尔曲线由5条特征切线定义。曲线的第一部分与从上下文点和第一个控制点形成的虚线相切，曲线的第二部分与midpoint 1和midpoint 3形成的虚线相切，曲线的顶部与midpoint 2和midpoint 4形成的虚线相切，曲线的第四部分与midpoint 3和midpoint 5形成的虚线相切，曲线的最后部分与第二个控制点和终点形成的虚线相切。如图 4‑12 所示：</p>
+<figure><img src='http://localhost/waibo/bible/html5/img/4/bezierCurve.png' title='三次贝塞尔曲线示意图' alt='三次贝塞尔曲线示意图'><figcaption>图4-12  三次贝塞尔曲线示意图</figcaption></figure>
+<p>Canvas中的三次贝塞尔曲线由上下文点、两个控制点、一个终点定义。绘制方法为：</p>
+<pre class="prettyprint linenums">
+<code>bezierCurveTo(controlX1, controlY1, controlX2, controlY2, endPointX, endPointY)</code></pre>
+<p>以下实例使用bezierCurveTo(cp1x,cp1y, cp2x,cp2y,x,y)方法来绘制一条二次曲线，其中，起点是由上下文维护，控制点为(cp1x,cp1y)和(cp2x,cp2y)，终点为(x,y)。</p>
+<pre class="prettyprint linenums">
+<code>var cp1x = 200, cp1y = 260, cp2x = 380, cp2y = 10, x = 420, y = 180;
+context.lineWidth = 10;
+context.beginPath();
+context.moveTo(180, 100);
+context.bezierCurveTo(cp1x,  cp1y,  cp2x,  cp2y,  x,  y);
+context.stroke();</code></pre>
+<p>上述代码的运行结果如图 4‑13 所示：</p>
+<figure><img src='http://localhost/waibo/bible/html5/img/4/bezierCurve2.png' title='bezierCurveTo()方法绘制三次贝塞尔曲线' alt='bezierCurveTo()方法绘制三次贝塞尔曲线'><figcaption>图4-13  bezierCurveTo()方法绘制三次贝塞尔曲线</figcaption></figure>
+<div id="modalReward" class="modal hide fade modal-reward" tabindex="-1">
+<div class="modal-header">
+<button type="button" class="close" data-dismiss="modal">&times;</button>
+<h6>打赏</h6>
+</div>
+<div class="modal-body">
+<div class="tabbable reward-weipay">
+<ul class="nav nav-tabs">
+<li class="active"><a data-toggle="tab" href="#weipay1">￥1</a></li>
+<li><a data-toggle="tab" href="#weipay2">￥2</a></li>
+<li><a data-toggle="tab" href="#weipay5">￥5</a></li>
+<li><a data-toggle="tab" href="#weipay10">￥10</a></li>
+<li><a data-toggle="tab" href="#weipay20">￥20</a></li>
+<li><a data-toggle="tab" href="#weipayrand">其他金额</a></li>
+</ul>
+<div class="tab-content">
+<div class="tab-pane active" id="weipay1">
+<img src="http://localhost/waibo/img/weipay1.png" alt="￥1"><span>￥1</span>
+</div>
+<div class="tab-pane" id="weipay2">
+<img src="http://localhost/waibo/img/weipay2.png" alt="￥2"><span>￥2</span>
+</div>
+<div class="tab-pane" id="weipay5">
+<img src="http://localhost/waibo/img/weipay5.png" alt="￥5"><span>￥5</span>
+</div>
+<div class="tab-pane" id="weipay10">
+<img src="http://localhost/waibo/img/weipay10.png" alt="￥10"><span>￥10</span>
+</div>
+<div class="tab-pane" id="weipay20">
+<img src="http://localhost/waibo/img/weipay20.png" alt="￥20"><span>￥20</span>
+</div>
+<div class="tab-pane" id="weipayrand">
+<img src="http://localhost/waibo/img/weipayrand.png" alt="￥随意"><span>￥随意</span>
+</div>
+</div>
+</div>
+<div class="tabbable reward-alipay hide">
+<ul class="nav nav-tabs">
+<li class="active"><a data-toggle="tab" href="#alipay1">￥1</a></li>
+<li><a data-toggle="tab" href="#alipay2">￥2</a></li>
+<li><a data-toggle="tab" href="#alipay5">￥5</a></li>
+<li><a data-toggle="tab" href="#alipay10">￥10</a></li>
+<li><a data-toggle="tab" href="#alipay20">￥20</a></li>
+<li><a data-toggle="tab" href="#alipayrand">其他金额</a></li>
+</ul>
+<div class="tab-content">
+<div class="tab-pane active" id="alipay1">
+<img src="http://localhost/waibo/img/alipay1.png" alt="￥1"><span>￥1</span>
+</div>
+<div class="tab-pane" id="alipay2">
+<img src="http://localhost/waibo/img/alipay2.png" alt="￥2"><span>￥2</span>
+</div>
+<div class="tab-pane" id="alipay5">
+<img src="http://localhost/waibo/img/alipay5.png" alt="￥5"><span>￥5</span>
+</div>
+<div class="tab-pane" id="alipay10">
+<img src="http://localhost/waibo/img/alipay10.png" alt="￥10"><span>￥10</span>
+</div>
+<div class="tab-pane" id="alipay20">
+<img src="http://localhost/waibo/img/alipay20.png" alt="￥20"><span>￥20</span>
+</div>
+<div class="tab-pane" id="alipayrand">
+<img src="http://localhost/waibo/img/alipayrand.png" alt="￥随意"><span>￥随意</span>
+</div>
+</div>
+</div>
+<div class="reward-method">
+<label><input type="radio" name="method" value="weipay" checked><img src="http://localhost/waibo/img/weipay.png" alt="微信支付"></label>
+<label><input type="radio" name="method" value="alipay"><img src="http://localhost/waibo/img/alipay.png" alt="支付宝"></label>
+</div>
+</div>
+</div>
+<div class="reward">
+<p>如果本教程对您帮助很大，请随意打赏。您的支持，将鼓励我写出更好的教程！</p>
+<a data-toggle="modal" href="#modalReward">赏</a>
+</div>
+ <div class="page">
+   <a id="prev" href="http://localhost/waibo/bible/html5/html/4/4.2.4.html" title="&#8592; 键到上一节">« 上一节</a>&#8592; 键盘方向键翻页 &#8594;<a id="next" href="http://localhost/waibo/bible/html5/html/4/4.3.html" title="&#8594; 键到下一节">下一节 »</a>
+ </div>
+ </article>
+ </main>
+ </div>
+ </div>
+ <div class="floatPanel">
+	 <div class="ctrolPanel">
+		 <a href="javascript:;" class="arrow top" onClick="goTop()"><span>返回顶部</span></a>
+    <a href="#" class="phone"  data-target="#phone"><span>手机访问</span></a>
+    <a href="#" class="wechat" data-target="#wechat"><span>关注微信</span></a>
+    <a href="javascript:;" class="arrow bottom" onClick="goBottom()"><span>返回底部</span></a>
+  </div>
+	<div id="phone" class="popPanel">
+		<div class="popPanel-inner">
+			<img src="http://localhost/waibo/img/site.png" /><p class="slogan">扫码访问歪脖网</p><p>随时随地，想看就看</p>
+		</div>
+	</div>
+	<div id="wechat" class="popPanel">
+		<div class="popPanel-inner">
+			<img src="http://localhost/waibo/img/weixin.png" /><p class="slogan">关注歪脖网微信</p><p>分享 web 知识、交流 web 经验</p>
+		</div>
+	</div>
+</div>
+ <footer>
+   <p>Copyright&copy;2017&nbsp;&nbsp;www.waibo.wang All Rights Reserved</p>
+   <p>陕ICP备17020676号-1&nbsp;&nbsp;&nbsp;&nbsp;客服QQ：376601179&nbsp;&nbsp;&nbsp;&nbsp;邮箱：376601179#qq.com
+ </footer>
+ <script src="http://localhost/waibo/js/prettify.js"></script>
+ <script src="http://localhost/waibo/js/bootstrap.min.js"></script>
+ <script src="http://localhost/waibo/js/ckeditor_4.7.1/ckeditor.js"></script>
+ <script>
+ $(function() {
+    prettyPrint();
+    bible();
+    load();
+    rewardMethod();
+ });
+ </script>
+</body>
+</html>

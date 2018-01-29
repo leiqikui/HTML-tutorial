@@ -1,0 +1,259 @@
+﻿<!DOCTYPE html>
+<html lang="zh">
+<head>
+ <meta charset="utf-8">
+ <title>HTML <table>标签_HTML table元素_HTML表格-歪脖网</title>
+ <meta name="keywords" content="HTML, HTML5, , table元素,HTML table元素,HTML表格" />
+ <meta name="description" content="一个HTML表格由 table元素来定义，为了帮助访问者理解表格，可以使用 caption元素为表格定义一个标题。为了方便应用样式，通常使用 thead、tbody、tfoot 元素，将表格划分为三个逻辑部分，分别是头部、主体和尾部。还可以使用 colgroup 元素对列进行分组，使用 rowspan 和colspan 属性来合并相邻的单元格" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+ <link href="http://localhost/waibo/css/bootstrap.min.css" rel="stylesheet" />
+ <link href="http://localhost/waibo/css/bootstrap-responsive.min.css" rel="stylesheet" />
+ <link href="http://localhost/waibo/css/style.css" rel="stylesheet" />
+
+ <script src="http://localhost/waibo/js/jquery.js"></script>
+ <script src="http://localhost/waibo/js/script.js"></script>
+</head>
+
+<body>
+ <div class="topbar">
+ <div class="eyebrow hidden-phone">
+ <div class="container">
+ <ul class="pull-left">
+   <li><a href="http://www.waibo.wang/" target="_blank">歪脖网</a>欢迎您！</li>
+ </ul>
+ <ul class="pull-right">
+  <li><a href="http://www.waibo.wang/user/">登录</a></li>
+  <li class="b">|</li>
+  <li><a href="http://www.waibo.wang/user/register.asp" target="_blank">注册</a></li>
+ </div>
+ </div>
+
+<div class="topnav">
+<div class="container">
+  <div class="row-fluid mtz">
+  <div class="span3 topnav-logo">
+    <a href="http://www.waibo.wang/"><p class="logo-cn">歪脖网</p><p class="logo-en hidden-phone">waibo.wang</p></a>
+  </div>
+  <div class="span6 nav">
+   <ul>
+     <li ><a href="http://www.waibo.wang/">首页</a></li>
+     <li class="active"><a href="http://localhost/waibo/">教程</a></li>
+     <li ><a href="http://www.waibo.wang/wiki/">专栏</a></li>
+     <li ><a href="http://www.waibo.wang/demo/">素材</a></li>
+   </ul>
+  </div>
+  <div class="span3 topnav-form">
+  </div>
+ </div>
+ </div>
+ </div>
+ </div>
+
+
+ <div class="container">
+ <div class="row-fluid">
+ <aside class="span3">
+ <map id="oAll" name="oAll">
+ <area title="全部展开" shape="rect" coords="0,0,22,20"  href="javascript:tree.openAll();" onfocus="blur(this);">
+ <area title="全部收起" shape="rect" coords="22,0,44,20" href="javascript:tree.closeAll();" onfocus="blur(this);">
+ </map>
+ <header><span>目录</span><img src="http://localhost/waibo/img/map.png" usemap="#oAll"/></header>
+ <script src="http://localhost/waibo/js/dtree.js"></script>
+ <script src="http://localhost/waibo/bible/html5/js/tree.js"></script>
+ <script>
+    createTree("205");
+ </script>
+ </aside>
+
+ <main class="span9">
+ <header><div class="name"><strong>HTML5宝典</strong>(第 1 版)</div><div class="section">2.5 表格元素</div></header>
+ <div><label id="treeview"><input id="show" type="checkbox" checked /> 文档结构视图</label><span class="hit">阅读（ <span id="hit"></span> ）</div>
+ <article>
+<h1 class="hide-text">HTML基础</h1>
+<h1 class="hide-text">HTML元素</h1>
+<h2 class="hide-text">结构语义元素</h2>
+<h2 class="hide-text">内容分组元素</h2>
+<h2 class="hide-text">文本语义元素</h2>
+<h2 class="hide-text">链接元素</h2>
+<h2>表格元素</h2>
+<p>在日常生活中，我们对表格已经非常熟悉了，表格的基本作用是用来存放数据，它是数据的二维容器，人们常常用它来记录财务数据、列车时刻表、电视节目单等。</p>
+<p>大多数情况下，表格都是由列标题或行标题，加上数据本身构成。表格可以很复杂，不过很少需要实现特别复杂的表格，除非是具有丰富数据的网站。</p>
+<p>一个HTML表格由 table元素来定义，表格由行组成，行又由单元格组成，单元格可以是标题单元格或数据单元格。</p>
+<p>为了帮助访问者理解表格，可以使用 caption元素为表格定义一个标题。为了方便应用样式，通常使用 thead、tbody、tfoot 元素，将表格划分为三个逻辑部分，分别是头部、主体和尾部。还可以使用 colgroup 元素对列进行分组，使用 rowspan 和colspan 属性来合并相邻的单元格。</p>
+<h4>table</h4>
+<p>table元素用来定义表格，并通过 summary 属性定义表格的摘要。摘要用于概括整个表格的内容，它不会显示在表格上，但对浏览器可见，并为搜索引擎提供有用的信息，是SEO的重要内容，故备受SEOer的青睐。</p>
+<h4>caption</h4>
+<p>caption元素用来定义表格的标题，它可以出现在 &lt;table&gt; 和 &lt;/table&gt; 标签之间的任何位置。不过，通常习惯放在表格定义的第一行，即紧跟着 &lt;table&gt; 标签。</p>
+<p>尽管 caption元素不是必须的元素，但无论是对于好的编码习惯，还是搜索引擎而言，caption 都非常有用。</p>
+<p>默认情况下，表格的标题出现在整张表格的上方，如果希望它出现在表格的下方，只需把CSS的 caption-side 属性的值设置为 bottom 即可轻松实现。</p>
+<h4>thead、tbody和tfoot</h4>
+<p>thead、tbody、tfoot 元素，用于从结构上将表格划分为几个逻辑部分，它们不会影响表格的布局，也不是必需的（不过推荐使用它们）。</p>
+<p>一个表格中，如果包含了 thead 或 tfoot 元素，就必须至少包含一个 tbody 元素。并且，一个表格中只能包含一个 thead 或 tfoot 元素，但可以包含任意多个 tbody 元素。</p>
+<p>thead 元素可以显式地将一行或多行标记为表格的头部，通常用来放置行或列的标题；tbody 元素用于放置所有的数据行；tfoot 元素可以显式地将一行或多行标记为表格的尾部。</p>
+<p>在 thead、tbody 和 tfoot 元素中，都必须包含行，每个行都包含标题单元格或数据单元格，或同时包含这两种单元格。</p>
+<p>行由 tr（table row）元素定义；标题单元格由 th（table head）元素定义，并通过 scope 属性来定义它是行标题还是列标题，取值 &quot;row&quot; 为行标题，取值 &quot;col&quot; 为列标题；数据单元格由 td（table data）元素定义，它的内容可以是任何HTML元素，如文本、图片、列表、段落、表单、水平线、表格等等。</p>
+<p>标题单元格的内容内容默认会加粗显示，并居中对齐。数据单元格的内容按正常文档流显示，没有特殊格式。不过，可以通过CSS来设置单元格的格式。</p>
+<h4>colgroup和col</h4>
+<p>使用 tbody 和 tr 可以对整行应用样式，而很难对整列应用样式。为了解决这个问题，W3C引入了 colgroup 和 col 元素。</p>
+<p>colgroup 元素能够使用 col 元素对表格的列进行分组，分组的目的是为了方便为整列应用样式。在 colgroup 元素内部，通过 col 元素的 span 属性指定该组所包含的列数。</p>
+<p>遗憾的是，几乎所有浏览器都取消了对 colgroup 和 col 元素的支持。因此，在定义表格时，很少有人使用这两个元素。</p>
+<p>其实也没什么可遗憾的，使用CSS3的 :nth-child 伪类选择器，可以非常方便地为特定的列设定样式。如，以下规则可以让第 4 列的所有单元格中的内容水平居中对齐：</p>
+<pre class="prettyprint linenums">
+<code>td:nth-child(4) {
+   text-align: center;
+}</code></pre>
+<p>当然，IE9以下的版本并不支持CSS3，对于这些老掉牙的浏览器，只能退而求其次，还得定义单独的类或其他选择器，来特定的列设定样式。</p>
+<h4>rowspan和colspan</h4>
+<p>默认情况下，一个 th 和 td 只占据一个单元格的空间，当某个单元格需要跨越多行或多列时，可以使用 rowspan 和 colspan 属性来合并相邻的单元格。</p>
+<p>rowspan 属性指定该单元格所跨越的行数，colspan 属性指定该单元格所跨越的列数。如，&lt;td rowspan=&quot;3&quot;&gt;，就表示该单元格跨越 3 行，&lt;td colspan=&quot;3&quot;&gt;，就表示该单元格跨越 3 列。</p>
+<p>HTML表格就这么简单，下面是一个HTML表格的完整示例，它包含除 colgroup 和 col 之外的所有元素。代码如下：</p>
+<pre class="prettyprint linenums">
+<code>&lt;table summary="HTML表格示例"&gt;
+&lt;caption&gt; HTML表格示例&lt;/caption&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+       &lt;th&gt;&amp;nbsp;&lt;/th&gt;
+       &lt;th&gt;th&lt;/th&gt;
+       &lt;th&gt;th&lt;/th&gt;
+       &lt;th&gt;th&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+       &lt;td&gt;tr-1&lt;/td&gt;
+       &lt;td&gt;td&lt;/td&gt;
+       &lt;td&gt;td&lt;/td&gt;
+       &lt;td rowspan = "2"&gt;td rowspan = "2"&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+       &lt;td&gt;tr-2&lt;/td&gt;
+       &lt;td&gt;td&lt;/td&gt;
+       &lt;td&gt;td&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+       &lt;td&gt;tr-3&lt;/td&gt;
+       &lt;td&gt;td&lt;/td&gt;
+       &lt;td colspan = "2"&gt;td colspan = "2"&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+<p>上述代码的运行结果如图 2‑47 所示：</p>
+<figure><img src='http://localhost/waibo/bible/html5/img/2/table.png' title='HTML表格示例' alt='HTML表格示例'><figcaption>图2-47  HTML表格示例</figcaption></figure>
+<div id="modalReward" class="modal hide fade modal-reward" tabindex="-1">
+<div class="modal-header">
+<button type="button" class="close" data-dismiss="modal">&times;</button>
+<h6>打赏</h6>
+</div>
+<div class="modal-body">
+<div class="tabbable reward-weipay">
+<ul class="nav nav-tabs">
+<li class="active"><a data-toggle="tab" href="#weipay1">￥1</a></li>
+<li><a data-toggle="tab" href="#weipay2">￥2</a></li>
+<li><a data-toggle="tab" href="#weipay5">￥5</a></li>
+<li><a data-toggle="tab" href="#weipay10">￥10</a></li>
+<li><a data-toggle="tab" href="#weipay20">￥20</a></li>
+<li><a data-toggle="tab" href="#weipayrand">其他金额</a></li>
+</ul>
+<div class="tab-content">
+<div class="tab-pane active" id="weipay1">
+<img src="http://localhost/waibo/img/weipay1.png" alt="￥1"><span>￥1</span>
+</div>
+<div class="tab-pane" id="weipay2">
+<img src="http://localhost/waibo/img/weipay2.png" alt="￥2"><span>￥2</span>
+</div>
+<div class="tab-pane" id="weipay5">
+<img src="http://localhost/waibo/img/weipay5.png" alt="￥5"><span>￥5</span>
+</div>
+<div class="tab-pane" id="weipay10">
+<img src="http://localhost/waibo/img/weipay10.png" alt="￥10"><span>￥10</span>
+</div>
+<div class="tab-pane" id="weipay20">
+<img src="http://localhost/waibo/img/weipay20.png" alt="￥20"><span>￥20</span>
+</div>
+<div class="tab-pane" id="weipayrand">
+<img src="http://localhost/waibo/img/weipayrand.png" alt="￥随意"><span>￥随意</span>
+</div>
+</div>
+</div>
+<div class="tabbable reward-alipay hide">
+<ul class="nav nav-tabs">
+<li class="active"><a data-toggle="tab" href="#alipay1">￥1</a></li>
+<li><a data-toggle="tab" href="#alipay2">￥2</a></li>
+<li><a data-toggle="tab" href="#alipay5">￥5</a></li>
+<li><a data-toggle="tab" href="#alipay10">￥10</a></li>
+<li><a data-toggle="tab" href="#alipay20">￥20</a></li>
+<li><a data-toggle="tab" href="#alipayrand">其他金额</a></li>
+</ul>
+<div class="tab-content">
+<div class="tab-pane active" id="alipay1">
+<img src="http://localhost/waibo/img/alipay1.png" alt="￥1"><span>￥1</span>
+</div>
+<div class="tab-pane" id="alipay2">
+<img src="http://localhost/waibo/img/alipay2.png" alt="￥2"><span>￥2</span>
+</div>
+<div class="tab-pane" id="alipay5">
+<img src="http://localhost/waibo/img/alipay5.png" alt="￥5"><span>￥5</span>
+</div>
+<div class="tab-pane" id="alipay10">
+<img src="http://localhost/waibo/img/alipay10.png" alt="￥10"><span>￥10</span>
+</div>
+<div class="tab-pane" id="alipay20">
+<img src="http://localhost/waibo/img/alipay20.png" alt="￥20"><span>￥20</span>
+</div>
+<div class="tab-pane" id="alipayrand">
+<img src="http://localhost/waibo/img/alipayrand.png" alt="￥随意"><span>￥随意</span>
+</div>
+</div>
+</div>
+<div class="reward-method">
+<label><input type="radio" name="method" value="weipay" checked><img src="http://localhost/waibo/img/weipay.png" alt="微信支付"></label>
+<label><input type="radio" name="method" value="alipay"><img src="http://localhost/waibo/img/alipay.png" alt="支付宝"></label>
+</div>
+</div>
+</div>
+<div class="reward">
+<p>如果本教程对您帮助很大，请随意打赏。您的支持，将鼓励我写出更好的教程！</p>
+<a data-toggle="modal" href="#modalReward">赏</a>
+</div>
+ <div class="page">
+   <a id="prev" href="http://localhost/waibo/bible/html5/html/2/2.4.2.html" title="&#8592; 键到上一节">« 上一节</a>&#8592; 键盘方向键翻页 &#8594;<a id="next" href="http://localhost/waibo/bible/html5/html/2/2.6.1.html" title="&#8594; 键到下一节">下一节 »</a>
+ </div>
+ </article>
+ </main>
+ </div>
+ </div>
+ <div class="floatPanel">
+	 <div class="ctrolPanel">
+		 <a href="javascript:;" class="arrow top" onClick="goTop()"><span>返回顶部</span></a>
+    <a href="#" class="phone"  data-target="#phone"><span>手机访问</span></a>
+    <a href="#" class="wechat" data-target="#wechat"><span>关注微信</span></a>
+    <a href="javascript:;" class="arrow bottom" onClick="goBottom()"><span>返回底部</span></a>
+  </div>
+	<div id="phone" class="popPanel">
+		<div class="popPanel-inner">
+			<img src="http://localhost/waibo/img/site.png" /><p class="slogan">扫码访问歪脖网</p><p>随时随地，想看就看</p>
+		</div>
+	</div>
+	<div id="wechat" class="popPanel">
+		<div class="popPanel-inner">
+			<img src="http://localhost/waibo/img/weixin.png" /><p class="slogan">关注歪脖网微信</p><p>分享 web 知识、交流 web 经验</p>
+		</div>
+	</div>
+</div>
+ <footer>
+   <p>Copyright&copy;2017&nbsp;&nbsp;www.waibo.wang All Rights Reserved</p>
+   <p>陕ICP备17020676号-1&nbsp;&nbsp;&nbsp;&nbsp;客服QQ：376601179&nbsp;&nbsp;&nbsp;&nbsp;邮箱：376601179#qq.com
+ </footer>
+ <script src="http://localhost/waibo/js/prettify.js"></script>
+ <script src="http://localhost/waibo/js/bootstrap.min.js"></script>
+ <script src="http://localhost/waibo/js/ckeditor_4.7.1/ckeditor.js"></script>
+ <script>
+ $(function() {
+    prettyPrint();
+    bible();
+    load();
+    rewardMethod();
+ });
+ </script>
+</body>
+</html>

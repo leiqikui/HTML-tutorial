@@ -1,0 +1,242 @@
+﻿<!DOCTYPE html>
+<html lang="zh">
+<head>
+ <meta charset="utf-8">
+ <title>HTML5 Canvas arc()方法_arcTo()方法绘制圆弧-歪脖网</title>
+ <meta name="keywords" content="HTML, HTML5, , canvas,HTML5 canvas,arc(),arc()方法,arcTo(),arcTo()方法" />
+ <meta name="description" content="圆弧被定义为假想的圆周上任意两点之间的部分。Canvas的API提供了两个绘制圆弧的方法：arc()和arcTo()方法。" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+ <link href="http://localhost/waibo/css/bootstrap.min.css" rel="stylesheet" />
+ <link href="http://localhost/waibo/css/bootstrap-responsive.min.css" rel="stylesheet" />
+ <link href="http://localhost/waibo/css/style.css" rel="stylesheet" />
+
+ <script src="http://localhost/waibo/js/jquery.js"></script>
+ <script src="http://localhost/waibo/js/script.js"></script>
+</head>
+
+<body>
+ <div class="topbar">
+ <div class="eyebrow hidden-phone">
+ <div class="container">
+ <ul class="pull-left">
+   <li><a href="http://www.waibo.wang/" target="_blank">歪脖网</a>欢迎您！</li>
+ </ul>
+ <ul class="pull-right">
+  <li><a href="http://www.waibo.wang/user/">登录</a></li>
+  <li class="b">|</li>
+  <li><a href="http://www.waibo.wang/user/register.asp" target="_blank">注册</a></li>
+ </div>
+ </div>
+
+<div class="topnav">
+<div class="container">
+  <div class="row-fluid mtz">
+  <div class="span3 topnav-logo">
+    <a href="http://www.waibo.wang/"><p class="logo-cn">歪脖网</p><p class="logo-en hidden-phone">waibo.wang</p></a>
+  </div>
+  <div class="span6 nav">
+   <ul>
+     <li ><a href="http://www.waibo.wang/">首页</a></li>
+     <li class="active"><a href="http://localhost/waibo/">教程</a></li>
+     <li ><a href="http://www.waibo.wang/wiki/">专栏</a></li>
+     <li ><a href="http://www.waibo.wang/demo/">素材</a></li>
+   </ul>
+  </div>
+  <div class="span3 topnav-form">
+  </div>
+ </div>
+ </div>
+ </div>
+ </div>
+
+
+ <div class="container">
+ <div class="row-fluid">
+ <aside class="span3">
+ <map id="oAll" name="oAll">
+ <area title="全部展开" shape="rect" coords="0,0,22,20"  href="javascript:tree.openAll();" onfocus="blur(this);">
+ <area title="全部收起" shape="rect" coords="22,0,44,20" href="javascript:tree.closeAll();" onfocus="blur(this);">
+ </map>
+ <header><span>目录</span><img src="http://localhost/waibo/img/map.png" usemap="#oAll"/></header>
+ <script src="http://localhost/waibo/js/dtree.js"></script>
+ <script src="http://localhost/waibo/bible/html5/js/tree.js"></script>
+ <script>
+    createTree("40204");
+ </script>
+ </aside>
+
+ <main class="span9">
+ <header><div class="name"><strong>HTML5宝典</strong>(第 1 版)</div><div class="section">4.2.4 绘制圆弧</div></header>
+ <div><label id="treeview"><input id="show" type="checkbox" checked /> 文档结构视图</label><span class="hit">阅读（ <span id="hit"></span> ）</div>
+ <article>
+<h1 class="hide-text">HTML基础</h1>
+<h1 class="hide-text">HTML元素</h1>
+<h1 class="hide-text">表单及应用</h1>
+<h1 class="hide-text">Canvas绘图基础</h1>
+<h2 class="hide-text">基本用法</h2>
+<h2 class="hide-text">使用路径</h2>
+<h3 class="hide-text">绘制矩形</h3>
+<h3 class="hide-text">绘制线段</h3>
+<h3 class="hide-text">如何使用路径</h3>
+<h3>绘制圆弧</h3>
+<p>圆弧被定义为假想的圆周上任意两点之间的部分。Canvas的API提供了两个绘制圆弧的方法：arc()和arcTo()方法。</p>
+<h4>arc()方法</h4>
+<p>使用arc()方法绘制圆弧时，假想的圆由圆心和半径来定义，两个点由起始角度和结束角度来定义，还需要一个参数来定义绘制方向。故，arc()方法的格式为：</p>
+<pre class="prettyprint linenums">
+<code>arc(x, y, radius, startAngle, endAngle [, anticlockwise])</code></pre>
+<p>其中，(x, y)表示圆心的坐标，radius表示圆的半径，stratAngle和endAngle表示圆弧的起始角度和结束角度。可选参数anticlockwise用来指示绘制方向，true表示逆时针，false表示顺时针，默认值为false，即顺时针。</p>
+<p>圆弧的单位是弧度。在一个圆周上，其角度是在笛卡尔坐标系下定义的，从圆右侧的0&pi;开始，按顺时针方向依次经过&pi;/2、&pi;、3&pi;/2、2&pi;。角度的位置是规定好的，并且固定不变，与顺时针还是逆时针无关。如图 4‑7 所示：</p>
+<figure><img src='http://localhost/waibo/bible/html5/img/4/arc1.png' title='arc()方法示意图' alt='arc()方法示意图'><figcaption>图4-7  arc()方法示意图</figcaption></figure>
+<p>起始角度和结束角度没必要非得在0&pi; 到 2&pi;之间，它可以是任意实数，因为在圆周上旋转时，角度可以相互重叠。比方说我们定义3&pi;为起始角度，就相当于圆周上完整的一圈(2&pi;)再加另外半圈(1&pi;)。也就是说，3&pi;就等价于1&pi;。再举一个例子，-3&pi;也等价于1&pi;，因为角度沿圆周逆时针旋转1.5圈，将结束于1&pi;。</p>
+<p>由于角度的位置是固定的，所以，在其他参数相同时，圆弧所掠过的角度就由anticlockwise参数来决定。例如，stratAngle = 0，endAngle = &pi; / 2，如果顺时针画弧，则掠过的角度为90&deg;；如果逆时针画弧，则掠过的角度为270&deg;。</p>
+<p>如下代码绘制两段圆弧，先逆时针方向绘制一个绿色的圆弧，再顺时针方向绘制一个浅黑色的圆弧。这两段圆弧，除了anticlockwise参数不同，其他参数均相同，它们位于同一个圆周上。&nbsp;</p>
+<pre class="prettyprint linenums">
+<code>context.lineWidth = 10;   
+      
+context.beginPath();
+context.arc(100, 100, 50, 0, Math.PI/2 , true);
+context.strokeStyle = '#0f0';
+context.stroke();
+context.beginPath();
+context.arc(100, 100, 50, 0, Math.PI/2 , false);
+context.strokeStyle = '#444';
+context.stroke();</code></pre>
+<p>上述代码的运行结果如图 4‑8 所示：</p>
+<figure><img src='http://localhost/waibo/bible/html5/img/4/arc2.png' title='arc()方法绘制圆弧' alt='arc()方法绘制圆弧'><figcaption>图4-8  arc()方法绘制圆弧</figcaption></figure>
+<p>可以看出，逆时针方向绘制的绿色圆弧所掠过的角度为270&deg;，顺时针方向绘制的浅黑色圆弧所掠过的角度为90&deg;，两段圆弧会正好形成一个完整的圆。</p>
+<section>
+<p class="note"> 说明：</p>
+<p>Canvas中的所有角度都是以弧度为单位的，可以使用 degrees*Math.PI/180 公式将角度转换为弧度。如20度，用弧度表示为20*Math.PI/180。</p>
+</section>
+<h4>arcTo()方法</h4>
+<p>arcTo()方法用来绘制与两条假想的直线均相切的假想圆上的圆弧。arcTo()方法的格式为：</p>
+<pre class="prettyprint linenums">
+<code>arcTo(x1, y1, x2, y2, radius)</code></pre>
+<p>其中，(x1,y1)和(x2,y2)分别代表两个点，radius代表圆的半径。该方法一指定半径绘制一条圆弧，此圆弧与当前点到(x1,y1)的连线相切，而且与(x1,y1) 和(x2,y2)的连线也相切。在假想的圆上会有两段圆弧，arcTo()方法取长度较短的那个。</p>
+<pre class="prettyprint linenums">
+<code>context.beginPath();
+context.moveTo(20,20);           // 创建开始点
+context.lineTo(100,20);          // 创建水平线
+context.arcTo(150,20,150,70,50); // 创建弧线
+context.lineTo(150,140);         // 创建垂直线
+context.stroke();                // 进行绘制</code></pre>
+<p>创建水平线后，当前点就成为(100,20)，并且圆弧与(100,20)到(150,20)的水平线，(150,70) (150,140)的垂直线都相切，取其中较短的圆弧。运行效果如图 4‑9 所示：</p>
+
+<div id="modalReward" class="modal hide fade modal-reward" tabindex="-1">
+<div class="modal-header">
+<button type="button" class="close" data-dismiss="modal">&times;</button>
+<h6>打赏</h6>
+</div>
+<div class="modal-body">
+<div class="tabbable reward-weipay">
+<ul class="nav nav-tabs">
+<li class="active"><a data-toggle="tab" href="#weipay1">￥1</a></li>
+<li><a data-toggle="tab" href="#weipay2">￥2</a></li>
+<li><a data-toggle="tab" href="#weipay5">￥5</a></li>
+<li><a data-toggle="tab" href="#weipay10">￥10</a></li>
+<li><a data-toggle="tab" href="#weipay20">￥20</a></li>
+<li><a data-toggle="tab" href="#weipayrand">其他金额</a></li>
+</ul>
+<div class="tab-content">
+<div class="tab-pane active" id="weipay1">
+<img src="http://localhost/waibo/img/weipay1.png" alt="￥1"><span>￥1</span>
+</div>
+<div class="tab-pane" id="weipay2">
+<img src="http://localhost/waibo/img/weipay2.png" alt="￥2"><span>￥2</span>
+</div>
+<div class="tab-pane" id="weipay5">
+<img src="http://localhost/waibo/img/weipay5.png" alt="￥5"><span>￥5</span>
+</div>
+<div class="tab-pane" id="weipay10">
+<img src="http://localhost/waibo/img/weipay10.png" alt="￥10"><span>￥10</span>
+</div>
+<div class="tab-pane" id="weipay20">
+<img src="http://localhost/waibo/img/weipay20.png" alt="￥20"><span>￥20</span>
+</div>
+<div class="tab-pane" id="weipayrand">
+<img src="http://localhost/waibo/img/weipayrand.png" alt="￥随意"><span>￥随意</span>
+</div>
+</div>
+</div>
+<div class="tabbable reward-alipay hide">
+<ul class="nav nav-tabs">
+<li class="active"><a data-toggle="tab" href="#alipay1">￥1</a></li>
+<li><a data-toggle="tab" href="#alipay2">￥2</a></li>
+<li><a data-toggle="tab" href="#alipay5">￥5</a></li>
+<li><a data-toggle="tab" href="#alipay10">￥10</a></li>
+<li><a data-toggle="tab" href="#alipay20">￥20</a></li>
+<li><a data-toggle="tab" href="#alipayrand">其他金额</a></li>
+</ul>
+<div class="tab-content">
+<div class="tab-pane active" id="alipay1">
+<img src="http://localhost/waibo/img/alipay1.png" alt="￥1"><span>￥1</span>
+</div>
+<div class="tab-pane" id="alipay2">
+<img src="http://localhost/waibo/img/alipay2.png" alt="￥2"><span>￥2</span>
+</div>
+<div class="tab-pane" id="alipay5">
+<img src="http://localhost/waibo/img/alipay5.png" alt="￥5"><span>￥5</span>
+</div>
+<div class="tab-pane" id="alipay10">
+<img src="http://localhost/waibo/img/alipay10.png" alt="￥10"><span>￥10</span>
+</div>
+<div class="tab-pane" id="alipay20">
+<img src="http://localhost/waibo/img/alipay20.png" alt="￥20"><span>￥20</span>
+</div>
+<div class="tab-pane" id="alipayrand">
+<img src="http://localhost/waibo/img/alipayrand.png" alt="￥随意"><span>￥随意</span>
+</div>
+</div>
+</div>
+<div class="reward-method">
+<label><input type="radio" name="method" value="weipay" checked><img src="http://localhost/waibo/img/weipay.png" alt="微信支付"></label>
+<label><input type="radio" name="method" value="alipay"><img src="http://localhost/waibo/img/alipay.png" alt="支付宝"></label>
+</div>
+</div>
+</div>
+<div class="reward">
+<p>如果本教程对您帮助很大，请随意打赏。您的支持，将鼓励我写出更好的教程！</p>
+<a data-toggle="modal" href="#modalReward">赏</a>
+</div>
+ <div class="page">
+   <a id="prev" href="http://localhost/waibo/bible/html5/html/4/4.2.3.html" title="&#8592; 键到上一节">« 上一节</a>&#8592; 键盘方向键翻页 &#8594;<a id="next" href="http://localhost/waibo/bible/html5/html/4/4.2.5.html" title="&#8594; 键到下一节">下一节 »</a>
+ </div>
+ </article>
+ </main>
+ </div>
+ </div>
+ <div class="floatPanel">
+	 <div class="ctrolPanel">
+		 <a href="javascript:;" class="arrow top" onClick="goTop()"><span>返回顶部</span></a>
+    <a href="#" class="phone"  data-target="#phone"><span>手机访问</span></a>
+    <a href="#" class="wechat" data-target="#wechat"><span>关注微信</span></a>
+    <a href="javascript:;" class="arrow bottom" onClick="goBottom()"><span>返回底部</span></a>
+  </div>
+	<div id="phone" class="popPanel">
+		<div class="popPanel-inner">
+			<img src="http://localhost/waibo/img/site.png" /><p class="slogan">扫码访问歪脖网</p><p>随时随地，想看就看</p>
+		</div>
+	</div>
+	<div id="wechat" class="popPanel">
+		<div class="popPanel-inner">
+			<img src="http://localhost/waibo/img/weixin.png" /><p class="slogan">关注歪脖网微信</p><p>分享 web 知识、交流 web 经验</p>
+		</div>
+	</div>
+</div>
+ <footer>
+   <p>Copyright&copy;2017&nbsp;&nbsp;www.waibo.wang All Rights Reserved</p>
+   <p>陕ICP备17020676号-1&nbsp;&nbsp;&nbsp;&nbsp;客服QQ：376601179&nbsp;&nbsp;&nbsp;&nbsp;邮箱：376601179#qq.com
+ </footer>
+ <script src="http://localhost/waibo/js/prettify.js"></script>
+ <script src="http://localhost/waibo/js/bootstrap.min.js"></script>
+ <script src="http://localhost/waibo/js/ckeditor_4.7.1/ckeditor.js"></script>
+ <script>
+ $(function() {
+    prettyPrint();
+    bible();
+    load();
+    rewardMethod();
+ });
+ </script>
+</body>
+</html>

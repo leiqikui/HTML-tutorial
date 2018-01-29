@@ -1,0 +1,220 @@
+﻿<!DOCTYPE html>
+<html lang="zh">
+<head>
+ <meta charset="utf-8">
+ <title>HTML <iframe>标签_HTML iframe元素-歪脖网</title>
+ <meta name="keywords" content="HTML, HTML5, , iframe元素,HTML iframe元素" />
+ <meta name="description" content="iframe元素用于向网页嵌入一个网页资源。出于安全的考虑，iframe仅用来展示被嵌入资源的内容，相当于被嵌入资源的所有内容被放入一个单独的沙盒中，所以，iframe也被称作沙盒" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+ <link href="http://localhost/waibo/css/bootstrap.min.css" rel="stylesheet" />
+ <link href="http://localhost/waibo/css/bootstrap-responsive.min.css" rel="stylesheet" />
+ <link href="http://localhost/waibo/css/style.css" rel="stylesheet" />
+
+ <script src="http://localhost/waibo/js/jquery.js"></script>
+ <script src="http://localhost/waibo/js/script.js"></script>
+</head>
+
+<body>
+ <div class="topbar">
+ <div class="eyebrow hidden-phone">
+ <div class="container">
+ <ul class="pull-left">
+   <li><a href="http://www.waibo.wang/" target="_blank">歪脖网</a>欢迎您！</li>
+ </ul>
+ <ul class="pull-right">
+  <li><a href="http://www.waibo.wang/user/">登录</a></li>
+  <li class="b">|</li>
+  <li><a href="http://www.waibo.wang/user/register.asp" target="_blank">注册</a></li>
+ </div>
+ </div>
+
+<div class="topnav">
+<div class="container">
+  <div class="row-fluid mtz">
+  <div class="span3 topnav-logo">
+    <a href="http://www.waibo.wang/"><p class="logo-cn">歪脖网</p><p class="logo-en hidden-phone">waibo.wang</p></a>
+  </div>
+  <div class="span6 nav">
+   <ul>
+     <li ><a href="http://www.waibo.wang/">首页</a></li>
+     <li class="active"><a href="http://localhost/waibo/">教程</a></li>
+     <li ><a href="http://www.waibo.wang/wiki/">专栏</a></li>
+     <li ><a href="http://www.waibo.wang/demo/">素材</a></li>
+   </ul>
+  </div>
+  <div class="span3 topnav-form">
+  </div>
+ </div>
+ </div>
+ </div>
+ </div>
+
+
+ <div class="container">
+ <div class="row-fluid">
+ <aside class="span3">
+ <map id="oAll" name="oAll">
+ <area title="全部展开" shape="rect" coords="0,0,22,20"  href="javascript:tree.openAll();" onfocus="blur(this);">
+ <area title="全部收起" shape="rect" coords="22,0,44,20" href="javascript:tree.closeAll();" onfocus="blur(this);">
+ </map>
+ <header><span>目录</span><img src="http://localhost/waibo/img/map.png" usemap="#oAll"/></header>
+ <script src="http://localhost/waibo/js/dtree.js"></script>
+ <script src="http://localhost/waibo/bible/html5/js/tree.js"></script>
+ <script>
+    createTree("20602");
+ </script>
+ </aside>
+
+ <main class="span9">
+ <header><div class="name"><strong>HTML5宝典</strong>(第 1 版)</div><div class="section">2.6.2 网页</div></header>
+ <div><label id="treeview"><input id="show" type="checkbox" checked /> 文档结构视图</label><span class="hit">阅读（ <span id="hit"></span> ）</div>
+ <article>
+<h1 class="hide-text">HTML基础</h1>
+<h1 class="hide-text">HTML元素</h1>
+<h2 class="hide-text">结构语义元素</h2>
+<h2 class="hide-text">内容分组元素</h2>
+<h2 class="hide-text">文本语义元素</h2>
+<h2 class="hide-text">链接元素</h2>
+<h2 class="hide-text">表格元素</h2>
+<h2 class="hide-text">嵌入式元素</h2>
+<h3 class="hide-text">图像</h3>
+<h3>网页</h3>
+<p>iframe元素用于向网页嵌入一个网页资源。出于安全的考虑，iframe仅用来展示被嵌入资源的内容，相当于被嵌入资源的所有内容被放入一个单独的沙盒中，所以，iframe也被称作沙盒。如：</p>
+<pre class="prettyprint linenums">
+<code>&lt;iframe src="img.html" width="346" height="268" scrolling="auto" frameborder="1"&gt;</code></pre>
+<p>其中，src 属性指示iframe的URL，可以是相对地址，也可以是绝对地址；width 和height 属性分别指示iframe的宽度和高度，单位为px；scrolling属性指示当被嵌入资源的尺寸超过iframe的尺寸时，是否添加滚动条，取值auto|yes|no，auto表示自动调整，需要时添加，yes表示始终有滚动条，no表示始终无滚动条；frameborder是否显示iframe边框，取值0|1，默认值为1，0不显示，1显示。运行结果如图 2‑49 所示：</p>
+<figure><img src='http://localhost/waibo/bible/html5/img/2/iframe.png' title='嵌入网页' alt='嵌入网页'><figcaption>图2-49  嵌入网页</figcaption></figure>
+<p>可以看出，浏览器为该iframe渲染了边框。并且，被嵌入资源的尺寸超过iframe的尺寸，浏览器在页面上自动添加了滚动条。</p>
+<p>此外，iframe还有srcdoc和sandbox两个非常重要的属性需要说明。</p>
+<h4>srcdoc属性</h4>
+<p>srcdoc属性表示在iframe中显示的内容，是一段文本，浏览器会把它解析为一段HTML代码。</p>
+<p>如果浏览器支持 srcdoc 属性，则会覆盖在 src 属性中规定的内容，相当于 src 属性失效；如果浏览器不支持 srcdoc 属性，则相应地会显示在 src 属性中规定的文件内容。</p>
+<pre class="prettyprint linenums">
+<code>&lt;iframe src="img.html" srcdoc="&lt;style&gt;Table{width:300px;border-collapse:collapse;border:2px solid #000;}th,td{border:solid thin;height:1.4em;width:1.4em;text-align: center; } &lt;/style&gt;&lt;Table&gt;&lt;tr&gt;&lt;th&gt;th&lt;/th&gt;&lt;th&gt;th&lt;/th&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;td&lt;/td&gt;&lt;td&gt;td&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;td&lt;/td&gt;&lt;td&gt;td&lt;/td&gt;&lt;/tr&gt;&lt;/Table&gt;"&gt;&lt;/iframe&gt;</code></pre>
+<p>运行结果如图 2‑50 所示：</p>
+<figure><img src='http://localhost/waibo/bible/html5/img/2/srcdoc.png' title='srcdoc属性' alt='srcdoc属性'><figcaption>图2-50  srcdoc属性</figcaption></figure>
+<p>上面的代码中，我们把表格和表格的CSS代码一起放到srcdoc属性中。从运行结果可以看出，在支持srcdoc的浏览器中，src属性失效，iframe中渲染出一个HTML表格。</p>
+<h4>sandbox属性</h4>
+<p>sandbox 属性规定iframe的安全规则，它会启用一系列对iframe中内容的额外限制，防止不信任的Web页面执行某些操作。</p>
+<p>sandbox属性的取值有allow-forms（允许在沙盒中提交表单）、（allow-pointer-lock&nbsp;允许在沙盒中锁定鼠标）、allow-popups&nbsp;（允许在沙盒中弹出窗口）、allow-same-origin（允许把沙盒内容作为普通来源对待）、allow-scripts（允许在沙盒中执行JavaScript脚本）、allow-top-navigation（允许在沙盒中将内容变更为最顶层的窗口）。</p>
+<p>如果sandbox属性的值为空，如：&lt;iframe src=&quot;http://waibo.wang&quot; sandbox&gt;，就代表采用默认的安全策略，即应用所有的限制（在沙盒中，不能提交表单、不能打开弹窗、不能执行javascript脚本，也不能让包含iframe的父页面导航到其他地方等）。</p>
+<p>如果sandbox 属性的值不为空，则表示应用相应的安全策略。</p>
+<p>如果sandbox属性同时使用了allow-scripts和allow-same-origin，则可以在沙盒中操纵父页面了，也就是说，sandbox策略就失效了。</p>
+<div id="modalReward" class="modal hide fade modal-reward" tabindex="-1">
+<div class="modal-header">
+<button type="button" class="close" data-dismiss="modal">&times;</button>
+<h6>打赏</h6>
+</div>
+<div class="modal-body">
+<div class="tabbable reward-weipay">
+<ul class="nav nav-tabs">
+<li class="active"><a data-toggle="tab" href="#weipay1">￥1</a></li>
+<li><a data-toggle="tab" href="#weipay2">￥2</a></li>
+<li><a data-toggle="tab" href="#weipay5">￥5</a></li>
+<li><a data-toggle="tab" href="#weipay10">￥10</a></li>
+<li><a data-toggle="tab" href="#weipay20">￥20</a></li>
+<li><a data-toggle="tab" href="#weipayrand">其他金额</a></li>
+</ul>
+<div class="tab-content">
+<div class="tab-pane active" id="weipay1">
+<img src="http://localhost/waibo/img/weipay1.png" alt="￥1"><span>￥1</span>
+</div>
+<div class="tab-pane" id="weipay2">
+<img src="http://localhost/waibo/img/weipay2.png" alt="￥2"><span>￥2</span>
+</div>
+<div class="tab-pane" id="weipay5">
+<img src="http://localhost/waibo/img/weipay5.png" alt="￥5"><span>￥5</span>
+</div>
+<div class="tab-pane" id="weipay10">
+<img src="http://localhost/waibo/img/weipay10.png" alt="￥10"><span>￥10</span>
+</div>
+<div class="tab-pane" id="weipay20">
+<img src="http://localhost/waibo/img/weipay20.png" alt="￥20"><span>￥20</span>
+</div>
+<div class="tab-pane" id="weipayrand">
+<img src="http://localhost/waibo/img/weipayrand.png" alt="￥随意"><span>￥随意</span>
+</div>
+</div>
+</div>
+<div class="tabbable reward-alipay hide">
+<ul class="nav nav-tabs">
+<li class="active"><a data-toggle="tab" href="#alipay1">￥1</a></li>
+<li><a data-toggle="tab" href="#alipay2">￥2</a></li>
+<li><a data-toggle="tab" href="#alipay5">￥5</a></li>
+<li><a data-toggle="tab" href="#alipay10">￥10</a></li>
+<li><a data-toggle="tab" href="#alipay20">￥20</a></li>
+<li><a data-toggle="tab" href="#alipayrand">其他金额</a></li>
+</ul>
+<div class="tab-content">
+<div class="tab-pane active" id="alipay1">
+<img src="http://localhost/waibo/img/alipay1.png" alt="￥1"><span>￥1</span>
+</div>
+<div class="tab-pane" id="alipay2">
+<img src="http://localhost/waibo/img/alipay2.png" alt="￥2"><span>￥2</span>
+</div>
+<div class="tab-pane" id="alipay5">
+<img src="http://localhost/waibo/img/alipay5.png" alt="￥5"><span>￥5</span>
+</div>
+<div class="tab-pane" id="alipay10">
+<img src="http://localhost/waibo/img/alipay10.png" alt="￥10"><span>￥10</span>
+</div>
+<div class="tab-pane" id="alipay20">
+<img src="http://localhost/waibo/img/alipay20.png" alt="￥20"><span>￥20</span>
+</div>
+<div class="tab-pane" id="alipayrand">
+<img src="http://localhost/waibo/img/alipayrand.png" alt="￥随意"><span>￥随意</span>
+</div>
+</div>
+</div>
+<div class="reward-method">
+<label><input type="radio" name="method" value="weipay" checked><img src="http://localhost/waibo/img/weipay.png" alt="微信支付"></label>
+<label><input type="radio" name="method" value="alipay"><img src="http://localhost/waibo/img/alipay.png" alt="支付宝"></label>
+</div>
+</div>
+</div>
+<div class="reward">
+<p>如果本教程对您帮助很大，请随意打赏。您的支持，将鼓励我写出更好的教程！</p>
+<a data-toggle="modal" href="#modalReward">赏</a>
+</div>
+ <div class="page">
+   <a id="prev" href="http://localhost/waibo/bible/html5/html/2/2.6.1.html" title="&#8592; 键到上一节">« 上一节</a>&#8592; 键盘方向键翻页 &#8594;<a id="next" href="http://localhost/waibo/bible/html5/html/2/2.6.3.html" title="&#8594; 键到下一节">下一节 »</a>
+ </div>
+ </article>
+ </main>
+ </div>
+ </div>
+ <div class="floatPanel">
+	 <div class="ctrolPanel">
+		 <a href="javascript:;" class="arrow top" onClick="goTop()"><span>返回顶部</span></a>
+    <a href="#" class="phone"  data-target="#phone"><span>手机访问</span></a>
+    <a href="#" class="wechat" data-target="#wechat"><span>关注微信</span></a>
+    <a href="javascript:;" class="arrow bottom" onClick="goBottom()"><span>返回底部</span></a>
+  </div>
+	<div id="phone" class="popPanel">
+		<div class="popPanel-inner">
+			<img src="http://localhost/waibo/img/site.png" /><p class="slogan">扫码访问歪脖网</p><p>随时随地，想看就看</p>
+		</div>
+	</div>
+	<div id="wechat" class="popPanel">
+		<div class="popPanel-inner">
+			<img src="http://localhost/waibo/img/weixin.png" /><p class="slogan">关注歪脖网微信</p><p>分享 web 知识、交流 web 经验</p>
+		</div>
+	</div>
+</div>
+ <footer>
+   <p>Copyright&copy;2017&nbsp;&nbsp;www.waibo.wang All Rights Reserved</p>
+   <p>陕ICP备17020676号-1&nbsp;&nbsp;&nbsp;&nbsp;客服QQ：376601179&nbsp;&nbsp;&nbsp;&nbsp;邮箱：376601179#qq.com
+ </footer>
+ <script src="http://localhost/waibo/js/prettify.js"></script>
+ <script src="http://localhost/waibo/js/bootstrap.min.js"></script>
+ <script src="http://localhost/waibo/js/ckeditor_4.7.1/ckeditor.js"></script>
+ <script>
+ $(function() {
+    prettyPrint();
+    bible();
+    load();
+    rewardMethod();
+ });
+ </script>
+</body>
+</html>

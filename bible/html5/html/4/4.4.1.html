@@ -1,0 +1,243 @@
+﻿<!DOCTYPE html>
+<html lang="zh">
+<head>
+ <meta charset="utf-8">
+ <title>HTML5 canvas drawImage()方法绘制图像和视频-歪脖网</title>
+ <meta name="keywords" content="HTML, HTML5, , canvas,HTML5 canvas,drawImage(),drawImage()方法" />
+ <meta name="description" content="HTML5 canvas中，使用drawImage()方法绘制图像和视频" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+ <link href="http://localhost/waibo/css/bootstrap.min.css" rel="stylesheet" />
+ <link href="http://localhost/waibo/css/bootstrap-responsive.min.css" rel="stylesheet" />
+ <link href="http://localhost/waibo/css/style.css" rel="stylesheet" />
+
+ <script src="http://localhost/waibo/js/jquery.js"></script>
+ <script src="http://localhost/waibo/js/script.js"></script>
+</head>
+
+<body>
+ <div class="topbar">
+ <div class="eyebrow hidden-phone">
+ <div class="container">
+ <ul class="pull-left">
+   <li><a href="http://www.waibo.wang/" target="_blank">歪脖网</a>欢迎您！</li>
+ </ul>
+ <ul class="pull-right">
+  <li><a href="http://www.waibo.wang/user/">登录</a></li>
+  <li class="b">|</li>
+  <li><a href="http://www.waibo.wang/user/register.asp" target="_blank">注册</a></li>
+ </div>
+ </div>
+
+<div class="topnav">
+<div class="container">
+  <div class="row-fluid mtz">
+  <div class="span3 topnav-logo">
+    <a href="http://www.waibo.wang/"><p class="logo-cn">歪脖网</p><p class="logo-en hidden-phone">waibo.wang</p></a>
+  </div>
+  <div class="span6 nav">
+   <ul>
+     <li ><a href="http://www.waibo.wang/">首页</a></li>
+     <li class="active"><a href="http://localhost/waibo/">教程</a></li>
+     <li ><a href="http://www.waibo.wang/wiki/">专栏</a></li>
+     <li ><a href="http://www.waibo.wang/demo/">素材</a></li>
+   </ul>
+  </div>
+  <div class="span3 topnav-form">
+  </div>
+ </div>
+ </div>
+ </div>
+ </div>
+
+
+ <div class="container">
+ <div class="row-fluid">
+ <aside class="span3">
+ <map id="oAll" name="oAll">
+ <area title="全部展开" shape="rect" coords="0,0,22,20"  href="javascript:tree.openAll();" onfocus="blur(this);">
+ <area title="全部收起" shape="rect" coords="22,0,44,20" href="javascript:tree.closeAll();" onfocus="blur(this);">
+ </map>
+ <header><span>目录</span><img src="http://localhost/waibo/img/map.png" usemap="#oAll"/></header>
+ <script src="http://localhost/waibo/js/dtree.js"></script>
+ <script src="http://localhost/waibo/bible/html5/js/tree.js"></script>
+ <script>
+    createTree("40401");
+ </script>
+ </aside>
+
+ <main class="span9">
+ <header><div class="name"><strong>HTML5宝典</strong>(第 1 版)</div><div class="section">4.4.1 绘制图像</div></header>
+ <div><label id="treeview"><input id="show" type="checkbox" checked /> 文档结构视图</label><span class="hit">阅读（ <span id="hit"></span> ）</div>
+ <article>
+<h1 class="hide-text">HTML基础</h1>
+<h1 class="hide-text">HTML元素</h1>
+<h1 class="hide-text">表单及应用</h1>
+<h1 class="hide-text">Canvas绘图基础</h1>
+<h2 class="hide-text">基本用法</h2>
+<h2 class="hide-text">使用路径</h2>
+<h2 class="hide-text">绘制文本</h2>
+<h2>处理图像和视频</h2>
+<p>除了绘制矢量图形和文本之外，canvas还提供了极为丰富的图像支持。开发者可以选择绘制某幅图像的全部或某个部分，在绘制时可以进行缩放或保持原样，可以把图像绘制到画布的任何地方。同时，还允许开发人员直接访问画布的像素数据。数据访问是双向的，既可以获取画布中的像素数据，也可以把像素重新绘制到画布中。</p>
+<p>Canvas的API提供了如下4个用于绘制及操作图像的方法：</p>
+<ul>
+	<li>drawImage()：把图像、或另一个canvas的内容、或某个视频的内容绘制到画布中。</li>
+	<li>getImageData()：获取图像中的底层像素。</li>
+	<li>putImageData()：把像素数据绘制到画布中。</li>
+	<li>creatImageData()：创建一个表示空白图像的数据对象。		
+</ul>
+<h3>绘制图像</h3>
+<p>使用drawImage()方法，可以把一幅图像绘制画布中。所绘制的图像称作&ldquo;源&rdquo;（source），即图像，而绘制到的地方称作&ldquo;目标&rdquo;（destination），即画布。drawImage()方法中的参数，以&ldquo;s&rdquo;开头的参数表示源，以&ldquo;d&rdquo;开头的参数表示目标。</p>
+<p>drawImage()方法有三种调用格式：</p>
+<p>1）drawImage(image, dx, dy)：image为图像对象，(dx, dy) 是指要在canvas放置图像的位置。</p>
+<p>2）drawImage(image, dx, dy, dWidth, dHeight)：image为图像对象，(dx, dy) 是指要在canvas放置图像的位置，dWidth和dHeight是指图像绘制到画布上的实际宽度和高度。如果dWidth或dHeight跟源图像的尺寸不同，则可以实现图像的缩放。</p>
+<p>3）drawImage(image, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight)：image为图像对象，(sx, sy) 是指源图像被裁剪区域的左上角，sWidth和sHeight是指从源图像中被裁剪下来的图像的宽度和高度，(dx, dy) 是指要在canvas放置图像的位置，dWidth和dHeight是指被裁剪下来的图像绘制到画布上的实际宽度和高度。如图 4‑15 所示：</p>
+<figure><img src='http://localhost/waibo/bible/html5/img/4/drawImage.png' title='drawImage()方法原理' alt='drawImage()方法原理'><figcaption>图4-15  drawImage()方法原理</figcaption></figure>
+<p>要把图像绘制到画布中，首先要创建一个图像对象，然后才能绘制该图像。drawImage()方法可以把图像、或另外一个canvas的内容、或某个视频的内容绘制到canvas中。因此，这个源图像对象可以是文档中的 img 元素、或 canvas 元素、或 video元素、或通过Javascript的Image()方法创建的图像对象。</p>
+<p>需要注意的是，必须等待图像加载完成后才能绘制。如果在图像尚未完成加载就进行绘制，根据canvas规范，drawImage()方法会执行失败，而且没有任何提示。所以，通常是在图像对象的onload的回调函数中调用drawImage()方法，以确保图像能够被绘制出来。</p>
+<p>以下代码通过Javascript代码来创建一个Image对象，它是一个飞机的图像，然后通过drawImage()方法，将它绘制到画布中：</p>
+<pre class="prettyprint linenums">
+<code>function drawImage() {
+  var canvas = document.getElementById("canvas");
+  var context = canvas.getContext("2d");
+  var img = new Image();
+  img.src = "plane.png";
+  img.onload = function() {
+    context.drawImage(img,0,0);
+  }
+}</code></pre>
+<p>运行结果如图 4‑16 所示：</p>
+<figure><img src='http://localhost/waibo/bible/html5/img/4/drawImage2.png' title='drawImage()方法绘制图像' alt='drawImage()方法绘制图像'><figcaption>图4-16  drawImage()方法绘制图像</figcaption></figure>
+<p>也可以使用 &lt;img&gt; 标签创建图像，再通过&lt;img&gt;标签的id来获取图像对象，把图像绘制到画布中。代码如下：</p>
+<pre class="prettyprint linenums">
+<code>&lt;img id="plane" src="plane.png" /&gt;</code></pre>
+<pre class="prettyprint linenums">
+<code>function drawImage() {
+   var canvas = document.getElementById("canvas");
+   var context = canvas.getContext("2d");
+   var img = document.getElementById("plane");
+   img.onload = function() {
+       context.drawImage(img,0,0);
+   }
+}</code></pre>
+<section>
+<p class="note">说明：</p>
+<p>drawImage()方法在绘制图像时，不会考虑当前路径，然而，它却会把globalAlpha设置、阴影、裁剪区域、及globalCompositeOperation设置等属性应用到图像的绘制中。</p>
+</section>
+<div id="modalReward" class="modal hide fade modal-reward" tabindex="-1">
+<div class="modal-header">
+<button type="button" class="close" data-dismiss="modal">&times;</button>
+<h6>打赏</h6>
+</div>
+<div class="modal-body">
+<div class="tabbable reward-weipay">
+<ul class="nav nav-tabs">
+<li class="active"><a data-toggle="tab" href="#weipay1">￥1</a></li>
+<li><a data-toggle="tab" href="#weipay2">￥2</a></li>
+<li><a data-toggle="tab" href="#weipay5">￥5</a></li>
+<li><a data-toggle="tab" href="#weipay10">￥10</a></li>
+<li><a data-toggle="tab" href="#weipay20">￥20</a></li>
+<li><a data-toggle="tab" href="#weipayrand">其他金额</a></li>
+</ul>
+<div class="tab-content">
+<div class="tab-pane active" id="weipay1">
+<img src="http://localhost/waibo/img/weipay1.png" alt="￥1"><span>￥1</span>
+</div>
+<div class="tab-pane" id="weipay2">
+<img src="http://localhost/waibo/img/weipay2.png" alt="￥2"><span>￥2</span>
+</div>
+<div class="tab-pane" id="weipay5">
+<img src="http://localhost/waibo/img/weipay5.png" alt="￥5"><span>￥5</span>
+</div>
+<div class="tab-pane" id="weipay10">
+<img src="http://localhost/waibo/img/weipay10.png" alt="￥10"><span>￥10</span>
+</div>
+<div class="tab-pane" id="weipay20">
+<img src="http://localhost/waibo/img/weipay20.png" alt="￥20"><span>￥20</span>
+</div>
+<div class="tab-pane" id="weipayrand">
+<img src="http://localhost/waibo/img/weipayrand.png" alt="￥随意"><span>￥随意</span>
+</div>
+</div>
+</div>
+<div class="tabbable reward-alipay hide">
+<ul class="nav nav-tabs">
+<li class="active"><a data-toggle="tab" href="#alipay1">￥1</a></li>
+<li><a data-toggle="tab" href="#alipay2">￥2</a></li>
+<li><a data-toggle="tab" href="#alipay5">￥5</a></li>
+<li><a data-toggle="tab" href="#alipay10">￥10</a></li>
+<li><a data-toggle="tab" href="#alipay20">￥20</a></li>
+<li><a data-toggle="tab" href="#alipayrand">其他金额</a></li>
+</ul>
+<div class="tab-content">
+<div class="tab-pane active" id="alipay1">
+<img src="http://localhost/waibo/img/alipay1.png" alt="￥1"><span>￥1</span>
+</div>
+<div class="tab-pane" id="alipay2">
+<img src="http://localhost/waibo/img/alipay2.png" alt="￥2"><span>￥2</span>
+</div>
+<div class="tab-pane" id="alipay5">
+<img src="http://localhost/waibo/img/alipay5.png" alt="￥5"><span>￥5</span>
+</div>
+<div class="tab-pane" id="alipay10">
+<img src="http://localhost/waibo/img/alipay10.png" alt="￥10"><span>￥10</span>
+</div>
+<div class="tab-pane" id="alipay20">
+<img src="http://localhost/waibo/img/alipay20.png" alt="￥20"><span>￥20</span>
+</div>
+<div class="tab-pane" id="alipayrand">
+<img src="http://localhost/waibo/img/alipayrand.png" alt="￥随意"><span>￥随意</span>
+</div>
+</div>
+</div>
+<div class="reward-method">
+<label><input type="radio" name="method" value="weipay" checked><img src="http://localhost/waibo/img/weipay.png" alt="微信支付"></label>
+<label><input type="radio" name="method" value="alipay"><img src="http://localhost/waibo/img/alipay.png" alt="支付宝"></label>
+</div>
+</div>
+</div>
+<div class="reward">
+<p>如果本教程对您帮助很大，请随意打赏。您的支持，将鼓励我写出更好的教程！</p>
+<a data-toggle="modal" href="#modalReward">赏</a>
+</div>
+ <div class="page">
+   <a id="prev" href="http://localhost/waibo/bible/html5/html/4/4.3.html" title="&#8592; 键到上一节">« 上一节</a>&#8592; 键盘方向键翻页 &#8594;<a id="next" href="http://localhost/waibo/bible/html5/html/4/4.4.2.html" title="&#8594; 键到下一节">下一节 »</a>
+ </div>
+ </article>
+ </main>
+ </div>
+ </div>
+ <div class="floatPanel">
+	 <div class="ctrolPanel">
+		 <a href="javascript:;" class="arrow top" onClick="goTop()"><span>返回顶部</span></a>
+    <a href="#" class="phone"  data-target="#phone"><span>手机访问</span></a>
+    <a href="#" class="wechat" data-target="#wechat"><span>关注微信</span></a>
+    <a href="javascript:;" class="arrow bottom" onClick="goBottom()"><span>返回底部</span></a>
+  </div>
+	<div id="phone" class="popPanel">
+		<div class="popPanel-inner">
+			<img src="http://localhost/waibo/img/site.png" /><p class="slogan">扫码访问歪脖网</p><p>随时随地，想看就看</p>
+		</div>
+	</div>
+	<div id="wechat" class="popPanel">
+		<div class="popPanel-inner">
+			<img src="http://localhost/waibo/img/weixin.png" /><p class="slogan">关注歪脖网微信</p><p>分享 web 知识、交流 web 经验</p>
+		</div>
+	</div>
+</div>
+ <footer>
+   <p>Copyright&copy;2017&nbsp;&nbsp;www.waibo.wang All Rights Reserved</p>
+   <p>陕ICP备17020676号-1&nbsp;&nbsp;&nbsp;&nbsp;客服QQ：376601179&nbsp;&nbsp;&nbsp;&nbsp;邮箱：376601179#qq.com
+ </footer>
+ <script src="http://localhost/waibo/js/prettify.js"></script>
+ <script src="http://localhost/waibo/js/bootstrap.min.js"></script>
+ <script src="http://localhost/waibo/js/ckeditor_4.7.1/ckeditor.js"></script>
+ <script>
+ $(function() {
+    prettyPrint();
+    bible();
+    load();
+    rewardMethod();
+ });
+ </script>
+</body>
+</html>

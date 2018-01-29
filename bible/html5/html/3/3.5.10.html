@@ -1,0 +1,234 @@
+﻿<!DOCTYPE html>
+<html lang="zh">
+<head>
+ <meta charset="utf-8">
+ <title>HTML5 <datalist>标签_HTML5 datalist元素_HTML5  list属性-歪脖网</title>
+ <meta name="keywords" content="HTML, HTML5, , datalist,datalist元素,list属性" />
+ <meta name="description" content="list 属性为文本框指定一个可用的选项列表，当用户在文本框中输入信息时，会根据输入的字符，自动显示下拉列表提示，供用户从中选择。  大多数输入类型都支持 list 属性，list 属性要跟一个 datalist 元素结合使用，datalist 元素用来定义一个选项列表" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+ <link href="http://localhost/waibo/css/bootstrap.min.css" rel="stylesheet" />
+ <link href="http://localhost/waibo/css/bootstrap-responsive.min.css" rel="stylesheet" />
+ <link href="http://localhost/waibo/css/style.css" rel="stylesheet" />
+
+ <script src="http://localhost/waibo/js/jquery.js"></script>
+ <script src="http://localhost/waibo/js/script.js"></script>
+</head>
+
+<body>
+ <div class="topbar">
+ <div class="eyebrow hidden-phone">
+ <div class="container">
+ <ul class="pull-left">
+   <li><a href="http://www.waibo.wang/" target="_blank">歪脖网</a>欢迎您！</li>
+ </ul>
+ <ul class="pull-right">
+  <li><a href="http://www.waibo.wang/user/">登录</a></li>
+  <li class="b">|</li>
+  <li><a href="http://www.waibo.wang/user/register.asp" target="_blank">注册</a></li>
+ </div>
+ </div>
+
+<div class="topnav">
+<div class="container">
+  <div class="row-fluid mtz">
+  <div class="span3 topnav-logo">
+    <a href="http://www.waibo.wang/"><p class="logo-cn">歪脖网</p><p class="logo-en hidden-phone">waibo.wang</p></a>
+  </div>
+  <div class="span6 nav">
+   <ul>
+     <li ><a href="http://www.waibo.wang/">首页</a></li>
+     <li class="active"><a href="http://localhost/waibo/">教程</a></li>
+     <li ><a href="http://www.waibo.wang/wiki/">专栏</a></li>
+     <li ><a href="http://www.waibo.wang/demo/">素材</a></li>
+   </ul>
+  </div>
+  <div class="span3 topnav-form">
+  </div>
+ </div>
+ </div>
+ </div>
+ </div>
+
+
+ <div class="container">
+ <div class="row-fluid">
+ <aside class="span3">
+ <map id="oAll" name="oAll">
+ <area title="全部展开" shape="rect" coords="0,0,22,20"  href="javascript:tree.openAll();" onfocus="blur(this);">
+ <area title="全部收起" shape="rect" coords="22,0,44,20" href="javascript:tree.closeAll();" onfocus="blur(this);">
+ </map>
+ <header><span>目录</span><img src="http://localhost/waibo/img/map.png" usemap="#oAll"/></header>
+ <script src="http://localhost/waibo/js/dtree.js"></script>
+ <script src="http://localhost/waibo/bible/html5/js/tree.js"></script>
+ <script>
+    createTree("30510");
+ </script>
+ </aside>
+
+ <main class="span9">
+ <header><div class="name"><strong>HTML5宝典</strong>(第 1 版)</div><div class="section">3.5.10 list</div></header>
+ <div><label id="treeview"><input id="show" type="checkbox" checked /> 文档结构视图</label><span class="hit">阅读（ <span id="hit"></span> ）</div>
+ <article>
+<h1 class="hide-text">HTML基础</h1>
+<h1 class="hide-text">HTML元素</h1>
+<h1 class="hide-text">表单及应用</h1>
+<h2 class="hide-text">什么是表单</h2>
+<h2 class="hide-text">Form元素</h2>
+<h2 class="hide-text">表单控件</h2>
+<h2 class="hide-text">表单按钮</h2>
+<h2 class="hide-text">表单特性</h2>
+<h3 class="hide-text">pattern</h3>
+<h3 class="hide-text">placeholder</h3>
+<h3 class="hide-text">required</h3>
+<h3 class="hide-text">autofocus</h3>
+<h3 class="hide-text">autocomplete</h3>
+<h3 class="hide-text">disabled</h3>
+<h3 class="hide-text">readonly</h3>
+<h3 class="hide-text">min/maxlength</h3>
+<h3 class="hide-text">size</h3>
+<h3>list</h3>
+<p>list属性为文本框指定一个可用的选项列表，当用户在文本框中输入信息时，会根据输入的字符，自动显示下拉列表提示，供用户从中选择。</p>
+<p>大多数输入类型都支持 list属性，list属性要跟一个 datalist元素结合使用，datalist元素用来定义一个选项列表。</p>
+<p>datalist元素自身不会显示在页面上，而是为其他元素的 list属性提供数据。当用户在文本框中输入信息时，会根据输入的字符，自动显示下拉列表提示，供用户从中选择。</p>
+<p>datalist 的语法非常简单，它跟 select 元素的语法几乎完全相同，使用 datalist元素创建下拉列表，使用 option 元素创建列表中的选项。在option 元素中，通过 value 属性定义选项的值，通过 label 属性定义选项的描述性说明，label 属性时可选的。</p>
+<p>在实际使用时，只需把 input 元素的 list属性值，设置为 datalist元素的 id，就可以实现 input 和 datalist 的关联。原则上，datalist元素可以放在页面上的任何地方，但建议将它跟 input 元素放在一起。如：</p>
+<pre class="prettyprint linenums">
+<code>&lt;label&gt;浏览器：&lt;/label&gt;&lt;input list="browsers" /&gt;
+&lt;datalist id="browsers"&gt;
+    &lt;option value="Internet Explorer" label="IE"&gt;
+    &lt;option value="Firefox" label="火狐"&gt;
+    &lt;option value="Chrome" label="谷歌"&gt;
+    &lt;option value="Opera" label="欧朋"&gt;
+    &lt;option value="Safari" label="Safari"&gt;
+    &lt;option value="Sogou" label="搜狗"&gt;
+&lt;/datalist&gt;</code></pre>
+<p>由于 datalist元素自身不会显示在页面上，因此，在用户没有输入之前，绑定了 datalist 的文本框，跟普通文本框看上去没什么区别。运行结果如图 3‑41 所示：</p>
+<figure><img src='http://localhost/waibo/bible/html5/img/3/list1.png' title='文本框的默认外观' alt='文本框的默认外观'><figcaption>图3-41  文本框的默认外观</figcaption></figure>
+<p>但是，当鼠标悬停在文本框上，或文本框获得焦点时，在文本框的右侧会有一个下箭头。当在文本框内双击，或单击箭头时，datalist 的选项就会显示出来。在显示 datalist 选项的时候，大多数浏览器都是同时显示 label 和value 的值，如果两个值相同则只显示 value（如，Safari）。运行结果如图 3‑42 所示：</p>
+<figure><img src='http://localhost/waibo/bible/html5/img/3/list2.png' title='显示datalist元素的选项' alt='显示datalist元素的选项'><figcaption>图3-42  显示datalist元素的选项</figcaption></figure>
+<p>此时，用户就可以直接在下拉列表中进行选择，当用户选中某选项时，value 属性的值会被自动填写到文本框中。当然，用户也可以不进行选择，而是在文本框中输入文本。</p>
+<p>当用户开始输入时，文本框就会根据用户的输入，在预定义的选项列表中自动检索，并只显示匹配的选项，供用户选择。如，当用户输入s后，就只显示 Safari 和 Sogou，而不显示其他选项。运行结果如图 3‑43 所示：</p>
+<figure><img src='http://localhost/waibo/bible/html5/img/3/list3.png' title='在文本框中输入文本' alt='在文本框中输入文本'><figcaption>图3-43  在文本框中输入文本</figcaption></figure>
+<p>虽然 datalist 很像是一个 select 下拉列表，但 datalist 并不限制用户的输入，用户完全可以输入列表以外的值。</p>
+<section>
+<p class="note">说明：</p>
+<p>在显示 datalist 选项的时候，FireFox浏览器比较特殊，它只能显示 label 和 value 值中的一个，并且是优先显示 label 的值，只有在未定义 label，或 label 的值为空时，才显示value的值。</p>
+</section>
+<div id="modalReward" class="modal hide fade modal-reward" tabindex="-1">
+<div class="modal-header">
+<button type="button" class="close" data-dismiss="modal">&times;</button>
+<h6>打赏</h6>
+</div>
+<div class="modal-body">
+<div class="tabbable reward-weipay">
+<ul class="nav nav-tabs">
+<li class="active"><a data-toggle="tab" href="#weipay1">￥1</a></li>
+<li><a data-toggle="tab" href="#weipay2">￥2</a></li>
+<li><a data-toggle="tab" href="#weipay5">￥5</a></li>
+<li><a data-toggle="tab" href="#weipay10">￥10</a></li>
+<li><a data-toggle="tab" href="#weipay20">￥20</a></li>
+<li><a data-toggle="tab" href="#weipayrand">其他金额</a></li>
+</ul>
+<div class="tab-content">
+<div class="tab-pane active" id="weipay1">
+<img src="http://localhost/waibo/img/weipay1.png" alt="￥1"><span>￥1</span>
+</div>
+<div class="tab-pane" id="weipay2">
+<img src="http://localhost/waibo/img/weipay2.png" alt="￥2"><span>￥2</span>
+</div>
+<div class="tab-pane" id="weipay5">
+<img src="http://localhost/waibo/img/weipay5.png" alt="￥5"><span>￥5</span>
+</div>
+<div class="tab-pane" id="weipay10">
+<img src="http://localhost/waibo/img/weipay10.png" alt="￥10"><span>￥10</span>
+</div>
+<div class="tab-pane" id="weipay20">
+<img src="http://localhost/waibo/img/weipay20.png" alt="￥20"><span>￥20</span>
+</div>
+<div class="tab-pane" id="weipayrand">
+<img src="http://localhost/waibo/img/weipayrand.png" alt="￥随意"><span>￥随意</span>
+</div>
+</div>
+</div>
+<div class="tabbable reward-alipay hide">
+<ul class="nav nav-tabs">
+<li class="active"><a data-toggle="tab" href="#alipay1">￥1</a></li>
+<li><a data-toggle="tab" href="#alipay2">￥2</a></li>
+<li><a data-toggle="tab" href="#alipay5">￥5</a></li>
+<li><a data-toggle="tab" href="#alipay10">￥10</a></li>
+<li><a data-toggle="tab" href="#alipay20">￥20</a></li>
+<li><a data-toggle="tab" href="#alipayrand">其他金额</a></li>
+</ul>
+<div class="tab-content">
+<div class="tab-pane active" id="alipay1">
+<img src="http://localhost/waibo/img/alipay1.png" alt="￥1"><span>￥1</span>
+</div>
+<div class="tab-pane" id="alipay2">
+<img src="http://localhost/waibo/img/alipay2.png" alt="￥2"><span>￥2</span>
+</div>
+<div class="tab-pane" id="alipay5">
+<img src="http://localhost/waibo/img/alipay5.png" alt="￥5"><span>￥5</span>
+</div>
+<div class="tab-pane" id="alipay10">
+<img src="http://localhost/waibo/img/alipay10.png" alt="￥10"><span>￥10</span>
+</div>
+<div class="tab-pane" id="alipay20">
+<img src="http://localhost/waibo/img/alipay20.png" alt="￥20"><span>￥20</span>
+</div>
+<div class="tab-pane" id="alipayrand">
+<img src="http://localhost/waibo/img/alipayrand.png" alt="￥随意"><span>￥随意</span>
+</div>
+</div>
+</div>
+<div class="reward-method">
+<label><input type="radio" name="method" value="weipay" checked><img src="http://localhost/waibo/img/weipay.png" alt="微信支付"></label>
+<label><input type="radio" name="method" value="alipay"><img src="http://localhost/waibo/img/alipay.png" alt="支付宝"></label>
+</div>
+</div>
+</div>
+<div class="reward">
+<p>如果本教程对您帮助很大，请随意打赏。您的支持，将鼓励我写出更好的教程！</p>
+<a data-toggle="modal" href="#modalReward">赏</a>
+</div>
+ <div class="page">
+   <a id="prev" href="http://localhost/waibo/bible/html5/html/3/3.5.9.html" title="&#8592; 键到上一节">« 上一节</a>&#8592; 键盘方向键翻页 &#8594;<a id="next" href="http://localhost/waibo/bible/html5/html/4/4.html" title="&#8594; 键到下一节">下一节 »</a>
+ </div>
+ </article>
+ </main>
+ </div>
+ </div>
+ <div class="floatPanel">
+	 <div class="ctrolPanel">
+		 <a href="javascript:;" class="arrow top" onClick="goTop()"><span>返回顶部</span></a>
+    <a href="#" class="phone"  data-target="#phone"><span>手机访问</span></a>
+    <a href="#" class="wechat" data-target="#wechat"><span>关注微信</span></a>
+    <a href="javascript:;" class="arrow bottom" onClick="goBottom()"><span>返回底部</span></a>
+  </div>
+	<div id="phone" class="popPanel">
+		<div class="popPanel-inner">
+			<img src="http://localhost/waibo/img/site.png" /><p class="slogan">扫码访问歪脖网</p><p>随时随地，想看就看</p>
+		</div>
+	</div>
+	<div id="wechat" class="popPanel">
+		<div class="popPanel-inner">
+			<img src="http://localhost/waibo/img/weixin.png" /><p class="slogan">关注歪脖网微信</p><p>分享 web 知识、交流 web 经验</p>
+		</div>
+	</div>
+</div>
+ <footer>
+   <p>Copyright&copy;2017&nbsp;&nbsp;www.waibo.wang All Rights Reserved</p>
+   <p>陕ICP备17020676号-1&nbsp;&nbsp;&nbsp;&nbsp;客服QQ：376601179&nbsp;&nbsp;&nbsp;&nbsp;邮箱：376601179#qq.com
+ </footer>
+ <script src="http://localhost/waibo/js/prettify.js"></script>
+ <script src="http://localhost/waibo/js/bootstrap.min.js"></script>
+ <script src="http://localhost/waibo/js/ckeditor_4.7.1/ckeditor.js"></script>
+ <script>
+ $(function() {
+    prettyPrint();
+    bible();
+    load();
+    rewardMethod();
+ });
+ </script>
+</body>
+</html>

@@ -1,0 +1,313 @@
+﻿<!DOCTYPE html>
+<html lang="zh">
+<head>
+ <meta charset="utf-8">
+ <title>HTML5 Canvas createLinearGradient()方法创建线性渐变_createRadialGradient()方法创建径向渐变_createPattern()方法创建图案-歪脖网</title>
+ <meta name="keywords" content="HTML, HTML5, , createLinearGradient(),createLinearGradient()方法,createRadialGradient(),createRadialGradient()方法,createPattern(),createPattern()方法" />
+ <meta name="description" content="HTML5 Canvas createLinearGradient()方法创建线性渐变,createRadialGradient()方法创建径向渐变,createPattern()方法创建图案" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+ <link href="http://localhost/waibo/css/bootstrap.min.css" rel="stylesheet" />
+ <link href="http://localhost/waibo/css/bootstrap-responsive.min.css" rel="stylesheet" />
+ <link href="http://localhost/waibo/css/style.css" rel="stylesheet" />
+
+ <script src="http://localhost/waibo/js/jquery.js"></script>
+ <script src="http://localhost/waibo/js/script.js"></script>
+</head>
+
+<body>
+ <div class="topbar">
+ <div class="eyebrow hidden-phone">
+ <div class="container">
+ <ul class="pull-left">
+   <li><a href="http://www.waibo.wang/" target="_blank">歪脖网</a>欢迎您！</li>
+ </ul>
+ <ul class="pull-right">
+  <li><a href="http://www.waibo.wang/user/">登录</a></li>
+  <li class="b">|</li>
+  <li><a href="http://www.waibo.wang/user/register.asp" target="_blank">注册</a></li>
+ </div>
+ </div>
+
+<div class="topnav">
+<div class="container">
+  <div class="row-fluid mtz">
+  <div class="span3 topnav-logo">
+    <a href="http://www.waibo.wang/"><p class="logo-cn">歪脖网</p><p class="logo-en hidden-phone">waibo.wang</p></a>
+  </div>
+  <div class="span6 nav">
+   <ul>
+     <li ><a href="http://www.waibo.wang/">首页</a></li>
+     <li class="active"><a href="http://localhost/waibo/">教程</a></li>
+     <li ><a href="http://www.waibo.wang/wiki/">专栏</a></li>
+     <li ><a href="http://www.waibo.wang/demo/">素材</a></li>
+   </ul>
+  </div>
+  <div class="span3 topnav-form">
+  </div>
+ </div>
+ </div>
+ </div>
+ </div>
+
+
+ <div class="container">
+ <div class="row-fluid">
+ <aside class="span3">
+ <map id="oAll" name="oAll">
+ <area title="全部展开" shape="rect" coords="0,0,22,20"  href="javascript:tree.openAll();" onfocus="blur(this);">
+ <area title="全部收起" shape="rect" coords="22,0,44,20" href="javascript:tree.closeAll();" onfocus="blur(this);">
+ </map>
+ <header><span>目录</span><img src="http://localhost/waibo/img/map.png" usemap="#oAll"/></header>
+ <script src="http://localhost/waibo/js/dtree.js"></script>
+ <script src="http://localhost/waibo/bible/html5/js/tree.js"></script>
+ <script>
+    createTree("40503");
+ </script>
+ </aside>
+
+ <main class="span9">
+ <header><div class="name"><strong>HTML5宝典</strong>(第 1 版)</div><div class="section">4.5.3 渐变和图案</div></header>
+ <div><label id="treeview"><input id="show" type="checkbox" checked /> 文档结构视图</label><span class="hit">阅读（ <span id="hit"></span> ）</div>
+ <article>
+<h1 class="hide-text">HTML基础</h1>
+<h1 class="hide-text">HTML元素</h1>
+<h1 class="hide-text">表单及应用</h1>
+<h1 class="hide-text">Canvas绘图基础</h1>
+<h2 class="hide-text">基本用法</h2>
+<h2 class="hide-text">使用路径</h2>
+<h2 class="hide-text">绘制文本</h2>
+<h2 class="hide-text">处理图像和视频</h2>
+<h2 class="hide-text">装饰图形</h2>
+<h3 class="hide-text">颜色及透明度</h3>
+<h3 class="hide-text">线条的样式</h3>
+<h3>渐变和图案</h3>
+<p>除了CCS颜色外，Canvas还支持渐变（CanvasGradient）和图案（CanvasPattern）。把strokeStyle和fillStyle属性设置为渐变或图案，就可以实现多样化的绘制效果。</p>
+<h4 id="渐变">渐变</h4>
+<p>在Canvas中，CanvasGradient对象表示一个颜色渐变。将画笔上下文对象的fillStyle或strokeStyle属性设置为一个CanvasGradient对象，就可以实现颜色渐变效果。</p>
+<p>Canvas支持两种渐变方式：一种是线性渐变（Linear Gradient），另一种是径向渐变（Radial Gradient）。</p>
+<p>为画布中的图形应用渐变色，需要三步：</p>
+<p>1）创建渐变对象</p>
+<p>调用context.createLinearGradient() 方法来创建线性渐变，它返回CanvasGradient对象的一个实例。格式为：</p>
+<pre class="prettyprint linenums">
+<code>createLinearGradient(xStart, yStart, xEnd, yEnd)</code></pre>
+<p>该方法的参数代表一个矩形区域，(startX, startY)为矩形左上角顶点的坐标， (endX, endY) 为矩形右下角顶点的坐标，这个矩形区域就是线性渐变的作用区域。</p>
+<p>调用context.createRadialGradient() 方法来创建径向渐变，它返回CanvasGradient对象的一个实例。格式为：</p>
+<pre class="prettyprint linenums">
+<code>context.createRadialGradient(xStart, yStart, radiusStart, xEnd, yEnd, radiusEnd)</code></pre>
+<p>该方法的参数代表两个虚拟的圆。内圆的圆心为(xStart, yStart)、半径为radiusStart，外圆的圆心为(xEnd, yEnd)、半径为radiusEnd，径向渐变的作用区域为这两个圆之间的环状区域。小圆内及大圆外的区域使用纯色，两个圆之间的区域会用渐变色。</p>
+<p>2）定义渐变色</p>
+<p>需要为CanvasGradient对象添加渐变的颜色，才能实现渐变效果。调用渐变对象的addColorStop(offset, color)方法来添加渐变色，参数offset是0.0~1.0之间的浮点值，代表颜色停止点在渐变线上的位置，渐变对象把整个作用区域看成是一个从0.0到1.0的过度，0.0表示渐变起始点，1.0表示渐变结束点。参数color是一个CSS颜色值。</p>
+<p>要实现渐变效果，该方法必须至少被调用两次，分别定义渐变起始点和渐变结束点的颜色。如果还要定义中间位置的颜色，在0.0~1.0之间进行定义即可。</p>
+<p>3）应用渐变对象</p>
+<p>最后，把渐变对象的值赋给上下文对象的fillStyle属性或strokeStyle属性，这样，接下来调用stroke()或fill()方法时，都会使用此渐变色进行描边或填充，直到将fillStyle属性或strokeStyle属性设置为其他值。</p>
+<p>应用线性渐变的示例代码如下：</p>
+<pre class="prettyprint linenums">
+<code>var linear = context.createLinearGradient(50, 50, 250, 50);
+linear.addColorStop(0.0, '#00f');
+linear.addColorStop(0.3, '#0f0');
+linear.addColorStop(0.9, '#f00');
+linear.addColorStop(1.0, '#f0f');
+
+context.fillStyle = linear;
+context.fillRect(50, 50, 250, 50);</code></pre>
+<p>上述代码定义了一个线性渐变，并在0.0、0.3、0.9和1.0的位置定义了不同的颜色。其运行效果如图 4‑21 所示：</p>
+<figure><img src='http://localhost/waibo/bible/html5/img/4/linearGradient.png' title='linearGradient线性渐变' alt='linearGradient线性渐变'><figcaption>图4-21  linearGradient线性渐变</figcaption></figure>
+<p>应用径向渐变的示例代码如下：</p>
+<pre class="prettyprint linenums">
+<code>var radial = context.createRadialGradient(100, 70, 10, 100, 100, 80);
+radial.addColorStop(0.0, '#fff');
+radial.addColorStop(0.1, '#00f');
+radial.addColorStop(0.4, '#0f0');
+radial.addColorStop(0.7, '#f00');
+radial.addColorStop(1.0, '#f0f');
+
+context.arc(100, 100, 80, 0, Math.PI * 2);
+context.fillStyle = radial;
+context.fill(); </code></pre>
+<p>上述代码定义了一个线性渐变，并在0.0、0.3、0.9和1.0的位置定义了不同的颜色。其运行效果如图 4‑22 所示：</p>
+<figure><img src='http://localhost/waibo/bible/html5/img/4/radialGradient.png' title='radialGradient径向渐变' alt='radialGradient径向渐变'><figcaption>图4-22  radialGradient径向渐变</figcaption></figure>
+<section>
+<p class="note">说明：</p>
+<p>1、颜色渐变的坐标是相对于整个Canvas范围而言的。比如线性渐变起点是（100, 100），而在（0, 0）的位置绘制矩形，用这个渐变来填充，就没有填充，因为矩形不在渐变作用区域内，渐变将不起作用。</p>
+<p>2、渐变可以用于任何图形，其应用后的效果不是依赖于所作用的图形，而是依赖于创建CanvasGradient对象时所指定的作用区域。不管是何种图形，它都会在指定的作用区域内实现对应的颜色渐变效果。</p>
+<p>3、如果定义渐变色的offset不是以0.0开始、1.0结束，则渐变起点之前的颜色将应用渐变起点的颜色，终点之后的颜色将应用渐变终点的颜色。</p>
+<p>4、径向渐变的两个圆不一定是同心圆，但一般第二个圆会包含第一个圆。</p>
+</section>
+<h4 id="图案">图案</h4>
+<p>除了颜色和渐变，Canvas元素也允许使用图案来对文本和图形进行描边或填充。图案可以是image元素、或canvas元素、或video元素。</p>
+<p>使用图案进行描边或填充，也需要三步：</p>
+<p>首先，创建一个图像对象，这个图像对象可以是文档中的一个&lt;img&gt;元素、或&lt;canvas&gt;元素、或&lt;video &gt;元素、或通过Javascript的image()方法创建的图像对象。</p>
+<p>然后，通过createPattern(image, type)方法创建一个CanvasPattern对象。其中，image为用作图案的图像，type表示图像的平铺方式，取值及含义见表 4‑3：</p>
+<table>
+<caption>表 4‑3 图案的平铺方式及含义</caption>
+	<thead>
+		<tr>
+			<th>平铺方式</th>
+			<th>含义</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>repeat</td>
+			<td>图像在水平方向和垂直方向都平铺，为默认值</td>
+		</tr>
+		<tr>
+			<td>repeat-x</td>
+			<td>只在水平方向平铺</td>
+		</tr>
+		<tr>
+			<td>repeat-y</td>
+			<td>只在垂直方向平铺</td>
+		</tr>
+		<tr>
+			<td>no-repeat</td>
+			<td>不平铺，图像只显示一次</td>
+		</tr>
+	</tbody>
+</table>
+<p>最后，把createPattern()方法返回的CanvasPattern对象，赋值给上下文对象的fillStyle或strokeStyle属性，即可应用该图案。</p>
+<p>以下代码创建了四个矩形区域，并为每个矩形区域创建一个填充图案，第一个矩形区域的图像只显示一次，第二个矩形区域的图像只在水平方向平铺，第三个矩形区域的图像只在垂直方向平铺，第四个矩形区域的图像在水平和垂直方向都平铺：</p>
+<pre class="prettyprint linenums">
+<code>function createPattern() {
+  var canvas = document.getElementById("canvas");
+  var context = canvas.getContext("2d");
+  var img = new Image();
+  img.src = "info.png";
+  img.onload = function() {
+    var no_repeat = context.createPattern(img, "no-repeat");
+    context.fillStyle = no_repeat;
+    context.fillRect(0,0,100,100);
+
+    var repeat_x = context.createPattern(img, "repeat-x");
+    context.fillStyle = repeat_x;
+    context.fillRect(120,0,100,100);
+
+    var repeat_y = context.createPattern(img, "repeat-y");
+    context.fillStyle = repeat_y;
+    context.fillRect(240,0,100,100);
+
+    var repeat = context.createPattern(img, "repeat");
+    context.fillStyle = repeat;
+    context.fillRect(360,0,100,100);
+  }
+}</code></pre>
+<p>上述代码的运行效果如图 4‑23 所示：</p>
+<figure><img src='http://localhost/waibo/bible/html5/img/4/createPattern.png' title='使用图案填充' alt='使用图案填充'><figcaption>图4-23  使用图案填充</figcaption></figure>
+<div id="modalReward" class="modal hide fade modal-reward" tabindex="-1">
+<div class="modal-header">
+<button type="button" class="close" data-dismiss="modal">&times;</button>
+<h6>打赏</h6>
+</div>
+<div class="modal-body">
+<div class="tabbable reward-weipay">
+<ul class="nav nav-tabs">
+<li class="active"><a data-toggle="tab" href="#weipay1">￥1</a></li>
+<li><a data-toggle="tab" href="#weipay2">￥2</a></li>
+<li><a data-toggle="tab" href="#weipay5">￥5</a></li>
+<li><a data-toggle="tab" href="#weipay10">￥10</a></li>
+<li><a data-toggle="tab" href="#weipay20">￥20</a></li>
+<li><a data-toggle="tab" href="#weipayrand">其他金额</a></li>
+</ul>
+<div class="tab-content">
+<div class="tab-pane active" id="weipay1">
+<img src="http://localhost/waibo/img/weipay1.png" alt="￥1"><span>￥1</span>
+</div>
+<div class="tab-pane" id="weipay2">
+<img src="http://localhost/waibo/img/weipay2.png" alt="￥2"><span>￥2</span>
+</div>
+<div class="tab-pane" id="weipay5">
+<img src="http://localhost/waibo/img/weipay5.png" alt="￥5"><span>￥5</span>
+</div>
+<div class="tab-pane" id="weipay10">
+<img src="http://localhost/waibo/img/weipay10.png" alt="￥10"><span>￥10</span>
+</div>
+<div class="tab-pane" id="weipay20">
+<img src="http://localhost/waibo/img/weipay20.png" alt="￥20"><span>￥20</span>
+</div>
+<div class="tab-pane" id="weipayrand">
+<img src="http://localhost/waibo/img/weipayrand.png" alt="￥随意"><span>￥随意</span>
+</div>
+</div>
+</div>
+<div class="tabbable reward-alipay hide">
+<ul class="nav nav-tabs">
+<li class="active"><a data-toggle="tab" href="#alipay1">￥1</a></li>
+<li><a data-toggle="tab" href="#alipay2">￥2</a></li>
+<li><a data-toggle="tab" href="#alipay5">￥5</a></li>
+<li><a data-toggle="tab" href="#alipay10">￥10</a></li>
+<li><a data-toggle="tab" href="#alipay20">￥20</a></li>
+<li><a data-toggle="tab" href="#alipayrand">其他金额</a></li>
+</ul>
+<div class="tab-content">
+<div class="tab-pane active" id="alipay1">
+<img src="http://localhost/waibo/img/alipay1.png" alt="￥1"><span>￥1</span>
+</div>
+<div class="tab-pane" id="alipay2">
+<img src="http://localhost/waibo/img/alipay2.png" alt="￥2"><span>￥2</span>
+</div>
+<div class="tab-pane" id="alipay5">
+<img src="http://localhost/waibo/img/alipay5.png" alt="￥5"><span>￥5</span>
+</div>
+<div class="tab-pane" id="alipay10">
+<img src="http://localhost/waibo/img/alipay10.png" alt="￥10"><span>￥10</span>
+</div>
+<div class="tab-pane" id="alipay20">
+<img src="http://localhost/waibo/img/alipay20.png" alt="￥20"><span>￥20</span>
+</div>
+<div class="tab-pane" id="alipayrand">
+<img src="http://localhost/waibo/img/alipayrand.png" alt="￥随意"><span>￥随意</span>
+</div>
+</div>
+</div>
+<div class="reward-method">
+<label><input type="radio" name="method" value="weipay" checked><img src="http://localhost/waibo/img/weipay.png" alt="微信支付"></label>
+<label><input type="radio" name="method" value="alipay"><img src="http://localhost/waibo/img/alipay.png" alt="支付宝"></label>
+</div>
+</div>
+</div>
+<div class="reward">
+<p>如果本教程对您帮助很大，请随意打赏。您的支持，将鼓励我写出更好的教程！</p>
+<a data-toggle="modal" href="#modalReward">赏</a>
+</div>
+ <div class="page">
+   <a id="prev" href="http://localhost/waibo/bible/html5/html/4/4.5.2.html" title="&#8592; 键到上一节">« 上一节</a>&#8592; 键盘方向键翻页 &#8594;<a id="next" href="http://localhost/waibo/bible/html5/html/4/4.5.4.html" title="&#8594; 键到下一节">下一节 »</a>
+ </div>
+ </article>
+ </main>
+ </div>
+ </div>
+ <div class="floatPanel">
+	 <div class="ctrolPanel">
+		 <a href="javascript:;" class="arrow top" onClick="goTop()"><span>返回顶部</span></a>
+    <a href="#" class="phone"  data-target="#phone"><span>手机访问</span></a>
+    <a href="#" class="wechat" data-target="#wechat"><span>关注微信</span></a>
+    <a href="javascript:;" class="arrow bottom" onClick="goBottom()"><span>返回底部</span></a>
+  </div>
+	<div id="phone" class="popPanel">
+		<div class="popPanel-inner">
+			<img src="http://localhost/waibo/img/site.png" /><p class="slogan">扫码访问歪脖网</p><p>随时随地，想看就看</p>
+		</div>
+	</div>
+	<div id="wechat" class="popPanel">
+		<div class="popPanel-inner">
+			<img src="http://localhost/waibo/img/weixin.png" /><p class="slogan">关注歪脖网微信</p><p>分享 web 知识、交流 web 经验</p>
+		</div>
+	</div>
+</div>
+ <footer>
+   <p>Copyright&copy;2017&nbsp;&nbsp;www.waibo.wang All Rights Reserved</p>
+   <p>陕ICP备17020676号-1&nbsp;&nbsp;&nbsp;&nbsp;客服QQ：376601179&nbsp;&nbsp;&nbsp;&nbsp;邮箱：376601179#qq.com
+ </footer>
+ <script src="http://localhost/waibo/js/prettify.js"></script>
+ <script src="http://localhost/waibo/js/bootstrap.min.js"></script>
+ <script src="http://localhost/waibo/js/ckeditor_4.7.1/ckeditor.js"></script>
+ <script>
+ $(function() {
+    prettyPrint();
+    bible();
+    load();
+    rewardMethod();
+ });
+ </script>
+</body>
+</html>

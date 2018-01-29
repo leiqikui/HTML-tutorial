@@ -1,0 +1,257 @@
+﻿<!DOCTYPE html>
+<html lang="zh">
+<head>
+ <meta charset="utf-8">
+ <title>HTML5 Canvas translate()方法_scale()方法_rotate()方法进行坐标系变换-歪脖网</title>
+ <meta name="keywords" content="HTML, HTML5, , translate(),translate()方法,scale(),scale()方法,rotate(),rotate()方法" />
+ <meta name="description" content="如果改变Canvas坐标系统的原点，图形也会随之发生改变。针对这一特点，可以通过translate()方法,scale()方法,rotate()方法变换坐标系统来间接操作图形，实现对图形的移动、缩放、旋转。Canvas的API提供了三种变换坐标系原点的方法" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+ <link href="http://localhost/waibo/css/bootstrap.min.css" rel="stylesheet" />
+ <link href="http://localhost/waibo/css/bootstrap-responsive.min.css" rel="stylesheet" />
+ <link href="http://localhost/waibo/css/style.css" rel="stylesheet" />
+
+ <script src="http://localhost/waibo/js/jquery.js"></script>
+ <script src="http://localhost/waibo/js/script.js"></script>
+</head>
+
+<body>
+ <div class="topbar">
+ <div class="eyebrow hidden-phone">
+ <div class="container">
+ <ul class="pull-left">
+   <li><a href="http://www.waibo.wang/" target="_blank">歪脖网</a>欢迎您！</li>
+ </ul>
+ <ul class="pull-right">
+  <li><a href="http://www.waibo.wang/user/">登录</a></li>
+  <li class="b">|</li>
+  <li><a href="http://www.waibo.wang/user/register.asp" target="_blank">注册</a></li>
+ </div>
+ </div>
+
+<div class="topnav">
+<div class="container">
+  <div class="row-fluid mtz">
+  <div class="span3 topnav-logo">
+    <a href="http://www.waibo.wang/"><p class="logo-cn">歪脖网</p><p class="logo-en hidden-phone">waibo.wang</p></a>
+  </div>
+  <div class="span6 nav">
+   <ul>
+     <li ><a href="http://www.waibo.wang/">首页</a></li>
+     <li class="active"><a href="http://localhost/waibo/">教程</a></li>
+     <li ><a href="http://www.waibo.wang/wiki/">专栏</a></li>
+     <li ><a href="http://www.waibo.wang/demo/">素材</a></li>
+   </ul>
+  </div>
+  <div class="span3 topnav-form">
+  </div>
+ </div>
+ </div>
+ </div>
+ </div>
+
+
+ <div class="container">
+ <div class="row-fluid">
+ <aside class="span3">
+ <map id="oAll" name="oAll">
+ <area title="全部展开" shape="rect" coords="0,0,22,20"  href="javascript:tree.openAll();" onfocus="blur(this);">
+ <area title="全部收起" shape="rect" coords="22,0,44,20" href="javascript:tree.closeAll();" onfocus="blur(this);">
+ </map>
+ <header><span>目录</span><img src="http://localhost/waibo/img/map.png" usemap="#oAll"/></header>
+ <script src="http://localhost/waibo/js/dtree.js"></script>
+ <script src="http://localhost/waibo/bible/html5/js/tree.js"></script>
+ <script>
+    createTree("406");
+ </script>
+ </aside>
+
+ <main class="span9">
+ <header><div class="name"><strong>HTML5宝典</strong>(第 1 版)</div><div class="section">4.6 画布变换</div></header>
+ <div><label id="treeview"><input id="show" type="checkbox" checked /> 文档结构视图</label><span class="hit">阅读（ <span id="hit"></span> ）</div>
+ <article>
+<h1 class="hide-text">HTML基础</h1>
+<h1 class="hide-text">HTML元素</h1>
+<h1 class="hide-text">表单及应用</h1>
+<h1 class="hide-text">Canvas绘图基础</h1>
+<h2 class="hide-text">基本用法</h2>
+<h2 class="hide-text">使用路径</h2>
+<h2 class="hide-text">绘制文本</h2>
+<h2 class="hide-text">处理图像和视频</h2>
+<h2 class="hide-text">装饰图形</h2>
+<h2>画布变换</h2>
+<p>Canvas中，默认的坐标系统是以画布的左上角为坐标原点(0, 0)，水平向右为X轴，垂直向下为Y轴，以像素为单位。Canvas在坐标系统上的每个点，都与图形上的一个像素点相对应。如图 4‑30 所示：</p>
+<figure><img src='http://localhost/waibo/bible/html5/img/4/coordinate.png' title='Canvas的默认坐标系' alt='Canvas的默认坐标系'><figcaption>图4-30  Canvas的默认坐标系</figcaption></figure>
+<p>如果改变Canvas坐标系统的原点，图形也会随之发生改变。针对这一特点，可以通过变换坐标系统来间接操作图形，实现对图形的移动、缩放、旋转。</p>
+<p>Canvas的API提供了三种变换坐标系原点的方法：</p>
+<h4>translate()方法</h4>
+<p>translate(tx, ty)方法将canvas坐标系的坐标原点向上、下、左、右进行平移。参数tx表示将坐标原点向X轴平移的距离，大于0时向右移动，小于0时向左移动，等于0表示不平移；参数ty表示将坐标原点向Y轴平移的距离，大于0时向下移动，小于0时向上移动，等于0表示不平移。</p>
+<pre class="prettyprint linenums">
+<code>context.fillStyle = "#f00";
+context.fillRect(0,0,100,100);
+
+context.fillStyle = "#0f0";
+context.translate(100,100);
+context.fillRect(0,0,100,100);</code></pre>
+<p>上述代码，先在canvas中绘制一个红色的矩形，再将Canvas坐标系的坐标原点沿X轴向右平移100px，沿Y轴向下平移100px，然后再绘制一个绿色的矩形。运行效果如图 4‑31 所示：</p>
+<figure><img src='http://localhost/waibo/bible/html5/img/4/translate.png' title='translate()方法坐标系平移' alt='translate()方法坐标系平移'><figcaption>图4-31  translate()方法坐标系平移</figcaption></figure>
+<p>虽然调用fillRect()方法时，两个矩形的位置都是(0, 0)，但从图可以看出，第一个矩形在原来的坐标原点绘制，第二个矩形相对原来的坐标原点向右、向下分别移动了100px，绘制位置为(100, 100)。因为在绘制第二个矩形之前，坐标原点发生了平移。</p>
+<h4>scale()方法</h4>
+<p>scale(sx, sy)方法将对canvas坐标系的X轴或Y轴进行缩放。参数sx表示X轴的缩放比例，大于1时放大，小于1时缩小；参数sy表示Y轴的缩放比例，大于1时放大，小于1时缩小。默认情况下，sx 和 sy参数的值均为1，即不进行缩放。</p>
+<p>下述代码，将Canvas坐标系的X轴放大1.4倍，Y轴放大1.2倍。</p>
+<pre class="prettyprint linenums">
+<code>context.fillStyle = "#f00";
+context.fillRect(0, 0, 100, 100);
+context.fillStyle = "#0f0";
+context.translate(40, 40);    // 进行平移，防止原来的图形被遮住
+context.scale(1.4, 1.2);
+context.fillRect(0, 0, 100, 100);</code></pre>
+<p>运行效果如图 4‑32 所示：</p>
+<figure><img src='http://localhost/waibo/bible/html5/img/4/scale.png' title='scale()方法坐标系缩放' alt='scale()方法坐标系缩放'><figcaption>图4-32  scale()方法坐标系缩放</figcaption></figure>
+<p>使用scale(sx, sy)方法，还可以实现一些实用的效果，如给sx 或 sy赋一个负值，可以实现画布上下文在水平方向或垂直方向上发生翻转，创造出镜像变换的效果。</p>
+<h4>rotate()方法</h4>
+<p>rotate(angle)方法将canvas坐标系的坐标原点进行旋转。参数angle表示坐标轴旋转的角度，大于0时顺时针旋转，小于0时逆时针旋转，角度以弧度表示。</p>
+<p>下述代码，将canvas坐标系的坐标原点逆时针旋转Math.PI/4。</p>
+<pre class="prettyprint linenums">
+<code>context.fillStyle = "#f00";
+context.fillRect(50, 50, 100, 100);
+
+context.fillStyle = "#0f0";
+context.rotate(-Math.PI/4);
+context.fillRect(50, 50, 100, 100);</code></pre>
+<p>运行效果如图 4‑33 所示：</p>
+<figure><img src='http://localhost/waibo/bible/html5/img/4/rotate.png' title='rotate()方法坐标系旋转' alt='rotate()方法坐标系旋转'><figcaption>图4-33  rotate()方法坐标系旋转</figcaption></figure>
+<p>从上图可以看出，默认情况下，rotate()方法的旋转中心是canvas的坐标原点。但是，有时候我们需要绕绕图形自己的中心进行旋转。</p>
+<p>如果想要绕图形自己的中心进行旋转，就需要先把坐标原点平移到图形的中心，再进行旋转。坐标原点平移发生后，原图形的坐标也会发生变化。</p>
+<p>还是以本例进行说明，canvas的宽度和高度都是200，矩形位于画布的中央，其宽度和高度都是100，故矩形中心点的坐标为(100, 100)，就需要把坐标原点平移到(100, 100)。坐标原点平移后，该矩形的左上角坐标就会跟着发生变化，变为 (-50, -50)。代码如下：</p>
+<pre class="prettyprint linenums">
+<code>context.fillStyle = "#f00";
+context.fillRect(50, 50, 100, 100);
+
+context.fillStyle = "#0f0";
+context.translate(100, 100);
+context.rotate(-Math.PI/4);
+context.fillRect(-50, -50, 100, 100);</code></pre>
+<p>这里在rotate()之前调用translate(100, 100)，其目的是将旋转中心从默认点(0，0)移动到矩形的中心点(100, 100)，此时，后面的rotate()就是绕这个点进行旋转。运行效果如图 4‑34 所示：</p>
+<figure><img src='http://localhost/waibo/bible/html5/img/4/rotate2.png' title='rotate()方法坐标系旋转' alt='rotate()方法坐标系旋转'><figcaption>图4-34  rotate()方法坐标系旋转</figcaption></figure>
+<section>
+<p class="note">说明：</p>
+<p>从上面的几个例子可以看到，坐标系的变换，不管是移动、缩放、还是旋转，都只会影响执行变换操作之后的绘制的图形，之前已经绘制的图形不受坐标系变换的影响。</p>
+</section>
+<div id="modalReward" class="modal hide fade modal-reward" tabindex="-1">
+<div class="modal-header">
+<button type="button" class="close" data-dismiss="modal">&times;</button>
+<h6>打赏</h6>
+</div>
+<div class="modal-body">
+<div class="tabbable reward-weipay">
+<ul class="nav nav-tabs">
+<li class="active"><a data-toggle="tab" href="#weipay1">￥1</a></li>
+<li><a data-toggle="tab" href="#weipay2">￥2</a></li>
+<li><a data-toggle="tab" href="#weipay5">￥5</a></li>
+<li><a data-toggle="tab" href="#weipay10">￥10</a></li>
+<li><a data-toggle="tab" href="#weipay20">￥20</a></li>
+<li><a data-toggle="tab" href="#weipayrand">其他金额</a></li>
+</ul>
+<div class="tab-content">
+<div class="tab-pane active" id="weipay1">
+<img src="http://localhost/waibo/img/weipay1.png" alt="￥1"><span>￥1</span>
+</div>
+<div class="tab-pane" id="weipay2">
+<img src="http://localhost/waibo/img/weipay2.png" alt="￥2"><span>￥2</span>
+</div>
+<div class="tab-pane" id="weipay5">
+<img src="http://localhost/waibo/img/weipay5.png" alt="￥5"><span>￥5</span>
+</div>
+<div class="tab-pane" id="weipay10">
+<img src="http://localhost/waibo/img/weipay10.png" alt="￥10"><span>￥10</span>
+</div>
+<div class="tab-pane" id="weipay20">
+<img src="http://localhost/waibo/img/weipay20.png" alt="￥20"><span>￥20</span>
+</div>
+<div class="tab-pane" id="weipayrand">
+<img src="http://localhost/waibo/img/weipayrand.png" alt="￥随意"><span>￥随意</span>
+</div>
+</div>
+</div>
+<div class="tabbable reward-alipay hide">
+<ul class="nav nav-tabs">
+<li class="active"><a data-toggle="tab" href="#alipay1">￥1</a></li>
+<li><a data-toggle="tab" href="#alipay2">￥2</a></li>
+<li><a data-toggle="tab" href="#alipay5">￥5</a></li>
+<li><a data-toggle="tab" href="#alipay10">￥10</a></li>
+<li><a data-toggle="tab" href="#alipay20">￥20</a></li>
+<li><a data-toggle="tab" href="#alipayrand">其他金额</a></li>
+</ul>
+<div class="tab-content">
+<div class="tab-pane active" id="alipay1">
+<img src="http://localhost/waibo/img/alipay1.png" alt="￥1"><span>￥1</span>
+</div>
+<div class="tab-pane" id="alipay2">
+<img src="http://localhost/waibo/img/alipay2.png" alt="￥2"><span>￥2</span>
+</div>
+<div class="tab-pane" id="alipay5">
+<img src="http://localhost/waibo/img/alipay5.png" alt="￥5"><span>￥5</span>
+</div>
+<div class="tab-pane" id="alipay10">
+<img src="http://localhost/waibo/img/alipay10.png" alt="￥10"><span>￥10</span>
+</div>
+<div class="tab-pane" id="alipay20">
+<img src="http://localhost/waibo/img/alipay20.png" alt="￥20"><span>￥20</span>
+</div>
+<div class="tab-pane" id="alipayrand">
+<img src="http://localhost/waibo/img/alipayrand.png" alt="￥随意"><span>￥随意</span>
+</div>
+</div>
+</div>
+<div class="reward-method">
+<label><input type="radio" name="method" value="weipay" checked><img src="http://localhost/waibo/img/weipay.png" alt="微信支付"></label>
+<label><input type="radio" name="method" value="alipay"><img src="http://localhost/waibo/img/alipay.png" alt="支付宝"></label>
+</div>
+</div>
+</div>
+<div class="reward">
+<p>如果本教程对您帮助很大，请随意打赏。您的支持，将鼓励我写出更好的教程！</p>
+<a data-toggle="modal" href="#modalReward">赏</a>
+</div>
+ <div class="page">
+   <a id="prev" href="http://localhost/waibo/bible/html5/html/4/4.5.6.html" title="&#8592; 键到上一节">« 上一节</a>&#8592; 键盘方向键翻页 &#8594;<a id="next" href="http://localhost/waibo/bible/html5/html/4/4.7.html" title="&#8594; 键到下一节">下一节 »</a>
+ </div>
+ </article>
+ </main>
+ </div>
+ </div>
+ <div class="floatPanel">
+	 <div class="ctrolPanel">
+		 <a href="javascript:;" class="arrow top" onClick="goTop()"><span>返回顶部</span></a>
+    <a href="#" class="phone"  data-target="#phone"><span>手机访问</span></a>
+    <a href="#" class="wechat" data-target="#wechat"><span>关注微信</span></a>
+    <a href="javascript:;" class="arrow bottom" onClick="goBottom()"><span>返回底部</span></a>
+  </div>
+	<div id="phone" class="popPanel">
+		<div class="popPanel-inner">
+			<img src="http://localhost/waibo/img/site.png" /><p class="slogan">扫码访问歪脖网</p><p>随时随地，想看就看</p>
+		</div>
+	</div>
+	<div id="wechat" class="popPanel">
+		<div class="popPanel-inner">
+			<img src="http://localhost/waibo/img/weixin.png" /><p class="slogan">关注歪脖网微信</p><p>分享 web 知识、交流 web 经验</p>
+		</div>
+	</div>
+</div>
+ <footer>
+   <p>Copyright&copy;2017&nbsp;&nbsp;www.waibo.wang All Rights Reserved</p>
+   <p>陕ICP备17020676号-1&nbsp;&nbsp;&nbsp;&nbsp;客服QQ：376601179&nbsp;&nbsp;&nbsp;&nbsp;邮箱：376601179#qq.com
+ </footer>
+ <script src="http://localhost/waibo/js/prettify.js"></script>
+ <script src="http://localhost/waibo/js/bootstrap.min.js"></script>
+ <script src="http://localhost/waibo/js/ckeditor_4.7.1/ckeditor.js"></script>
+ <script>
+ $(function() {
+    prettyPrint();
+    bible();
+    load();
+    rewardMethod();
+ });
+ </script>
+</body>
+</html>
